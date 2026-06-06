@@ -320,25 +320,41 @@ const projectsData = {
         ],
         description: {
             tr: `
-                <p><strong>STTFL</strong>, mezun olduğum Siirt Türk Telekom Fen Lisesi (STTFL) mezunları ve öğrencileri için popüler Türkçe tartışma platformlarından (Ekşi Sözlük vb.) ilham alınarak tasarlanmış, <strong>Next.js 15 ve TypeScript</strong> tabanlı modern bir sosyal içerik ve tartışma platformudur.</p>
-                <p>Uygulama, görsel mükemmelliği hedefleyen <strong>Liquid Glass</strong> tasarım diliyle inşa edilmiş olup, cam efekti (frosted glass) ve pürüzsüz morphing geçiş animasyonlarıyla premium bir kullanıcı deneyimi sunar.</p>
-                <h4>Öne Çıkan Özellikler:</h4>
+                <p>Lise yıllarından gelen bağları koparmamak ve ortak anıları canlı tutmak için STTFL mezunları ve öğrencilerini bir araya getirmeye çalışan özgür tartışma platformu. Ekşi Sözlük'ten ilham aldım.</p>
+
+                <h4>Özellikler</h4>
                 <ul>
-                    <li><strong>Genkit &amp; Gemini AI Katmanı:</strong> Google Genkit altyapısıyla entegre çalışan Gemini API; entry'leri otomatik analiz eder, ilgili içerik önerilerinde bulunur ve etiketleri otomatik olarak çıkarır.</li>
-                    <li><strong>İkili Ana Sayfa Akışı:</strong> Kullanıcının hem genel akışı hem de takip ettiği yazarların paylaşımlarını görebileceği özelleştirilmiş çift akış yapısı.</li>
-                    <li><strong>Gerçek Zamanlı DM &amp; Bildirimler:</strong> Firestore'un gerçek zamanlı dinleyicileri (listeners) sayesinde anlık mesajlaşma ve anında bildirim akışı.</li>
-                    <li><strong>Güvenlik ve Dağıtım:</strong> Firebase Security Rules entegrasyonu sayesinde kullanıcı bazlı veri erişim kontrolü sağlanmış ve Firebase App Hosting üzerinde CI/CD ile dağıtılmıştır.</li>
+                    <li><strong>Genkit & Gemini AI:</strong> Entry'leri analiz ediyor, etiket çıkarıyor, benzer içerik öneriyor.</li>
+                    <li><strong>Çift Akış:</strong> Genel akış veya sadece takip ettiğin yazarlar — birinden diğerine tek tıkla.</li>
+                    <li><strong>Anlık DM & Bildirimler:</strong> Sayfayı yenilemeden anında düşüyor.</li>
+                </ul>
+
+                <h4>Teknik Altyapı</h4>
+                <ul>
+                    <li><strong>Next.js 15 + TypeScript</strong></li>
+                    <li><strong>Google Genkit + Gemini API</strong></li>
+                    <li><strong>Cloud Firestore + Firebase Security Rules</strong></li>
+                    <li><strong>Firebase App Hosting</strong> — Git entegrasyonlu CI/CD ile otomatik dağıtım.</li>
+                    <li><strong>Tailwind CSS + Liquid Glass</strong> tasarım sistemi.</li>
                 </ul>
             `,
             en: `
-                <p><strong>STTFL</strong> is a modern social forum and discussion platform built with <strong>Next.js 15 and TypeScript</strong> for my high school alma mater (Siirt Türk Telekom Science High School) alumni and students, inspired by popular Turkish forums like Ekşi Sözlük.</p>
-                <p>Adopts a unique <strong>Liquid Glass</strong> design system, blending frosted glass visual cards, gradient surfaces, and smooth morphing animations to deliver a premium interface.</p>
-                <h4>Key Integrations:</h4>
+                <p>A free discussion platform bringing together alumni and students of STTFL to keep connections alive and shared memories from slipping away. Inspired by Ekşi Sözlük.</p>
+
+                <h4>Features</h4>
                 <ul>
-                    <li><strong>Google Genkit & Gemini AI:</strong> Orchestrates LLM flows for automatic categorization, related content suggestion, and sentiment analysis on user entries.</li>
-                    <li><strong>Dual Home Feed:</strong> Supports separate feeds allowing users to view general public topics or filter by authors they follow.</li>
-                    <li><strong>Real-time Messaging (DM):</strong> Leverages Cloud Firestore live listeners to process peer-to-peer messages and notifications instantly.</li>
-                    <li><strong>App Hosting Deployment:</strong> Deployed via Firebase App Hosting utilizing automated Git-integrated CI/CD pipelines.</li>
+                    <li><strong>Genkit & Gemini AI:</strong> Analyzes entries, extracts tags, and suggests related content automatically.</li>
+                    <li><strong>Dual Feed:</strong> General feed or only authors you follow — switch with one click.</li>
+                    <li><strong>Real-time DMs & Notifications:</strong> Messages and notifications arrive instantly without reloading.</li>
+                </ul>
+
+                <h4>Technical Foundation</h4>
+                <ul>
+                    <li><strong>Next.js 15 + TypeScript</strong></li>
+                    <li><strong>Google Genkit + Gemini API</strong></li>
+                    <li><strong>Cloud Firestore + Firebase Security Rules</strong></li>
+                    <li><strong>Firebase App Hosting</strong> — automated CI/CD via Git integration.</li>
+                    <li><strong>Tailwind CSS + Liquid Glass</strong> design system.</li>
                 </ul>
             `
         }
@@ -361,25 +377,43 @@ const projectsData = {
         ],
         description: {
             tr: `
-                <p><strong>YazarEser</strong>, Türk edebiyatı sınavlarına (AYT Edebiyat) hazırlanan öğrenciler için geliştirilmiş, **flash kart tabanlı akıllı bir Android çalışma uygulamasıdır**.</p>
-                <p>2018–2025 yılları arasında çıkmış tüm yazar ve eserleri kapsayan **1.799 doğrulanmış kart** içermektedir. Çevrimdışı öncelikli (offline-first) çalışmayı destekleyen Room DB mimarisi ve bulut senkronizasyonu için Firestore entegrasyonuna sahiptir.</p>
-                <h4>Öne Çıkan Özellikler:</h4>
+                <p>AYT Edebiyat sınavına hazırlanan öğrencilerin ezber yükünü hafifletmek, kafa karıştırıcı yazar-eser eşleşmelerini oyunlaştırılmış kartlarla kalıcı öğrenmeye dönüştürmek için yapıldı. 1.799 doğrulanmış kart, 2018–2025 arası tüm sınavları kapsıyor.</p>
+
+                <h4>Özellikler</h4>
                 <ul>
-                    <li><strong>Eser &rarr; Yazar Yönlendirmeli Kartlar:</strong> Bire-çok ilişkilerde (bir yazarın onlarca eseri olması) kafa karışıklığını gidermek için bilinçli olarak tasarlanmış Eser &rarr; Yazar yönü ve kart çevirme animasyonu.</li>
-                    <li><strong>Spaced Repetition (Leitner Sistemi):</strong> Bilimsel Leitner algoritmasıyla öğrencinin zorlandığı kartları daha sık, bildiği kartları daha seyrek karşısına çıkaran akıllı çalışma modu.</li>
-                    <li><strong>Gravity &amp; Eşleştirme Oyunları:</strong> Oyunlaştırma (gamification) ögeleri içeren, öğrenmeyi eğlenceli kılan interaktif eşleştirme oyunları ve sınav simülasyonları.</li>
-                    <li><strong>Python Otomasyon Araçları:</strong> 1.799 kartlık devasa MEB müfredatı verisini parse eden, temizleyen ve Firestore/Room veritabanına otomatik enjekte eden Python otomasyon scriptleri.</li>
+                    <li><strong>Eser → Yazar kartları:</strong> Kafa karışıklığını gidermek için bilinçli yön tercihi.</li>
+                    <li><strong>Spaced Repetition (Leitner):</strong> Zor kartlar daha sık, bilinen kartlar daha seyrek karşına çıkıyor.</li>
+                    <li><strong>Oyunlaştırma:</strong> Gravity modu, eşleştirme, sınav simülasyonu.</li>
+                    <li><strong>Python otomasyon:</strong> MEB müfredatı verisini ayıklayıp veritabanına aktardım.</li>
+                </ul>
+
+                <h4>Teknik Altyapı</h4>
+                <ul>
+                    <li><strong>Kotlin + Jetpack Compose</strong></li>
+                    <li><strong>Room DB v3</strong> — offline-first mimari.</li>
+                    <li><strong>Firebase Auth + Firestore</strong> — bulut senkronizasyonu.</li>
+                    <li><strong>WorkManager</strong> — arka plan görevleri.</li>
+                    <li><strong>Python</strong> — veri ayıklama ve veritabanı doldurma scriptleri.</li>
                 </ul>
             `,
             en: `
-                <p><strong>YazarEser</strong> is an offline-first **flashcard Android application** built in native Kotlin to help students study for literature exams.</p>
-                <p>Includes **1,799 verified cards** compiled from AYT national exam history (2018-2025). Leverages Room Database v3 for offline work and Firebase for cloud backup.</p>
-                <h4>Engineering & UX Highlights:</h4>
+                <p>Built to ease the memorization load for students preparing for the AYT Literature exam — turning confusing author-work pairs into lasting learning through gamified flashcards. 1,799 verified cards covering every exam from 2018 to 2025.</p>
+
+                <h4>Features</h4>
                 <ul>
-                    <li><strong>Eser &rarr; Yazar Direction:</strong> Designed to flip from Eser to Yazar (Work to Author) to resolve answer ambiguity inherent in one-to-many relationships.</li>
-                    <li><strong>Spaced Repetition:</strong> Employs the scientific Leitner system to increase learning efficiency by repeating difficult cards more frequently.</li>
-                    <li><strong>Gamified Learning:</strong> Features matching game, sorting drills, and Gravity mode to improve student engagement.</li>
-                    <li><strong>Data Automation:</strong> Custom Python scripts parsed MEB curriculum data, cleaned it, and automatically populated Room DB and Firestore databases.</li>
+                    <li><strong>Eser → Yazar cards:</strong> A deliberate direction choice to eliminate answer ambiguity.</li>
+                    <li><strong>Spaced Repetition (Leitner):</strong> Hard cards come up more often, known cards less — efficient without thinking about it.</li>
+                    <li><strong>Gamification:</strong> Gravity mode, matching game, exam simulation.</li>
+                    <li><strong>Python automation:</strong> Scraped and cleaned MEB curriculum data to populate the database.</li>
+                </ul>
+
+                <h4>Technical Foundation</h4>
+                <ul>
+                    <li><strong>Kotlin + Jetpack Compose</strong></li>
+                    <li><strong>Room DB v3</strong> — offline-first architecture.</li>
+                    <li><strong>Firebase Auth + Firestore</strong> — cloud sync.</li>
+                    <li><strong>WorkManager</strong> — background tasks.</li>
+                    <li><strong>Python</strong> — data extraction and database population scripts.</li>
                 </ul>
             `
         }
