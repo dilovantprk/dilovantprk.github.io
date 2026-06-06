@@ -1274,11 +1274,33 @@ html.dark .moon-icon { display: block; }
         border-bottom: 1px solid var(--nav-border);
         width: 100%;
         max-width: 100%;
-        padding: 16px;
+        padding: 14px 18px;
     }
     
     .header.scrolled {
         top: 0;
+    }
+
+    /* Shrink all header action buttons on mobile */
+    .nav-actions {
+        gap: 6px;
+    }
+
+    .theme-toggle,
+    .lang-toggle,
+    .mobile-menu-toggle {
+        width: 34px;
+        height: 34px;
+    }
+
+    .theme-toggle svg {
+        width: 15px;
+        height: 15px;
+    }
+
+    .lang-text {
+        font-size: 0.7rem;
+        letter-spacing: 0.04em;
     }
     
     .mobile-menu-toggle {
