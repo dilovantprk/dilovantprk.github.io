@@ -19,7 +19,7 @@ const translations = {
         "nav.contact": "İletişim",
         
         "hero.greeting": "Merhaba, ben",
-        "hero.desc": "Boğaziçi Üniversitesi'nde felsefe okuyor, zihinsel modelleri ve analitik düşünceyi dijital ürünlere dönüştürüyorum. Estetik, kullanılabilirlik ve temiz kod odaklı yenilikçi web ve mobil deneyimleri tasarlıyorum.",
+        "hero.desc": "Boğaziçi'nde felsefe okuyorum — anlam arıyorum, kod yazıyorum. Düşünce sistemlerini arayüzlere, soyut modelleri çalışan ürünlere dönüştürüyorum. Bıraktığım şeyin estetik olması gerektiğine inanıyorum.",
         "hero.cta_projects": "Projelerimi Gör",
         "hero.cta_contact": "İletişime Geç",
         
@@ -43,29 +43,29 @@ const translations = {
         "timeline.title": "Eğitim & Deneyim",
         "timeline.desc": "Akademik geçmişim ve sivil toplum kuruluşlarındaki liderlik rollerim.",
         
-        "timeline.boun.title": "Felsefe Lisans Eğitimi",
+        "timeline.boun.title": "Felsefe Lisansı",
         "timeline.boun.org": "Boğaziçi Üniversitesi",
         "timeline.boun.loc": "İstanbul, Türkiye (Devam Ediyor)",
-        "timeline.boun.desc": "İnsan ve Toplum Bilimleri Fakültesi bünyesinde Felsefe eğitimi. Mantık, epistemoloji ve analitik felsefe üzerine odaklanarak problem çözme ve soyut modelleme becerilerini pekiştirme.",
+        "timeline.boun.desc": "İnsan ve Toplum Bilimleri Fakültesi bünyesinde Felsefe okuyor, mantık, epistemoloji ve analitik felsefe üzerine yoğunlaşıyorum. Felsefi düşünme biçiminin problem çözme ve soyut modelleme becerilerime ciddi katkı sağladığına inanıyorum.",
         
         "timeline.bued.title": "Yürütme Kurulu Üyesi",
         "timeline.bued.org": "Boğaziçi Üni. Edebiyat Kulübü",
         "timeline.bued.loc": "İstanbul, Türkiye",
-        "timeline.bued.desc": "Kulüp bünyesinde edebiyat söyleşileri, atölyeler ve kültürel etkinliklerin organizasyonu. Yürütme Kurulu üyesi olarak 1 yıl boyunca aktif karar alma ve kulüp idari süreçlerinin yönetilmesi.",
+        "timeline.bued.desc": "Edebiyat söyleşileri, atölyeler ve kültürel etkinliklerin düzenlenmesine öncülük ettim. Bir yıl boyunca yürütme kurulunda görev alarak kulübün idari ve operasyonel süreçlerini yönettim.",
         
         "timeline.cedid.title": "Erasmus+ Öğrenci Koordinatörü",
         "timeline.cedid.org": "Cedid Sivil Toplum Kuruluşu",
         "timeline.cedid.loc": "Türkiye",
-        "timeline.cedid.desc": "Erasmus+ gençlik ve öğrenci değişim programları kapsamında Türkiye'ye gelen uluslararası öğrencilerin koordinasyonunu yönetme. Kültürlerarası uyum süreçleri, etkinlik planlama ve çok kültürlü ortamlarda aktif iletişim sağlama.",
+        "timeline.cedid.desc": "Erasmus+ programı kapsamında Türkiye'ye gelen uluslararası öğrencilerin adaptasyon süreçlerini yönettim. Kültürlerarası etkileşimi kolaylaştıran etkinlikler planlayarak çok kültürlü bir çalışma ortamında koordinasyon sağladım.",
         
-        "timeline.siirt.title": "Fen Lisesi Eğitimi",
+        "timeline.siirt.title": "Fen Lisesi",
         "timeline.siirt.org": "Siirt Türk Telekom Fen Lisesi",
         "timeline.siirt.loc": "Siirt, Türkiye (Mezun)",
-        "timeline.siirt.desc": "Sayısal ağırlıklı eğitim ve analitik düşünme altyapısının kazanılması. Yazılım ve teknoloji merakının başladığı dönem.",
+        "timeline.siirt.desc": "Sayısal ağırlıklı bir müfredatla analitik düşünme temelimi attığım yıllar. Yazılım ve teknolojiye olan ilgim de bu dönemde başladı.",
         
         "timeline.ucondort.title": "Kurucu & Editör",
         "timeline.ucondort.org": "Üç On Dört",
-        "timeline.ucondort.desc": "Lise 1. sınıfta 2 arkadaşımla birlikte bilim ve felsefe odaklı kurduğumuz ilk web sitesi projesi. Sitenin kodlama/kurulum süreçleri ve sosyal medya topluluğunun yönetilmesi.",
+        "timeline.ucondort.desc": "Lise 1. sınıfta iki arkadaşımla birlikte bilim ve felsefe odaklı ilk web sitemizi kurdum; teknik altyapıyı inşa edip içerik yönetimi ve sosyal medya topluluğunun geliştirilmesini üstlendim.",
         
         "skills.tag": "Neler Yapabilirim?",
         "skills.title": "Yetenekler & Araçlar",
@@ -128,8 +128,8 @@ const translations = {
         "nav.skills": "Skills",
         "nav.contact": "Contact",
         
-        "hero.greeting": "Hi, I am",
-        "hero.desc": "Studying Philosophy at Boğaziçi University, turning mental models and analytical thinking into digital products. Designing innovative web and mobile experiences focused on aesthetics, usability, and clean code.",
+        "hero.greeting": "Hi, I'm",
+        "hero.desc": "Studying philosophy at Boğaziçi — searching for meaning, writing code. I translate thought systems into interfaces and abstract models into working products. I believe whatever I leave behind should be beautiful.",
         "hero.cta_projects": "View My Work",
         "hero.cta_contact": "Get In Touch",
         
