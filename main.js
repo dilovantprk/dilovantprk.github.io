@@ -531,14 +531,16 @@ function initTheme() {
     }
 
     // Toggle click event lets them override for the current session
-    themeToggleBtn.addEventListener("click", () => {
-        if (htmlElement.classList.contains("dark")) {
-            htmlElement.className = "light";
-        } else {
-            htmlElement.className = "dark";
-        }
-        updateThemeIcon();
-    });
+    if (themeToggleBtn) {
+        themeToggleBtn.addEventListener("click", () => {
+            if (htmlElement.classList.contains("dark")) {
+                htmlElement.className = "light";
+            } else {
+                htmlElement.className = "dark";
+            }
+            updateThemeIcon();
+        });
+    }
 }
 
 function updateThemeIcon() {
