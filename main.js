@@ -10,14 +10,13 @@ const translations = {
         "nav.contact": "İletişim",
         
         "hero.greeting": "Merhaba, ben",
-        "hero.subtitle": "Felsefe Öğrenicisi & Arayüz Geliştirici",
         "hero.desc": "Boğaziçi Üniversitesi'nde felsefe okuyor, zihinsel modelleri ve analitik düşünceyi dijital ürünlere dönüştürüyorum. Estetik, kullanılabilirlik ve temiz kod odaklı yenilikçi web ve mobil deneyimleri tasarlıyorum.",
         "hero.cta_projects": "Projelerimi Gör",
         "hero.cta_contact": "İletişime Geç",
         
         "projects.tag": "Neler Ürettim?",
         "projects.title": "Seçilmiş Projeler",
-        "projects.desc": "Fikir aşamasından kodlamaya kadar bizzat geliştirdiğim mobil, web ve topluluk odaklı uygulamalar.",
+        "projects.desc": "Ayinesi iştir kişinin, lafa bakılmaz. Fikir aşamasından kodlamaya kadar bizzat geliştirdiğim mobil, web ve topluluk odaklı uygulamalar.",
         "projects.more_details": "Detayları Gör",
         
         "projects.aura.pill": "Somatik Denge",
@@ -114,14 +113,13 @@ const translations = {
         "nav.contact": "Contact",
         
         "hero.greeting": "Hi, I am",
-        "hero.subtitle": "Philosophy Student & Interface Developer",
         "hero.desc": "Studying Philosophy at Boğaziçi University, turning mental models and analytical thinking into digital products. Designing innovative web and mobile experiences focused on aesthetics, usability, and clean code.",
         "hero.cta_projects": "View My Work",
         "hero.cta_contact": "Get In Touch",
         
         "projects.tag": "What I've Built",
         "projects.title": "Selected Projects",
-        "projects.desc": "Mobile, web, and community-driven applications built entirely by me from concept to code.",
+        "projects.desc": "A person's mirror is their work; words do not matter. Mobile, web, and community-driven applications built entirely by me from concept to code.",
         "projects.more_details": "View Details",
         
         "projects.aura.pill": "Somatic Balance",
