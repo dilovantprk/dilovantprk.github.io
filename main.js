@@ -853,7 +853,7 @@ function initProjectModals() {
             const project = projectsData[projectId];
             
             if (project) {
-                renderModalContent(project);
+                renderModalContent(project, projectId);
                 openModal();
             }
         });
@@ -882,7 +882,7 @@ function initProjectModals() {
         document.body.style.overflow = ""; // Restore scroll
     }
 
-    function renderModalContent(project) {
+    function renderModalContent(project, projectId) {
         // Translate labels
         const labelAbout = translations[currentLanguage]["modal.about"];
         const labelRole = translations[currentLanguage]["modal.role"];
@@ -910,10 +910,7 @@ function initProjectModals() {
                 <h3 class="modal-project-title">${project.title}</h3>
             </div>
             
-            <div class="modal-project-banner ${project.bannerClass}">
-                <div class="modal-banner-icon">
-                    <i data-feather="${project.icon}"></i>
-                </div>
+            <div class="modal-project-banner" style="background-image: url('assets/${projectId}.png'); background-size: cover; background-position: center;">
             </div>
             
             <div class="modal-project-content">
