@@ -370,20 +370,22 @@ ul {
 .hero-container {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
+    align-items: flex-start;
+    text-align: left;
     max-width: 800px;
     margin: 0 auto;
+    width: 100%;
 }
 
 .hero-content {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
+    width: 100%;
 }
 
 .hero-greeting {
-    font-size: 1rem;
+    font-size: 1.15rem;
     font-weight: 600;
     color: var(--accent-blue);
     margin-bottom: 12px;
@@ -392,7 +394,7 @@ ul {
 }
 
 .hero-title {
-    font-size: clamp(3rem, 9vw, 5.5rem);
+    font-size: clamp(3.5rem, 10vw, 6.5rem);
     letter-spacing: -0.03em;
     margin-bottom: 8px;
     background: linear-gradient(135deg, var(--text-primary) 50%, var(--text-secondary));
@@ -402,7 +404,7 @@ ul {
 
 .hero-fullname {
     display: block;
-    font-size: clamp(0.75rem, 2vw, 0.95rem);
+    font-size: clamp(0.85rem, 2.5vw, 1.1rem);
     font-weight: 500;
     letter-spacing: 0.15em;
     text-transform: uppercase;
@@ -414,7 +416,7 @@ ul {
 }
 
 .hero-description {
-    font-size: 1.05rem;
+    font-size: 1.15rem;
     color: var(--text-secondary);
     margin-bottom: 36px;
     max-width: 640px;
@@ -1318,11 +1320,11 @@ ul {
     }
     
     .hero-title {
-        font-size: 2.8rem;
+        font-size: 3.5rem;
     }
     
-    .hero-subtitle {
-        font-size: 1.5rem;
+    .hero-fullname {
+        font-size: 1.15rem;
     }
     
     .contact-grid {
@@ -1408,12 +1410,18 @@ ul {
     .hero-container {
         grid-template-columns: 1fr;
         gap: var(--spacing-lg);
-        text-align: center;
+        text-align: left;
+        align-items: flex-start;
     }
     
     .hero-content {
-        align-items: center;
+        align-items: flex-start;
         order: 2;
+    }
+    
+    .hero-cta {
+        justify-content: flex-start;
+        width: 100%;
     }
     
     .hero-image-wrapper {
@@ -1442,15 +1450,34 @@ ul {
     .modal-body {
         padding: 24px;
     }
+
+    .section-header {
+        text-align: left;
+        margin-left: 0;
+        margin-right: 0;
+        max-width: 100%;
+    }
 }
 
 @media (max-width: 480px) {
     .hero-title {
-        font-size: 2.25rem;
+        font-size: 2.75rem;
     }
 
     .hero-cta {
-        display: none;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        width: 100%;
+    }
+    
+    .hero-cta .btn {
+        flex: 1;
+        min-width: 130px;
+        font-size: 0.85rem;
+        padding: 10px 16px;
+        white-space: nowrap;
+        justify-content: center;
     }
 }
 
