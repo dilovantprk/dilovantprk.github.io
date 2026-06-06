@@ -81,8 +81,8 @@ const translations = {
         "skills.soft2": "Kültürlerarası İletişim (İngilizce C1)",
         "skills.soft3": "Proje Organizasyon & Koordinasyon",
         
-        "contact.tag": "İletişime Geçin",
-        "contact.title": "Birlikte Çalışalım",
+        "contact.tag": "Kapı Açık",
+        "contact.title": "Gel, Bir Şey Yapalım",
         "contact.desc": "Deneysel projeler ya da sivil toplum alanında birlikte bir şey üretmek istiyorsan konuşalım. İnsan odaklı işler beni heyecanlandırıyor.",
         "contact.panel_title": "İletişim Bilgileri",
         "contact.panel_desc": "Benimle doğrudan aşağıdaki kanallardan da iletişime geçebilirsiniz.",
