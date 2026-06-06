@@ -37,7 +37,7 @@ const translations = {
         "projects.yazareser.category": "Education / Mobile App",
         "projects.yazareser.summary": "Sınava hazırlanıyordum ama aradığımı bulamıyordum — her kaynak eksik, her liste yarım. Ben de kendim yaptım. Topladım, düzenledim; 1.799 kart ortaya çıktı. Gerisi uygulama.",
         
-        "timeline.tag": "Durduğum Yerler",
+        "timeline.tag": "Arka Plan",
         "timeline.title": "Geçtiğim Yerler",
         "timeline.desc": "Şimdiye kadar durduğum yerler.",
         
