@@ -1472,7 +1472,7 @@ html.dark .moon-icon { display: block; }
 }
 
 /* ==========================================================================
-   MOBILE SIDE NAVIGATION (Integrated Vertical Loop Wheel)
+   MOBILE SIDE NAVIGATION (Floating Loop Wheel at Bottom-Left)
    ========================================================================== */
 .side-nav {
     display: none;
@@ -1486,39 +1486,18 @@ html.dark .moon-icon { display: block; }
     .side-nav {
         display: block;
         position: fixed;
-        left: 0;
-        top: 0;
-        bottom: 0;
-        width: 200px;
+        left: 20px;
+        bottom: 20px;
+        width: 250px;
+        height: 80px;
         z-index: 50;
         pointer-events: none;
-    }
-
-    .side-nav-track-top {
-        position: absolute;
-        left: 13px;
-        top: 0;
-        height: calc(65% - 40px);
-        width: 1.5px;
-        background: linear-gradient(to bottom, transparent 10%, var(--border-color));
-        opacity: 0.8;
-    }
-
-    .side-nav-track-bottom {
-        position: absolute;
-        left: 13px;
-        top: calc(65% + 40px);
-        bottom: 0;
-        width: 1.5px;
-        background: linear-gradient(to bottom, var(--border-color), transparent 90%);
-        opacity: 0.8;
     }
 
     .side-nav-wheel-container {
         position: absolute;
         left: 0;
-        top: 65%;
-        transform: translateY(-50%);
+        top: 0;
         width: 80px;
         height: 80px;
         pointer-events: none;
@@ -1526,16 +1505,28 @@ html.dark .moon-icon { display: block; }
 
     .side-nav-wheel {
         position: absolute;
-        left: -27px; /* Center wheel at X = 13px: 13px - 40px radius = -27px */
+        left: 0;
         top: 0;
         width: 80px;
         height: 80px;
         border-radius: 50%;
         border: 1.5px solid var(--border-color);
+        background: var(--bg-card);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
         pointer-events: none;
         transform: rotate(0deg);
         transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         transform-origin: center center;
+    }
+
+    /* Inner loop line representing cycles */
+    .side-nav-wheel::after {
+        content: '';
+        position: absolute;
+        inset: 16px;
+        border-radius: 50%;
+        border: 1px dashed var(--border-color);
+        opacity: 0.5;
     }
 
     .side-nav-item {
@@ -1601,34 +1592,6 @@ html.dark .moon-icon { display: block; }
     .side-nav-item.active .side-nav-label {
         opacity: 1;
         transform: translateY(-50%) translateX(0);
-    }
-
-    /* Push main content to the right of the side line */
-    .header .nav-container {
-        padding-left: 36px;
-    }
-
-    main {
-        padding-left: 32px;
-    }
-
-    /* Timeline line visually connects: align it to left: 13px from timeline-container left edge */
-    .timeline-container {
-        padding-left: 0;
-        margin-left: -32px;
-        padding-left: 14px;
-    }
-
-    .timeline-line {
-        left: 13px;
-    }
-
-    .timeline-dot {
-        left: 4px;
-    }
-
-    .timeline-item {
-        padding-left: 40px;
     }
 }
 
