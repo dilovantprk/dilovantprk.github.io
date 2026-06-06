@@ -30,14 +30,14 @@ const translations = {
         
         "projects.aura.pill": "Somatik Denge",
         "projects.aura.category": "Wellness / Web App",
-        "projects.aura.summary": "Modern yaşamın getirdiği stres ve kaygıyı, bedensel duyumları takip edip nefes ve ses sentezleri ile otonom sinir sistemini sakinleştirmeyi amaçlayan kişisel somatik regülasyon alanı.",
+        "projects.aura.summary": "Bir dönem her şey üstüme geliyor gibiydi. Nefes almayı yeniden öğrenmem gerekiyordu... Araştırdım, denedim, işe yarayanları bir forma koydum. Arkadaşlarımla paylaşmak isteyince de proje oldu.",
         
         "projects.sosyal.category": "Social / Web App",
-        "projects.sosyal.summary": "Lise yıllarımdan gelen bağları koparmamak ve ortak anıları canlı tutmak için Siirt Türk Telekom Fen Lisesi (STTFL) mezunları ve öğrencilerini bir araya getiren özgür tartışma ve topluluk platformu.",
+        "projects.sosyal.summary": "Bir lise öğrencisi için okul neredeyse tüm dünyadır. STTFL o dünyanın hafızası — kuşaktan kuşağa aktarılan bir okul kültürü arşivi. Envai çeşit sosyal medya platformu varken STTFL farklı bir şey yapıyor: herkese eşit söz hakkı tanıyor. Öğrenci de mezun da öğretmen de. Okuldaki güç ilişkilerini sözlük formatıyla ters yüz ediyor — öğrencilere kurtarılmış bir bölge açıyor.",
         
         "projects.yazareser.pill": "1.799 Kart",
         "projects.yazareser.category": "Education / Mobile App",
-        "projects.yazareser.summary": "AYT Edebiyat sınavına hazırlanan öğrencilerin ezber yükünü hafifletmek, kafa karıştırıcı yazar-eser eşleşmelerini oyunlaştırılmış kartlarla eğlenceli ve kalıcı bir öğrenme sürecine dönüştürmek için tasarlandı.",
+        "projects.yazareser.summary": "Sınava hazırlanıyordum ama aradığımı bulamıyordum — her kaynak eksik, her liste yarım. Ben de kendim yaptım. Topladım, düzenledim; 1.799 kart ortaya çıktı. Gerisi uygulama.",
         
         "timeline.tag": "Zaman Tüneli",
         "timeline.title": "Eğitim & Deneyim",
@@ -140,14 +140,14 @@ const translations = {
         
         "projects.aura.pill": "Somatic Balance",
         "projects.aura.category": "Wellness / Web App",
-        "projects.aura.summary": "A personal somatic space designed to calm modern stress and anxiety by tracking bodily sensations and regulating the nervous system with guided breathing and audio synthesis.",
+        "projects.aura.summary": "For a while, everything felt like it was closing in on me. I needed to relearn how to breathe... I researched, experimented, and put what worked into a form. When I wanted to share it with friends, it became a project.",
         
         "projects.sosyal.category": "Social / Web App",
-        "projects.sosyal.summary": "A free discussion and community platform bringing Siirt Türk Telekom Science High School (STTFL) students and alumni together to keep school memories and connections alive.",
+        "projects.sosyal.summary": "For a high school student, school is almost the whole world. STTFL is that world's memory — an archive of school culture passed from generation to generation. With countless social media platforms out there, STTFL does something different: it gives everyone an equal voice. Student, alumni, teacher alike. It turns the school's power dynamics upside down with the sözlük format — opening a liberated space for students.",
         
         "projects.yazareser.pill": "1,799 Cards",
         "projects.yazareser.category": "Education / Mobile App",
-        "projects.yazareser.summary": "Designed to ease the heavy memorization load of literature exams, turning confusing author-work associations into a gamified, permanent learning experience using flashcards.",
+        "projects.yazareser.summary": "I was studying for the exam but couldn't find what I needed — every source incomplete, every list half-finished. So I built it myself. Gathered, organized; 1,799 cards emerged. The app came after.",
         
         "timeline.tag": "Timeline",
         "timeline.title": "Education & Experience",
