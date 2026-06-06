@@ -1454,140 +1454,124 @@ ul {
     }
 }
 
-/* ==========================================================================
-   MOBILE SIDE NAVIGATION (Floating Loop Wheel at Bottom-Left)
-   ========================================================================== */
 .side-nav {
-    display: block;
-    position: fixed;
-    left: 20px;
-    bottom: 20px;
-    width: 250px;
-    height: 80px;
-    z-index: 50;
-    pointer-events: none;
-}
-
-.side-nav-wheel-container {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 80px;
-    height: 80px;
-    pointer-events: none;
-}
-
-.side-nav-wheel-container .lang-toggle {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    margin: 0;
-    z-index: 52;
-    pointer-events: auto;
-    width: 32px;
-    height: 32px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-}
-
-.side-nav-wheel-container .lang-toggle:hover {
-    transform: translate(-50%, -50%) scale(1.08);
-}
-
-.side-nav-wheel {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    border: 1.5px solid var(--border-color);
-    background: var(--bg-card);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
-    pointer-events: none;
-    transform: rotate(0deg);
-    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-    transform-origin: center center;
-}
-
-/* Inner loop line representing cycles */
-.side-nav-wheel::after {
-    content: '';
-    position: absolute;
-    inset: 16px;
-    border-radius: 50%;
-    border: 1px dashed var(--border-color);
-    opacity: 0.5;
-}
-
-.side-nav-item {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    width: 24px;
-    height: 24px;
-    margin-left: -12px;
-    margin-top: -12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    pointer-events: auto;
-    text-decoration: none;
-    /* Position along circumference and maintain upright orientation */
-    transform: rotate(var(--angle)) translateX(40px) rotate(calc(-1 * var(--angle) - var(--wheel-rotation, 0deg)));
-    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.side-nav-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--text-muted);
-    opacity: 0.5;
-    transition: all 0.4s ease;
-    position: relative;
-    z-index: 1;
-    flex-shrink: 0;
-}
-
-.side-nav-item.active .side-nav-dot {
-    width: 10px;
-    height: 10px;
-    background: var(--accent-blue);
-    opacity: 1;
-    box-shadow: 0 0 0 4px var(--accent-blue-soft);
-}
-
-.side-nav-label {
-    position: absolute;
-    left: 20px;
-    top: 50%;
-    transform: translateY(-50%) translateX(-8px);
-    font-family: var(--font-heading);
-    font-size: 0.65rem;
-    font-weight: 700;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    color: var(--accent-blue);
-    background: var(--bg-secondary);
-    border: 1px solid var(--border-color);
-    padding: 3px 8px;
-    border-radius: 4px;
-    white-space: nowrap;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.4s ease, transform 0.4s ease;
-    box-shadow: var(--card-shadow);
-}
-
-.side-nav-item.active .side-nav-label {
-    opacity: 1;
-    transform: translateY(-50%) translateX(0);
+    display: none;
 }
 
 @media (max-width: 768px) {
     .mobile-menu-toggle {
         display: none !important;
+    }
+
+    .side-nav {
+        display: block;
+        position: fixed;
+        left: 20px;
+        bottom: 20px;
+        width: 250px;
+        height: 80px;
+        z-index: 50;
+        pointer-events: none;
+    }
+
+    .side-nav-wheel-container {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 80px;
+        height: 80px;
+        pointer-events: none;
+    }
+
+    .side-nav-wheel {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        border: 1.5px solid var(--border-color);
+        background: var(--bg-card);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+        pointer-events: none;
+        transform: rotate(0deg);
+        transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        transform-origin: center center;
+    }
+
+    /* Inner loop line representing cycles */
+    .side-nav-wheel::after {
+        content: '';
+        position: absolute;
+        inset: 16px;
+        border-radius: 50%;
+        border: 1px dashed var(--border-color);
+        opacity: 0.5;
+    }
+
+    .side-nav-item {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 24px;
+        height: 24px;
+        margin-left: -12px;
+        margin-top: -12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        pointer-events: auto;
+        text-decoration: none;
+        /* Position along circumference and maintain upright orientation */
+        transform: rotate(var(--angle)) translateX(40px) rotate(calc(-1 * var(--angle) - var(--wheel-rotation, 0deg)));
+        transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .side-nav-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--text-muted);
+        opacity: 0.5;
+        transition: all 0.4s ease;
+        position: relative;
+        z-index: 1;
+        flex-shrink: 0;
+    }
+
+    .side-nav-item.active .side-nav-dot {
+        width: 10px;
+        height: 10px;
+        background: var(--accent-blue);
+        opacity: 1;
+        box-shadow: 0 0 0 4px var(--accent-blue-soft);
+    }
+
+    .side-nav-label {
+        position: absolute;
+        left: 20px;
+        top: 50%;
+        transform: translateY(-50%) translateX(-8px);
+        font-family: var(--font-heading);
+        font-size: 0.65rem;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        color: var(--accent-blue);
+        background: var(--bg-secondary);
+        border: 1px solid var(--border-color);
+        padding: 3px 8px;
+        border-radius: 4px;
+        white-space: nowrap;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.4s ease, transform 0.4s ease;
+        box-shadow: var(--card-shadow);
+    }
+
+    .side-nav-item.active .side-nav-label {
+        opacity: 1;
+        transform: translateY(-50%) translateX(0);
     }
 }
 
