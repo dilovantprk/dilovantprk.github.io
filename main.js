@@ -630,16 +630,15 @@ function initNavigation() {
     });
 }
 
-// Track active section and highlight nav link
+// Track active section and highlight nav link + side-nav
 function trackActiveSection() {
     const sections = document.querySelectorAll("section");
     const navLinks = document.querySelectorAll(".nav-link");
+    const sideNavItems = document.querySelectorAll(".side-nav-item");
     let currentSectionId = "";
 
     sections.forEach(section => {
         const sectionTop = section.offsetTop;
-        const sectionHeight = section.offsetHeight;
-        
         if (window.scrollY >= sectionTop - 150) {
             currentSectionId = section.getAttribute("id");
         }
@@ -649,6 +648,13 @@ function trackActiveSection() {
         link.classList.remove("active");
         if (link.getAttribute("href") === `#${currentSectionId}`) {
             link.classList.add("active");
+        }
+    });
+
+    sideNavItems.forEach(item => {
+        item.classList.remove("active");
+        if (item.getAttribute("data-section") === currentSectionId) {
+            item.classList.add("active");
         }
     });
 }

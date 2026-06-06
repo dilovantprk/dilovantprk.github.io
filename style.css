@@ -1420,6 +1420,106 @@ html.dark .moon-icon { display: block; }
 }
 
 /* ==========================================================================
+   MOBILE SIDE NAVIGATION (Vertical Wheel Nav)
+   ========================================================================== */
+.side-nav {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    /* Hide hamburger, show side-nav */
+    .mobile-menu-toggle {
+        display: none !important;
+    }
+
+    .side-nav {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+        position: fixed;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 200;
+        padding: 12px 0;
+    }
+
+    .side-nav-track {
+        position: absolute;
+        left: 9px;
+        top: 0;
+        bottom: 0;
+        width: 1px;
+        background: var(--border-color);
+    }
+
+    .side-nav-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 7px 12px 7px 4px;
+        text-decoration: none;
+        position: relative;
+        transition: all 0.3s ease;
+    }
+
+    .side-nav-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        border: 2px solid var(--text-muted);
+        background: var(--bg-primary);
+        flex-shrink: 0;
+        transition: all 0.3s ease;
+        position: relative;
+        z-index: 1;
+    }
+
+    .side-nav-label {
+        writing-mode: vertical-rl;
+        transform: rotate(180deg);
+        font-size: 0.6rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--text-muted);
+        opacity: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        white-space: nowrap;
+    }
+
+    .side-nav-item.active .side-nav-dot {
+        border-color: var(--accent-violet);
+        background: var(--accent-violet);
+        box-shadow: 0 0 0 3px var(--accent-violet-soft);
+    }
+
+    .side-nav-item.active .side-nav-label {
+        color: var(--accent-violet);
+        opacity: 1;
+        max-height: 80px;
+    }
+
+    /* Wheel perspective: adjacent items slightly faded */
+    .side-nav-item:not(.active) {
+        opacity: 0.5;
+    }
+
+    .side-nav-item:not(.active):hover {
+        opacity: 0.85;
+    }
+
+    .side-nav-item:not(.active):hover .side-nav-label {
+        opacity: 0.7;
+        max-height: 80px;
+        color: var(--text-secondary);
+    }
+}
+
+/* ==========================================================================
    HUMAN-CENTRIC CUSTOM GRAPHICS & CSS MOCKUPS
    ========================================================================== */
 
