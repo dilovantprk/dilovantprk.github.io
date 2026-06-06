@@ -228,7 +228,7 @@ const projectsData = {
             tr: "3 Ay",
             en: "3 Months"
         },
-        tags: ["Vanilla JS", "Web Audio API", "WebGL Shaders", "Firebase Auth", "PWA"],
+        tags: ["Vanilla JS", "Web Audio API", "Somatic UX", "Firebase Auth", "PWA"],
         links: [
             { textKey: "modal.code_review", url: "https://github.com/dilovantprk/aurawll", icon: "github" }
         ],
@@ -238,21 +238,19 @@ const projectsData = {
                 <p>Uygulama, karmaşık paketleyiciler (bundlers) kullanılmadan tamamen <strong>Vanilla HTML/JS (ES Modules) ve Vanilla CSS</strong> mimarisi ile sıfırdan inşa edilmiştir. Bu sayede son derece hafif, hızlı ve bakımı kolay bir yapı sunar.</p>
                 <h4>Öne Çıkan Özellikler:</h4>
                 <ul>
-                    <li><strong>Web Audio API Sentezleyici:</strong> Arka planda statik döngüler indirmek yerine, tarayıcıda eş zamanlı olarak binaural ritimler (binaural beats) ve procedurally-generated (beyaz/pembe/kahverengi) gürültü sentezler.</li>
-                    <li><strong>WebGL Fragment Shader:</strong> CPU harcamadan doğrudan GPU üzerinde çalışan, sakinleştirici ritmik noise fonksiyonları barındıran Bicycle Day (LSD) odaklanma modu.</li>
-                    <li><strong>Somatic Check-In Akışı:</strong> Kullanıcının fiziksel durum girdilerini barycentric koordinatlar kullanarak Vagal Üçgeni üzerindeki yerini hesaplayan interaktif 2D Affect Grid tuvali.</li>
-                    <li><strong>Nefes Egzersizleri ve PWA:</strong> Box, 4-7-8, ve Physiological Sigh gibi özel nefes ritimlerini yöneten rehber. Offline çalışmayı destekleyen Service Worker altyapısı.</li>
+                    <li><strong>Özgün Somatik Check-In (Kendi İcadım):</strong> Kullanıcının anlık duygusal enerjisini ve bedensel duyumlarını interaktif bir 2D Affect Grid tuvali üzerinden işaretlemesini sağlayan, tasarımı ve mantığı tamamen bana ait olan özel bir modül. Bu modül, kullanıcının otonom sinir sisteminin o anki fizyolojik durumunu (güvende, uyarılmış/stresli veya yorgun/donmuş) görselleştirerek kendi beden farkındalığını (somatic awareness) artırmasına yardımcı olur.</li>
+                    <li><strong>Web Audio API Ses Sentezleyici:</strong> Arka planda statik ses dosyaları indirmek yerine, tarayıcıda anlık olarak binaural ritimler (binaural beats) ve sakinleştirici pembe/kahverengi ses dalgaları sentezleyerek zihni dinginleştirir.</li>
+                    <li><strong>Kişiselleştirilmiş Nefes Rehberliği:</strong> Sinir sistemini dengelemek ve sakinleştirmek için tasarlanmış Box, 4-7-8 ve Physiological Sigh gibi özel nefes ritimlerini yöneten interaktif egzersiz rehberi.</li>
                 </ul>
             `,
             en: `
                 <p><strong>Aura</strong> is a somatic wellness web application based on Stephen Porges' Polyvagal Theory, designed to help users track and regulate their nervous system state.</p>
                 <p>Built completely from scratch using <strong>Vanilla HTML5, ES Modules (no-bundler), and Vanilla CSS</strong>. This architectural decision ensures the app loads instantly, performs efficiently, and avoids package-bloat.</p>
-                <h4>Engineering Highlights:</h4>
+                <h4>Core Highlights:</h4>
                 <ul>
-                    <li><strong>Web Audio API Synthesizer:</strong> Generates real-time procedural noise buffers (white, pink, and brown noise) and binaural beats directly in the browser, eliminating the need to download heavy static audio tracks.</li>
-                    <li><strong>GPU-Accelerated Shaders:</strong> Leverages WebGL fragment shaders in focus mode to render slow-moving, rhythmic visuals directly on the GPU without choking CPU cycles.</li>
-                    <li><strong>Somatic Affect Grid:</strong> An interactive 2D canvas mapping valence and arousal vectors, converting inputs to barycentric coordinates on the Vagal Triangle.</li>
-                    <li><strong>Resonant Breathing & PWA:</strong> Guided exercises supporting box breathing, 4-7-8, and physiological sighs. Features a service worker for robust offline performance.</li>
+                    <li><strong>Original Somatic Check-In Module (My Design):</strong> A custom-designed 2D Affect Grid interface developed and invented by me. It allows users to map their emotional valence (pleasantness) and arousal (energy) levels on an intuitive canvas. By translating these somatic sensations, it visualizes their physiological nervous system state (safe/social, fight/flight, or freeze/collapse), allowing users to build deep bodily self-awareness.</li>
+                    <li><strong>Real-time Web Audio API Synthesizer:</strong> Generates real-time procedural noise buffers (pink and brown noise) and binaural beats directly in the browser to calm the mind without downloading heavy audio files.</li>
+                    <li><strong>Guided Breathing Exercises:</strong> Interactive guides for box breathing, 4-7-8, and physiological sighs to help regulate and stabilize the user's nervous system.</li>
                 </ul>
             `
         }
