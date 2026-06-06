@@ -37,8 +37,8 @@ const translations = {
         "projects.yazareser.category": "Education / Mobile App",
         "projects.yazareser.summary": "Sınava hazırlanıyordum ama aradığımı bulamıyordum — her kaynak eksik, her liste yarım. Ben de kendim yaptım. Topladım, düzenledim; 1.799 kart ortaya çıktı. Gerisi uygulama.",
         
-        "timeline.tag": "Zaman Tüneli",
-        "timeline.title": "Eğitim & Deneyim",
+        "timeline.tag": "Durduğum Yerler",
+        "timeline.title": "Geçtiğim Yerler",
         "timeline.desc": "Şimdiye kadar durduğum yerler.",
         
         "timeline.boun.title": "Felsefe Lisansı",
@@ -65,8 +65,8 @@ const translations = {
         "timeline.ucondort.org": "Üç On Dört",
         "timeline.ucondort.desc": "Teknik becerilerden çok bir şey öğretti bana bu proje: koordinasyon içinde, aylarca düzenli üretmeye devam edebilmek. Sürekliliği bu dönemde keşfettim.",
         
-        "skills.tag": "Neler Yapabiliyorum?",
-        "skills.title": "Yetenekler & Araçlar",
+        "skills.tag": "Neler Yapabilirim?",
+        "skills.title": "Elimden Gelenler",
         "skills.desc": "Gözüm harmoniyi arıyor; kararlarımı teknik bilgimden çok şeylerin bana hissettirdikleri yönlendiriyor. Mükemmeli arıyorum — ve mükemmel, bir üründe sandığımızdan çok daha erişilebilir.",
         "skills.cat1": "Yazılım & Geliştirme",
         "skills.cat2": "Tasarım & Kreatif",
