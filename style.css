@@ -677,11 +677,10 @@ html.dark .moon-icon { display: block; }
 
 .timeline-header {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: flex-start;
-    flex-wrap: wrap;
-    gap: 6px;
-    margin-bottom: 4px;
+    gap: 4px;
+    margin-bottom: 6px;
 }
 
 .timeline-title {
