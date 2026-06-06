@@ -12,7 +12,7 @@ const CONFIG = {
    ========================================================================== */
 const translations = {
     tr: {
-        "nav.home": "Giriş",
+        "nav.home": "Selam",
         "nav.projects": "Projeler",
         "nav.experience": "Özgeçmiş",
         "nav.skills": "Beceriler",
