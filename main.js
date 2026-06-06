@@ -536,6 +536,15 @@ function initTheme() {
         }
         updateThemeIcon();
     });
+
+    // Listen for system theme changes dynamically
+    window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (e) => {
+        // Only update automatically if the user hasn't explicitly set a preference in localStorage
+        if (!localStorage.getItem("theme")) {
+            htmlElement.className = e.matches ? "dark" : "light";
+            updateThemeIcon();
+        }
+    });
 }
 
 function updateThemeIcon() {
