@@ -888,7 +888,7 @@ function initProjectModals() {
 
         // Build tech tags HTML
         const tagsHTML = project.tags.map(tag => `<span>${tag}</span>`).join("");
-        
+
         // Build link buttons HTML
         const linksHTML = project.links.map(link => {
             const linkText = translations[currentLanguage][link.textKey];
@@ -900,13 +900,41 @@ function initProjectModals() {
             `;
         }).join("");
 
+        // Build animated visual HTML matching card view
+        let visualHTML = "";
+        if (projectId === "aura") {
+            visualHTML = `<div class="visual-inner"><div class="visual-aura-breathing"></div></div>`;
+        } else if (projectId === "sosyal") {
+            visualHTML = `
+                <div class="visual-inner">
+                    <div class="visual-forum-header">
+                        <div class="visual-avatar-dot"></div>
+                        <div class="visual-header-line"></div>
+                    </div>
+                    <div class="visual-forum-box">
+                        <div class="visual-content-line"></div>
+                        <div class="visual-content-line short"></div>
+                    </div>
+                </div>
+            `;
+        } else if (projectId === "yazareser") {
+            visualHTML = `
+                <div class="visual-inner">
+                    <div class="visual-flashcard">
+                        <div class="visual-card-front">Leyla vü Mecnun</div>
+                    </div>
+                </div>
+            `;
+        }
+
         modalBody.innerHTML = `
             <div class="modal-project-header">
                 <span class="modal-project-cat">${categoryText}</span>
                 <h3 class="modal-project-title">${project.title}</h3>
             </div>
             
-            <div class="modal-project-banner" style="background-image: url('assets/${projectId}.png'); background-size: cover; background-position: center;">
+            <div class="modal-project-banner visual-${projectId}">
+                ${visualHTML}
             </div>
             
             <div class="modal-project-content">
