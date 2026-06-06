@@ -440,6 +440,7 @@ document.addEventListener("DOMContentLoaded", () => {
     initScrollReveal();
     initProjectModals();
     initContactForm();
+    initInfinitePageScroll();
     initSmoothScrollInterception();
 });
 
@@ -686,6 +687,11 @@ function trackActiveSection() {
         }
     });
 
+    // Treat home-clone as home for active section highlighting
+    if (currentSectionId === "home-clone") {
+        currentSectionId = "home";
+    }
+
     navLinks.forEach(link => {
         link.classList.remove("active");
         if (link.getAttribute("href") === `#${currentSectionId}`) {
@@ -707,18 +713,14 @@ function trackActiveSection() {
 
 // Smooth scroll link click interception for loop navigation
 function initSmoothScrollInterception() {
-    const navLinks = document.querySelectorAll(".nav-link");
-    const sideNavItems = document.querySelectorAll(".side-nav-item");
-    const logoLink = document.getElementById("logo-link");
-
-    const allLinks = [...navLinks, ...sideNavItems];
-    if (logoLink) allLinks.push(logoLink);
+    // Select all links starting with hash
+    const allLinks = document.querySelectorAll('a[href^="#"]');
 
     allLinks.forEach(link => {
+        const href = link.getAttribute("href");
+        if (!href || href === "#" || href.startsWith("#project-modal")) return;
+
         link.addEventListener("click", (e) => {
-            const href = link.getAttribute("href");
-            if (!href || href === "#") return;
-            
             e.preventDefault();
             
             const targetId = href.substring(1);
@@ -732,12 +734,13 @@ function initSmoothScrollInterception() {
             if (scrollTimeout) clearTimeout(scrollTimeout);
 
             // Rotate the wheel immediately to the target section using shortest path
-            rotateWheelToSection(targetId);
+            rotateWheelToSection(targetId === "home-clone" ? "home" : targetId);
 
             // Set active class on nav links and side nav items immediately
             document.querySelectorAll(".nav-link, .side-nav-item").forEach(item => {
                 item.classList.remove("active");
-                if (item.getAttribute("href") === href || item.getAttribute("data-section") === targetId) {
+                const cleanHref = href === "#home-clone" ? "#home" : href;
+                if (item.getAttribute("href") === cleanHref || item.getAttribute("data-section") === targetId || (targetId === "home-clone" && item.getAttribute("data-section") === "home")) {
                     item.classList.add("active");
                 }
             });
@@ -756,6 +759,40 @@ function initSmoothScrollInterception() {
                 trackActiveSection();
             }, 850);
         });
+    });
+}
+
+// Infinite Scroll Page Loop Module
+function initInfinitePageScroll() {
+    const main = document.querySelector("main");
+    const homeSection = document.getElementById("home");
+    if (!main || !homeSection) return;
+
+    // Clone the home section and append it to the end of main
+    const homeClone = homeSection.cloneNode(true);
+    homeClone.id = "home-clone";
+    
+    // Remove all duplicate IDs from inside the clone to prevent conflicts
+    homeClone.querySelectorAll("[id]").forEach(el => {
+        el.removeAttribute("id");
+    });
+    
+    main.appendChild(homeClone);
+
+    // Re-initialize feather icons for the clone (e.g. scroll down chevron)
+    if (typeof feather !== "undefined") {
+        feather.replace();
+    }
+
+    // Handle scroll wrapping
+    window.addEventListener("scroll", () => {
+        const cloneTop = homeClone.offsetTop;
+        
+        // When the top of home-clone reaches the top of the screen (scrollY >= cloneTop)
+        if (window.scrollY >= cloneTop) {
+            // Instantly wrap to the top of the page (Giriş)
+            window.scrollTo(0, window.scrollY - cloneTop);
+        }
     });
 }
 
