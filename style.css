@@ -1420,7 +1420,7 @@ html.dark .moon-icon { display: block; }
 }
 
 /* ==========================================================================
-   MOBILE SIDE NAVIGATION (Integrated Vertical Line)
+   MOBILE SIDE NAVIGATION (Integrated Vertical Loop Wheel)
    ========================================================================== */
 .side-nav {
     display: none;
@@ -1432,43 +1432,76 @@ html.dark .moon-icon { display: block; }
     }
 
     .side-nav {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
+        display: block;
         position: fixed;
         left: 0;
         top: 0;
         bottom: 0;
-        width: 28px;
+        width: 200px;
         z-index: 50;
         pointer-events: none;
     }
 
-    .side-nav-track {
+    .side-nav-track-top {
         position: absolute;
         left: 13px;
-        top: 8%;
-        bottom: 8%;
-        width: 1px;
-        background: linear-gradient(
-            to bottom,
-            transparent,
-            var(--border-color) 8%,
-            var(--border-color) 92%,
-            transparent
-        );
+        top: 0;
+        height: calc(50% - 40px);
+        width: 1.5px;
+        background: linear-gradient(to bottom, transparent 10%, var(--border-color));
+        opacity: 0.8;
+    }
+
+    .side-nav-track-bottom {
+        position: absolute;
+        left: 13px;
+        top: calc(50% + 40px);
+        bottom: 0;
+        width: 1.5px;
+        background: linear-gradient(to bottom, var(--border-color), transparent 90%);
+        opacity: 0.8;
+    }
+
+    .side-nav-wheel-container {
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 80px;
+        height: 80px;
+        pointer-events: none;
+    }
+
+    .side-nav-wheel {
+        position: absolute;
+        left: -27px; /* Center wheel at X = 13px: 13px - 40px radius = -27px */
+        top: 0;
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        border: 1.5px solid var(--border-color);
+        pointer-events: none;
+        transform: rotate(0deg);
+        transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        transform-origin: center center;
     }
 
     .side-nav-item {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 24px;
+        height: 24px;
+        margin-left: -12px;
+        margin-top: -12px;
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 28px;
-        flex: 1;
-        pointer-events: all;
+        pointer-events: auto;
         text-decoration: none;
-        position: relative;
+        /* Position along circumference and maintain upright orientation */
+        transform: rotate(var(--angle)) translateX(40px) rotate(calc(-1 * var(--angle) - var(--wheel-rotation, 0deg)));
+        transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .side-nav-dot {
@@ -1476,40 +1509,61 @@ html.dark .moon-icon { display: block; }
         height: 6px;
         border-radius: 50%;
         background: var(--text-muted);
-        opacity: 0.35;
-        transition: all 0.35s ease;
+        opacity: 0.5;
+        transition: all 0.4s ease;
         position: relative;
         z-index: 1;
         flex-shrink: 0;
     }
 
     .side-nav-item.active .side-nav-dot {
-        width: 8px;
-        height: 8px;
+        width: 10px;
+        height: 10px;
         background: var(--accent-blue);
         opacity: 1;
-        box-shadow: 0 0 0 3px var(--accent-blue-soft);
+        box-shadow: 0 0 0 4px var(--accent-blue-soft);
     }
 
     .side-nav-label {
-        display: none;
+        position: absolute;
+        left: 20px;
+        top: 50%;
+        transform: translateY(-50%) translateX(-8px);
+        font-family: var(--font-heading);
+        font-size: 0.65rem;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        color: var(--accent-blue);
+        background: var(--bg-secondary);
+        border: 1px solid var(--border-color);
+        padding: 3px 8px;
+        border-radius: 4px;
+        white-space: nowrap;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.4s ease, transform 0.4s ease;
+        box-shadow: var(--card-shadow);
+    }
+
+    .side-nav-item.active .side-nav-label {
+        opacity: 1;
+        transform: translateY(-50%) translateX(0);
     }
 
     /* Push main content to the right of the side line */
     .header .nav-container {
-        padding-left: 32px;
+        padding-left: 36px;
     }
 
     main {
-        padding-left: 28px;
+        padding-left: 32px;
     }
 
     /* Timeline line visually connects: align it to left: 13px from timeline-container left edge */
-    /* timeline-container is inside .container which has ~24px padding, so timeline-line offset = 13px - 24px = negative, */
-    /* instead we push timeline-container to edge on mobile */
     .timeline-container {
         padding-left: 0;
-        margin-left: -28px;
+        margin-left: -32px;
         padding-left: 14px;
     }
 

@@ -630,11 +630,12 @@ function initNavigation() {
     });
 }
 
-// Track active section and highlight nav link + side-nav
+// Track active section and highlight nav link + side-nav wheel
 function trackActiveSection() {
     const sections = document.querySelectorAll("section");
     const navLinks = document.querySelectorAll(".nav-link");
     const sideNavItems = document.querySelectorAll(".side-nav-item");
+    const sideNavWheel = document.getElementById("side-nav-wheel");
     let currentSectionId = "";
 
     sections.forEach(section => {
@@ -651,12 +652,27 @@ function trackActiveSection() {
         }
     });
 
+    // Rotation degrees mapped to each section (to center the active dot at 0deg)
+    const rotationMap = {
+        'home': 70,        // Giriş dot is at -70deg, so rotate wheel +70deg to center it
+        'projects': 35,    // Projeler dot is at -35deg, so rotate wheel +35deg
+        'experience': 0,   // Özgeçmiş is at 0deg, so rotate wheel 0deg
+        'skills': -35,     // Beceriler is at 35deg, so rotate wheel -35deg
+        'contact': -70     // İletişim is at 70deg, so rotate wheel -70deg
+    };
+
     sideNavItems.forEach(item => {
         item.classList.remove("active");
         if (item.getAttribute("data-section") === currentSectionId) {
             item.classList.add("active");
         }
     });
+
+    if (sideNavWheel && currentSectionId && rotationMap[currentSectionId] !== undefined) {
+        const rot = rotationMap[currentSectionId];
+        sideNavWheel.style.transform = `rotate(${rot}deg)`;
+        sideNavWheel.style.setProperty('--wheel-rotation', `${rot}deg`);
+    }
 }
 
 /* ==========================================================================
