@@ -51,21 +51,21 @@ const translations = {
         "timeline.bued.title": "Yürütme Kurulu Üyesi",
         "timeline.bued.org": "Boğaziçi Üni. Edebiyat Kulübü",
         "timeline.bued.loc": "İstanbul, Türkiye",
-        "timeline.bued.desc": "Edebiyat söyleşileri, atölyeler ve kültürel etkinliklerin düzenlenmesine öncülük ettim. Bir yıl boyunca yürütme kurulunda görev alarak kulübün idari ve operasyonel süreçlerini yönettim.",
+        "timeline.bued.desc": "Tanıtım postundan konuk iletişimine kadar her adıma şahitlik edip çoğunda görev aldım. İnsanları bir araya getirmenin, ekipçe çalışmanın kolay olmadığını ama her şeye rağmen hakkıyla düzenlenen bir etkinliğin insanın tüm yorgunluğunu aldığını gördüm.",
         
         "timeline.cedid.title": "Erasmus+ Öğrenci Koordinatörü",
         "timeline.cedid.org": "Cedid Sivil Toplum Kuruluşu",
         "timeline.cedid.loc": "Türkiye",
-        "timeline.cedid.desc": "Erasmus+ programı kapsamında Türkiye'ye gelen uluslararası öğrencilerin adaptasyon süreçlerini yönettim. Kültürlerarası etkileşimi kolaylaştıran etkinlikler planlayarak çok kültürlü bir çalışma ortamında koordinasyon sağladım.",
+        "timeline.cedid.desc": "Türkiye'ye gelen uluslararası öğrencilerle etkinliklerde bir aradaydık. Farklı ülkelerden, farklı dillerden insanlarla ortak bir zemin yakalamak düşündüğünden çok daha kolay oluyor — ve tam o anda büyük insanlık idealini hissedebiliyorsun.",
         
         "timeline.siirt.title": "Fen Lisesi",
         "timeline.siirt.org": "Siirt Türk Telekom Fen Lisesi",
         "timeline.siirt.loc": "Siirt, Türkiye (Mezun)",
-        "timeline.siirt.desc": "Sayısal ağırlıklı bir müfredatla analitik düşünme temelimi attığım yıllar. Yazılım ve teknolojiye olan ilgim de bu dönemde başladı.",
+        "timeline.siirt.desc": "Lise yıllarımdaki en büyük merakım sinemayaydı; arkadaşlarımla kısa filmler çekerdik. Koronavirüs her şeyi durdurdu ve evlere kapandık. O sessizlikte felsefeye ve bilime olan merakımı keşfettim — öğrendiklerimi başkalarıyla paylaşmaya can atıyordum. İki arkadaşımla bir web sitesi ve sosyal medya açtık. Web tasarımıyla ve içerik tasarımıyla ilk karşılaşmam o döneme denk geliyor.",
         
         "timeline.ucondort.title": "Kurucu & Editör",
         "timeline.ucondort.org": "Üç On Dört",
-        "timeline.ucondort.desc": "Lise 1. sınıfta iki arkadaşımla birlikte bilim ve felsefe odaklı ilk web sitemizi kurdum; teknik altyapıyı inşa edip içerik yönetimi ve sosyal medya topluluğunun geliştirilmesini üstlendim.",
+        "timeline.ucondort.desc": "Teknik becerilerden çok bir şey öğretti bana bu proje: koordinasyon içinde, aylarca düzenli üretmeye devam edebilmek. Sürekliliği bu dönemde keşfettim.",
         
         "skills.tag": "Neler Yapabilirim?",
         "skills.title": "Yetenekler & Araçlar",
@@ -161,21 +161,21 @@ const translations = {
         "timeline.bued.title": "Executive Board Member",
         "timeline.bued.org": "Boğaziçi Uni. Literature Club",
         "timeline.bued.loc": "Istanbul, Turkey",
-        "timeline.bued.desc": "Organized literary talks, workshops, and cultural events. Served on the Executive Board for 1 year, participating in active decision-making and administrative management of the club.",
+        "timeline.bued.desc": "I was involved in every step of organizing literature events, from promotional posts to guest communications. I learned that bringing people together and working as a team is far from easy, but seeing a successful event take shape makes all the exhaustion disappear.",
         
         "timeline.cedid.title": "Erasmus+ Student Coordinator",
         "timeline.cedid.org": "Cedid Non-Governmental Organization",
         "timeline.cedid.loc": "Turkey",
-        "timeline.cedid.desc": "Coordinated incoming international students under Erasmus+ youth and student exchange programs. Managed cross-cultural adaptation processes, event planning, and active communication in multicultural environments.",
+        "timeline.cedid.desc": "We were side by side at events with international students coming to Turkey. Finding common ground with people from different countries, different languages, turns out to be much easier than you'd think — and in that exact moment, you can feel the great human ideal.",
         
         "timeline.siirt.title": "Science High School Education",
         "timeline.siirt.org": "Siirt Turk Telekom Science High School",
         "timeline.siirt.loc": "Siirt, Turkey (Graduate)",
-        "timeline.siirt.desc": "Intense scientific curriculum which built a strong foundation in analytical thinking. The period where my passion for software and technology began.",
+        "timeline.siirt.desc": "My biggest passion in high school was cinema — we shot short films with friends. Then the pandemic hit and locked us all inside. In that silence, I discovered my curiosity for philosophy and science. I was desperate to share what I was learning, so two friends and I built a website and social media accounts. My first encounter with web design and content creation was right there.",
         
         "timeline.ucondort.title": "Founder & Editor",
         "timeline.ucondort.org": "Üç On Dört",
-        "timeline.ucondort.desc": "My very first web project, launched in 9th grade with 2 of my friends to popularize science and philosophy. Handled content creation, web interface setup, and social media account management.",
+        "timeline.ucondort.desc": "This project taught me something beyond technical skills: staying coordinated and producing consistently for months. It's where I learned what continuity actually means.",
         
         "skills.tag": "What I Can Do",
         "skills.title": "Skills & Tools",
