@@ -85,7 +85,7 @@ const translations = {
         
         "contact.tag": "İletişime Geçin",
         "contact.title": "Birlikte Çalışalım",
-        "contact.desc": "Sorularınız, iş ortaklıkları ya da felsefe ve yazılım üzerine sohbet etmek için bana yazın.",
+        "contact.desc": "Deneysel projeler ya da sivil toplum alanında birlikte bir şey üretmek istiyorsan konuşalım. İnsan odaklı işler beni heyecanlandırıyor.",
         "contact.panel_title": "İletişim Bilgileri",
         "contact.panel_desc": "Benimle doğrudan aşağıdaki kanallardan da iletişime geçebilirsiniz.",
         "contact.method_mail": "E-posta Gönder",
@@ -195,7 +195,7 @@ const translations = {
         
         "contact.tag": "Get in Touch",
         "contact.title": "Let's Work Together",
-        "contact.desc": "Write to me for questions, business partnerships, or to chat about philosophy and software development.",
+        "contact.desc": "If you're working on an experimental project or something in the civil society space, let's talk. Human-centered work is what excites me.",
         "contact.panel_title": "Contact Information",
         "contact.panel_desc": "You can also contact me directly through the channels below.",
         "contact.method_mail": "Send Email",
