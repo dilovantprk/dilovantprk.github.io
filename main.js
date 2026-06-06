@@ -709,11 +709,9 @@ function trackActiveSection() {
 function initSmoothScrollInterception() {
     const navLinks = document.querySelectorAll(".nav-link");
     const sideNavItems = document.querySelectorAll(".side-nav-item");
-    const loopBackBtn = document.querySelector(".loop-back-btn");
     const logoLink = document.getElementById("logo-link");
 
     const allLinks = [...navLinks, ...sideNavItems];
-    if (loopBackBtn) allLinks.push(loopBackBtn);
     if (logoLink) allLinks.push(logoLink);
 
     allLinks.forEach(link => {
