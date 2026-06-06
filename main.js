@@ -768,12 +768,9 @@ function initSmoothScrollInterception() {
 function initScrollReveal() {
     // Animate elements on initial load
     const fadeElements = document.querySelectorAll(".animate-fade");
-    const preloader = document.getElementById("preloader");
-    const delay = preloader ? 2400 : 100;
-    
     setTimeout(() => {
         fadeElements.forEach(el => el.classList.add("revealed"));
-    }, delay);
+    }, 100);
 
     // Scroll Observer for scroll-based animations
     const scrollElements = document.querySelectorAll(".animate-scroll");
@@ -1139,14 +1136,4 @@ function initContactForm() {
         });
     }
 }
-
-// Preloader Handler
-window.addEventListener("load", () => {
-    const preloader = document.getElementById("preloader");
-    if (preloader) {
-        setTimeout(() => {
-            preloader.classList.add("fade-out");
-        }, 2200);
-    }
-});
 
