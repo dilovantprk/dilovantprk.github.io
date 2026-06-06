@@ -1413,15 +1413,9 @@ html.dark .moon-icon { display: block; }
     .hero-title {
         font-size: 2.25rem;
     }
-    
+
     .hero-cta {
-        flex-direction: column;
-        width: 100%;
-        gap: 12px;
-    }
-    
-    .hero-cta .btn {
-        width: 100%;
+        display: none;
     }
 }
 
