@@ -255,27 +255,49 @@ const projectsData = {
         ],
         description: {
             tr: `
-                <p><strong>Aura</strong>, beden farkındalığı ve duygu regülasyonu üzerine bir uygulama. Altında polyvagal teori var — sinir sisteminin farklı modlarını anlamak ve düzenlemek için. Vanilya HTML/JS ile sıfırdan yazdım, herhangi bir framework kullanmadan.</p>
-                <h4>Öne Çıkan Özellikler:</h4>
+                <p>Beyin nöroplastik — ama her deneyim doğrudan değişime yol açmıyor. Değişim için farkındalık ve uygun koşullar gerekiyor. Çoğu wellness uygulaması sana "nefes al" der; Aura önce nerede olduğunu gösterir, sonra ne yapabileceğini.</p>
+
+                <h4>Özellikler</h4>
                 <ul>
-                    <li><strong>Özgün Somatik Check-In Akışı:</strong> Vagal Üçgeni üzerinde o anki fiziksel durumunu hesaplayan interaktif bir tuval. Tasarımı da mantığı da tamamen bana ait.</li>
-                    <li><strong>Web Audio API Ses Sentezleyici:</strong> Hazır ses dosyaları indirmek yerine, tarayıcıda anlık olarak binaural ritimler ve sakinleştirici pembe/kahverengi gürültü sentezliyor.</li>
-                    <li><strong>Kişiselleştirilmiş Nefes Rehberliği:</strong> Sinir sistemini dengelemek için Box, 4-7-8 ve Physiological Sigh gibi özel nefes ritimlerini yöneten interaktif bir rehber.</li>
-                    <li><strong>PWA ve Çevrimdışı Çalışma:</strong> İnternet bağlantısı olmasa bile çalışabiliyor, hem mobilden hem bilgisayardan yüklenebiliyor.</li>
-                    <li><strong>Bulut Senkronizasyonu & Kontrol:</strong> Verilerin Firebase ile cihazların arasında senkronize ediliyor ama kontrol tamamen sende. İstediğin an tüm geçmişini ve hesabını tek tıkla silebiliyorsun.</li>
+                    <li><strong>Somatik Check-In Akışı:</strong> 6 adımlı bir süreç: beden sinyallerini gir, duygu haritasında yerini işaretle, nefes protokolü seç, değişimi fark et. Her adımın arkasında ayrı bir bilimsel referans var — Porges'ten Damasio'ya, Lieberman'dan Russell'a.</li>
+                    <li><strong>Kişiselleştirilmiş Nefes Rehberliği:</strong> 1. ve 2. adımdaki beden sinyallerine ve duygu haritasındaki konumuna göre en uygun nefes protokolünü öneriyor. Genel bir "nefes al" komutu değil — o an nerede olduğuna göre kişiselleştirilmiş bir yönlendirme.</li>
+                    <li><strong>Geçmiş & Haftalık Analiz:</strong> Her check-in geçmişe kaydediliyor. Haftalık analizde sinir sisteminin zaman içinde nasıl değiştiğini görebiliyorsun — hangi günler daha zor geçmiş, hangi günler denge daha kolay gelmiş.</li>
+                    <li><strong>Aura+:</strong> Sistem genişliyor: somatik günlük, nöral odak zamanlayıcı, algoritmik ambiyans ve uyku ritüeli — ihtiyacına göre açıp kapatabiliyorsun.</li>
                 </ul>
+
+                <h4>Teknik Altyapı</h4>
+                <ul>
+                    <li><strong>Vanilla HTML/JS (ES Modules), bundler yok</strong> — hızlı, hafif, bakımı kolay.</li>
+                    <li><strong>Web Audio API:</strong> binaural ritimler, pembe/kahverengi gürültü — ses dosyası indirmeden, tarayıcıda anlık sentez.</li>
+                    <li><strong>Barycentric koordinat sistemi:</strong> Vagal Üçgeni üzerindeki hesaplamalar bu matematiksel yapı üzerine kurulu.</li>
+                    <li><strong>Firebase Auth + Firestore:</strong> kimlik doğrulama ve bulut senkronizasyonu.</li>
+                    <li><strong>PWA + Service Worker:</strong> çevrimdışı çalışma, mobil ve masaüstüne yüklenebilme.</li>
+                    <li><strong>WebGL fragment shader (Focus Series):</strong> GPU üzerinde render edilen görsel odak matrisi.</li>
+                </ul>
+
                 <p><em>Bilimsel çalışmalara sadık kalmak için uzun bir araştırma süreci geçirdim. Kodlama işlerinin çoğunda yapay zekadan destek aldım ama görsel tasarım ve kullanıcı deneyiminde sayısız revizyon yaptım — her animasyonu, her rengi, her geçişi hissedene kadar. Uygulamanın her köşesinde o kararların izleri var.</em></p>
             `,
             en: `
-                <p><strong>Aura</strong> is an app about body awareness and emotional regulation. It's grounded in polyvagal theory — understanding and working with the different modes of the nervous system. Built from scratch in Vanilla HTML/JS, no frameworks, no bundlers.</p>
-                <h4>Core Highlights:</h4>
+                <p>The brain is neuroplastic — but not every experience leads to change. Awareness and the right conditions make the difference. Most wellness apps tell you to "just breathe"; Aura first shows you where you are, then what you can do.</p>
+
+                <h4>Features</h4>
                 <ul>
-                    <li><strong>Original Somatic Check-In Flow:</strong> An interactive canvas that calculates your nervous system state on the Vagal Triangle. Designed and coded entirely by me.</li>
-                    <li><strong>Real-time Web Audio API Synthesizer:</strong> Instead of loading heavy audio files, it synthesizes binaural beats and calming pink/brown noise directly in the browser.</li>
-                    <li><strong>Guided Breathing Exercises:</strong> Interactive helper for box breathing, 4-7-8, and physiological sighs to help balance the nervous system.</li>
-                    <li><strong>PWA & Offline Support:</strong> Runs fully offline and can be installed as an app on both mobile and desktop.</li>
-                    <li><strong>Cloud Sync & Control:</strong> Your data is synced across devices via Firebase, but you are in full control. You can delete your entire history and account with a single click.</li>
+                    <li><strong>Somatic Check-In Flow:</strong> A 6-step process: enter body signals, mark your position on the emotion map, choose a breathing protocol, notice the shift. Each step is backed by its own scientific reference — from Porges to Damasio, Lieberman to Russell.</li>
+                    <li><strong>Personalized Breathing Guidance:</strong> Based on your body signals from steps 1 and 2 and your position on the emotion map, it recommends the most fitting breathing protocol. Not a generic "just breathe" — a personalized direction based on where your nervous system is right now.</li>
+                    <li><strong>History & Weekly Analysis:</strong> Every check-in is saved to your history. In the weekly analysis, you can see how your nervous system shifted over time — which days were harder, which days balance came more easily.</li>
+                    <li><strong>Aura+:</strong> The system expands: somatic journal, neural focus timer, algorithmic ambiance, and a sleep ritual — turn each one on or off based on what you need.</li>
                 </ul>
+
+                <h4>Technical Foundation</h4>
+                <ul>
+                    <li><strong>Vanilla HTML/JS (ES Modules), no bundlers</strong> — fast, lightweight, easy to maintain.</li>
+                    <li><strong>Web Audio API:</strong> binaural beats, pink/brown noise — synthesized in real-time in the browser, no audio files downloaded.</li>
+                    <li><strong>Barycentric coordinate system:</strong> the mathematical foundation behind Vagal Triangle calculations.</li>
+                    <li><strong>Firebase Auth + Firestore:</strong> authentication and cloud synchronization.</li>
+                    <li><strong>PWA + Service Worker:</strong> offline support, installable on mobile and desktop.</li>
+                    <li><strong>WebGL fragment shader (Focus Series):</strong> a visual focus matrix rendered directly on the GPU.</li>
+                </ul>
+
                 <p><em>Staying true to the science took a long research process. I used AI support for most of the coding, but the visual design and user experience went through countless revisions — every animation, every color, every transition until it felt right. The traces of those decisions are in every corner of the app.</em></p>
             `
         }
