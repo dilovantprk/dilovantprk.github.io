@@ -653,9 +653,9 @@ function rotateWheelToSection(sectionId) {
 
     if (sideNavWheel && sectionId && sectionIndexMap[sectionId] !== undefined) {
         const targetIndex = sectionIndexMap[sectionId];
-        // The dot for index `i` is at `i * 72` degrees.
-        // To align it at 0deg (the rightmost point), the wheel must be rotated by `-i * 72` degrees.
-        const targetBaseAngle = -targetIndex * 72;
+        // To align the active dot at -45deg (the diagonal center of the corner arc),
+        // the wheel must be rotated by `-45 - i * 72` degrees.
+        const targetBaseAngle = -45 - targetIndex * 72;
         
         // Find the angle difference modulo 360
         let diff = (targetBaseAngle - currentWheelRotation) % 360;
