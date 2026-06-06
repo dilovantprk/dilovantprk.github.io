@@ -255,24 +255,28 @@ const projectsData = {
         ],
         description: {
             tr: `
-                <p><strong>Aura</strong>, polyvagal teoriyi temel alan ve bireylerin otonom sinir sistemi durumlarını izlemelerine, anlamalarına ve düzenlemelerine yardımcı olan yenilikçi bir wellness web uygulamasıdır.</p>
-                <p>Uygulama, karmaşık paketleyiciler (bundlers) kullanılmadan tamamen <strong>Vanilla HTML/JS (ES Modules) ve Vanilla CSS</strong> mimarisi ile sıfırdan inşa edilmiştir. Bu sayede son derece hafif, hızlı ve bakımı kolay bir yapı sunar.</p>
+                <p><strong>Aura</strong>, beden farkındalığı ve duygu regülasyonu üzerine bir uygulama. Altında polyvagal teori var — sinir sisteminin farklı modlarını anlamak ve düzenlemek için. Vanilya HTML/JS ile sıfırdan yazdım, herhangi bir framework kullanmadan.</p>
                 <h4>Öne Çıkan Özellikler:</h4>
                 <ul>
-                    <li><strong>Özgün Somatik Check-In Akışı (Kendi İcadım):</strong> Kullanıcının fiziksel durum girdilerini barycentric koordinatlar kullanarak Vagal Üçgeni üzerindeki yerini hesaplayan, tasarımı ve mantığı tamamen bana ait olan interaktif bir 2D Affect Grid tuvali. Bu modül, kullanıcının otonom sinir sisteminin o anki fizyolojik durumunu (güvende/sosyal, uyarılmış/stresli veya yorgun/donmuş) görselleştirerek kendi beden farkındalığını (somatic awareness) artırmasına ve fizyolojik regülasyon sağlamasına yardımcı olur.</li>
-                    <li><strong>Web Audio API Ses Sentezleyici:</strong> Arka planda statik ses dosyaları indirmek yerine, tarayıcıda anlık olarak binaural ritimler (binaural beats) ve sakinleştirici pembe/kahverengi ses dalgaları sentezleyerek zihni dinginleştirir.</li>
-                    <li><strong>Kişiselleştirilmiş Nefes Rehberliği:</strong> Sinir sistemini dengelemek ve sakinleştirmek için tasarlanmış Box, 4-7-8 ve Physiological Sigh gibi özel nefes ritimlerini yöneten interaktif egzersiz rehberi.</li>
+                    <li><strong>Özgün Somatik Check-In Akışı:</strong> Vagal Üçgeni üzerinde o anki fiziksel durumunu hesaplayan interaktif bir tuval. Tasarımı da mantığı da tamamen bana ait.</li>
+                    <li><strong>Web Audio API Ses Sentezleyici:</strong> Hazır ses dosyaları indirmek yerine, tarayıcıda anlık olarak binaural ritimler ve sakinleştirici pembe/kahverengi gürültü sentezliyor.</li>
+                    <li><strong>Kişiselleştirilmiş Nefes Rehberliği:</strong> Sinir sistemini dengelemek için Box, 4-7-8 ve Physiological Sigh gibi özel nefes ritimlerini yöneten interaktif bir rehber.</li>
+                    <li><strong>PWA ve Çevrimdışı Çalışma:</strong> İnternet bağlantısı olmasa bile çalışabiliyor, hem mobilden hem bilgisayardan yüklenebiliyor.</li>
+                    <li><strong>Bulut Senkronizasyonu & Kontrol:</strong> Verilerin Firebase ile cihazların arasında senkronize ediliyor ama kontrol tamamen sende. İstediğin an tüm geçmişini ve hesabını tek tıkla silebiliyorsun.</li>
                 </ul>
+                <p><em>Bilimsel çalışmalara sadık kalmak için uzun bir araştırma süreci geçirdim. Kodlama işlerinin çoğunda yapay zekadan destek aldım ama görsel tasarım ve kullanıcı deneyiminde sayısız revizyon yaptım — her animasyonu, her rengi, her geçişi hissedene kadar. Uygulamanın her köşesinde o kararların izleri var.</em></p>
             `,
             en: `
-                <p><strong>Aura</strong> is a somatic wellness web application based on Stephen Porges' Polyvagal Theory, designed to help users track and regulate their nervous system state.</p>
-                <p>Built completely from scratch using <strong>Vanilla HTML5, ES Modules (no-bundler), and Vanilla CSS</strong>. This architectural decision ensures the app loads instantly, performs efficiently, and avoids package-bloat.</p>
+                <p><strong>Aura</strong> is an app about body awareness and emotional regulation. It's grounded in polyvagal theory — understanding and working with the different modes of the nervous system. Built from scratch in Vanilla HTML/JS, no frameworks, no bundlers.</p>
                 <h4>Core Highlights:</h4>
                 <ul>
-                    <li><strong>Original Somatic Check-In Flow (My Design/Invention):</strong> An interactive 2D Affect Grid canvas that calculates the user's physiological state position on the Vagal Triangle using barycentric coordinates. Invented and designed entirely by me, this module visualizes the nervous system's state (safe/social, fight/flight, or freeze/collapse) to help users build somatic self-awareness and self-regulate.</li>
-                    <li><strong>Real-time Web Audio API Synthesizer:</strong> Generates real-time procedural noise buffers (pink and brown noise) and binaural beats directly in the browser to calm the mind without downloading heavy audio files.</li>
-                    <li><strong>Guided Breathing Exercises:</strong> Interactive guides for box breathing, 4-7-8, and physiological sighs to help regulate and stabilize the user's nervous system.</li>
+                    <li><strong>Original Somatic Check-In Flow:</strong> An interactive canvas that calculates your nervous system state on the Vagal Triangle. Designed and coded entirely by me.</li>
+                    <li><strong>Real-time Web Audio API Synthesizer:</strong> Instead of loading heavy audio files, it synthesizes binaural beats and calming pink/brown noise directly in the browser.</li>
+                    <li><strong>Guided Breathing Exercises:</strong> Interactive helper for box breathing, 4-7-8, and physiological sighs to help balance the nervous system.</li>
+                    <li><strong>PWA & Offline Support:</strong> Runs fully offline and can be installed as an app on both mobile and desktop.</li>
+                    <li><strong>Cloud Sync & Control:</strong> Your data is synced across devices via Firebase, but you are in full control. You can delete your entire history and account with a single click.</li>
                 </ul>
+                <p><em>Staying true to the science took a long research process. I used AI support for most of the coding, but the visual design and user experience went through countless revisions — every animation, every color, every transition until it felt right. The traces of those decisions are in every corner of the app.</em></p>
             `
         }
     },
