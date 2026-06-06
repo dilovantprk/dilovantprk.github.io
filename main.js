@@ -25,7 +25,7 @@ const translations = {
         
         "projects.tag": "Neler Ürettim?",
         "projects.title": "Seçilmiş Projeler",
-        "projects.desc": "Ayinesi iştir kişinin, lafa bakılmaz. Fikir aşamasından kodlamaya kadar bizzat geliştirdiğim mobil, web ve topluluk odaklı uygulamalar.",
+        "projects.desc": "Ayinesi iştir kişinin, lafa bakılmaz. Üçü de gerçek bir yerden doğdu.",
         "projects.more_details": "Detayları Gör",
         
         "projects.aura.pill": "Somatik Denge",
@@ -41,12 +41,12 @@ const translations = {
         
         "timeline.tag": "Zaman Tüneli",
         "timeline.title": "Eğitim & Deneyim",
-        "timeline.desc": "Akademik geçmişim ve sivil toplum kuruluşlarındaki liderlik rollerim.",
+        "timeline.desc": "Şimdiye kadar durduğum yerler.",
         
         "timeline.boun.title": "Felsefe Lisansı",
         "timeline.boun.org": "Boğaziçi Üniversitesi",
         "timeline.boun.loc": "İstanbul, Türkiye (Devam Ediyor)",
-        "timeline.boun.desc": "İnsan ve Toplum Bilimleri Fakültesi bünyesinde Felsefe okuyor, mantık, epistemoloji ve analitik felsefe üzerine yoğunlaşıyorum. Felsefi düşünme biçiminin problem çözme ve soyut modelleme becerilerime ciddi katkı sağladığına inanıyorum.",
+        "timeline.boun.desc": "Bölümden çok okul değiştirdi beni. Farklı arka planlardan, birbirinden zeki insanlarla olan etkileşimlerim hiçbir derste öğrenemeyeceğim şeyler öğretti. Bölüm ise arzu, anlam ve iletişimin doğasını düşünebilmemi sağlayan araçlar verdi bana.",
         
         "timeline.bued.title": "Yürütme Kurulu Üyesi",
         "timeline.bued.org": "Boğaziçi Üni. Edebiyat Kulübü",
@@ -69,7 +69,7 @@ const translations = {
         
         "skills.tag": "Neler Yapabilirim?",
         "skills.title": "Yetenekler & Araçlar",
-        "skills.desc": "Felsefi ve analitik bakış açımı teknik becerilerle harmanlayarak dijital dünyada fark yaratıyorum.",
+        "skills.desc": "Gözüm harmoniyi arıyor; kararlarımı teknik bilgimden çok şeylerin bana hissettirdikleri yönlendiriyor. Mükemmeli arıyorum — ve mükemmel, bir üründe sandığımızdan çok daha erişilebilir.",
         "skills.cat1": "Yazılım & Geliştirme",
         "skills.cat2": "Tasarım & Kreatif",
         "skills.cat3": "Organizasyon & Düşünce",
@@ -113,7 +113,7 @@ const translations = {
         "contact.form_error": "Gönderim sırasında hata oluştu.",
         
         "footer.copyright": "© 2026 Mehmet Dilovan Toprak. Tüm hakları saklıdır.",
-        "footer.design": "Minimalist & Yenilikçi Arayüz Tasarımı",
+        "footer.design": "",
         
         "modal.role": "Rolüm",
         "modal.duration": "Süre",
@@ -135,7 +135,7 @@ const translations = {
         
         "projects.tag": "What I've Built",
         "projects.title": "Selected Projects",
-        "projects.desc": "A person's mirror is their work; words do not matter. Mobile, web, and community-driven applications built entirely by me from concept to code.",
+        "projects.desc": "Work tells you more about a person than any introduction. Here's mine.",
         "projects.more_details": "View Details",
         
         "projects.aura.pill": "Somatic Balance",
@@ -151,12 +151,12 @@ const translations = {
         
         "timeline.tag": "Timeline",
         "timeline.title": "Education & Experience",
-        "timeline.desc": "My academic background and leadership roles in non-governmental organizations.",
+        "timeline.desc": "The places I've passed through.",
         
         "timeline.boun.title": "B.A. in Philosophy",
         "timeline.boun.org": "Boğaziçi University",
         "timeline.boun.loc": "Istanbul, Turkey (Ongoing)",
-        "timeline.boun.desc": "Pursuing a Philosophy degree under the Faculty of Arts and Sciences. Focusing on logic, epistemology, and analytical philosophy to reinforce problem-solving and abstract modeling skills.",
+        "timeline.boun.desc": "The university changed me more than the department did. My interactions with brilliant people from wildly different backgrounds taught me things no class ever could. The department gave me tools: to think about desire, meaning, and the nature of communication.",
         
         "timeline.bued.title": "Executive Board Member",
         "timeline.bued.org": "Boğaziçi Uni. Literature Club",
@@ -179,7 +179,7 @@ const translations = {
         
         "skills.tag": "What I Can Do",
         "skills.title": "Skills & Tools",
-        "skills.desc": "Blending my philosophical and analytical perspective with technical skills to make a difference in the digital world.",
+        "skills.desc": "My eye looks for harmony; what things make me feel guides my decisions more than technical knowledge. I pursue perfection — and perfection, in a product, is far more attainable than we think.",
         "skills.cat1": "Software & Development",
         "skills.cat2": "Design & Creative",
         "skills.cat3": "Organization & Thought",
@@ -223,7 +223,7 @@ const translations = {
         "contact.form_error": "An error occurred during submission.",
         
         "footer.copyright": "© 2026 Mehmet Dilovan Toprak. All rights reserved.",
-        "footer.design": "Minimalist & Innovative Interface Design",
+        "footer.design": "",
         
         "modal.role": "Role",
         "modal.duration": "Duration",
