@@ -1660,29 +1660,6 @@ html.dark .moon-icon { display: block; }
     transform: scale(1.02);
 }
 
-.visual-pill {
-    position: absolute;
-    bottom: 16px;
-    left: 16px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 0.72rem;
-    font-weight: 600;
-    padding: 4px 10px;
-    border-radius: var(--radius-full);
-    background: var(--bg-card);
-    border: 1px solid var(--border-color);
-    color: var(--text-primary);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    z-index: 3;
-}
-
-.visual-pill svg {
-    width: 12px;
-    height: 12px;
-}
 
 /* 1. Aura: Somatic Breathing Graphic */
 .visual-aura {

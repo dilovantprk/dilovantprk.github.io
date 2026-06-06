@@ -28,14 +28,12 @@ const translations = {
         "projects.desc": "Ayinesi iştir kişinin, lafa bakılmaz. Üçü de gerçek bir yerden doğdu.",
         "projects.more_details": "Detayları Gör",
         
-        "projects.aura.pill": "Somatik Denge",
         "projects.aura.category": "Wellness / Web App",
         "projects.aura.summary": "Bir dönem her şey üstüme geliyor gibiydi. Nefes almayı yeniden öğrenmem gerekiyordu... Araştırdım, denedim, işe yarayanları bir forma koydum. Arkadaşlarımla paylaşmak isteyince de proje oldu.",
         
         "projects.sosyal.category": "Social / Web App",
         "projects.sosyal.summary": "Bir lise öğrencisi için okul neredeyse tüm dünyadır. STTFL o dünyanın hafızası — kuşaktan kuşağa aktarılan bir okul kültürü arşivi. Envai çeşit sosyal medya platformu varken STTFL farklı bir şey yapıyor: herkese eşit söz hakkı tanıyor. Öğrenci de mezun da öğretmen de. Okuldaki güç ilişkilerini sözlük formatıyla ters yüz ediyor — öğrencilere kurtarılmış bir bölge açıyor.",
         
-        "projects.yazareser.pill": "1.799 Kart",
         "projects.yazareser.category": "Education / Mobile App",
         "projects.yazareser.summary": "Sınava hazırlanıyordum ama aradığımı bulamıyordum — her kaynak eksik, her liste yarım. Ben de kendim yaptım. Topladım, düzenledim; 1.799 kart ortaya çıktı. Gerisi uygulama.",
         
@@ -139,14 +137,12 @@ const translations = {
         "projects.desc": "Work tells you more about a person than any introduction. Here's mine.",
         "projects.more_details": "View Details",
         
-        "projects.aura.pill": "Somatic Balance",
         "projects.aura.category": "Wellness / Web App",
         "projects.aura.summary": "For a while, everything felt like it was closing in on me. I needed to relearn how to breathe... I researched, experimented, and put what worked into a form. When I wanted to share it with friends, it became a project.",
         
         "projects.sosyal.category": "Social / Web App",
         "projects.sosyal.summary": "For a high school student, school is almost the whole world. STTFL is that world's memory — an archive of school culture passed from generation to generation. With countless social media platforms out there, STTFL does something different: it gives everyone an equal voice. Student, alumni, teacher alike. It turns the school's power dynamics upside down with the sözlük format — opening a liberated space for students.",
         
-        "projects.yazareser.pill": "1,799 Cards",
         "projects.yazareser.category": "Education / Mobile App",
         "projects.yazareser.summary": "I was studying for the exam but couldn't find what I needed — every source incomplete, every list half-finished. So I built it myself. Gathered, organized; 1,799 cards emerged. The app came after.",
         
