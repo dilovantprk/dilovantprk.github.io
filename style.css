@@ -278,6 +278,20 @@ html.dark .moon-icon { display: block; }
     display: none;
 }
 
+.mobile-menu-backdrop {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1040;
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+}
+
+.mobile-menu-backdrop.active {
+    display: block;
+}
+
 /* ==========================================================================
    BUTTONS
    ========================================================================== */

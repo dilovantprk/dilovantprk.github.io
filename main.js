@@ -558,7 +558,36 @@ function initNavigation() {
     const mobileMenuToggle = document.getElementById("mobile-menu-toggle");
     const navMenu = document.getElementById("nav-menu");
     const navLinks = document.querySelectorAll(".nav-link");
-    
+
+    // Create backdrop overlay
+    const backdrop = document.createElement("div");
+    backdrop.className = "mobile-menu-backdrop";
+    document.body.appendChild(backdrop);
+
+    function openMenu() {
+        navMenu.classList.add("active");
+        backdrop.classList.add("active");
+        document.body.style.overflow = "hidden";
+        const menuIcon = mobileMenuToggle.querySelector(".menu-icon");
+        const closeIcon = mobileMenuToggle.querySelector(".close-icon");
+        if (menuIcon && closeIcon) {
+            menuIcon.style.display = "none";
+            closeIcon.style.display = "block";
+        }
+    }
+
+    function closeMenu() {
+        navMenu.classList.remove("active");
+        backdrop.classList.remove("active");
+        document.body.style.overflow = "";
+        const menuIcon = mobileMenuToggle.querySelector(".menu-icon");
+        const closeIcon = mobileMenuToggle.querySelector(".close-icon");
+        if (menuIcon && closeIcon) {
+            menuIcon.style.display = "block";
+            closeIcon.style.display = "none";
+        }
+    }
+
     // Scroll Shrink effect
     window.addEventListener("scroll", () => {
         if (window.scrollY > 50) {
@@ -566,48 +595,38 @@ function initNavigation() {
         } else {
             header.classList.remove("scrolled");
         }
-        
-        // Active Section tracking
         trackActiveSection();
     });
 
     // Mobile menu toggle
     mobileMenuToggle.addEventListener("click", () => {
-        navMenu.classList.toggle("active");
-        
-        // Toggle mobile hamburger/close icon display
-        const menuIcon = mobileMenuToggle.querySelector(".menu-icon");
-        const closeIcon = mobileMenuToggle.querySelector(".close-icon");
         if (navMenu.classList.contains("active")) {
-            menuIcon.style.display = "none";
-            closeIcon.style.display = "block";
+            closeMenu();
         } else {
-            menuIcon.style.display = "block";
-            closeIcon.style.display = "none";
+            openMenu();
         }
     });
 
-    // Close mobile menu on nav link click
+    // Close on nav link click
     navLinks.forEach(link => {
-        link.addEventListener("click", () => {
-            navMenu.classList.remove("active");
-            const menuIcon = mobileMenuToggle.querySelector(".menu-icon");
-            const closeIcon = mobileMenuToggle.querySelector(".close-icon");
-            if (menuIcon && closeIcon) {
-                menuIcon.style.display = "block";
-                closeIcon.style.display = "none";
-            }
-        });
+        link.addEventListener("click", () => closeMenu());
+    });
+
+    // Close on backdrop click
+    backdrop.addEventListener("click", () => closeMenu());
+
+    // Close on Escape key
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && navMenu.classList.contains("active")) {
+            closeMenu();
+        }
     });
 
     // Smooth scroll for logo click
     const logoLink = document.getElementById("logo-link");
     logoLink.addEventListener("click", (e) => {
         e.preventDefault();
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        });
+        window.scrollTo({ top: 0, behavior: "smooth" });
     });
 }
 
