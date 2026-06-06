@@ -241,6 +241,7 @@ const translations = {
 const projectsData = {
     aura: {
         title: "Aura",
+        categoryKey: "projects.aura.category",
         bannerClass: "visual-aura",
         icon: "heart",
         role: {
@@ -306,6 +307,7 @@ const projectsData = {
     },
     sosyal: {
         title: "STTFL",
+        categoryKey: "projects.sosyal.category",
         bannerClass: "visual-sosyal",
         icon: "message-square",
         role: {
@@ -363,6 +365,7 @@ const projectsData = {
     },
     yazareser: {
         title: "YazarEser",
+        categoryKey: "projects.yazareser.category",
         bannerClass: "visual-yazareser",
         icon: "book-open",
         role: {
@@ -885,6 +888,7 @@ function initProjectModals() {
         const labelRole = translations[currentLanguage]["modal.role"];
         const labelDuration = translations[currentLanguage]["modal.duration"];
         const labelTech = translations[currentLanguage]["modal.tech"];
+        const categoryText = translations[currentLanguage][project.categoryKey] || "";
 
         // Build tech tags HTML
         const tagsHTML = project.tags.map(tag => `<span>${tag}</span>`).join("");
@@ -902,7 +906,7 @@ function initProjectModals() {
 
         modalBody.innerHTML = `
             <div class="modal-project-header">
-                <span class="modal-project-cat">${project.category}</span>
+                <span class="modal-project-cat">${categoryText}</span>
                 <h3 class="modal-project-title">${project.title}</h3>
             </div>
             

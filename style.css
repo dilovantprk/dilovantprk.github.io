@@ -814,10 +814,8 @@ html.dark .moon-icon { display: block; }
    CONTACT SECTION
    ========================================================================== */
 .contact-grid {
-    display: grid;
-    grid-template-columns: 0.8fr 1.2fr;
-    gap: var(--spacing-lg);
-    align-items: start;
+    display: flex;
+    justify-content: center;
 }
 
 .contact-info-panel {
@@ -826,6 +824,8 @@ html.dark .moon-icon { display: block; }
     border-radius: var(--radius-md);
     padding: 40px;
     box-shadow: var(--card-shadow);
+    width: 100%;
+    max-width: 600px;
 }
 
 .contact-info-title {
