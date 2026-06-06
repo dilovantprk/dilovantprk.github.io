@@ -9,7 +9,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <!-- Feather Icons -->
     <script src="https://unpkg.com/feather-icons"></script>
@@ -22,7 +22,6 @@
     <header class="header">
         <div class="nav-container">
             <a href="#" class="logo" id="logo-link">
-                <span class="logo-dot"></span>
                 <span class="logo-text">dilovan.</span>
             </a>
             
@@ -59,21 +58,12 @@
                 <div class="hero-content">
                     <span class="hero-greeting animate-fade" data-i18n="hero.greeting">Merhaba, ben</span>
                     <h1 class="hero-title animate-fade">Mehmet Dilovan Toprak</h1>
-                    <h2 class="hero-subtitle animate-fade" data-i18n="hero.subtitle">Felsefe Öğrencisi &amp; Arayüz Geliştirici</h2>
                     <p class="hero-description animate-fade" data-i18n="hero.desc">
                         Boğaziçi Üniversitesi'nde felsefe okuyor, zihinsel modelleri ve analitik düşünceyi dijital ürünlere dönüştürüyorum. Estetik, kullanılabilirlik ve temiz kod odaklı yenilikçi web ve mobil deneyimleri tasarlıyorum.
                     </p>
                     <div class="hero-cta animate-fade">
                         <a href="#projects" class="btn btn-primary" data-i18n="hero.cta_projects">Projelerimi Gör</a>
                         <a href="#contact" class="btn btn-secondary" data-i18n="hero.cta_contact">İletişime Geç</a>
-                    </div>
-                </div>
-                <div class="hero-image-wrapper animate-fade">
-                    <div class="avatar-card">
-                        <div class="avatar-fallback">
-                            <span class="avatar-initials">DT</span>
-                            <div class="avatar-glow-ring"></div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -106,11 +96,11 @@
                         <div class="project-info">
                             <span class="project-category" data-i18n="projects.aura.category">Wellness / Web App</span>
                             <h3 class="project-title-text">Aura</h3>
-                            <p class="project-summary" data-i18n="projects.aura.summary">Polyvagal teori tabanlı, Web Audio API ses sentezleyici ve WebGL fragment shader'ları barındıran otonom sinir sistemi takip uygulaması.</p>
+                            <p class="project-summary" data-i18n="projects.aura.summary">Modern yaşamın getirdiği stres ve kaygıyı, bedensel duyumları takip edip nefes ve ses sentezleri ile otonom sinir sistemini sakinleştirmeyi amaçlayan kişisel somatik regülasyon alanı.</p>
                             <div class="project-tech-tags">
                                 <span>Vanilla JS</span>
                                 <span>Web Audio API</span>
-                                <span>WebGL Shaders</span>
+                                <span>Somatic UX</span>
                                 <span>PWA</span>
                             </div>
                         </div>
@@ -137,7 +127,7 @@
                         <div class="project-info">
                             <span class="project-category" data-i18n="projects.sosyal.category">Social / Web App</span>
                             <h3 class="project-title-text">STTFL</h3>
-                            <p class="project-summary" data-i18n="projects.sosyal.summary">Ekşi Sözlük'ten ilham alan, modern Liquid Glass arayüzlü ve Google Genkit/Gemini AI destekli sosyal içerik ve tartışma platformu.</p>
+                            <p class="project-summary" data-i18n="projects.sosyal.summary">Lise yıllarımdan gelen bağları koparmamak ve ortak anıları canlı tutmak için Siirt Türk Telekom Fen Lisesi (STTFL) mezunları ve öğrencilerini bir araya getiren özgür tartışma ve topluluk platformu.</p>
                             <div class="project-tech-tags">
                                 <span>Next.js 15</span>
                                 <span>Genkit AI</span>
@@ -163,7 +153,7 @@
                         <div class="project-info">
                             <span class="project-category" data-i18n="projects.yazareser.category">Education / Android</span>
                             <h3 class="project-title-text">YazarEser</h3>
-                            <p class="project-summary" data-i18n="projects.yazareser.summary">AYT Edebiyat sınavı hazırlığı için 1.799 doğrulanmış kart içeren, Leitner spaced repetition ve oyunlaştırma destekli native Android uygulaması.</p>
+                            <p class="project-summary" data-i18n="projects.yazareser.summary">AYT Edebiyat sınavına hazırlanan öğrencilerin ezber yükünü hafifletmek, kafa karıştırıcı yazar-eser eşleşmelerini oyunlaştırılmış kartlarla eğlenceli ve kalıcı bir öğrenme sürecine dönüştürmek için tasarlandı.</p>
                             <div class="project-tech-tags">
                                 <span>Kotlin</span>
                                 <span>Jetpack Compose</span>
@@ -204,6 +194,22 @@
                         </div>
                     </div>
 
+                    <!-- Item 1.5: BÜED Edebiyat Kulübü -->
+                    <div class="timeline-item animate-scroll">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-time">2024 - 2026</div>
+                        <div class="timeline-content">
+                            <div class="timeline-header">
+                                <h3 class="timeline-title" data-i18n="timeline.bued.title">Yürütme Kurulu Üyesi</h3>
+                                <span class="timeline-org" data-i18n="timeline.bued.org">Boğaziçi Üni. Edebiyat Kulübü</span>
+                            </div>
+                            <span class="timeline-loc" data-i18n="timeline.bued.loc">İstanbul, Türkiye</span>
+                            <p class="timeline-text" data-i18n="timeline.bued.desc">
+                                Kulüp bünyesinde edebiyat söyleşileri, atölyeler ve kültürel etkinliklerin organizasyonu. Yürütme Kurulu üyesi olarak 1 yıl boyunca aktif karar alma ve kulüp idari süreçlerinin yönetilmesi.
+                            </p>
+                        </div>
+                    </div>
+
                     <!-- Item 2: Cedid NGO -->
                     <div class="timeline-item animate-scroll">
                         <div class="timeline-dot"></div>
@@ -232,6 +238,22 @@
                             <span class="timeline-loc" data-i18n="timeline.siirt.loc">Siirt, Türkiye (Mezun)</span>
                             <p class="timeline-text" data-i18n="timeline.siirt.desc">
                                 Sayısal ağırlıklı eğitim ve analitik düşünme altyapısının kazanılması. Yazılım ve teknoloji merakının başladığı dönem.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Item 4: Üç On Dört -->
+                    <div class="timeline-item animate-scroll">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-time">Haziran 2019</div>
+                        <div class="timeline-content">
+                            <div class="timeline-header">
+                                <h3 class="timeline-title" data-i18n="timeline.ucondort.title">Kurucu &amp; Editör</h3>
+                                <span class="timeline-org" data-i18n="timeline.ucondort.org">Üç On Dört</span>
+                            </div>
+                            <span class="timeline-loc"><a href="https://www.instagram.com/ucondortt/" target="_blank" rel="noopener noreferrer" class="timeline-link">instagram.com/ucondortt/ <i data-feather="external-link" class="timeline-link-icon"></i></a></span>
+                            <p class="timeline-text" data-i18n="timeline.ucondort.desc">
+                                Lise 1. sınıfta 2 arkadaşımla birlikte bilim ve felsefe odaklı kurduğumuz ilk web sitesi projesi. Sitenin kodlama/kurulum süreçleri ve sosyal medya topluluğunun yönetilmesi.
                             </p>
                         </div>
                     </div>
@@ -324,10 +346,7 @@
                                 <span class="skill-name" data-i18n="skills.soft3">Proje Organizasyon &amp; Koordinasyon</span>
                                 <span class="skill-badge" data-i18n="skills.level_cedid">Cedid Sivil Toplum</span>
                             </li>
-                            <li>
-                                <span class="skill-name" data-i18n="skills.soft4">Metodolojik Yaklaşım</span>
-                                <span class="skill-badge" data-i18n="skills.level_acad">Akademik Metot</span>
-                            </li>
+
                         </ul>
                     </div>
                 </div>

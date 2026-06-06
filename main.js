@@ -1,4 +1,13 @@
 /* ==========================================================================
+   CONFIGURATION & CUSTOM ENDPOINTS
+   ========================================================================== */
+const CONFIG = {
+    // To use a service like Formspree or Web3Forms, enter your endpoint URL here.
+    // If left empty, the contact form falls back to a clean client-side clipboard copy & mailto flow.
+    formEndpoint: ""
+};
+
+/* ==========================================================================
    TRANSLATIONS DICTIONARY
    ========================================================================== */
 const translations = {
@@ -21,14 +30,14 @@ const translations = {
         
         "projects.aura.pill": "Somatik Denge",
         "projects.aura.category": "Wellness / Web App",
-        "projects.aura.summary": "Polyvagal teori tabanlı, Web Audio API ses sentezleyici ve WebGL fragment shader'ları barındıran otonom sinir sistemi takip uygulaması.",
+        "projects.aura.summary": "Modern yaşamın getirdiği stres ve kaygıyı, bedensel duyumları takip edip nefes ve ses sentezleri ile otonom sinir sistemini sakinleştirmeyi amaçlayan kişisel somatik regülasyon alanı.",
         
         "projects.sosyal.category": "Social / Web App",
-        "projects.sosyal.summary": "Ekşi Sözlük'ten ilham alan, modern Liquid Glass arayüzlü ve Google Genkit/Gemini AI destekli sosyal içerik ve tartışma platformu.",
+        "projects.sosyal.summary": "Lise yıllarımdan gelen bağları koparmamak ve ortak anıları canlı tutmak için Siirt Türk Telekom Fen Lisesi (STTFL) mezunları ve öğrencilerini bir araya getiren özgür tartışma ve topluluk platformu.",
         
         "projects.yazareser.pill": "1.799 Kart",
         "projects.yazareser.category": "Education / Mobile App",
-        "projects.yazareser.summary": "AYT Edebiyat sınavı hazırlığı için 1.799 doğrulanmış kart içeren, Leitner spaced repetition ve oyunlaştırma destekli native Android uygulaması.",
+        "projects.yazareser.summary": "AYT Edebiyat sınavına hazırlanan öğrencilerin ezber yükünü hafifletmek, kafa karıştırıcı yazar-eser eşleşmelerini oyunlaştırılmış kartlarla eğlenceli ve kalıcı bir öğrenme sürecine dönüştürmek için tasarlandı.",
         
         "timeline.tag": "Zaman Tüneli",
         "timeline.title": "Eğitim & Deneyim",
@@ -39,6 +48,11 @@ const translations = {
         "timeline.boun.loc": "İstanbul, Türkiye (Devam Ediyor)",
         "timeline.boun.desc": "İnsan ve Toplum Bilimleri Fakültesi bünyesinde Felsefe eğitimi. Mantık, epistemoloji ve analitik felsefe üzerine odaklanarak problem çözme ve soyut modelleme becerilerini pekiştirme.",
         
+        "timeline.bued.title": "Yürütme Kurulu Üyesi",
+        "timeline.bued.org": "Boğaziçi Üni. Edebiyat Kulübü",
+        "timeline.bued.loc": "İstanbul, Türkiye",
+        "timeline.bued.desc": "Kulüp bünyesinde edebiyat söyleşileri, atölyeler ve kültürel etkinliklerin organizasyonu. Yürütme Kurulu üyesi olarak 1 yıl boyunca aktif karar alma ve kulüp idari süreçlerinin yönetilmesi.",
+        
         "timeline.cedid.title": "Erasmus+ Öğrenci Koordinatörü",
         "timeline.cedid.org": "Cedid Sivil Toplum Kuruluşu",
         "timeline.cedid.loc": "Türkiye",
@@ -48,6 +62,10 @@ const translations = {
         "timeline.siirt.org": "Siirt Türk Telekom Fen Lisesi",
         "timeline.siirt.loc": "Siirt, Türkiye (Mezun)",
         "timeline.siirt.desc": "Sayısal ağırlıklı eğitim ve analitik düşünme altyapısının kazanılması. Yazılım ve teknoloji merakının başladığı dönem.",
+        
+        "timeline.ucondort.title": "Kurucu & Editör",
+        "timeline.ucondort.org": "Üç On Dört",
+        "timeline.ucondort.desc": "Lise 1. sınıfta 2 arkadaşımla birlikte bilim ve felsefe odaklı kurduğumuz ilk web sitesi projesi. Sitenin kodlama/kurulum süreçleri ve sosyal medya topluluğunun yönetilmesi.",
         
         "skills.tag": "Neler Yapabilirim?",
         "skills.title": "Yetenekler & Araçlar",
@@ -60,12 +78,10 @@ const translations = {
         "skills.level_soft": "Felsefi Temel",
         "skills.level_erasmus": "Erasmus+ Deneyimi",
         "skills.level_cedid": "Cedid Sivil Toplum",
-        "skills.level_acad": "Akademik Metot",
         
         "skills.soft1": "Analitik & Eleştirel Düşünme",
         "skills.soft2": "Kültürlerarası İletişim (İngilizce C1)",
         "skills.soft3": "Proje Organizasyon & Koordinasyon",
-        "skills.soft4": "Metodolojik Yaklaşım",
         
         "contact.tag": "İletişime Geçin",
         "contact.title": "Birlikte Çalışalım",
@@ -124,14 +140,14 @@ const translations = {
         
         "projects.aura.pill": "Somatic Balance",
         "projects.aura.category": "Wellness / Web App",
-        "projects.aura.summary": "A nervous system tracking application based on Polyvagal Theory, featuring Web Audio API synthesis and WebGL fragment shaders.",
+        "projects.aura.summary": "A personal somatic space designed to calm modern stress and anxiety by tracking bodily sensations and regulating the nervous system with guided breathing and audio synthesis.",
         
         "projects.sosyal.category": "Social / Web App",
-        "projects.sosyal.summary": "A modern social content and discussion platform inspired by Ekşi Sözlük, featuring a Liquid Glass interface and Google Genkit/Gemini AI integrations.",
+        "projects.sosyal.summary": "A free discussion and community platform bringing Siirt Türk Telekom Science High School (STTFL) students and alumni together to keep school memories and connections alive.",
         
         "projects.yazareser.pill": "1,799 Cards",
         "projects.yazareser.category": "Education / Mobile App",
-        "projects.yazareser.summary": "A native Android study application for literature exams, featuring 1,799 verified cards, Leitner spaced repetition, and gamified learning.",
+        "projects.yazareser.summary": "Designed to ease the heavy memorization load of literature exams, turning confusing author-work associations into a gamified, permanent learning experience using flashcards.",
         
         "timeline.tag": "Timeline",
         "timeline.title": "Education & Experience",
@@ -142,6 +158,11 @@ const translations = {
         "timeline.boun.loc": "Istanbul, Turkey (Ongoing)",
         "timeline.boun.desc": "Pursuing a Philosophy degree under the Faculty of Arts and Sciences. Focusing on logic, epistemology, and analytical philosophy to reinforce problem-solving and abstract modeling skills.",
         
+        "timeline.bued.title": "Executive Board Member",
+        "timeline.bued.org": "Boğaziçi Uni. Literature Club",
+        "timeline.bued.loc": "Istanbul, Turkey",
+        "timeline.bued.desc": "Organized literary talks, workshops, and cultural events. Served on the Executive Board for 1 year, participating in active decision-making and administrative management of the club.",
+        
         "timeline.cedid.title": "Erasmus+ Student Coordinator",
         "timeline.cedid.org": "Cedid Non-Governmental Organization",
         "timeline.cedid.loc": "Turkey",
@@ -151,6 +172,10 @@ const translations = {
         "timeline.siirt.org": "Siirt Turk Telekom Science High School",
         "timeline.siirt.loc": "Siirt, Turkey (Graduate)",
         "timeline.siirt.desc": "Intense scientific curriculum which built a strong foundation in analytical thinking. The period where my passion for software and technology began.",
+        
+        "timeline.ucondort.title": "Founder & Editor",
+        "timeline.ucondort.org": "Üç On Dört",
+        "timeline.ucondort.desc": "My very first web project, launched in 9th grade with 2 of my friends to popularize science and philosophy. Handled content creation, web interface setup, and social media account management.",
         
         "skills.tag": "What I Can Do",
         "skills.title": "Skills & Tools",
@@ -163,12 +188,10 @@ const translations = {
         "skills.level_soft": "Philosophical Foundation",
         "skills.level_erasmus": "Erasmus+ Experience",
         "skills.level_cedid": "Cedid NGO Leadership",
-        "skills.level_acad": "Academic Method",
         
         "skills.soft1": "Analytical & Critical Thinking",
         "skills.soft2": "Intercultural Communication (C1 English)",
         "skills.soft3": "Project Organization & Coordination",
-        "skills.soft4": "Methodological Approach",
         
         "contact.tag": "Get in Touch",
         "contact.title": "Let's Work Together",
@@ -236,7 +259,7 @@ const projectsData = {
                 <p>Uygulama, karmaşık paketleyiciler (bundlers) kullanılmadan tamamen <strong>Vanilla HTML/JS (ES Modules) ve Vanilla CSS</strong> mimarisi ile sıfırdan inşa edilmiştir. Bu sayede son derece hafif, hızlı ve bakımı kolay bir yapı sunar.</p>
                 <h4>Öne Çıkan Özellikler:</h4>
                 <ul>
-                    <li><strong>Özgün Somatik Check-In (Kendi İcadım):</strong> Kullanıcının anlık duygusal enerjisini ve bedensel duyumlarını interaktif bir 2D Affect Grid tuvali üzerinden işaretlemesini sağlayan, tasarımı ve mantığı tamamen bana ait olan özel bir modül. Bu modül, kullanıcının otonom sinir sisteminin o anki fizyolojik durumunu (güvende, uyarılmış/stresli veya yorgun/donmuş) görselleştirerek kendi beden farkındalığını (somatic awareness) artırmasına yardımcı olur.</li>
+                    <li><strong>Özgün Somatik Check-In Akışı (Kendi İcadım):</strong> Kullanıcının fiziksel durum girdilerini barycentric koordinatlar kullanarak Vagal Üçgeni üzerindeki yerini hesaplayan, tasarımı ve mantığı tamamen bana ait olan interaktif bir 2D Affect Grid tuvali. Bu modül, kullanıcının otonom sinir sisteminin o anki fizyolojik durumunu (güvende/sosyal, uyarılmış/stresli veya yorgun/donmuş) görselleştirerek kendi beden farkındalığını (somatic awareness) artırmasına ve fizyolojik regülasyon sağlamasına yardımcı olur.</li>
                     <li><strong>Web Audio API Ses Sentezleyici:</strong> Arka planda statik ses dosyaları indirmek yerine, tarayıcıda anlık olarak binaural ritimler (binaural beats) ve sakinleştirici pembe/kahverengi ses dalgaları sentezleyerek zihni dinginleştirir.</li>
                     <li><strong>Kişiselleştirilmiş Nefes Rehberliği:</strong> Sinir sistemini dengelemek ve sakinleştirmek için tasarlanmış Box, 4-7-8 ve Physiological Sigh gibi özel nefes ritimlerini yöneten interaktif egzersiz rehberi.</li>
                 </ul>
@@ -246,7 +269,7 @@ const projectsData = {
                 <p>Built completely from scratch using <strong>Vanilla HTML5, ES Modules (no-bundler), and Vanilla CSS</strong>. This architectural decision ensures the app loads instantly, performs efficiently, and avoids package-bloat.</p>
                 <h4>Core Highlights:</h4>
                 <ul>
-                    <li><strong>Original Somatic Check-In Module (My Design):</strong> A custom-designed 2D Affect Grid interface developed and invented by me. It allows users to map their emotional valence (pleasantness) and arousal (energy) levels on an intuitive canvas. By translating these somatic sensations, it visualizes their physiological nervous system state (safe/social, fight/flight, or freeze/collapse), allowing users to build deep bodily self-awareness.</li>
+                    <li><strong>Original Somatic Check-In Flow (My Design/Invention):</strong> An interactive 2D Affect Grid canvas that calculates the user's physiological state position on the Vagal Triangle using barycentric coordinates. Invented and designed entirely by me, this module visualizes the nervous system's state (safe/social, fight/flight, or freeze/collapse) to help users build somatic self-awareness and self-regulate.</li>
                     <li><strong>Real-time Web Audio API Synthesizer:</strong> Generates real-time procedural noise buffers (pink and brown noise) and binaural beats directly in the browser to calm the mind without downloading heavy audio files.</li>
                     <li><strong>Guided Breathing Exercises:</strong> Interactive guides for box breathing, 4-7-8, and physiological sighs to help regulate and stabilize the user's nervous system.</li>
                 </ul>
@@ -271,7 +294,7 @@ const projectsData = {
         ],
         description: {
             tr: `
-                <p><strong>STTFL</strong>, popüler Türkçe tartışma platformlarından (Ekşi Sözlük vb.) ilham alınarak tasarlanmış, <strong>Next.js 15 ve TypeScript</strong> tabanlı modern bir sosyal içerik ve tartışma platformudur.</p>
+                <p><strong>STTFL</strong>, mezun olduğum Siirt Türk Telekom Fen Lisesi (STTFL) mezunları ve öğrencileri için popüler Türkçe tartışma platformlarından (Ekşi Sözlük vb.) ilham alınarak tasarlanmış, <strong>Next.js 15 ve TypeScript</strong> tabanlı modern bir sosyal içerik ve tartışma platformudur.</p>
                 <p>Uygulama, görsel mükemmelliği hedefleyen <strong>Liquid Glass</strong> tasarım diliyle inşa edilmiş olup, cam efekti (frosted glass) ve pürüzsüz morphing geçiş animasyonlarıyla premium bir kullanıcı deneyimi sunar.</p>
                 <h4>Öne Çıkan Özellikler:</h4>
                 <ul>
@@ -282,7 +305,7 @@ const projectsData = {
                 </ul>
             `,
             en: `
-                <p><strong>STTFL</strong> is a modern social forum and discussion platform inspired by Ekşi Sözlük, built with <strong>Next.js 15 and TypeScript</strong>.</p>
+                <p><strong>STTFL</strong> is a modern social forum and discussion platform built with <strong>Next.js 15 and TypeScript</strong> for my high school alma mater (Siirt Türk Telekom Science High School) alumni and students, inspired by popular Turkish forums like Ekşi Sözlük.</p>
                 <p>Adopts a unique <strong>Liquid Glass</strong> design system, blending frosted glass visual cards, gradient surfaces, and smooth morphing animations to deliver a premium interface.</p>
                 <h4>Key Integrations:</h4>
                 <ul>
@@ -752,6 +775,7 @@ function initContactForm() {
         
         const textSending = translations[currentLanguage]["contact.form_sending"];
         const textSuccess = translations[currentLanguage]["contact.form_success"];
+        const textError = translations[currentLanguage]["contact.form_error"];
         const textBtn = translations[currentLanguage]["contact.form_btn"];
 
         // UI states loading
@@ -761,19 +785,140 @@ function initContactForm() {
         statusDiv.style.display = "none";
         statusDiv.className = "form-status";
         
-        // Simulate email sending process (Local experience validation)
-        setTimeout(() => {
-            // Restore UI states
-            submitBtn.disabled = false;
-            submitBtnText.textContent = textBtn;
-            if (submitBtnIcon) submitBtnIcon.style.opacity = "1";
-            
-            // Show successful message
-            statusDiv.textContent = textSuccess;
-            statusDiv.classList.add("success");
-            
-            // Reset fields
-            form.reset();
-        }, 1500);
+        const nameVal = form.name.value.trim();
+        const emailVal = form.email.value.trim();
+        const subjectVal = form.subject.value.trim();
+        const messageVal = form.message.value.trim();
+
+        if (CONFIG.formEndpoint) {
+            // Send real API request
+            fetch(CONFIG.formEndpoint, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                },
+                body: JSON.stringify({
+                    name: nameVal,
+                    email: emailVal,
+                    subject: subjectVal,
+                    message: messageVal
+                })
+            })
+            .then(res => {
+                submitBtn.disabled = false;
+                submitBtnText.textContent = textBtn;
+                if (submitBtnIcon) submitBtnIcon.style.opacity = "1";
+                if (res.ok) {
+                    statusDiv.textContent = textSuccess;
+                    statusDiv.classList.add("success");
+                    form.reset();
+                } else {
+                    throw new Error("API error");
+                }
+            })
+            .catch(() => {
+                submitBtn.disabled = false;
+                submitBtnText.textContent = textBtn;
+                if (submitBtnIcon) submitBtnIcon.style.opacity = "1";
+                statusDiv.textContent = textError;
+                statusDiv.classList.add("error");
+            });
+        } else {
+            // Local fallback flow: Open custom interactive modal
+            setTimeout(() => {
+                // Restore submit button
+                submitBtn.disabled = false;
+                submitBtnText.textContent = textBtn;
+                if (submitBtnIcon) submitBtnIcon.style.opacity = "1";
+
+                openFallbackModal(nameVal, emailVal, subjectVal, messageVal);
+            }, 500);
+        }
+    }
+
+    function openFallbackModal(name, email, subject, message) {
+        const modal = document.getElementById("project-modal");
+        const modalBody = document.getElementById("modal-body");
+        
+        // Dynamic content depending on language
+        const isTr = currentLanguage === "tr";
+        const titleText = isTr ? "Mesajınız Hazırlandı" : "Message Compiled";
+        const descText = isTr 
+            ? "Sunucu altyapısı yerel çalıştığından, mesajınızı doğrudan aşağıdaki yöntemlerle iletebilirsiniz:" 
+            : "Since the server is offline, you can send your message directly using the methods below:";
+        
+        const mailtoLabel = isTr ? "E-posta Uygulamasını Aç" : "Open Email Client";
+        const copyLabel = isTr ? "Mesajı Panoya Kopyala" : "Copy to Clipboard";
+        const backLabel = isTr ? "Düzenlemeye Geri Dön" : "Go Back to Edit";
+        
+        const copiedSuccessText = isTr ? "Kopyalandı!" : "Copied!";
+        const mailtoHref = `mailto:dilovanre@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent("Gönderen: " + name + "\nE-posta: " + email + "\n\n" + message)}`;
+        
+        const messageText = `Gönderen: ${name}\nE-posta: ${email}\nKonu: ${subject}\n\nMesaj:\n${message}`;
+
+        modalBody.innerHTML = `
+            <div class="modal-contact-fallback">
+                <h3 class="modal-fallback-title"><i data-feather="send"></i> ${titleText}</h3>
+                <p class="modal-fallback-desc">${descText}</p>
+                
+                <div class="message-preview-card">
+                    <div class="preview-item"><strong>${isTr ? 'Gönderen' : 'From'}:</strong> <span>${name} (${email})</span></div>
+                    <div class="preview-item"><strong>${isTr ? 'Konu' : 'Subject'}:</strong> <span>${subject}</span></div>
+                    <div class="preview-body">
+                        <strong>${isTr ? 'Mesaj' : 'Message'}:</strong>
+                        <pre>${message}</pre>
+                    </div>
+                </div>
+                
+                <div class="modal-fallback-actions">
+                    <a href="${mailtoHref}" class="btn btn-primary" id="fallback-mailto-btn">
+                        <i data-feather="external-link"></i>
+                        <span>${mailtoLabel}</span>
+                    </a>
+                    <button class="btn btn-secondary" id="fallback-copy-btn">
+                        <i data-feather="copy"></i>
+                        <span id="copy-btn-text">${copyLabel}</span>
+                    </button>
+                </div>
+                <div class="modal-fallback-footer">
+                    <button class="btn-link" id="fallback-back-btn">${backLabel}</button>
+                </div>
+            </div>
+        `;
+
+        // Load Feather Icons for injected content
+        if (typeof feather !== "undefined") {
+            feather.replace();
+        }
+
+        // Open modal
+        modal.classList.add("active");
+        modal.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+
+        // Handle Copy button
+        const copyBtn = document.getElementById("fallback-copy-btn");
+        const copyBtnText = document.getElementById("copy-btn-text");
+        copyBtn.addEventListener("click", () => {
+            navigator.clipboard.writeText(messageText).then(() => {
+                copyBtnText.textContent = copiedSuccessText;
+                copyBtn.classList.add("btn-primary");
+                copyBtn.classList.remove("btn-secondary");
+                setTimeout(() => {
+                    copyBtnText.textContent = copyLabel;
+                    copyBtn.classList.remove("btn-primary");
+                    copyBtn.classList.add("btn-secondary");
+                }, 2000);
+            });
+        });
+
+        // Handle Back/Close button
+        const backBtn = document.getElementById("fallback-back-btn");
+        backBtn.addEventListener("click", () => {
+            modal.classList.remove("active");
+            modal.setAttribute("aria-hidden", "true");
+            document.body.style.overflow = "";
+        });
     }
 }
