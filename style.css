@@ -1893,3 +1893,98 @@ html.dark .moon-icon { display: block; }
     }
 }
 
+/* ==========================================================================
+   PRELOADER
+   ========================================================================== */
+.preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: var(--bg-primary);
+    z-index: 10000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.8s cubic-bezier(0.77, 0, 0.175, 1),
+                visibility 0.8s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.preloader.fade-out {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.preloader-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+}
+
+.preloader-brand {
+    display: flex;
+    gap: 4px;
+}
+
+.preloader-brand span {
+    font-family: var(--font-heading);
+    font-size: 4rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: preloaderLetterReveal 1.2s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+}
+
+.preloader-line {
+    width: 160px;
+    height: 3px;
+    background: var(--border-color);
+    border-radius: var(--radius-full);
+    overflow: hidden;
+    opacity: 0;
+    animation: preloaderFadeIn 0.5s ease forwards 0.8s;
+}
+
+.preloader-progress {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent-blue) 0%, var(--accent-violet) 100%);
+    animation: preloaderProgressBar 1.8s cubic-bezier(0.77, 0, 0.175, 1) forwards 0.9s;
+}
+
+@keyframes preloaderLetterReveal {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+        text-shadow: 0 0 20px rgba(99, 102, 241, 0.2);
+    }
+}
+
+@keyframes preloaderFadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes preloaderProgressBar {
+    0% {
+        width: 0%;
+    }
+    100% {
+        width: 100%;
+    }
+}
+
