@@ -24,7 +24,7 @@ const translations = {
         "hero.cta_contact": "İletişime Geç",
         
         "projects.tag": "Neler Ürettim?",
-        "projects.title": "Seçilmiş Projeler",
+        "projects.title": "İşlerim",
         "projects.desc": "Ayinesi iştir kişinin, lafa bakılmaz. Üçü de gerçek bir yerden doğdu.",
         "projects.more_details": "Detayları Gör",
         
