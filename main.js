@@ -65,7 +65,7 @@ const translations = {
         "timeline.ucondort.org": "Üç On Dört",
         "timeline.ucondort.desc": "Teknik becerilerden çok bir şey öğretti bana bu proje: koordinasyon içinde, aylarca düzenli üretmeye devam edebilmek. Sürekliliği bu dönemde keşfettim.",
         
-        "skills.tag": "Neler Yapabilirim?",
+        "skills.tag": "Neler Yapabiliyorum?",
         "skills.title": "Yetenekler & Araçlar",
         "skills.desc": "Gözüm harmoniyi arıyor; kararlarımı teknik bilgimden çok şeylerin bana hissettirdikleri yönlendiriyor. Mükemmeli arıyorum — ve mükemmel, bir üründe sandığımızdan çok daha erişilebilir.",
         "skills.cat1": "Yazılım & Geliştirme",
