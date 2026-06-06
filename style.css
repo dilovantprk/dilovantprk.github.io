@@ -1030,11 +1030,63 @@ html.dark .moon-icon { display: block; }
 
 .footer-container {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    flex-wrap: wrap;
     gap: 16px;
+}
+
+.loop-back-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 8px;
+}
+
+.loop-back-btn {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: var(--accent-blue);
+    text-decoration: none;
+    font-family: var(--font-heading);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: all var(--transition-fast) ease;
+}
+
+.loop-icon {
+    width: 36px;
+    height: 36px;
+    padding: 9px;
+    border-radius: 50%;
+    border: 1.5px solid var(--border-color);
+    background: var(--bg-primary);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: var(--card-shadow);
+}
+
+.loop-back-btn:hover {
+    color: var(--accent-violet);
+}
+
+.loop-back-btn:hover .loop-icon {
+    transform: rotate(360deg) scale(1.1);
+    border-color: var(--accent-violet);
+    box-shadow: 0 0 12px var(--accent-violet-soft);
+}
+
+.loop-text {
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.loop-back-btn:hover .loop-text {
+    opacity: 1;
 }
 
 /* ==========================================================================
@@ -1446,7 +1498,7 @@ html.dark .moon-icon { display: block; }
         position: absolute;
         left: 13px;
         top: 0;
-        height: calc(50% - 40px);
+        height: calc(65% - 40px);
         width: 1.5px;
         background: linear-gradient(to bottom, transparent 10%, var(--border-color));
         opacity: 0.8;
@@ -1455,7 +1507,7 @@ html.dark .moon-icon { display: block; }
     .side-nav-track-bottom {
         position: absolute;
         left: 13px;
-        top: calc(50% + 40px);
+        top: calc(65% + 40px);
         bottom: 0;
         width: 1.5px;
         background: linear-gradient(to bottom, var(--border-color), transparent 90%);
@@ -1465,7 +1517,7 @@ html.dark .moon-icon { display: block; }
     .side-nav-wheel-container {
         position: absolute;
         left: 0;
-        top: 50%;
+        top: 65%;
         transform: translateY(-50%);
         width: 80px;
         height: 80px;

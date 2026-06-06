@@ -112,6 +112,7 @@ const translations = {
         "contact.form_success": "Mesajınız başarıyla iletildi! En kısa sürede dönüş yapacağım.",
         "contact.form_error": "Gönderim sırasında hata oluştu.",
         
+        "footer.loop_back": "Döngüyü Tamamla (Başa Dön)",
         "footer.copyright": "© 2026 Mehmet Dilovan Toprak. Tüm hakları saklıdır.",
         "footer.design": "",
         
@@ -222,6 +223,7 @@ const translations = {
         "contact.form_success": "Your message was sent successfully! I will get back to you as soon as possible.",
         "contact.form_error": "An error occurred during submission.",
         
+        "footer.loop_back": "Complete the Loop (Back to Start)",
         "footer.copyright": "© 2026 Mehmet Dilovan Toprak. All rights reserved.",
         "footer.design": "",
         
@@ -630,6 +632,9 @@ function initNavigation() {
     });
 }
 
+// Current accumulated wheel rotation to support infinite shortest-path looping
+let currentWheelRotation = 0;
+
 // Track active section and highlight nav link + side-nav wheel
 function trackActiveSection() {
     const sections = document.querySelectorAll("section");
@@ -652,15 +657,6 @@ function trackActiveSection() {
         }
     });
 
-    // Rotation degrees mapped to each section (to center the active dot at 0deg)
-    const rotationMap = {
-        'home': 70,        // Giriş dot is at -70deg, so rotate wheel +70deg to center it
-        'projects': 35,    // Projeler dot is at -35deg, so rotate wheel +35deg
-        'experience': 0,   // Özgeçmiş is at 0deg, so rotate wheel 0deg
-        'skills': -35,     // Beceriler is at 35deg, so rotate wheel -35deg
-        'contact': -70     // İletişim is at 70deg, so rotate wheel -70deg
-    };
-
     sideNavItems.forEach(item => {
         item.classList.remove("active");
         if (item.getAttribute("data-section") === currentSectionId) {
@@ -668,10 +664,32 @@ function trackActiveSection() {
         }
     });
 
-    if (sideNavWheel && currentSectionId && rotationMap[currentSectionId] !== undefined) {
-        const rot = rotationMap[currentSectionId];
-        sideNavWheel.style.transform = `rotate(${rot}deg)`;
-        sideNavWheel.style.setProperty('--wheel-rotation', `${rot}deg`);
+    // Shortest path circular rotation logic
+    const sectionIndexMap = {
+        'home': 0,
+        'projects': 1,
+        'experience': 2,
+        'skills': 3,
+        'contact': 4
+    };
+
+    if (sideNavWheel && currentSectionId && sectionIndexMap[currentSectionId] !== undefined) {
+        const targetIndex = sectionIndexMap[currentSectionId];
+        // The dot for index `i` is at `i * 72` degrees.
+        // To align it at 0deg (the rightmost point), the wheel must be rotated by `-i * 72` degrees.
+        const targetBaseAngle = -targetIndex * 72;
+        
+        // Find the angle difference modulo 360
+        let diff = (targetBaseAngle - currentWheelRotation) % 360;
+        
+        // Normalize the difference to [-180, 180] for shortest-path rotation
+        if (diff > 180) diff -= 360;
+        if (diff < -180) diff += 360;
+        
+        currentWheelRotation += diff;
+
+        sideNavWheel.style.transform = `rotate(${currentWheelRotation}deg)`;
+        sideNavWheel.style.setProperty('--wheel-rotation', `${currentWheelRotation}deg`);
     }
 }
 
