@@ -440,6 +440,7 @@ document.addEventListener("DOMContentLoaded", () => {
     initScrollReveal();
     initProjectModals();
     initContactForm();
+    initSmoothScrollInterception();
 });
 
 /* ==========================================================================
@@ -632,15 +633,50 @@ function initNavigation() {
     });
 }
 
+// Variable to block scroll listener wheel updates during programmatic scrolling
+let isProgrammaticScrolling = false;
+let scrollTimeout = null;
 // Current accumulated wheel rotation to support infinite shortest-path looping
 let currentWheelRotation = 0;
 
+// Rotate the wheel to a specific section using shortest path circular rotation logic
+function rotateWheelToSection(sectionId) {
+    const sideNavWheel = document.getElementById("side-nav-wheel");
+    const sectionIndexMap = {
+        'home': 0,
+        'projects': 1,
+        'experience': 2,
+        'skills': 3,
+        'contact': 4
+    };
+
+    if (sideNavWheel && sectionId && sectionIndexMap[sectionId] !== undefined) {
+        const targetIndex = sectionIndexMap[sectionId];
+        // The dot for index `i` is at `i * 72` degrees.
+        // To align it at 0deg (the rightmost point), the wheel must be rotated by `-i * 72` degrees.
+        const targetBaseAngle = -targetIndex * 72;
+        
+        // Find the angle difference modulo 360
+        let diff = (targetBaseAngle - currentWheelRotation) % 360;
+        
+        // Normalize the difference to [-180, 180] for shortest-path rotation
+        if (diff > 180) diff -= 360;
+        if (diff < -180) diff += 360;
+        
+        currentWheelRotation += diff;
+
+        sideNavWheel.style.transform = `rotate(${currentWheelRotation}deg)`;
+        sideNavWheel.style.setProperty('--wheel-rotation', `${currentWheelRotation}deg`);
+    }
+}
+
 // Track active section and highlight nav link + side-nav wheel
 function trackActiveSection() {
+    if (isProgrammaticScrolling) return;
+
     const sections = document.querySelectorAll("section");
     const navLinks = document.querySelectorAll(".nav-link");
     const sideNavItems = document.querySelectorAll(".side-nav-item");
-    const sideNavWheel = document.getElementById("side-nav-wheel");
     let currentSectionId = "";
 
     sections.forEach(section => {
@@ -664,33 +700,65 @@ function trackActiveSection() {
         }
     });
 
-    // Shortest path circular rotation logic
-    const sectionIndexMap = {
-        'home': 0,
-        'projects': 1,
-        'experience': 2,
-        'skills': 3,
-        'contact': 4
-    };
-
-    if (sideNavWheel && currentSectionId && sectionIndexMap[currentSectionId] !== undefined) {
-        const targetIndex = sectionIndexMap[currentSectionId];
-        // The dot for index `i` is at `i * 72` degrees.
-        // To align it at 0deg (the rightmost point), the wheel must be rotated by `-i * 72` degrees.
-        const targetBaseAngle = -targetIndex * 72;
-        
-        // Find the angle difference modulo 360
-        let diff = (targetBaseAngle - currentWheelRotation) % 360;
-        
-        // Normalize the difference to [-180, 180] for shortest-path rotation
-        if (diff > 180) diff -= 360;
-        if (diff < -180) diff += 360;
-        
-        currentWheelRotation += diff;
-
-        sideNavWheel.style.transform = `rotate(${currentWheelRotation}deg)`;
-        sideNavWheel.style.setProperty('--wheel-rotation', `${currentWheelRotation}deg`);
+    if (currentSectionId) {
+        rotateWheelToSection(currentSectionId);
     }
+}
+
+// Smooth scroll link click interception for loop navigation
+function initSmoothScrollInterception() {
+    const navLinks = document.querySelectorAll(".nav-link");
+    const sideNavItems = document.querySelectorAll(".side-nav-item");
+    const loopBackBtn = document.querySelector(".loop-back-btn");
+    const logoLink = document.getElementById("logo-link");
+
+    const allLinks = [...navLinks, ...sideNavItems];
+    if (loopBackBtn) allLinks.push(loopBackBtn);
+    if (logoLink) allLinks.push(logoLink);
+
+    allLinks.forEach(link => {
+        link.addEventListener("click", (e) => {
+            const href = link.getAttribute("href");
+            if (!href || href === "#") return;
+            
+            e.preventDefault();
+            
+            const targetId = href.substring(1);
+            const targetElement = document.getElementById(targetId);
+            if (!targetElement) return;
+
+            // Set programmatic scroll flag to disable scroll listener updates
+            isProgrammaticScrolling = true;
+            
+            // Clear any existing timeout
+            if (scrollTimeout) clearTimeout(scrollTimeout);
+
+            // Rotate the wheel immediately to the target section using shortest path
+            rotateWheelToSection(targetId);
+
+            // Set active class on nav links and side nav items immediately
+            document.querySelectorAll(".nav-link, .side-nav-item").forEach(item => {
+                item.classList.remove("active");
+                if (item.getAttribute("href") === href || item.getAttribute("data-section") === targetId) {
+                    item.classList.add("active");
+                }
+            });
+
+            // Smooth scroll to the target
+            const offsetTop = targetElement.offsetTop;
+            window.scrollTo({
+                top: offsetTop,
+                behavior: "smooth"
+            });
+
+            // Re-enable scroll listener updates after the smooth scroll finishes (850ms)
+            scrollTimeout = setTimeout(() => {
+                isProgrammaticScrolling = false;
+                // Double check active section alignment
+                trackActiveSection();
+            }, 850);
+        });
+    });
 }
 
 /* ==========================================================================
