@@ -513,37 +513,33 @@ function initTheme() {
     const themeToggleBtn = document.getElementById("theme-toggle");
     const htmlElement = document.documentElement;
     
-    // Get saved theme or match media
-    const savedTheme = localStorage.getItem("theme");
-    const systemPrefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    
-    if (savedTheme) {
-        htmlElement.className = savedTheme;
-    } else {
+    // Helper to apply system/device theme setting
+    function applySystemTheme() {
+        const systemPrefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
         htmlElement.className = systemPrefersDark ? "dark" : "light";
+        updateThemeIcon();
     }
     
-    updateThemeIcon();
+    // Initialize theme based on device settings
+    applySystemTheme();
 
-    // Toggle click event
+    // Listen to changes in device/system theme preference dynamically
+    const themeMediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    try {
+        themeMediaQuery.addEventListener("change", applySystemTheme);
+    } catch (e) {
+        // Fallback for older browsers
+        themeMediaQuery.addListener(applySystemTheme);
+    }
+
+    // Toggle click event lets them override for the current session
     themeToggleBtn.addEventListener("click", () => {
         if (htmlElement.classList.contains("dark")) {
             htmlElement.className = "light";
-            localStorage.setItem("theme", "light");
         } else {
             htmlElement.className = "dark";
-            localStorage.setItem("theme", "dark");
         }
         updateThemeIcon();
-    });
-
-    // Listen for system theme changes dynamically
-    window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (e) => {
-        // Only update automatically if the user hasn't explicitly set a preference in localStorage
-        if (!localStorage.getItem("theme")) {
-            htmlElement.className = e.matches ? "dark" : "light";
-            updateThemeIcon();
-        }
     });
 }
 
@@ -662,9 +658,9 @@ function rotateWheelToSection(sectionId) {
 
     if (sideNavWheel && sectionId && sectionIndexMap[sectionId] !== undefined) {
         const targetIndex = sectionIndexMap[sectionId];
-        // To align the active dot at -45deg (the diagonal center of the corner arc),
-        // the wheel must be rotated by `-45 - i * 72` degrees.
-        const targetBaseAngle = -45 - targetIndex * 72;
+        // The dot for index `i` is at `i * 72` degrees.
+        // To align it at 0deg (the rightmost point), the wheel must be rotated by `-i * 72` degrees.
+        const targetBaseAngle = -targetIndex * 72;
         
         // Find the angle difference modulo 360
         let diff = (targetBaseAngle - currentWheelRotation) % 360;
