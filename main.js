@@ -18,7 +18,7 @@ const translations = {
         "nav.skills": "Beceriler",
         "nav.contact": "İletişim",
         
-        "hero.greeting": "Merhaba, ben",
+        "hero.greeting": "Selam, ben",
         "hero.desc": "Anlam ve form arasında bir yerlerde çalışıyorum. Düşünce sistemlerini arayüzlere, soyut modelleri çalışan ürünlere dönüştürüyorum. Bıraktığım şeyin estetik olması gerektiğine inanıyorum.",
         "hero.cta_projects": "Projelerimi Gör",
         "hero.cta_contact": "İletişime Geç",
@@ -448,8 +448,7 @@ document.addEventListener("DOMContentLoaded", () => {
 let currentLanguage = "tr";
 
 function initLanguage() {
-    const langToggleBtn = document.getElementById("lang-toggle");
-    const langText = document.getElementById("lang-text");
+    const langToggleBtns = document.querySelectorAll(".lang-toggle");
     
     // Get saved language or default to "tr"
     const savedLang = localStorage.getItem("lang");
@@ -460,25 +459,27 @@ function initLanguage() {
     updateLanguageDOM();
     updateLanguageToggleUI();
 
-    langToggleBtn.addEventListener("click", () => {
-        currentLanguage = currentLanguage === "tr" ? "en" : "tr";
-        localStorage.setItem("lang", currentLanguage);
-        
-        updateLanguageDOM();
-        updateLanguageToggleUI();
-        
-        // Re-replace icons because some translations might have new icon placeholders
-        if (typeof feather !== "undefined") {
-            feather.replace();
-        }
+    langToggleBtns.forEach(btn => {
+        btn.addEventListener("click", () => {
+            currentLanguage = currentLanguage === "tr" ? "en" : "tr";
+            localStorage.setItem("lang", currentLanguage);
+            
+            updateLanguageDOM();
+            updateLanguageToggleUI();
+            
+            // Re-replace icons because some translations might have new icon placeholders
+            if (typeof feather !== "undefined") {
+                feather.replace();
+            }
+        });
     });
 }
 
 function updateLanguageToggleUI() {
-    const langText = document.getElementById("lang-text");
-    if (langText) {
-        langText.textContent = currentLanguage === "tr" ? "EN" : "TR";
-    }
+    const langTexts = document.querySelectorAll(".lang-toggle .lang-text");
+    langTexts.forEach(textEl => {
+        textEl.textContent = currentLanguage === "tr" ? "EN" : "TR";
+    });
 }
 
 function updateLanguageDOM() {
