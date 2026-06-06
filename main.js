@@ -19,7 +19,7 @@ const translations = {
         "nav.contact": "İletişim",
         
         "hero.greeting": "Merhaba, ben",
-        "hero.desc": "Boğaziçi'nde felsefe okuyorum — anlam arıyorum. Düşünce sistemlerini arayüzlere, soyut modelleri çalışan ürünlere dönüştürüyorum. Bıraktığım şeyin estetik olması gerektiğine inanıyorum.",
+        "hero.desc": "Anlam ve form arasında bir yerlerde çalışıyorum. Düşünce sistemlerini arayüzlere, soyut modelleri çalışan ürünlere dönüştürüyorum. Bıraktığım şeyin estetik olması gerektiğine inanıyorum.",
         "hero.cta_projects": "Projelerimi Gör",
         "hero.cta_contact": "İletişime Geç",
         
@@ -129,7 +129,7 @@ const translations = {
         "nav.contact": "Contact",
         
         "hero.greeting": "Hi, I'm",
-        "hero.desc": "Studying philosophy at Boğaziçi — searching for meaning. I translate thought systems into interfaces and abstract models into working products. I believe whatever I leave behind should be beautiful.",
+        "hero.desc": "I work somewhere between meaning and form. I translate thought systems into interfaces and abstract models into working products. I believe whatever I leave behind should be beautiful.",
         "hero.cta_projects": "View My Work",
         "hero.cta_contact": "Get In Touch",
         
