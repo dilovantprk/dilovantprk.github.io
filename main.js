@@ -99,7 +99,7 @@ const translations = {
         "skills.soft3": "Topluluk & Süreç Yönetimi",
         
         "contact.tag": "İletişim",
-        "contact.title": "Gel, Bir Şey Yapalım",
+        "contact.title": "Gel, Bir Şey(ler) Yapalım",
         "contact.desc": "Deneysel projeler ya da sivil toplum alanında birlikte bir şey üretmek istiyorsan konuşalım. İnsan odaklı işler beni heyecanlandırıyor.",
         "contact.panel_title": "İletişim Bilgileri",
         "contact.panel_desc": "Benimle doğrudan aşağıdaki kanallardan da iletişime geçebilirsiniz.",
