@@ -992,6 +992,10 @@ function initProjectModals() {
                         <div class="visual-content-line"></div>
                         <div class="visual-content-line short"></div>
                     </div>
+                    <div class="visual-forum-box reply">
+                        <div class="visual-content-line"></div>
+                        <div class="visual-content-line short"></div>
+                    </div>
                 </div>
             `;
         } else if (projectId === "yazareser") {

@@ -567,20 +567,35 @@ ul {
 }
 
 .project-overlay {
-    position: absolute;
-    inset: 0;
-    background: rgba(15, 23, 42, 0.4);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
-    transition: opacity var(--transition-normal);
+    display: none;
 }
 
-.project-card:hover .project-overlay {
-    opacity: 1;
+.project-more-link {
+    margin-top: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    transition: color var(--transition-normal);
+    padding-top: 16px;
+}
+
+.project-card:hover .project-more-link {
+    color: var(--accent-blue);
+}
+
+.project-more-link svg,
+.project-more-link i {
+    width: 16px;
+    height: 16px;
+    transition: transform var(--transition-normal);
+}
+
+.project-card:hover .project-more-link svg,
+.project-card:hover .project-more-link i {
+    transform: translateX(4px);
 }
 
 .project-info {
@@ -1804,7 +1819,11 @@ ul {
 }
 
 .visual-forum-box {
+    position: absolute;
     width: 75%;
+    left: 24px;
+    top: 52px;
+    z-index: 2;
     background: var(--bg-card);
     border: 1px solid var(--border-color);
     border-radius: var(--radius-md);
@@ -1812,10 +1831,33 @@ ul {
     display: flex;
     flex-direction: column;
     gap: 8px;
-    transform: translateY(8px);
     box-shadow: var(--shadow-sm);
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.5s;
+}
+
+.visual-forum-box.reply {
+    width: 68%;
+    left: 48px;
+    top: 108px;
+    z-index: 1;
+    opacity: 0.4;
+    transform: translateY(12px) scale(0.95);
+    transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.5s;
+}
+
+.project-card:hover .visual-forum-box,
+.modal-project-banner:hover .visual-forum-box {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-md);
+}
+
+.project-card:hover .visual-forum-box.reply,
+.modal-project-banner:hover .visual-forum-box.reply {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    box-shadow: var(--shadow-sm);
 }
 
 .visual-content-line {
