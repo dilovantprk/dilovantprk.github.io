@@ -118,7 +118,8 @@ const translations = {
         "modal.duration": "Süre",
         "modal.tech": "Teknolojiler",
         "modal.about": "Proje Hakkında",
-        "modal.code_review": "Kodları İncele"
+        "modal.code_review": "Kodları İncele",
+        "modal.live_site": "Siteyi Aç"
     },
     en: {
         "nav.home": "Home",
@@ -227,7 +228,8 @@ const translations = {
         "modal.duration": "Duration",
         "modal.tech": "Technologies",
         "modal.about": "About Project",
-        "modal.code_review": "Inspect Code"
+        "modal.code_review": "Inspect Code",
+        "modal.live_site": "Open Site"
     }
 };
 
@@ -250,6 +252,7 @@ const projectsData = {
         },
         tags: ["Vanilla JS", "Web Audio API", "Somatic UX", "Firebase Auth", "PWA"],
         links: [
+            { textKey: "modal.live_site", url: "https://aurawell-wmhi.vercel.app/", icon: "external-link" },
             { textKey: "modal.code_review", url: "https://github.com/dilovantprk/aurawll", icon: "github" }
         ],
         description: {
@@ -316,6 +319,7 @@ const projectsData = {
         },
         tags: ["Next.js 15", "Google Genkit", "Gemini API", "Firebase App Hosting", "Cloud Firestore", "Tailwind CSS"],
         links: [
+            { textKey: "modal.live_site", url: "https://www.sttflsozluk.com/", icon: "external-link" },
             { textKey: "modal.code_review", url: "https://github.com/dilovantprk", icon: "github" }
         ],
         description: {
