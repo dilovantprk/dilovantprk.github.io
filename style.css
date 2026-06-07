@@ -1352,6 +1352,7 @@ ul {
         width: 100%;
         max-width: 100%;
         padding: 14px 18px;
+        box-shadow: none;
     }
     
     .header.scrolled {
