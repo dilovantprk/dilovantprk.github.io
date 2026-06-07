@@ -1337,6 +1337,10 @@ ul {
 }
 
 @media (max-width: 768px) {
+    .scroll-down {
+        bottom: 80px;
+    }
+
     .header {
         top: 0;
     }
