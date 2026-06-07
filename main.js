@@ -14,8 +14,8 @@ const translations = {
     tr: {
         "nav.home": "Selam",
         "nav.projects": "Projeler",
-        "nav.experience": "Özgeçmiş",
-        "nav.skills": "Beceriler",
+        "nav.experience": "Geçmiş",
+        "nav.skills": "Yetiler",
         "nav.contact": "İletişim",
         
         "hero.greeting": "Selam, ben",
@@ -127,7 +127,7 @@ const translations = {
     en: {
         "nav.home": "Home",
         "nav.projects": "Projects",
-        "nav.experience": "Experience",
+        "nav.experience": "Past",
         "nav.skills": "Skills",
         "nav.contact": "Contact",
         
