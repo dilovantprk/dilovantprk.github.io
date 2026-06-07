@@ -404,8 +404,8 @@ ul {
 
 .hero-greeting-suffix {
     position: absolute;
-    bottom: -8px;
-    right: -24px;
+    bottom: -12px;
+    right: -32px;
     font-size: 1.15rem;
     font-weight: 600;
     color: var(--accent-blue);
