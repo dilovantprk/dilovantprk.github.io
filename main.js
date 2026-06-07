@@ -257,6 +257,18 @@ const projectsData = {
             { textKey: "modal.live_site", url: "https://aurawell-wmhi.vercel.app/", icon: "external-link" },
             { textKey: "modal.code_review", url: "https://github.com/dilovantprk/aurawll", icon: "github" }
         ],
+        screenshots: [
+            "assets/aura-1.jpeg",
+            "assets/aura-2.jpeg",
+            "assets/aura-3.jpeg",
+            "assets/aura-4.jpeg",
+            "assets/aura-5.jpeg",
+            "assets/aura-6.jpeg",
+            "assets/aura-7.jpeg",
+            "assets/aura-8.jpeg",
+            "assets/aura-9.jpeg",
+            "assets/aura-10.jpeg"
+        ],
         description: {
             tr: `
                 <p>Beyin nöroplastik — ama her deneyim doğrudan değişime yol açmıyor. Değişim için farkındalık ve uygun koşullar gerekiyor. Çoğu wellness uygulaması sana "nefes al" der; Aura önce nerede olduğunu gösterir, sonra ne yapabileceğini.</p>
