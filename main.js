@@ -41,7 +41,7 @@ const translations = {
         
         "timeline.tag": "Geçmiş",
         "timeline.title": "Geçtiğim Yerler",
-        "timeline.desc": "Şimdiye kadar durduğum yerler.",
+        "timeline.desc": "Yollar ve duraklar",
         
         "timeline.boun.title": "Felsefe Lisansı",
         "timeline.boun.org": "Boğaziçi Üniversitesi",
@@ -154,7 +154,7 @@ const translations = {
         
         "timeline.tag": "Past",
         "timeline.title": "Education & Experience",
-        "timeline.desc": "The places I've passed through.",
+        "timeline.desc": "Paths and stops",
         
         "timeline.boun.title": "B.A. in Philosophy",
         "timeline.boun.org": "Boğaziçi University",
