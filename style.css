@@ -1494,6 +1494,25 @@ ul {
         padding: 24px;
     }
 
+    .modal-project-links {
+        gap: 8px;
+        margin-top: 16px;
+        width: 100%;
+    }
+
+    .modal-project-links .btn {
+        flex: 1;
+        padding: 8px 16px;
+        font-size: 0.8rem;
+        justify-content: center;
+        white-space: nowrap;
+    }
+
+    .modal-project-links .btn svg {
+        width: 14px;
+        height: 14px;
+    }
+
     .section-header {
         text-align: left;
         margin-left: 0;

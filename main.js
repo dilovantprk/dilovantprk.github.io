@@ -27,7 +27,7 @@ const translations = {
         
         "projects.tag": "Projeler",
         "projects.title": "İşlerim",
-        "projects.desc": "Ayinesi iştir kişinin, lafa bakılmaz. Üçü de gerçek bir yerden doğdu.",
+        "projects.desc": "Ayinesi iştir kişinin, lafa bakılmaz.",
         "projects.more_details": "Detayları Gör",
         
         "projects.aura.category": "Wellness / Web App",
