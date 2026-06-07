@@ -931,6 +931,22 @@ ul {
     height: 18px;
 }
 
+.contact-footer-location {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-weight: 500;
+    margin-top: 12px;
+}
+
+.contact-footer-location svg {
+    width: 14px;
+    height: 14px;
+    stroke-width: 2px;
+}
+
 /* Form Styles */
 .contact-form {
     background: var(--bg-card);
