@@ -336,6 +336,13 @@ const projectsData = {
             { textKey: "modal.live_site", url: "https://www.sttflsozluk.com/", icon: "external-link" },
             { textKey: "modal.code_review", url: "https://github.com/dilovantprk", icon: "github" }
         ],
+        screenshots: [
+            "assets/sttfl-1.jpeg",
+            "assets/sttfl-2.jpeg",
+            "assets/sttfl-3.jpeg",
+            "assets/sttfl-4.jpeg",
+            "assets/sttfl-5.jpeg"
+        ],
         description: {
             tr: `
                 <p>Lise yıllarından gelen bağları koparmamak ve ortak anıları canlı tutmak için STTFL mezunları ve öğrencilerini bir araya getirmeye çalışan özgür tartışma platformu. Ekşi Sözlük'ten ilham aldım.</p>
