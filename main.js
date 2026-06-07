@@ -69,7 +69,7 @@ const translations = {
         
         "skills.tag": "Yetiler",
         "skills.title": "Elimden Gelenler",
-        "skills.desc": "Gözüm harmoniyi arıyor; kararlarımı teknik bilgimden çok şeylerin bana hissettirdikleri yönlendiriyor. Mükemmeli arıyorum — ve mükemmel, bir üründe sandığımızdan çok daha erişilebilir.",
+        "skills.desc": "Gözüm harmoniyi arıyor; kararlarımı teknik bilgimden çok şeylerin bana hissettirdikleri yönlendiriyor. Mükemmeli arıyorum.",
         "skills.cat1": "Yazılım & Geliştirme",
         "skills.cat2": "Tasarım & Kreatif",
         "skills.cat3": "Organizasyon & Düşünce",
@@ -182,7 +182,7 @@ const translations = {
         
         "skills.tag": "Skills",
         "skills.title": "Skills & Tools",
-        "skills.desc": "My eye looks for harmony; what things make me feel guides my decisions more than technical knowledge. I pursue perfection — and perfection, in a product, is far more attainable than we think.",
+        "skills.desc": "My eye looks for harmony; what things make me feel guides my decisions more than technical knowledge. I pursue perfection.",
         "skills.cat1": "Software & Development",
         "skills.cat2": "Design & Creative",
         "skills.cat3": "Organization & Thought",
