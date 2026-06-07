@@ -1770,15 +1770,14 @@ ul {
         letter-spacing: 0.05em;
         text-transform: uppercase;
         color: var(--accent-blue);
-        background: var(--bg-secondary);
-        border: 1px solid var(--border-color);
-        padding: 3px 8px;
-        border-radius: 4px;
+        background: var(--accent-blue-soft);
+        border: none;
+        padding: 4px 12px;
+        border-radius: var(--radius-full);
         white-space: nowrap;
         opacity: 0;
         pointer-events: none;
         transition: opacity 0.4s ease, transform 0.4s ease;
-        box-shadow: var(--card-shadow);
     }
 
     .side-nav-item.active .side-nav-label {
