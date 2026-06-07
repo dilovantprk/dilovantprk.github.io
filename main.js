@@ -19,7 +19,7 @@ const translations = {
         "nav.contact": "İletişim",
         
         "hero.greeting": "Selam, ben",
-        "hero.desc": "Boğaziçi Üniversitesi'nde felsefe okuyor, <span class=\"highlight-guardian\">zihinsel modelleri</span> ve <span class=\"highlight-guardian\">analitik düşünceyi</span> dijital ürünlere dönüştürüyorum. <span class=\"highlight-guardian\">Estetik</span>, <span class=\"highlight-guardian\">kullanılabilirlik</span> ve <span class=\"highlight-guardian\">temiz kod</span> odaklı yenilikçi web ve mobil deneyimleri tasarlıyorum.",
+        "hero.desc": "Anlam ve form arasında bir yerlerde çalışıyorum. Düşünce sistemlerini arayüzlere, soyut modelleri çalışan ürünlere dönüştürüyorum. Bıraktığım şeyin estetik olması gerektiğine inanıyorum.",
         "hero.cta_projects": "Projelerimi Gör",
         "hero.cta_contact": "İletişime Geç",
         
@@ -130,7 +130,7 @@ const translations = {
         "nav.contact": "Contact",
         
         "hero.greeting": "Hi, I'm",
-        "hero.desc": "I study philosophy at Boğaziçi University, translating <span class=\"highlight-guardian\">mental models</span> and <span class=\"highlight-guardian\">analytical thinking</span> into digital products. I design innovative web and mobile experiences focused on <span class=\"highlight-guardian\">aesthetics</span>, <span class=\"highlight-guardian\">usability</span>, and <span class=\"highlight-guardian\">clean code</span>.",
+        "hero.desc": "I work somewhere between meaning and form. I translate thought systems into interfaces and abstract models into working products. I believe whatever I leave behind should be beautiful.",
         "hero.cta_projects": "View My Work",
         "hero.cta_contact": "Get In Touch",
         

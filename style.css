@@ -422,23 +422,6 @@ ul {
     max-width: 640px;
 }
 
-.highlight-guardian {
-    background-image: linear-gradient(120deg, #052962 0%, #052962 100%);
-    background-repeat: no-repeat;
-    background-size: 100% 0.22em;
-    background-position: 0 92%;
-    transition: background-size var(--transition-fast) ease-in-out, color var(--transition-fast) ease-in-out;
-    padding: 0 2px;
-    font-weight: 600;
-    color: var(--text-primary);
-    display: inline;
-}
-
-.highlight-guardian:hover {
-    background-size: 100% 100%;
-    color: #ffffff !important;
-}
-
 .hero-cta {
     display: flex;
     gap: 16px;
@@ -1365,11 +1348,14 @@ ul {
     .nav-container {
         border-radius: 0;
         border: none;
-        border-bottom: 1px solid var(--nav-border);
+        border-bottom: none;
         width: 100%;
         max-width: 100%;
         padding: 14px 18px;
         box-shadow: none;
+        background: var(--bg-primary);
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
     }
     
     .header.scrolled {
