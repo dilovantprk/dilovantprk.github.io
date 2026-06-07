@@ -1212,6 +1212,10 @@ ul {
     gap: 40px;
 }
 
+.modal-text-section {
+    min-width: 0;
+}
+
 .modal-text-section h4 {
     font-size: 1.15rem;
     margin-bottom: 12px;
@@ -1982,7 +1986,7 @@ ul {
 }
 
 .screenshot-item {
-    height: 320px;
+    height: 240px;
     border-radius: var(--radius-md);
     overflow: hidden;
     border: 1px solid var(--border-color);

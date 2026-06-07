@@ -852,6 +852,12 @@ function initProjectModals() {
         modal.classList.add("active");
         modal.setAttribute("aria-hidden", "false");
         document.body.style.overflow = "hidden"; // Prevent background scroll
+        
+        // Reset scroll position of the modal wrapper
+        const wrapper = modal.querySelector(".modal-wrapper");
+        if (wrapper) {
+            wrapper.scrollTop = 0;
+        }
     }
 
     function closeModal() {
