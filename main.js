@@ -747,7 +747,7 @@ function initSmoothScrollInterception() {
 
             // Smooth scroll to the target — offset for fixed navbar height + breathing room
             const navHeight = document.querySelector('.header')?.offsetHeight || 70;
-            const scrollOffset = Math.max(0, targetElement.offsetTop - navHeight - 32);
+            const scrollOffset = Math.max(0, targetElement.offsetTop - navHeight - 12);
             window.scrollTo({
                 top: scrollOffset,
                 behavior: "smooth"
