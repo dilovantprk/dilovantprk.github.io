@@ -119,7 +119,8 @@ const translations = {
         "modal.tech": "Teknolojiler",
         "modal.about": "Proje Hakkında",
         "modal.code_review": "Kodları İncele",
-        "modal.live_site": "Siteyi Aç"
+        "modal.live_site": "Siteyi Aç",
+        "modal.screenshots": "Ekran Görüntüleri"
     },
     en: {
         "nav.home": "Home",
@@ -229,7 +230,8 @@ const translations = {
         "modal.tech": "Technologies",
         "modal.about": "About Project",
         "modal.code_review": "Inspect Code",
-        "modal.live_site": "Open Site"
+        "modal.live_site": "Open Site",
+        "modal.screenshots": "Screenshots"
     }
 };
 
@@ -380,6 +382,16 @@ const projectsData = {
         links: [
             { textKey: "modal.code_review", url: "https://github.com/dilovantprk/yazareser", icon: "github" }
         ],
+        screenshots: [
+            "assets/yazareser-1.jpeg",
+            "assets/yazareser-2.jpeg",
+            "assets/yazareser-3.jpeg",
+            "assets/yazareser-4.jpeg",
+            "assets/yazareser-5.jpeg",
+            "assets/yazareser-6.jpeg",
+            "assets/yazareser-7.jpeg",
+            "assets/yazareser-8.jpeg"
+        ],
         description: {
             tr: `
                 <p>AYT Edebiyat sınavına hazırlanan öğrencilerin ezber yükünü hafifletmek, kafa karıştırıcı yazar-eser eşleşmelerini oyunlaştırılmış kartlarla kalıcı öğrenmeye dönüştürmek için yapıldı. 1.799 doğrulanmış kart, 2018–2025 arası tüm sınavları kapsıyor.</p>
@@ -400,18 +412,6 @@ const projectsData = {
                     <li><strong>WorkManager</strong> — arka plan görevleri.</li>
                     <li><strong>Python</strong> — veri ayıklama ve veritabanı doldurma scriptleri.</li>
                 </ul>
-
-                <h4>Uygulama İçi Ekran Görüntüleri</h4>
-                <div class="project-screenshots-gallery">
-                    <div class="screenshot-item"><img src="assets/yazareser-1.jpeg" alt="Ekran Görüntüsü 1"></div>
-                    <div class="screenshot-item"><img src="assets/yazareser-2.jpeg" alt="Ekran Görüntüsü 2"></div>
-                    <div class="screenshot-item"><img src="assets/yazareser-3.jpeg" alt="Ekran Görüntüsü 3"></div>
-                    <div class="screenshot-item"><img src="assets/yazareser-4.jpeg" alt="Ekran Görüntüsü 4"></div>
-                    <div class="screenshot-item"><img src="assets/yazareser-5.jpeg" alt="Ekran Görüntüsü 5"></div>
-                    <div class="screenshot-item"><img src="assets/yazareser-6.jpeg" alt="Ekran Görüntüsü 6"></div>
-                    <div class="screenshot-item"><img src="assets/yazareser-7.jpeg" alt="Ekran Görüntüsü 7"></div>
-                    <div class="screenshot-item"><img src="assets/yazareser-8.jpeg" alt="Ekran Görüntüsü 8"></div>
-                </div>
             `,
             en: `
                 <p>Built to ease the memorization load for students preparing for the AYT Literature exam — turning confusing author-work pairs into lasting learning through gamified flashcards. 1,799 verified cards covering every exam from 2018 to 2025.</p>
@@ -432,18 +432,6 @@ const projectsData = {
                     <li><strong>WorkManager</strong> — background tasks.</li>
                     <li><strong>Python</strong> — data extraction and database population scripts.</li>
                 </ul>
-
-                <h4>In-App Screenshots</h4>
-                <div class="project-screenshots-gallery">
-                    <div class="screenshot-item"><img src="assets/yazareser-1.jpeg" alt="Screenshot 1"></div>
-                    <div class="screenshot-item"><img src="assets/yazareser-2.jpeg" alt="Screenshot 2"></div>
-                    <div class="screenshot-item"><img src="assets/yazareser-3.jpeg" alt="Screenshot 3"></div>
-                    <div class="screenshot-item"><img src="assets/yazareser-4.jpeg" alt="Screenshot 4"></div>
-                    <div class="screenshot-item"><img src="assets/yazareser-5.jpeg" alt="Screenshot 5"></div>
-                    <div class="screenshot-item"><img src="assets/yazareser-6.jpeg" alt="Screenshot 6"></div>
-                    <div class="screenshot-item"><img src="assets/yazareser-7.jpeg" alt="Screenshot 7"></div>
-                    <div class="screenshot-item"><img src="assets/yazareser-8.jpeg" alt="Screenshot 8"></div>
-                </div>
             `
         }
     }
@@ -853,7 +841,9 @@ function initProjectModals() {
     
     // Escape key press close
     window.addEventListener("keydown", (e) => {
-        if (e.key === "Escape" && modal.classList.contains("active")) {
+        const lightbox = document.getElementById("screenshot-lightbox");
+        const lightboxActive = lightbox && lightbox.classList.contains("active");
+        if (e.key === "Escape" && modal.classList.contains("active") && !lightboxActive) {
             closeModal();
         }
     });
@@ -891,6 +881,28 @@ function initProjectModals() {
                 </a>
             `;
         }).join("");
+
+        // Build screenshots HTML if present
+        let screenshotsHTML = "";
+        if (project.screenshots && project.screenshots.length > 0) {
+            const labelScreenshots = translations[currentLanguage]["modal.screenshots"];
+            const itemsHTML = project.screenshots.map((src, index) => `
+                <div class="screenshot-item" data-index="${index}">
+                    <img src="${src}" alt="Screenshot ${index + 1}" loading="lazy" />
+                </div>
+            `).join("");
+            
+            screenshotsHTML = `
+                <div class="modal-project-screenshots">
+                    <h4>${labelScreenshots}</h4>
+                    <div class="screenshots-grid-container">
+                        <div class="screenshots-track">
+                            ${itemsHTML}
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
 
         // Build animated visual HTML matching card view
         let visualHTML = "";
@@ -933,6 +945,7 @@ function initProjectModals() {
                 <div class="modal-text-section">
                     <h4>${labelAbout}</h4>
                     ${project.description[currentLanguage]}
+                    ${screenshotsHTML}
                 </div>
                 
                 <div class="modal-info-panel-right">
@@ -965,6 +978,100 @@ function initProjectModals() {
             feather.replace();
         }
     }
+
+    // Screenshot Lightbox Logic
+    function initLightbox() {
+        const lightbox = document.getElementById("screenshot-lightbox");
+        if (!lightbox) return;
+        
+        const lightboxImg = document.getElementById("lightbox-img");
+        const lightboxClose = lightbox.querySelector(".lightbox-close");
+        const lightboxPrev = lightbox.querySelector(".lightbox-nav.prev");
+        const lightboxNext = lightbox.querySelector(".lightbox-nav.next");
+        const lightboxBackdrop = lightbox.querySelector(".lightbox-backdrop");
+        
+        let currentScreenshots = [];
+        let currentImgIndex = 0;
+        
+        // Use event delegation on modal-body for screenshot item clicks
+        modalBody.addEventListener("click", (e) => {
+            const item = e.target.closest(".screenshot-item");
+            if (!item) return;
+            
+            const index = parseInt(item.getAttribute("data-index"), 10);
+            const activeModalBanner = document.querySelector(".modal-project-banner");
+            if (!activeModalBanner) return;
+            
+            // Deduce project ID from banner class visual-[projectId]
+            const match = activeModalBanner.className.match(/visual-(\w+)/);
+            const activeProjectId = match ? match[1] : null;
+            
+            if (activeProjectId && projectsData[activeProjectId]) {
+                const project = projectsData[activeProjectId];
+                if (project.screenshots && project.screenshots.length > 0) {
+                    currentScreenshots = project.screenshots;
+                    currentImgIndex = index;
+                    showImage(currentImgIndex);
+                    openLightbox();
+                }
+            }
+        });
+        
+        function showImage(idx) {
+            if (idx < 0 || idx >= currentScreenshots.length) return;
+            lightboxImg.src = currentScreenshots[idx];
+            currentImgIndex = idx;
+        }
+        
+        function openLightbox() {
+            lightbox.classList.add("active");
+            lightbox.setAttribute("aria-hidden", "false");
+            
+            // Render feather icons inside lightbox just in case
+            if (typeof feather !== "undefined") {
+                feather.replace();
+            }
+        }
+        
+        function closeLightbox() {
+            lightbox.classList.remove("active");
+            lightbox.setAttribute("aria-hidden", "true");
+            lightboxImg.src = "";
+        }
+        
+        lightboxClose.addEventListener("click", closeLightbox);
+        lightboxBackdrop.addEventListener("click", closeLightbox);
+        
+        lightboxPrev.addEventListener("click", (e) => {
+            e.stopPropagation();
+            let prevIdx = currentImgIndex - 1;
+            if (prevIdx < 0) prevIdx = currentScreenshots.length - 1;
+            showImage(prevIdx);
+        });
+        
+        lightboxNext.addEventListener("click", (e) => {
+            e.stopPropagation();
+            let nextIdx = currentImgIndex + 1;
+            if (nextIdx >= currentScreenshots.length) nextIdx = 0;
+            showImage(nextIdx);
+        });
+        
+        // Keyboard navigation
+        window.addEventListener("keydown", (e) => {
+            if (!lightbox.classList.contains("active")) return;
+            
+            if (e.key === "Escape") {
+                closeLightbox();
+            } else if (e.key === "ArrowLeft") {
+                lightboxPrev.click();
+            } else if (e.key === "ArrowRight") {
+                lightboxNext.click();
+            }
+        });
+    }
+
+    // Initialize lightbox logic
+    initLightbox();
 }
 
 /* ==========================================================================
