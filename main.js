@@ -980,7 +980,15 @@ function initProjectModals() {
         // Build animated visual HTML matching card view
         let visualHTML = "";
         if (projectId === "aura") {
-            visualHTML = `<div class="visual-inner"><div class="visual-aura-breathing"></div></div>`;
+            visualHTML = `
+                <div class="visual-inner">
+                    <div class="visual-aura-breathing">
+                        <div class="breathing-ring ring-1"></div>
+                        <div class="breathing-ring ring-2"></div>
+                        <div class="breathing-ring ring-3"></div>
+                    </div>
+                </div>
+            `;
         } else if (projectId === "sosyal") {
             visualHTML = `
                 <div class="visual-inner">
