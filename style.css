@@ -1836,29 +1836,54 @@ ul {
 }
 
 .visual-flashcard {
-    background: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-md);
-    padding: 24px 16px;
     width: 140px;
+    height: 80px;
+    perspective: 1000px;
+    transform-style: preserve-3d;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: rotate(-3deg) rotateY(0deg);
+}
+
+.project-card:hover .visual-flashcard,
+.modal-project-banner:hover .visual-flashcard {
+    transform: rotate(2deg) rotateY(180deg) scale(1.05);
+}
+
+.visual-card-front,
+.visual-card-back {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
+    padding: 16px;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-color);
     box-shadow: var(--shadow-md);
-    transform: rotate(-3deg);
-    transition: transform var(--transition-bounce);
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
 }
 
-.project-card:hover .visual-flashcard {
-    transform: rotate(2deg) scale(1.05);
-}
-
 .visual-card-front {
+    background: var(--bg-card);
     font-family: var(--font-heading);
     font-size: 0.85rem;
     font-weight: 700;
     color: var(--accent-violet);
     letter-spacing: -0.01em;
+}
+
+.visual-card-back {
+    background: var(--bg-card);
+    font-family: var(--font-heading);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--accent-emerald);
+    letter-spacing: -0.01em;
+    transform: rotateY(180deg);
 }
 
 /* ==========================================================================

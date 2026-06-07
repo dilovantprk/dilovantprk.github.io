@@ -999,6 +999,7 @@ function initProjectModals() {
                 <div class="visual-inner">
                     <div class="visual-flashcard">
                         <div class="visual-card-front">Leyla vü Mecnun</div>
+                        <div class="visual-card-back">Fuzûlî</div>
                     </div>
                 </div>
             `;
