@@ -858,7 +858,7 @@ function initSmoothScrollInterception() {
    ========================================================================== */
 function initScrollReveal() {
     // Animate elements on initial load
-    const fadeElements = document.querySelectorAll(".animate-fade");
+    const fadeElements = document.querySelectorAll(".animate-fade, .animate-hero-name");
     setTimeout(() => {
         fadeElements.forEach(el => el.classList.add("revealed"));
     }, 100);
