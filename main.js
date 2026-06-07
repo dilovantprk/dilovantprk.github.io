@@ -311,7 +311,7 @@ const projectsData = {
         ],
         description: {
             tr: `
-                <p>Beyin nöroplastik — ama her deneyim doğrudan değişime yol açmıyor. Değişim için farkındalık ve uygun koşullar gerekiyor. Çoğu wellness uygulaması sana "nefes al" der; Aura önce nerede olduğunu gösterir, sonra ne yapabileceğini.</p>
+                <p>Beyin nöroplastik bir yapıya sahip; ancak her deneyim doğrudan bir değişime yol açmıyor. Değişim için farkındalık ve uygun koşullar gerekiyor. Çoğu wellness uygulaması sana "nefes al" der; Aura önce nerede olduğunu gösterir, sonra ne yapabileceğini.</p>
 
                 <h4>Özellikler</h4>
                 <ul>

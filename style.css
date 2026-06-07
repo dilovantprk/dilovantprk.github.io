@@ -1236,8 +1236,8 @@ ul {
 
 .modal-close {
     position: absolute;
-    top: 24px;
-    right: 24px;
+    top: 32px;
+    right: 32px;
     width: 40px;
     height: 40px;
     border-radius: var(--radius-full);
@@ -1256,7 +1256,7 @@ ul {
 }
 
 .modal-body {
-    padding: 40px;
+    padding: 52px 40px 40px 40px;
 }
 
 /* Modal Content Styles */
@@ -1566,7 +1566,14 @@ ul {
     }
     
     .modal-body {
-        padding: 24px;
+        padding: 48px 24px 24px 24px;
+    }
+
+    .modal-close {
+        top: 20px;
+        right: 20px;
+        width: 36px;
+        height: 36px;
     }
 
     .modal-project-links {
