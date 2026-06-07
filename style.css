@@ -154,7 +154,8 @@ ul {
 }
 
 .section-padding {
-    padding: var(--spacing-xl) 0;
+    padding-top: calc(var(--spacing-xl) / 2);
+    padding-bottom: var(--spacing-xl);
 }
 
 /* ==========================================================================
