@@ -102,7 +102,7 @@ const translations = {
         "contact.title": "Gel, Bir Şey(ler) Yapalım",
         "contact.desc": "Deneysel projeler ya da sivil toplum alanında birlikte bir şey üretmek istiyorsan konuşalım. İnsan odaklı işler beni heyecanlandırıyor.",
         "contact.panel_title": "İletişim Bilgileri",
-        "contact.panel_desc": "Benimle doğrudan bu kanallardan iletişime geçebilirsin.",
+        "contact.panel_desc": "Bana buralardan ulaşabilirsin.",
         "contact.method_mail": "E-posta Gönder",
         "contact.method_telegram": "Telegram'dan Yaz",
         "contact.method_phone": "Telefon Et",
