@@ -1591,6 +1591,11 @@ ul {
         padding: 2.5rem 2rem;
     }
 
+    .contact-footer-location {
+        align-self: flex-start;
+        margin-left: 8px;
+    }
+
     .section-header {
         text-align: left;
         margin-left: 0;
