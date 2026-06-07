@@ -1122,6 +1122,14 @@ ul {
     overflow-y: auto;
     transform: scale(0.95) translateY(10px);
     transition: transform var(--transition-normal);
+    
+    /* Hide scrollbar but keep functionality */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+}
+
+.modal-wrapper::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
 }
 
 .project-modal.active .modal-wrapper {
