@@ -19,7 +19,9 @@ const translations = {
         "nav.contact": "İletişim",
         
         "hero.greeting": "Selam, ben",
-        "hero.desc": "Anlam ve form arasında bir yerlerde çalışıyorum. Düşünce sistemlerini arayüzlere, soyut modelleri çalışan ürünlere dönüştürüyorum. Bıraktığım şeyin estetik olması gerektiğine inanıyorum.",
+        "hero.greeting_prefix": "Selam",
+        "hero.greeting_suffix": "ben",
+        "hero.desc": "Boğaziçi Üniversitesi'nde felsefe okuyor, zihinsel modelleri ve analitik düşünceyi dijital ürünlere dönüştürüyorum. Estetik, kullanılabilirlik ve temiz kod odaklı yenilikçi web ve mobil deneyimleri tasarlıyorum.",
         "hero.cta_projects": "Projelerimi Gör",
         "hero.cta_contact": "İletişime Geç",
         
@@ -130,7 +132,9 @@ const translations = {
         "nav.contact": "Contact",
         
         "hero.greeting": "Hi, I'm",
-        "hero.desc": "I work somewhere between meaning and form. I translate thought systems into interfaces and abstract models into working products. I believe whatever I leave behind should be beautiful.",
+        "hero.greeting_prefix": "Hi",
+        "hero.greeting_suffix": "here",
+        "hero.desc": "Studying philosophy at Boğaziçi University, I translate mental models and analytical thinking into digital products. I design innovative web and mobile experiences focused on aesthetics, usability, and clean code.",
         "hero.cta_projects": "View My Work",
         "hero.cta_contact": "Get In Touch",
         
@@ -634,14 +638,28 @@ function initNavigation() {
     }
 
     // Scroll Shrink effect
-    window.addEventListener("scroll", () => {
+    function handleScroll() {
         if (window.scrollY > 50) {
             header.classList.add("scrolled");
         } else {
             header.classList.remove("scrolled");
         }
+        
+        // Mobile side-nav opacity fade
+        const sideNav = document.getElementById("side-nav");
+        if (sideNav) {
+            if (window.scrollY > 150) {
+                sideNav.classList.remove("at-top");
+            } else {
+                sideNav.classList.add("at-top");
+            }
+        }
+        
         trackActiveSection();
-    });
+    }
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll(); // Run on initial load
 
     // Mobile menu toggle
     mobileMenuToggle.addEventListener("click", () => {
