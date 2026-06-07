@@ -1382,7 +1382,7 @@ ul {
         border-bottom: none;
         width: 100%;
         max-width: 100%;
-        padding: 14px 18px;
+        padding: 14px var(--spacing-md);
         box-shadow: none;
         background: var(--bg-primary);
         backdrop-filter: none;
