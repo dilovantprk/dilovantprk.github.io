@@ -400,6 +400,18 @@ const projectsData = {
                     <li><strong>WorkManager</strong> — arka plan görevleri.</li>
                     <li><strong>Python</strong> — veri ayıklama ve veritabanı doldurma scriptleri.</li>
                 </ul>
+
+                <h4>Uygulama İçi Ekran Görüntüleri</h4>
+                <div class="project-screenshots-gallery">
+                    <div class="screenshot-item"><img src="assets/yazareser-1.jpeg" alt="Ekran Görüntüsü 1"></div>
+                    <div class="screenshot-item"><img src="assets/yazareser-2.jpeg" alt="Ekran Görüntüsü 2"></div>
+                    <div class="screenshot-item"><img src="assets/yazareser-3.jpeg" alt="Ekran Görüntüsü 3"></div>
+                    <div class="screenshot-item"><img src="assets/yazareser-4.jpeg" alt="Ekran Görüntüsü 4"></div>
+                    <div class="screenshot-item"><img src="assets/yazareser-5.jpeg" alt="Ekran Görüntüsü 5"></div>
+                    <div class="screenshot-item"><img src="assets/yazareser-6.jpeg" alt="Ekran Görüntüsü 6"></div>
+                    <div class="screenshot-item"><img src="assets/yazareser-7.jpeg" alt="Ekran Görüntüsü 7"></div>
+                    <div class="screenshot-item"><img src="assets/yazareser-8.jpeg" alt="Ekran Görüntüsü 8"></div>
+                </div>
             `,
             en: `
                 <p>Built to ease the memorization load for students preparing for the AYT Literature exam — turning confusing author-work pairs into lasting learning through gamified flashcards. 1,799 verified cards covering every exam from 2018 to 2025.</p>
@@ -420,6 +432,18 @@ const projectsData = {
                     <li><strong>WorkManager</strong> — background tasks.</li>
                     <li><strong>Python</strong> — data extraction and database population scripts.</li>
                 </ul>
+
+                <h4>In-App Screenshots</h4>
+                <div class="project-screenshots-gallery">
+                    <div class="screenshot-item"><img src="assets/yazareser-1.jpeg" alt="Screenshot 1"></div>
+                    <div class="screenshot-item"><img src="assets/yazareser-2.jpeg" alt="Screenshot 2"></div>
+                    <div class="screenshot-item"><img src="assets/yazareser-3.jpeg" alt="Screenshot 3"></div>
+                    <div class="screenshot-item"><img src="assets/yazareser-4.jpeg" alt="Screenshot 4"></div>
+                    <div class="screenshot-item"><img src="assets/yazareser-5.jpeg" alt="Screenshot 5"></div>
+                    <div class="screenshot-item"><img src="assets/yazareser-6.jpeg" alt="Screenshot 6"></div>
+                    <div class="screenshot-item"><img src="assets/yazareser-7.jpeg" alt="Screenshot 7"></div>
+                    <div class="screenshot-item"><img src="assets/yazareser-8.jpeg" alt="Screenshot 8"></div>
+                </div>
             `
         }
     }
