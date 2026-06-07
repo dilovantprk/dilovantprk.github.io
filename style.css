@@ -40,6 +40,7 @@ html.light {
     --bg-card: #FAF6F0;
     --bg-input: #FAF6F0;
     --border-color: rgba(206, 196, 180, 0.7);
+    --border-subtle: rgba(206, 196, 180, 0.4);
     --border-hover: rgba(168, 155, 137, 1);
     
     --text-primary: #2C2924;
@@ -69,6 +70,7 @@ html.dark {
     --bg-card: rgba(33, 31, 28, 0.65);
     --bg-input: #181715;
     --border-color: rgba(64, 61, 56, 0.8);
+    --border-subtle: rgba(64, 61, 56, 0.45);
     --border-hover: rgba(87, 83, 76, 1);
     
     --text-primary: #EBE5DA;
@@ -585,7 +587,7 @@ ul {
 
 .project-card {
     background: var(--bg-card);
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--border-subtle);
     border-radius: var(--radius-md);
     overflow: hidden;
     box-shadow: var(--card-shadow);
@@ -680,7 +682,7 @@ ul {
     font-size: 0.925rem;
     color: var(--text-secondary);
     margin-bottom: 20px;
-    line-height: 1.5;
+    line-height: 1.65;
     flex-grow: 1;
 }
 
@@ -691,12 +693,11 @@ ul {
 }
 
 .project-tech-tags span {
-    font-size: 0.75rem;
+    font-size: 0.72rem;
     font-weight: 500;
     padding: 4px 10px;
     border-radius: var(--radius-full);
     background: var(--bg-secondary);
-    border: 1px solid var(--border-color);
     color: var(--text-secondary);
 }
 
@@ -1839,7 +1840,6 @@ ul {
     width: 100%;
     aspect-ratio: 16 / 10;
     overflow: hidden;
-    border-bottom: 1px solid var(--border-color);
 }
 
 .visual-inner {
