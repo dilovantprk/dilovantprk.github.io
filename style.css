@@ -836,7 +836,7 @@ ul {
     background: var(--bg-card);
     border: 1px solid var(--border-color);
     border-radius: var(--radius-md);
-    padding: 40px;
+    padding: 3.5rem;
     box-shadow: var(--card-shadow);
     width: 100%;
     max-width: 600px;
@@ -1509,6 +1509,10 @@ ul {
         height: 14px;
     }
 
+    .contact-info-panel {
+        padding: 2.5rem 2rem;
+    }
+
     .section-header {
         text-align: left;
         margin-left: 0;
@@ -1536,6 +1540,10 @@ ul {
         padding: 10px 16px;
         white-space: nowrap;
         justify-content: center;
+    }
+    
+    .contact-info-panel {
+        padding: 2rem 1.25rem;
     }
 }
 
