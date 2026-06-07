@@ -498,13 +498,14 @@ ul {
 }
 
 .section-tag {
-    font-size: 0.8rem;
+    font-size: 0.72rem;
     font-weight: 700;
     color: var(--accent-blue);
     text-transform: uppercase;
-    letter-spacing: 0.15em;
+    letter-spacing: 0.12em;
     display: inline-block;
     margin-bottom: 12px;
+    opacity: 0.75;
 }
 
 .section-title {

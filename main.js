@@ -25,7 +25,7 @@ const translations = {
         "hero.cta_projects": "Projelerimi Gör",
         "hero.cta_contact": "İletişime Geç",
         
-        "projects.tag": "Neler Ürettim?",
+        "projects.tag": "Projeler",
         "projects.title": "İşlerim",
         "projects.desc": "Ayinesi iştir kişinin, lafa bakılmaz. Üçü de gerçek bir yerden doğdu.",
         "projects.more_details": "Detayları Gör",
@@ -39,7 +39,7 @@ const translations = {
         "projects.yazareser.category": "Education / Mobile App",
         "projects.yazareser.summary": "Sınava hazırlanıyordum ama aradığımı bulamıyordum — her kaynak eksik, her liste yarım. Ben de kendim yaptım. Topladım, düzenledim; 1.799 kart ortaya çıktı. Gerisi uygulama.",
         
-        "timeline.tag": "Arka Plan",
+        "timeline.tag": "Geçmiş",
         "timeline.title": "Geçtiğim Yerler",
         "timeline.desc": "Şimdiye kadar durduğum yerler.",
         
@@ -67,7 +67,7 @@ const translations = {
         "timeline.ucondort.org": "Üç On Dört",
         "timeline.ucondort.desc": "Teknik becerilerden çok bir şey öğretti bana bu proje: koordinasyon içinde, aylarca düzenli üretmeye devam edebilmek. Sürekliliği bu dönemde keşfettim.",
         
-        "skills.tag": "Neler Yapabilirim?",
+        "skills.tag": "Yetiler",
         "skills.title": "Elimden Gelenler",
         "skills.desc": "Gözüm harmoniyi arıyor; kararlarımı teknik bilgimden çok şeylerin bana hissettirdikleri yönlendiriyor. Mükemmeli arıyorum — ve mükemmel, bir üründe sandığımızdan çok daha erişilebilir.",
         "skills.cat1": "Yazılım & Geliştirme",
@@ -83,7 +83,7 @@ const translations = {
         "skills.soft2": "Kültürlerarası İletişim (İngilizce C1)",
         "skills.soft3": "Proje Organizasyon & Koordinasyon",
         
-        "contact.tag": "Kapı Açık",
+        "contact.tag": "İletişim",
         "contact.title": "Gel, Bir Şey Yapalım",
         "contact.desc": "Deneysel projeler ya da sivil toplum alanında birlikte bir şey üretmek istiyorsan konuşalım. İnsan odaklı işler beni heyecanlandırıyor.",
         "contact.panel_title": "İletişim Bilgileri",
@@ -138,7 +138,7 @@ const translations = {
         "hero.cta_projects": "View My Work",
         "hero.cta_contact": "Get In Touch",
         
-        "projects.tag": "What I've Built",
+        "projects.tag": "Projects",
         "projects.title": "Selected Projects",
         "projects.desc": "Work tells you more about a person than any introduction. Here's mine.",
         "projects.more_details": "View Details",
@@ -152,7 +152,7 @@ const translations = {
         "projects.yazareser.category": "Education / Mobile App",
         "projects.yazareser.summary": "I was studying for the exam but couldn't find what I needed — every source incomplete, every list half-finished. So I built it myself. Gathered, organized; 1,799 cards emerged. The app came after.",
         
-        "timeline.tag": "Timeline",
+        "timeline.tag": "Past",
         "timeline.title": "Education & Experience",
         "timeline.desc": "The places I've passed through.",
         
@@ -180,7 +180,7 @@ const translations = {
         "timeline.ucondort.org": "Üç On Dört",
         "timeline.ucondort.desc": "This project taught me something beyond technical skills: staying coordinated and producing consistently for months. It's where I learned what continuity actually means.",
         
-        "skills.tag": "What I Can Do",
+        "skills.tag": "Skills",
         "skills.title": "Skills & Tools",
         "skills.desc": "My eye looks for harmony; what things make me feel guides my decisions more than technical knowledge. I pursue perfection — and perfection, in a product, is far more attainable than we think.",
         "skills.cat1": "Software & Development",
@@ -196,7 +196,7 @@ const translations = {
         "skills.soft2": "Intercultural Communication (C1 English)",
         "skills.soft3": "Project Organization & Coordination",
         
-        "contact.tag": "Get in Touch",
+        "contact.tag": "Contact",
         "contact.title": "Let's Work Together",
         "contact.desc": "If you're working on an experimental project or something in the civil society space, let's talk. Human-centered work is what excites me.",
         "contact.panel_title": "Contact Information",
