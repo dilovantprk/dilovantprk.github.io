@@ -38,6 +38,9 @@ const translations = {
         
         "projects.yazareser.category": "Education / Mobile App",
         "projects.yazareser.summary": "AYT Edebiyat sınavına hazırlanırken kapsamlı bir kaynak bulamayınca kendi verimi kendim derledim. 1.799 doğrulanmış kartlık bir veri havuzunu; aralıklı tekrar algoritmaları ve oyun modlarıyla birleştiren, öğrenim sürecini kolaylaştıran bir mobil uygulamaya dönüştürdüm.",
+
+        "projects.adnet.category": "Sürdürülebilirlik / Web App",
+        "projects.adnet.summary": "Adnet Türkiye için bir karbon emisyon portalı geliştirdim — kurumsal karbon ayak izi verilerini görselleştiren bir web arayüzü.",
         
         "timeline.tag": "Geçmiş",
         "timeline.title": "Geçtiğim Yerler",
@@ -69,34 +72,40 @@ const translations = {
         
         "skills.tag": "Yetiler",
         "skills.title": "Elimden Gelenler",
-        "skills.desc": "Gözüm harmoniyi arıyor; kararlarımı teknik bilgimden çok şeylerin bana hissettirdikleri yönlendiriyor. Mükemmeli arıyorum.",
-        "skills.cat1": "AI & Ürün Geliştirme",
-        "skills.dev1": "AI-Yönlendirmeli Kodlama",
-        "skills.dev2": "Hızlı Prototipleme",
-        "skills.dev3": "Sistem Mimarisi (Next.js, React)",
-        "skills.dev4": "Arayüz Gerçekleştirme (Kotlin, Compose)",
-        "skills.dev5": "Bulut Altyapısı (Firebase)",
-        "skills.level_orch": "Orkestrasyon",
-        "skills.level_zto": "Sıfırdan Ürüne",
-        "skills.level_arch": "Mimari Tasarım",
-        "skills.level_ui_int": "Arayüz",
-        "skills.level_cloud": "Entegrasyon",
-        "skills.cat2": "Tasarım & Kreatif",
-        "skills.creat1": "Canva (Arayüz & Sosyal Medya)",
-        "skills.creat2": "Adobe Photoshop",
-        "skills.creat3": "Adobe Premiere Pro (Video Kurgu)",
-        "skills.creat4": "Ses Tasarımı (Logic Pro)",
-        "skills.creat5": "UI/UX Tasarım İlkeleri",
-        "skills.cat3": "Düşünce & Koordinasyon",
-        "skills.level_adv": "İleri Seviye",
-        "skills.level_int": "Orta Seviye",
-        "skills.level_soft": "Felsefe",
-        "skills.level_erasmus": "Erasmus+",
-        "skills.level_cedid": "Sivil Toplum",
+        "skills.desc": "Gözüm harmoniyi arıyor; kararlarımı analitik derinlik ile estetik sezginin dengesi yönlendiriyor. Kavramsal olanı işlevsel kılmayı, bütünde mükemmeli yakalamayı hedefliyorum.",
+        "skills.cat1": "Teknolojik Mimari & Ürün",
+        "skills.tech_name1": "Yapay Zeka ve Modern Araçlarla Hızlı Geliştirme",
+        "skills.tech_badge1": "Teknoloji Orkestrasyonu",
+        "skills.tech_name2": "Fikirden Çalışan Ürüne",
+        "skills.tech_badge2": "Çevik Prototipleme",
+        "skills.tech_name3": "Next.js & React ile Ölçeklenebilir Yapılar",
+        "skills.tech_badge3": "Sistem Mimarisi",
+        "skills.tech_name4": "Kotlin & Compose ile Native Çözümler",
+        "skills.tech_badge4": "Arayüz Gerçekleştirme",
+        "skills.tech_name5": "Firebase Entegrasyonu & Backend Servisleri",
+        "skills.tech_badge5": "Bulut Çözümleri & Veri",
         
-        "skills.soft1": "Problemleri Soyutlama & Çözümleme",
-        "skills.soft2": "Kültürlerarası Adaptasyon (İngilizce C1)",
-        "skills.soft3": "Topluluk & Süreç Yönetimi",
+        "skills.cat2": "Estetik & Tasarım",
+        "skills.design_name1": "UI/UX İlkeleri & Figma",
+        "skills.design_badge1": "Arayüz & Deneyim Tasarımı",
+        "skills.design_name2": "Adobe Photoshop",
+        "skills.design_badge2": "Görsel Kimlik & Manipülasyon",
+        "skills.design_name3": "Adobe Premiere Pro",
+        "skills.design_badge3": "Dinamik İçerik & Kurgu",
+        "skills.design_name4": "Logic Pro ile Atmosfer Yaratımı",
+        "skills.design_badge4": "Ses Tasarımı & Prodüksiyon",
+        "skills.design_name5": "Minimalizm ve Glassmorphism Adaptasyonu",
+        "skills.design_badge5": "Dijital Estetik",
+        
+        "skills.cat3": "Düşünce & Koordinasyon",
+        "skills.thought_name1": "Felsefi Soyutlama ve Problem Çözme",
+        "skills.thought_badge1": "Kavramsal Analiz & Model Oluşturma",
+        "skills.thought_name2": "İleri Seviye İngilizce (C1)",
+        "skills.thought_badge2": "Kültürlerarası Adaptasyon",
+        "skills.thought_name3": "Sivil Toplum ve Kolektif Çalışma",
+        "skills.thought_badge3": "Topluluk & Süreç Yönetimi",
+        "skills.thought_name4": "Teori ve Pratiğin (Felsefe & Yazılım) Sentezi",
+        "skills.thought_badge4": "Disiplinlerarası Köprü Kurma",
         
         "contact.tag": "İletişim",
         "contact.title": "Gel, Bir Şey(ler) Yapalım",
@@ -169,6 +178,9 @@ const translations = {
         
         "projects.yazareser.category": "Education / Mobile App",
         "projects.yazareser.summary": "When I couldn't find a comprehensive source while preparing for the AYT Literature exam, I compiled my own data. I transformed a database of 1,799 verified cards into a mobile app that facilitates the learning process by combining spaced repetition algorithms and game modes.",
+
+        "projects.adnet.category": "Sustainability / Web App",
+        "projects.adnet.summary": "I built a carbon emission portal for Adnet Turkey — a web interface that visualizes corporate carbon footprint data.",
         
         "timeline.tag": "Past",
         "timeline.title": "Education & Experience",
@@ -200,34 +212,40 @@ const translations = {
         
         "skills.tag": "Skills",
         "skills.title": "Skills & Tools",
-        "skills.desc": "My eye looks for harmony; what things make me feel guides my decisions more than technical knowledge. I pursue perfection.",
-        "skills.cat1": "AI & Product Development",
-        "skills.dev1": "AI-Augmented Coding",
-        "skills.dev2": "Rapid Prototyping",
-        "skills.dev3": "System Architecture (Next.js, React)",
-        "skills.dev4": "UI Realization (Kotlin, Compose)",
-        "skills.dev5": "Cloud Infrastructure (Firebase)",
-        "skills.level_orch": "Orchestration",
-        "skills.level_zto": "Zero to Product",
-        "skills.level_arch": "Architecture",
-        "skills.level_ui_int": "UI Integration",
-        "skills.level_cloud": "Integration",
-        "skills.cat2": "Design & Creative",
-        "skills.creat1": "Canva (UI & Social Media)",
-        "skills.creat2": "Adobe Photoshop",
-        "skills.creat3": "Adobe Premiere Pro (Video Editing)",
-        "skills.creat4": "Sound Design (Logic Pro)",
-        "skills.creat5": "UI/UX Design Principles",
-        "skills.cat3": "Thought & Coordination",
-        "skills.level_adv": "Advanced",
-        "skills.level_int": "Intermediate",
-        "skills.level_soft": "Philosophy",
-        "skills.level_erasmus": "Erasmus+",
-        "skills.level_cedid": "Civil Society",
+        "skills.desc": "My eye seeks harmony; my decisions are guided by the balance of analytical depth and aesthetic intuition. I aim to make the conceptual functional, and to capture perfection in the whole.",
+        "skills.cat1": "Technological Architecture & Product",
+        "skills.tech_name1": "Rapid Development with AI & Modern Tools",
+        "skills.tech_badge1": "Technology Orchestration",
+        "skills.tech_name2": "From Idea to Working Product",
+        "skills.tech_badge2": "Agile Prototyping",
+        "skills.tech_name3": "Scalable Structures with Next.js & React",
+        "skills.tech_badge3": "System Architecture",
+        "skills.tech_name4": "Native Solutions with Kotlin & Compose",
+        "skills.tech_badge4": "UI Realization",
+        "skills.tech_name5": "Firebase Integration & Backend Services",
+        "skills.tech_badge5": "Cloud Solutions & Data",
         
-        "skills.soft1": "Abstracting & Analyzing Problems",
-        "skills.soft2": "Intercultural Adaptation (English C1)",
-        "skills.soft3": "Community & Process Management",
+        "skills.cat2": "Aesthetics & Design",
+        "skills.design_name1": "UI/UX Principles & Figma",
+        "skills.design_badge1": "Interface & Experience Design",
+        "skills.design_name2": "Adobe Photoshop",
+        "skills.design_badge2": "Visual Identity & Manipulation",
+        "skills.design_name3": "Adobe Premiere Pro",
+        "skills.design_badge3": "Dynamic Content & Editing",
+        "skills.design_name4": "Atmosphere Creation with Logic Pro",
+        "skills.design_badge4": "Sound Design & Production",
+        "skills.design_name5": "Minimalism & Glassmorphism Adaptation",
+        "skills.design_badge5": "Digital Aesthetics",
+        
+        "skills.cat3": "Thought & Coordination",
+        "skills.thought_name1": "Philosophical Abstraction & Problem Solving",
+        "skills.thought_badge1": "Conceptual Analysis & Modeling",
+        "skills.thought_name2": "Advanced English (C1)",
+        "skills.thought_badge2": "Intercultural Adaptation",
+        "skills.thought_name3": "Civil Society & Collective Work",
+        "skills.thought_badge3": "Community & Process Management",
+        "skills.thought_name4": "Synthesis of Theory & Practice (Philosophy & Software)",
+        "skills.thought_badge4": "Interdisciplinary Bridging",
         
         "contact.tag": "Contact",
         "contact.title": "Let's Work Together",
@@ -292,7 +310,7 @@ const projectsData = {
             tr: "3 Ay",
             en: "3 Months"
         },
-        tags: ["Vanilla JS", "Web Audio API", "Somatic UX", "Firebase Auth", "PWA"],
+        tags: ["Vanilla JS", "Web Audio API", "Firebase Auth", "PWA"],
         links: [
             { textKey: "modal.live_site", url: "https://aurawell-wmhi.vercel.app/", icon: "external-link" },
             { textKey: "modal.code_review", url: "https://github.com/dilovantprk/aurawll", icon: "github" }
@@ -490,6 +508,61 @@ const projectsData = {
                     <li><strong>Firebase Auth + Firestore</strong> — cloud sync.</li>
                     <li><strong>WorkManager</strong> — background tasks.</li>
                     <li><strong>Python</strong> — data extraction and database population scripts.</li>
+                </ul>
+            `
+        }
+    },
+    adnet: {
+        title: "Adnet Karbon Emisyon Portalı",
+        categoryKey: "projects.adnet.category",
+        bannerClass: "visual-adnet",
+        icon: "wind",
+        role: {
+            tr: "Frontend Geliştirici",
+            en: "Frontend Developer"
+        },
+        duration: {
+            tr: "2 Ay",
+            en: "2 Months"
+        },
+        tags: ["React", "Chart.js", "REST API", "CSS Modules"],
+        links: [],
+        screenshots: [],
+        description: {
+            tr: `
+                <p>Adnet Türkiye'nin kurumsal karbon ayak izini ölçmek ve raporlamak amacıyla geliştirilen bir web portalı. Şirketin farklı departmanlarından gelen emisyon verilerini toplayıp görselleştiriyor; yöneticilerin karbon hedeflerini takip etmesini kolaylaştırıyor.</p>
+
+                <h4>Özellikler</h4>
+                <ul>
+                    <li><strong>Emisyon Dashboard'u:</strong> Departman bazlı CO₂ verilerinin grafikler ve metriklerle özet görünümü.</li>
+                    <li><strong>Veri Girişi Akışı:</strong> Farklı enerji kaynaklarından gelen tüketim verilerini standart bir forma dönüştüren form yapısı.</li>
+                    <li><strong>Raporlama:</strong> Seçilen zaman aralığı için emisyon özeti ve indirilebilir rapor.</li>
+                </ul>
+
+                <h4>Teknik Altyapı</h4>
+                <ul>
+                    <li><strong>React</strong> — bileşen tabanlı arayüz mimarisi.</li>
+                    <li><strong>Chart.js</strong> — çubuk, çizgi ve pasta grafik entegrasyonları.</li>
+                    <li><strong>REST API</strong> — arka uç veri akışı.</li>
+                    <li><strong>CSS Modules</strong> — izole stil yönetimi.</li>
+                </ul>
+            `,
+            en: `
+                <p>A web portal developed to measure and report Adnet Turkey's corporate carbon footprint. It aggregates emission data from various departments and visualizes it, making it easy for managers to track their carbon targets.</p>
+
+                <h4>Features</h4>
+                <ul>
+                    <li><strong>Emissions Dashboard:</strong> Summary view of department-level CO₂ data with charts and metrics.</li>
+                    <li><strong>Data Entry Flow:</strong> A form structure that converts energy consumption inputs from different sources into a standardized format.</li>
+                    <li><strong>Reporting:</strong> Emissions summary for selected date ranges and downloadable reports.</li>
+                </ul>
+
+                <h4>Technical Foundation</h4>
+                <ul>
+                    <li><strong>React</strong> — component-based UI architecture.</li>
+                    <li><strong>Chart.js</strong> — bar, line, and pie chart integrations.</li>
+                    <li><strong>REST API</strong> — backend data flow.</li>
+                    <li><strong>CSS Modules</strong> — isolated style management.</li>
                 </ul>
             `
         }
@@ -1018,6 +1091,21 @@ function initProjectModals() {
                     <div class="visual-flashcard">
                         <div class="visual-card-front">Leyla vü Mecnun</div>
                         <div class="visual-card-back">Fuzûlî</div>
+                    </div>
+                </div>
+            `;
+        } else if (projectId === "adnet") {
+            visualHTML = `
+                <div class="visual-inner">
+                    <div class="visual-carbon-scene">
+                        <div class="visual-carbon-ring ring-outer"></div>
+                        <div class="visual-carbon-ring ring-mid"></div>
+                        <div class="visual-carbon-center">
+                            <span class="visual-co2-label">CO₂</span>
+                        </div>
+                        <div class="visual-carbon-leaf leaf-1"></div>
+                        <div class="visual-carbon-leaf leaf-2"></div>
+                        <div class="visual-carbon-leaf leaf-3"></div>
                     </div>
                 </div>
             `;
