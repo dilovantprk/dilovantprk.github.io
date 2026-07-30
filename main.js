@@ -521,7 +521,7 @@ const projectsData = {
     ekotakippro: {
         title: "EkoTakip Pro",
         categoryKey: "projects.ekotakippro.category",
-        bannerClass: "visual-ekotakippro",
+        bannerClass: "visual-adnet",
         icon: "globe",
         role: {
             tr: "Lead Architect & Full-Stack Developer",
@@ -1165,19 +1165,6 @@ function initProjectModals() {
                 </div>
             `;
         } else if (projectId === "ekotakippro") {
-            visualHTML = `
-                <div class="visual-inner">
-                    <div class="visual-ekotakip-scene">
-                        <div class="visual-eco-ring ring-outer"></div>
-                        <div class="visual-eco-ring ring-mid"></div>
-                        <div class="visual-eco-center">
-                            <span class="visual-leaf-icon">🍃</span>
-                        </div>
-                        <div class="visual-eco-badge">Zero-PII</div>
-                    </div>
-                </div>
-            `;
-        } else if (projectId === "adnet") {
             visualHTML = `
                 <div class="visual-inner">
                     <div class="visual-carbon-scene">
