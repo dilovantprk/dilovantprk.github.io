@@ -39,6 +39,9 @@ const translations = {
         "projects.yazareser.category": "Education / Mobile App",
         "projects.yazareser.summary": "AYT Edebiyat sınavına hazırlanırken kapsamlı bir kaynak bulamayınca kendi verimi kendim derledim. 1.799 doğrulanmış kartlık bir veri havuzunu; aralıklı tekrar algoritmaları ve oyun modlarıyla birleştiren, öğrenim sürecini kolaylaştıran bir mobil uygulamaya dönüştürdüm.",
 
+        "projects.ekotakippro.category": "Climate Tech / Web App",
+        "projects.ekotakippro.summary": "Türkiye sanayi emisyonları, kurumsal iklim beyannameleri ve 4-kategorili kurumsal etkinlik karbon hesaplayıcısını tek çatı altında toplayan, %100 gizlilik odaklı (Zero-PII) iklim ve karbon yönetim portalı.",
+
         "projects.adnet.category": "Sürdürülebilirlik / Web App",
         "projects.adnet.summary": "Adnet Türkiye için bir karbon emisyon portalı geliştirdim — kurumsal karbon ayak izi verilerini görselleştiren bir web arayüzü.",
         
@@ -178,6 +181,9 @@ const translations = {
         
         "projects.yazareser.category": "Education / Mobile App",
         "projects.yazareser.summary": "When I couldn't find a comprehensive source while preparing for the AYT Literature exam, I compiled my own data. I transformed a database of 1,799 verified cards into a mobile app that facilitates the learning process by combining spaced repetition algorithms and game modes.",
+
+        "projects.ekotakippro.category": "Climate Tech / Web App",
+        "projects.ekotakippro.summary": "A 100% privacy-focused (Zero-PII) climate and carbon management portal bringing together Turkey's industrial emissions, corporate climate declarations, and a 4-category corporate event carbon calculator.",
 
         "projects.adnet.category": "Sustainability / Web App",
         "projects.adnet.summary": "I built a carbon emission portal for Adnet Turkey — a web interface that visualizes corporate carbon footprint data.",
@@ -508,6 +514,70 @@ const projectsData = {
                     <li><strong>Firebase Auth + Firestore</strong> — cloud sync.</li>
                     <li><strong>WorkManager</strong> — background tasks.</li>
                     <li><strong>Python</strong> — data extraction and database population scripts.</li>
+                </ul>
+            `
+        }
+    },
+    ekotakippro: {
+        title: "EkoTakip Pro",
+        categoryKey: "projects.ekotakippro.category",
+        bannerClass: "visual-ekotakippro",
+        icon: "globe",
+        role: {
+            tr: "Lead Architect & Full-Stack Developer",
+            en: "Lead Architect & Full-Stack Developer"
+        },
+        duration: {
+            tr: "Temmuz 2026",
+            en: "July 2026"
+        },
+        tags: ["Vanilla JS (ES6+)", "CSS3 (Apple HIG)", "Chart.js", "Leaflet.js", "Vercel Serverless", "Python (ETL)", "PWA", "Zero-PII"],
+        links: [
+            { textKey: "modal.live_site", url: "https://ekotakippro.vercel.app", icon: "external-link" },
+            { textKey: "modal.code_review", url: "https://github.com/dilovantprk/ekotakippro", icon: "github" }
+        ],
+        screenshots: [],
+        description: {
+            tr: `
+                <p><strong>EkoTakip Pro</strong>, kurumların ve tesislerin sera gazı emisyonlarını ISO/GHG Protokolü standartlarına uygun olarak hesaplayan, görselleştiren ve raporlayan bağımsız bir iklim portalıdır.</p>
+                <p>Uygulama, Türkiye genelindeki sanayi tesislerinin 20 yıllık tarihsel emisyon verilerini interaktif haritalar (Leaflet.js) ve dinamik grafiklerle (Chart.js) sunarken; kurumsal etkinlikler için seyahat, tesis, catering ve malzeme/atık olmak üzere 4 farklı kategoride detaylı emisyon hesaplaması yapar. İstemci taraflı (Zero-PII) mimarisi sayesinde veriler yalnızca kullanıcının tarayıcısında saklanır ve işlenir.</p>
+
+                <h4>Öne Çıkan Özellikler</h4>
+                <ul>
+                    <li><strong>4-Kategorili Etkinlik Karbon Hesaplayıcısı:</strong> Seyahat (uçuş, transfer, kargo), Tesis (alan, elektrik, konaklama), Catering (kırmızı et, tavuk/balık, veg/vegan), Malzeme & Atık (sahne branda m², promosyon ürün).</li>
+                    <li><strong>Makro İklim Zekası & Haritalama:</strong> Türkiye genelindeki sanayi tesisleri, holding emisyonları ve 20 yıllık tarihsel sera gazı verilerinin Leaflet.js ve Chart.js ile görselleştirilmesi.</li>
+                    <li><strong>%100 Gizlilik Odaklı Mimari (Zero-PII):</strong> Tüm emisyon verilerinin yalnızca kullanıcının tarayıcısında (localStorage) işlenmesi ve saklanması.</li>
+                    <li><strong>Tek Tıkla PDF Raporu ve Veri Aktarımı:</strong> Kurumsal yönetim sunumlarına hazır yazdırılabilir PDF emisyon beyannamesi ile CSV/JSON veri dışa/içe aktarımı.</li>
+                    <li><strong>Apple HIG & Native PWA Deneyimi:</strong> Otomatik açık/koyu tema senkronizasyonu, PWA desteği ve mobil cihazlar için optimize edilmiş sezgisel arayüz.</li>
+                </ul>
+
+                <h4>Teknik Altyapı</h4>
+                <ul>
+                    <li><strong>Frontend:</strong> Vanilla JavaScript (ES6+), HTML5, Vanilla CSS3 (Apple HIG Design System, Dark/Light Mode), Chart.js, Leaflet.js, FontAwesome 6, Lucide Icons.</li>
+                    <li><strong>Backend & API:</strong> Vercel Serverless Functions (cloud-sync.js), Python (process_data.py - Veri dönüşüm & temizleme), Node.js Runtime.</li>
+                    <li><strong>Veritabanı & Depolama:</strong> Yerel Depolama (localStorage %100 Zero-PII), CSV & JSON Veri Yapıları.</li>
+                    <li><strong>DevOps & PWA:</strong> Vercel (Edge Network), Web App Manifest, Service Worker, Strict CSP, HSTS, CORS Guards.</li>
+                </ul>
+            `,
+            en: `
+                <p><strong>EkoTakip Pro</strong> is an independent climate portal that calculates, visualizes, and reports greenhouse gas emissions for organizations and facilities in compliance with ISO/GHG Protocol standards.</p>
+                <p>The application presents 20-year historical emission data of industrial facilities across Turkey using interactive maps (Leaflet.js) and dynamic charts (Chart.js), while offering detailed 4-category emission calculations (Travel, Facility, Catering, Material/Waste) for corporate events. Thanks to its client-side (Zero-PII) architecture, all data is processed and stored strictly within the user's browser.</p>
+
+                <h4>Key Features</h4>
+                <ul>
+                    <li><strong>4-Category Event Carbon Calculator:</strong> Travel (flights, transfer, cargo), Facility (area, electricity, lodging), Catering (red meat, poultry, veg/vegan menus), Material & Waste (stage banners m², promo items).</li>
+                    <li><strong>Macro Climate Intelligence & Mapping:</strong> Visualization of industrial facilities, holding emissions, and 20-year historical GHG trends across Turkey using Leaflet.js and Chart.js.</li>
+                    <li><strong>100% Privacy-Focused Architecture (Zero-PII):</strong> All emission data is processed and stored client-side in local storage with zero PII retention.</li>
+                    <li><strong>One-Click PDF Reports & Data Export:</strong> Boardroom-ready printable PDF emission declarations with CSV/JSON import/export capabilities.</li>
+                    <li><strong>Apple HIG & Native PWA Experience:</strong> Automatic light/dark theme sync, PWA support, and responsive mobile UITabBar navigation.</li>
+                </ul>
+
+                <h4>Technical Foundation</h4>
+                <ul>
+                    <li><strong>Frontend:</strong> Vanilla JavaScript (ES6+), HTML5, Vanilla CSS3 (Apple HIG Design System, Dark/Light Mode), Chart.js, Leaflet.js, FontAwesome 6, Lucide Icons.</li>
+                    <li><strong>Backend & API:</strong> Vercel Serverless Functions (cloud-sync.js), Python (process_data.py ETL script), Node.js Runtime.</li>
+                    <li><strong>Storage & Data:</strong> Browser LocalStorage (%100 Zero-PII), CSV & JSON Data Formats.</li>
+                    <li><strong>DevOps & PWA:</strong> Vercel Deployment (Edge Network), Web App Manifest, Service Worker, Strict CSP, HSTS, CORS Guards.</li>
                 </ul>
             `
         }
@@ -1091,6 +1161,19 @@ function initProjectModals() {
                     <div class="visual-flashcard">
                         <div class="visual-card-front">Leyla vü Mecnun</div>
                         <div class="visual-card-back">Fuzûlî</div>
+                    </div>
+                </div>
+            `;
+        } else if (projectId === "ekotakippro") {
+            visualHTML = `
+                <div class="visual-inner">
+                    <div class="visual-ekotakip-scene">
+                        <div class="visual-eco-ring ring-outer"></div>
+                        <div class="visual-eco-ring ring-mid"></div>
+                        <div class="visual-eco-center">
+                            <span class="visual-leaf-icon">🍃</span>
+                        </div>
+                        <div class="visual-eco-badge">Zero-PII</div>
                     </div>
                 </div>
             `;
