@@ -9,7 +9,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Shrikhand&family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@600;800&display=swap" rel="stylesheet">
     
     <!-- Feather Icons -->
     <script src="https://unpkg.com/feather-icons"></script>
@@ -17,13 +17,16 @@
     <!-- Custom Style -->
     <link rel="stylesheet" href="style.css">
     
-    <!-- Theme Initializer (Device Settings Match) -->
+    <!-- Theme Initializer (Default Light Mode) -->
     <script>
-        const systemPrefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-        document.documentElement.className = systemPrefersDark ? "dark" : "light";
+        document.documentElement.className = "light";
     </script>
 </head>
 <body>
+    <!-- Film Grain Overlay & Pattern Layer -->
+    <div class="grain-overlay"></div>
+    <div class="retro-bg-pattern-layer pattern-checkerboard" id="retro-bg-pattern-layer"></div>
+
     <!-- Navigation -->
     <header class="header">
         <div class="nav-container">
@@ -113,8 +116,38 @@
                     <p class="section-desc" data-i18n="projects.desc">Ayinesi iştir kişinin, lafa bakılmaz.</p>
                 </div>
                 
-                <div class="projects-grid">
-                    <!-- Project 1: Aura -->
+                <div class="projects-grid" id="projects-grid">
+                    <!-- Project 1: AradaPay -->
+                    <div class="project-card animate-scroll" data-project="aradapay">
+                        <div class="project-visual-container visual-aradapay">
+                            <div class="visual-inner">
+                                <div class="visual-aradapay-scene">
+                                    <div class="visual-arada-node node-a">
+                                        <span class="node-label">A</span>
+                                    </div>
+                                    <div class="visual-arada-node node-b">
+                                        <span class="node-label">B</span>
+                                    </div>
+                                    <div class="visual-arada-node node-c">
+                                        <span class="node-label">C</span>
+                                    </div>
+                                    <svg class="visual-arada-graph" viewBox="0 0 170 120">
+                                        <path class="graph-line line-1" d="M 35 30 L 135 30" />
+                                        <path class="graph-line line-2" d="M 135 30 L 85 92" />
+                                        <path class="graph-line line-3" d="M 85 92 L 35 30" />
+                                        <path class="graph-direct-opt" d="M 35 30 Q 85 52 135 30" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <span class="project-category" data-i18n="projects.aradapay.category">Android & FinTech</span>
+                            <h3 class="project-title-text">AradaPay</h3>
+                            <p class="project-summary" data-i18n="projects.aradapay.summary">Grup harcamalarını Cross-Settlement DFS graf algoritmalarıyla optimize eden, Merkle Ağacı ile kriptografik dekontlar üreten Material 3 Android finans platformu.</p>
+                        </div>
+                    </div>
+
+                    <!-- Project 2: Aura -->
                     <div class="project-card animate-scroll" data-project="aura">
                         <div class="project-visual-container visual-aura">
                             <div class="visual-inner">
@@ -128,17 +161,61 @@
                         <div class="project-info">
                             <span class="project-category" data-i18n="projects.aura.category">Wellness / Web App</span>
                             <h3 class="project-title-text">Aura</h3>
-                            <p class="project-summary" data-i18n="projects.aura.summary">Modern yaşamın getirdiği stres ve kaygıyı, bedensel duyumları takip edip nefes ve ses sentezleri ile otonom sinir sistemini sakinleştirmeyi amaçlayan kişisel somatik regülasyon alanı.</p>
-                            <div class="project-tech-tags">
-                                <span>Vanilla JS</span>
-                                <span>Web Audio API</span>
-                                <span>PWA</span>
+                            <p class="project-summary" data-i18n="projects.aura.summary">Nefes ve ses sentezleri ile otonom sinir sistemini sakinleştiren kişisel somatik regülasyon alanı.</p>
+                        </div>
+                    </div>
+
+                    <!-- Project 3: EkoTakip Pro -->
+                    <div class="project-card animate-scroll" data-project="ekotakippro">
+                        <div class="project-visual-container visual-adnet">
+                            <div class="visual-inner">
+                                <div class="visual-carbon-scene">
+                                    <div class="visual-carbon-ring ring-outer"></div>
+                                    <div class="visual-carbon-ring ring-mid"></div>
+                                    <div class="visual-carbon-center">
+                                        <span class="visual-co2-label">CO2</span>
+                                    </div>
+                                    <div class="visual-carbon-leaf leaf-1"></div>
+                                    <div class="visual-carbon-leaf leaf-2"></div>
+                                    <div class="visual-carbon-leaf leaf-3"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <span class="project-category" data-i18n="projects.ekotakippro.category">Climate Tech / Web App</span>
+                            <h3 class="project-title-text">EkoTakip Pro</h3>
+                            <p class="project-summary" data-i18n="projects.ekotakippro.summary">Sanayi emisyonları ve kurumsal karbon hesaplamasını tek çatıda toplayan gizlilik odaklı iklim portalı.</p>
+                        </div>
+                    </div>
+
+                    <!-- Mobile Right-Side "Diğer Projeler" Card Button -->
+                    <div class="project-card mobile-other-projects-btn-card" id="mobile-other-projects-btn-card" role="button" tabindex="0" aria-expanded="false">
+                        <div class="project-visual-container visual-other-projects">
+                            <div class="visual-inner">
+                                <div class="visual-other-stacked">
+                                    <div class="other-preview-chip chip-1">
+                                        <span class="chip-dot"></span> STTFL
+                                    </div>
+                                    <div class="other-preview-chip chip-2">
+                                        <span class="chip-dot alt"></span> YazarEser
+                                    </div>
+                                    <div class="other-count-badge">+2 Proje</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <span class="project-category">KEŞFET / ARŞİV</span>
+                            <h3 class="project-title-text">Diğer Projeler</h3>
+                            <p class="project-summary">STTFL Mezun Topluluğu ve YazarEser Android projelerini gör.</p>
+                            <div class="other-card-action">
+                                <span class="btn-text">Projeleri Aç</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Project 2: STTFL (Sosyal) -->
-                    <div class="project-card animate-scroll" data-project="sosyal">
+                    <!-- Project 4: STTFL (Sosyal) -->
+                    <div class="project-card animate-scroll other-project" data-project="sosyal">
                         <div class="project-visual-container visual-sosyal">
                             <div class="visual-inner">
                                 <div class="visual-forum-header">
@@ -158,67 +235,34 @@
                         <div class="project-info">
                             <span class="project-category" data-i18n="projects.sosyal.category">Social / Web App</span>
                             <h3 class="project-title-text">STTFL</h3>
-                            <p class="project-summary" data-i18n="projects.sosyal.summary">Lise yıllarımdan gelen bağları koparmamak ve ortak anıları canlı tutmak için Siirt Türk Telekom Fen Lisesi (STTFL) mezunları ve öğrencilerini bir araya getiren özgür tartışma ve topluluk platformu.</p>
-                            <div class="project-tech-tags">
-                                <span>Next.js 15</span>
-                                <span>Genkit AI</span>
-                                <span>Firebase</span>
-                                <span>Tailwind CSS</span>
-                            </div>
+                            <p class="project-summary" data-i18n="projects.sosyal.summary">STTFL mezun ve öğrencilerini bir araya getiren özgür tartışma ve topluluk platformu.</p>
                         </div>
                     </div>
 
-                    <!-- Project 3: YazarEser -->
-                    <div class="project-card animate-scroll" data-project="yazareser">
+                    <!-- Project 5: YazarEser -->
+                    <div class="project-card animate-scroll other-project" data-project="yazareser">
                         <div class="project-visual-container visual-yazareser">
                             <div class="visual-inner">
                                 <div class="visual-flashcard">
-                                    <div class="visual-card-front">Leyla vü Mecnun</div>
-                                    <div class="visual-card-back">Fuzûlî</div>
+                                    <div class="visual-card-front">Leyla vu Mecnun</div>
+                                    <div class="visual-card-back">Fuzuli</div>
                                 </div>
                             </div>
                         </div>
                         <div class="project-info">
                             <span class="project-category" data-i18n="projects.yazareser.category">Education / Android</span>
                             <h3 class="project-title-text">YazarEser</h3>
-                            <p class="project-summary" data-i18n="projects.yazareser.summary">AYT Edebiyat sınavına hazırlanan öğrencilerin ezber yükünü hafifletmek, kafa karıştırıcı yazar-eser eşleşmelerini oyunlaştırılmış kartlarla eğlenceli ve kalıcı bir öğrenme sürecine dönüştürmek için tasarlandı.</p>
-                            <div class="project-tech-tags">
-                                <span>Kotlin</span>
-                                <span>Jetpack Compose</span>
-                                <span>Room DB</span>
-                                <span>Firebase</span>
-                            </div>
+                            <p class="project-summary" data-i18n="projects.yazareser.summary">AYT Edebiyat sınavına hazırlanan öğrenciler için oyunlaştırılmış yazar-eser ezber kartları.</p>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Project 4: EkoTakip Pro -->
-                    <div class="project-card animate-scroll" data-project="ekotakippro">
-                        <div class="project-visual-container visual-adnet">
-                            <div class="visual-inner">
-                                <div class="visual-carbon-scene">
-                                    <div class="visual-carbon-ring ring-outer"></div>
-                                    <div class="visual-carbon-ring ring-mid"></div>
-                                    <div class="visual-carbon-center">
-                                        <span class="visual-co2-label">CO₂</span>
-                                    </div>
-                                    <div class="visual-carbon-leaf leaf-1"></div>
-                                    <div class="visual-carbon-leaf leaf-2"></div>
-                                    <div class="visual-carbon-leaf leaf-3"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="project-info">
-                            <span class="project-category" data-i18n="projects.ekotakippro.category">Climate Tech / Web App</span>
-                            <h3 class="project-title-text">EkoTakip Pro</h3>
-                            <p class="project-summary" data-i18n="projects.ekotakippro.summary">Türkiye sanayi emisyonları, kurumsal iklim beyannameleri ve 4-kategorili kurumsal etkinlik karbon hesaplayıcısını tek çatı altında toplayan, %100 gizlilik odaklı (Zero-PII) iklim ve karbon yönetim portalı.</p>
-                            <div class="project-tech-tags">
-                                <span>Vanilla JS</span>
-                                <span>Leaflet.js</span>
-                                <span>Chart.js</span>
-                                <span>PWA</span>
-                            </div>
-                        </div>
-                    </div>
+                <!-- Other Projects Toggle (Desktop Only) -->
+                <div class="other-projects-toggle-wrapper">
+                    <button class="other-projects-toggle" id="other-projects-toggle" aria-expanded="false">
+                        <span class="toggle-text" data-i18n="projects.otherToggle">Diger Projeler</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="toggle-chevron"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </button>
                 </div>
             </div>
         </section>
@@ -487,11 +531,20 @@
     <div class="project-modal" id="project-modal" aria-hidden="true" role="dialog">
         <div class="modal-backdrop" id="modal-backdrop"></div>
         <div class="modal-wrapper">
-            <button class="modal-close" id="modal-close" aria-label="Kapat">
-                <i data-feather="x"></i>
-            </button>
+            <div class="modal-sticky-bar" id="modal-sticky-bar">
+                <div class="modal-sticky-title-group">
+                    <span class="modal-sticky-cat" id="modal-sticky-cat">WELLNESS / WEB APP</span>
+                    <h3 class="modal-sticky-title" id="modal-sticky-title">Proje Detayları</h3>
+                </div>
+                <button class="modal-close" id="modal-close" aria-label="Kapat">
+                    <i data-feather="x"></i>
+                </button>
+            </div>
             <div class="modal-body" id="modal-body">
                 <!-- Content will be injected dynamically by JavaScript -->
+            </div>
+            <div class="modal-sticky-bottom-bar" id="modal-sticky-bottom-bar">
+                <!-- Mobile Sticky Action Buttons injected dynamically by JavaScript -->
             </div>
         </div>
     </div>
@@ -514,6 +567,44 @@
     </div>
 
     <!-- Custom Script -->
-    <script src="main.js"></script>
+    <script type="module" src="main.js"></script>
+
+    <!-- Other Projects Toggle -->
+    <script>
+        (function() {
+            const toggleBtn = document.getElementById('other-projects-toggle');
+            const mobileCardBtn = document.getElementById('mobile-other-projects-btn-card');
+            const grid = document.getElementById('projects-grid');
+
+            function toggleOtherProjects() {
+                if (!grid) return;
+                const isExpanded = grid.classList.contains('show-other-projects');
+                grid.classList.toggle('show-other-projects');
+                
+                if (toggleBtn) toggleBtn.setAttribute('aria-expanded', !isExpanded);
+                if (mobileCardBtn) mobileCardBtn.setAttribute('aria-expanded', !isExpanded);
+
+                if (!isExpanded && grid) {
+                    setTimeout(() => {
+                        const firstOther = grid.querySelector('.project-card.other-project');
+                        if (firstOther) {
+                            firstOther.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+                        }
+                    }, 50);
+                }
+            }
+
+            if (toggleBtn) toggleBtn.addEventListener('click', toggleOtherProjects);
+            if (mobileCardBtn) {
+                mobileCardBtn.addEventListener('click', toggleOtherProjects);
+                mobileCardBtn.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        toggleOtherProjects();
+                    }
+                });
+            }
+        })();
+    </script>
 </body>
 </html>

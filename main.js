@@ -44,6 +44,9 @@ const translations = {
 
         "projects.adnet.category": "Sürdürülebilirlik / Web App",
         "projects.adnet.summary": "Adnet Türkiye için bir karbon emisyon portalı geliştirdim — kurumsal karbon ayak izi verilerini görselleştiren bir web arayüzü.",
+
+        "projects.aradapay.category": "Android & FinTech",
+        "projects.aradapay.summary": "Grup harcamalarını Cross-Settlement DFS graf algoritmalarıyla optimize eden, Merkle Ağacı ile kriptografik dekontlar üreten Material 3 Android finans platformu.",
         
         "timeline.tag": "Geçmiş",
         "timeline.title": "Geçtiğim Yerler",
@@ -152,6 +155,7 @@ const translations = {
         "modal.about": "Proje Hakkında",
         "modal.code_review": "Kodları İncele",
         "modal.live_site": "Siteyi Aç",
+        "modal.apk_download": "APK İndir",
         "modal.screenshots": "Ekran Görüntüleri"
     },
     en: {
@@ -187,6 +191,9 @@ const translations = {
 
         "projects.adnet.category": "Sustainability / Web App",
         "projects.adnet.summary": "I built a carbon emission portal for Adnet Turkey — a web interface that visualizes corporate carbon footprint data.",
+
+        "projects.aradapay.category": "Android & FinTech",
+        "projects.aradapay.summary": "A next-gen Material 3 Android fintech platform optimizing group expenses via Cross-Settlement DFS graph algorithms and generating cryptographic Merkle Tree receipts.",
         
         "timeline.tag": "Past",
         "timeline.title": "Education & Experience",
@@ -295,6 +302,7 @@ const translations = {
         "modal.about": "About Project",
         "modal.code_review": "Inspect Code",
         "modal.live_site": "Open Site",
+        "modal.apk_download": "Download APK",
         "modal.screenshots": "Screenshots"
     }
 };
@@ -398,7 +406,7 @@ const projectsData = {
         tags: ["Next.js 15", "Google Genkit", "Gemini API", "Firebase App Hosting", "Cloud Firestore", "Tailwind CSS"],
         links: [
             { textKey: "modal.live_site", url: "https://www.sttflsozluk.com/", icon: "external-link" },
-            { textKey: "modal.code_review", url: "https://github.com/dilovantprk", icon: "github" }
+            { textKey: "modal.code_review", url: "https://github.com/dilovantprk/sttfl", icon: "github" }
         ],
         screenshots: [
             "assets/sttfl-1.jpeg",
@@ -636,13 +644,92 @@ const projectsData = {
                 </ul>
             `
         }
+    },
+    aradapay: {
+        title: "AradaPay",
+        categoryKey: "projects.aradapay.category",
+        bannerClass: "visual-aradapay",
+        icon: "credit-card",
+        role: {
+            tr: "Lead Android Architect & UI/UX Designer",
+            en: "Lead Android Architect & UI/UX Designer"
+        },
+        duration: {
+            tr: "2026",
+            en: "2026"
+        },
+        tags: [
+            "Kotlin",
+            "Jetpack Compose",
+            "Material 3",
+            "Clean Architecture",
+            "MVI",
+            "Dagger Hilt",
+            "Firebase Firestore",
+            "Directed Graph DFS",
+            "Merkle Tree",
+            "Google ML Kit",
+            "AndroidX Biometric",
+            "iText PDF"
+        ],
+        links: [
+            { textKey: "modal.code_review", url: "https://github.com/dilovantprk/AradaPay", icon: "github" },
+            { textKey: "modal.apk_download", url: "https://github.com/dilovantprk/AradaPay/releases", icon: "download" }
+        ],
+        screenshots: [
+            "assets/aradapay.png"
+        ],
+        description: {
+            tr: `
+                <p><strong>AradaPay (ArdaBank)</strong>, karmaşık grup harcamalarını ve çoklu borç ilişkilerini matematiksel optimizasyonla çözen, kriptografik Merkle Ağacı ile manipüle edilemez dekontlar üreten Material 3 tabanlı yeni nesil bir Android finans platformudur.</p>
+
+                <h4>Öne Çıkan Özellikler & Algoritmalar</h4>
+                <ul>
+                    <li><strong>Cross-Settlement DFS Borç Sadeleştirme:</strong> Çoklu kullanıcılar arasındaki döngüsel borç düğümlerini (A → B, B → C, C → A) yönlü graf (Directed Graph) algoritmalarıyla analiz ederek transfer adedini %65 oranında azaltır ve doğrudan net transfer modeline indirger.</li>
+                    <li><strong>Kriptografik Merkle Tree Makbuz Motoru:</strong> Harcama geçmişini ve işlem bloklarını Merkle Kök Hash'i (Root Hash) ile mühürler; üçüncü taraflarca kriptografik olarak doğrulanabilir, resmi PDF dekontları üretir.</li>
+                    <li><strong>KVKK Uyumlu Biyometrik Kasa & Bakiye Maskeleme:</strong> <code>MaskedFinancialText</code> bileşeni ile halka açık alanlarda tek dokunuşla bakiyeleri gizler; AndroidX Biometric (FaceID / Parmak İzi) ve SHA-256 şifreli PIN kasası ile bankacılık düzeyinde güvenlik sunar.</li>
+                    <li><strong>Temassız QR Ekosistemi:</strong> Google ML Kit ve CameraX tabanlı donanım hızlandırmalı kamera katmanı ile 100 milisaniyenin altında QR kod tanıma ve anında borç kapatma deneyimi sağlar.</li>
+                    <li><strong>Çoklu Bölüşüm Modelleri:</strong> Eşit (equal), yüzdesel (percentage) ve kesin tutarlı (exact) harcama bölüşüm yöntemleri ile TRY, USD ve EUR para birimi desteği.</li>
+                </ul>
+
+                <h4>Mimari & Teknik Altyapı</h4>
+                <ul>
+                    <li><strong>Modern Android Yığını:</strong> %100 saf Kotlin (JVM 17), Coroutines & StateFlow reaktif veri akışları.</li>
+                    <li><strong>UI & Tasarım Sistemi:</strong> Jetpack Compose, Material 3 (Material You dinamik temalama, Dark Tonal Elevation, Edge-to-Edge).</li>
+                    <li><strong>Mimari Standartlar:</strong> Hedvig Android Clean Architecture, MVI (Model-View-Intent) ve Tek Yönlü Veri Akışı (UDF).</li>
+                    <li><strong>Bağımlılık Enjeksiyonu & Veri:</strong> Dagger Hilt DI, Cloud Firestore gerçek zamanlı senkronizasyon, Firebase Auth & FCM bildirim altyapısı.</li>
+                    <li><strong>Güvenlik & Donanım:</strong> Jetpack Encrypted DataStore, AndroidX Biometrics, CameraX, Google ML Kit Vision Barcode Scanner, iText PDF & ZXing Barcode.</li>
+                </ul>
+            `,
+            en: `
+                <p><strong>AradaPay (ArdaBank)</strong> is a next-generation Material 3 Android fintech platform that resolves complex group expenses and multi-party debt cycles through mathematical optimization, generating tamper-proof receipts via cryptographic Merkle Trees.</p>
+
+                <h4>Key Features & Algorithms</h4>
+                <ul>
+                    <li><strong>Cross-Settlement DFS Debt Simplification:</strong> Analyzes circular debt loops (A → B, B → C, C → A) across multi-user graphs using Directed Graph DFS algorithms, reducing total transaction count by 65% down to minimal direct net transfers.</li>
+                    <li><strong>Cryptographic Merkle Tree Receipt Engine:</strong> Seals transaction histories with Merkle Root Hashes, enabling third-party cryptographically verifiable, exportable PDF bank-grade receipts.</li>
+                    <li><strong>Privacy-First Biometric Vault & Balance Masking:</strong> Dynamic privacy masking (<code>MaskedFinancialText</code>) to obscure sensitive balances in public spaces; protected by AndroidX Biometrics (FaceID / Fingerprint) and SHA-256 encrypted PIN vault.</li>
+                    <li><strong>Contactless QR Ecosystem:</strong> Hardware-accelerated camera layer built with CameraX and Google ML Kit for sub-100ms instant QR scanning and seamless peer-to-peer settlement.</li>
+                    <li><strong>Flexible Split Methods:</strong> Equal, percentage-based, and exact amount division models supporting multi-currency transactions (TRY, USD, EUR).</li>
+                </ul>
+
+                <h4>Architecture & Technical Foundation</h4>
+                <ul>
+                    <li><strong>Modern Android Stack:</strong> 100% Kotlin (JVM 17), Coroutines & StateFlow reactive streams.</li>
+                    <li><strong>UI & Design System:</strong> Jetpack Compose, Material 3 (Material You dynamic theming, Dark Tonal Elevation, Edge-to-Edge).</li>
+                    <li><strong>Architecture:</strong> Hedvig Android Clean Architecture, MVI (Model-View-Intent), Unidirectional Data Flow (UDF).</li>
+                    <li><strong>Dependency Injection & Cloud:</strong> Dagger Hilt DI, Cloud Firestore real-time sync, Firebase Auth & Firebase Cloud Messaging (FCM).</li>
+                    <li><strong>Security & Hardware:</strong> Jetpack Encrypted DataStore, AndroidX Biometrics, CameraX, Google ML Kit Vision Barcode, iText PDF & ZXing.</li>
+                </ul>
+            `
+        }
     }
 };
 
 /* ==========================================================================
    INITIALIZATION & FEATHER ICONS
    ========================================================================== */
-document.addEventListener("DOMContentLoaded", () => {
+function startApp() {
     // Initialize language first
     initLanguage();
     
@@ -658,7 +745,13 @@ document.addEventListener("DOMContentLoaded", () => {
     initProjectModals();
     initContactForm();
     initSmoothScrollInterception();
-});
+}
+
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", startApp);
+} else {
+    startApp();
+}
 
 /* ==========================================================================
    LANGUAGE ENGINE (TR / EN)
@@ -1064,15 +1157,26 @@ function initProjectModals() {
         }
     });
 
+    const wrapper = modal.querySelector(".modal-wrapper");
+    if (wrapper) {
+        wrapper.addEventListener("scroll", () => {
+            if (wrapper.scrollTop > 30) {
+                wrapper.classList.add("is-scrolled");
+            } else {
+                wrapper.classList.remove("is-scrolled");
+            }
+        });
+    }
+
     function openModal() {
         modal.classList.add("active");
         modal.setAttribute("aria-hidden", "false");
         document.body.style.overflow = "hidden"; // Prevent background scroll
         
         // Reset scroll position of the modal wrapper
-        const wrapper = modal.querySelector(".modal-wrapper");
         if (wrapper) {
             wrapper.scrollTop = 0;
+            wrapper.classList.remove("is-scrolled");
         }
     }
 
@@ -1080,6 +1184,9 @@ function initProjectModals() {
         modal.classList.remove("active");
         modal.setAttribute("aria-hidden", "true");
         document.body.style.overflow = ""; // Restore scroll
+        if (wrapper) {
+            wrapper.classList.remove("is-scrolled");
+        }
     }
 
     function renderModalContent(project, projectId) {
@@ -1089,6 +1196,12 @@ function initProjectModals() {
         const labelDuration = translations[currentLanguage]["modal.duration"];
         const labelTech = translations[currentLanguage]["modal.tech"];
         const categoryText = translations[currentLanguage][project.categoryKey] || "";
+
+        // Update sticky header title & category
+        const stickyCat = document.getElementById("modal-sticky-cat");
+        const stickyTitle = document.getElementById("modal-sticky-title");
+        if (stickyCat) stickyCat.textContent = categoryText;
+        if (stickyTitle) stickyTitle.textContent = project.title;
 
         // Build tech tags HTML
         const tagsHTML = project.tags.map(tag => `<span>${tag}</span>`).join("");
@@ -1179,6 +1292,28 @@ function initProjectModals() {
                     </div>
                 </div>
             `;
+        } else if (projectId === "aradapay") {
+            visualHTML = `
+                <div class="visual-inner">
+                    <div class="visual-aradapay-scene">
+                        <div class="visual-arada-node node-a">
+                            <span class="node-label">A</span>
+                        </div>
+                        <div class="visual-arada-node node-b">
+                            <span class="node-label">B</span>
+                        </div>
+                        <div class="visual-arada-node node-c">
+                            <span class="node-label">C</span>
+                        </div>
+                        <svg class="visual-arada-graph" viewBox="0 0 170 120">
+                            <path class="graph-line line-1" d="M 35 30 L 135 30" />
+                            <path class="graph-line line-2" d="M 135 30 L 85 92" />
+                            <path class="graph-line line-3" d="M 85 92 L 35 30" />
+                            <path class="graph-direct-opt" d="M 35 30 Q 85 52 135 30" />
+                        </svg>
+                    </div>
+                </div>
+            `;
         }
 
         modalBody.innerHTML = `
@@ -1222,6 +1357,11 @@ function initProjectModals() {
                 </div>
             </div>
         `;
+
+        const modalBottomBar = document.getElementById("modal-sticky-bottom-bar");
+        if (modalBottomBar) {
+            modalBottomBar.innerHTML = linksHTML;
+        }
         
         // Replace Feather Icons in newly injected markup
         if (typeof feather !== "undefined") {

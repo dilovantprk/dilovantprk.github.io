@@ -1,0 +1,33 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Users: Sadece kimliği doğrulanmış kullanıcılar kendi belgelerini okuyabilir/yazabilir
+    match /users/{userId} {
+      allow read: if request.auth != null && request.auth.uid == userId;
+      allow write: if request.auth != null && request.auth.uid == userId;
+    }
+
+    // Expenses: Auth required, ilgili kullanıcılar okuyabilir, oluşturan yazabilir
+    match /expenses/{expenseId} {
+      allow read: if request.auth != null;
+      allow create: if request.auth != null && request.resource.data.paid_by == request.auth.uid;
+      allow update, delete: if request.auth != null && resource.data.paid_by == request.auth.uid;
+    }
+
+    // Settlements: Auth required, ilgili kullanıcılar okuyabilir/yazabilir
+    match /settlements/{settlementId} {
+      allow read: if request.auth != null;
+      allow create: if request.auth != null && request.resource.data.payer_id == request.auth.uid;
+      allow update, delete: if request.auth != null && (
+        resource.data.payer_id == request.auth.uid || resource.data.receiver_id == request.auth.uid
+      );
+    }
+
+    // Diğer tüm yollar: Erişim tamamen engellenir
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
