@@ -469,9 +469,10 @@ const projectsData = {
             tr: "3 Ay",
             en: "3 Months"
         },
-        tags: ["Kotlin", "Jetpack Compose", "Room DB v3", "Firebase Auth", "WorkManager", "Python"],
+        tags: ["Kotlin", "Jetpack Compose", "Material 3", "Room DB v3", "Learning Path", "Games Hub", "Firebase Auth", "Python"],
         links: [
-            { textKey: "modal.code_review", url: "https://github.com/dilovantprk/yazareser", icon: "github" }
+            { textKey: "modal.code_review", url: "https://github.com/dilovantprk/yazareser", icon: "github" },
+            { textKey: "modal.apk_download", url: "https://github.com/dilovantprk/yazareser/raw/main/YazarEser.apk", icon: "download" }
         ],
         screenshots: [
             "assets/yazareser-1.jpeg",
@@ -673,8 +674,9 @@ const projectsData = {
             "iText PDF"
         ],
         links: [
+            { textKey: "modal.live_site", url: "https://aradapay.vercel.app", icon: "external-link" },
             { textKey: "modal.code_review", url: "https://github.com/dilovantprk/AradaPay", icon: "github" },
-            { textKey: "modal.apk_download", url: "https://github.com/dilovantprk/AradaPay/releases", icon: "download" }
+            { textKey: "modal.apk_download", url: "https://github.com/dilovantprk/AradaPay/raw/main/AradaPay.apk", icon: "download" }
         ],
         screenshots: [
             "assets/aradapay.png"
