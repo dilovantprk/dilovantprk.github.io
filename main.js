@@ -674,7 +674,7 @@ const projectsData = {
             "iText PDF"
         ],
         links: [
-            { textKey: "modal.live_site", url: "https://aradapay.vercel.app", icon: "external-link" },
+            { textKey: "modal.live_site", url: "https://arada.whatevervedoneididitfor.fun", icon: "external-link" },
             { textKey: "modal.code_review", url: "https://github.com/dilovantprk/AradaPay", icon: "github" },
             { textKey: "modal.apk_download", url: "https://github.com/dilovantprk/AradaPay/raw/main/AradaPay.apk", icon: "download" }
         ],
@@ -1320,7 +1320,6 @@ function initProjectModals() {
 
         modalBody.innerHTML = `
             <div class="modal-project-header">
-                <span class="modal-project-cat">${categoryText}</span>
                 <h3 class="modal-project-title">${project.title}</h3>
             </div>
             
