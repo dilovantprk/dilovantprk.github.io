@@ -26,36 +26,27 @@
     <!-- Baskı Dili Ink & Blot Filter + Mythic Symbols -->
     <svg style="position:absolute; width:0; height:0; pointer-events:none;" aria-hidden="true">
       <defs>
-        <filter id="ink" x="-10%" y="-10%" width="120%" height="120%">
+        <filter id="ink" x="-5%" y="-5%" width="110%" height="110%">
           <feTurbulence type="fractalNoise" baseFrequency=".06" numOctaves="2" seed="2" result="w"/>
-          <feDisplacementMap in="SourceGraphic" in2="w" scale="4"/>
+          <feDisplacementMap in="SourceGraphic" in2="w" scale="4" result="d"/>
+          <feTurbulence type="fractalNoise" baseFrequency="1.1" numOctaves="1" seed="7" result="g"/>
+          <feColorMatrix in="g" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  9 0 0 0 -2.6" result="speck"/>
+          <feComposite in="d" in2="speck" operator="in"/>
         </filter>
         <filter id="blot" x="-15%" y="-20%" width="130%" height="140%">
           <feTurbulence type="fractalNoise" baseFrequency=".035 .05" numOctaves="3" seed="5" result="w"/>
           <feDisplacementMap in="SourceGraphic" in2="w" scale="18"/>
         </filter>
-        <symbol id="helmet" viewBox="0 0 40 50">
-          <path d="M5 22C5 4 35 4 35 22L30 24C28 12 12 12 10 24Z"/>
-          <path d="M10 24C10 17 30 17 30 24L30 40L24 49L22 35L18 35L16 49L10 40Z"/>
-        </symbol>
-        <symbol id="blossom" viewBox="0 0 40 50">
-          <path fill-rule="evenodd" d="M38 25L27.4 28.1L32.7 37.7L23.1 32.4L20 43L16.9 32.4L7.3 37.7L12.6 28.1L2 25L12.6 21.9L7.3 12.3L16.9 17.6L20 7L23.1 17.6L32.7 12.3L27.4 21.9ZM20 22a3 3 0 1 0 .01 0z"/>
-        </symbol>
-        <symbol id="arch" viewBox="0 0 40 50">
-          <path fill-rule="evenodd" d="M5 49V22C5 2 35 2 35 22V49ZM14 49V24C14 14 26 14 26 24V49Z"/>
-        </symbol>
-        <symbol id="horse" viewBox="0 0 40 50">
-          <path d="M11 49L13 31C6 27 6 15 13 10L13 2L19 8C27 7 33 12 35 20L38 26L33 30L28 27C26 33 26 41 28 49Z"/>
-        </symbol>
-        <symbol id="shield" viewBox="0 0 40 50">
-          <path fill-rule="evenodd" d="M20 6a19 19 0 1 0 .01 0ZM20 14a11 11 0 1 1-.01 0Z"/>
-          <circle cx="20" cy="25" r="4"/>
-        </symbol>
-        <symbol id="spear" viewBox="0 0 40 50">
-          <path d="M20 1L27 16L20 21L13 16Z"/>
-          <rect x="18.6" y="20" width="2.8" height="29"/>
-          <rect x="12" y="33" width="16" height="2.8"/>
-        </symbol>
+        <symbol id="helmet" viewBox="0 0 40 50"><path d="M5 22C5 4 35 4 35 22L30 24C28 12 12 12 10 24Z"/><path d="M10 24C10 17 30 17 30 24L30 40L24 49L22 35L18 35L16 49L10 40Z"/></symbol>
+        <symbol id="blossom" viewBox="0 0 40 50"><mask id="bm"><rect width="40" height="50" fill="#fff"/><circle cx="20" cy="25" r="3.6" fill="#000"/></mask><g mask="url(#bm)"><ellipse cx="20" cy="14" rx="6.4" ry="10.5" transform="rotate(8 20 25)"/><ellipse cx="20" cy="14.5" rx="6" ry="9.5" transform="rotate(80 20 25)"/><ellipse cx="20" cy="13.5" rx="6.6" ry="11" transform="rotate(152 20 25)"/><ellipse cx="20" cy="14.5" rx="6" ry="9.8" transform="rotate(224 20 25)"/><ellipse cx="20" cy="14" rx="6.2" ry="10.2" transform="rotate(296 20 25)"/></g></symbol>
+        <symbol id="arch" viewBox="0 0 40 50"><path fill-rule="evenodd" d="M3 49V25C3 13 13 7 20 1C27 7 37 13 37 25V49ZM11 49V27C11 20 16 15 20 11C24 15 29 20 29 27V49ZM16.5 49V34C16.5 31 18.5 29 20 27.5C21.5 29 23.5 31 23.5 34V49Z"/></symbol>
+        <symbol id="horse" viewBox="0 0 40 50"><path fill-rule="evenodd" d="M8 49L5 42L9 40L5 33L9 31L6 24L10 22L9 15L13 14L15 8L17 1L21 8C25 9 29 12 32 18C34 22 36 26 37 29L37 33C37 35 34 36 32 35L29 33C26 34 23 37 22 41L22 49ZM27 18.4a1.6 1.6 0 1 0 .01 0Z"/></symbol>
+        <symbol id="shield" viewBox="0 0 40 50"><path fill-rule="evenodd" d="M20 6a19 19 0 1 0 .01 0ZM20 14a11 11 0 1 1-.01 0Z"/><circle cx="20" cy="25" r="4"/></symbol>
+        <symbol id="spear" viewBox="0 0 40 50"><g transform="rotate(14 20 25)"><path fill-rule="evenodd" d="M20 0C26 8 27 15 20 22C13 15 14 8 20 0ZM19.4 5h1.2v12h-1.2Z"/><rect x="17.4" y="22" width="5.2" height="3"/><rect x="18.8" y="25" width="2.4" height="24"/><path d="M21.2 27L33 30.5L21.2 35Z"/></g></symbol>
+        <symbol id="sayfa" viewBox="0 0 40 50"><path fill-rule="evenodd" d="M7 2H25L34 11V48H7ZM12 8h8v4h-8ZM12 20h17v2.8H12ZM12 27h17v2.8H12ZM12 34h11v2.8H12Z"/></symbol>
+        <symbol id="kitap" viewBox="0 0 40 50"><path d="M18.4 13C14 8.5 7.5 8 2.5 10V40C7.5 38.5 14 39 18.4 43Z"/><path d="M21.6 13C26 8.5 32.5 8 37.5 10V40C32.5 38.5 26 39 21.6 43Z"/><path d="M27 40v9l3-2.4 3 2.4v-9Z"/></symbol>
+        <symbol id="yapi" viewBox="0 0 40 50"><path fill-rule="evenodd" d="M20 3L38 20H33V48H7V20H2ZM16 48V35C16 32 18 30 20 28.5C22 30 24 32 24 35V48ZM10.5 25h4.5v5h-4.5ZM25 25h4.5v5H25Z"/></symbol>
+        <symbol id="bayrak" viewBox="0 0 40 50"><path d="M8 3h3.2v46H8Z"/><path d="M11.2 5C19 2 25 10 35 7V27C25 30 19 22 11.2 25Z"/></symbol>
       </defs>
     </svg>
 
@@ -128,9 +119,6 @@
             <div class="hero-bg-accent"></div>
             <div class="container hero-container">
                 <div class="hero-content">
-                    <div class="hero-stamp-badge" aria-hidden="true">
-                        <svg viewBox="0 0 40 50" filter="url(#ink)"><use href="#blossom"/></svg>
-                    </div>
                     <div class="hero-name-container animate-hero-name">
                         <span class="hero-greeting-prefix" data-i18n="hero.greeting_prefix">Selam</span>
                         <h1 class="hero-title">dilovan</h1>
@@ -150,10 +138,8 @@
         <section id="projects" class="projects-section section-padding">
             <div class="container">
                 <div class="section-header">
-                    <div class="section-tag-row">
-                        <svg class="section-tag-stamp" viewBox="0 0 40 50" aria-hidden="true" filter="url(#ink)"><use href="#arch"/></svg>
-                        <span class="section-tag" data-i18n="projects.tag">Neler Ürettim?</span>
-                    </div>
+                    <svg class="section-bg-symbol" viewBox="0 0 40 50" aria-hidden="true"><use href="#horse"/></svg>
+                    <span class="section-tag" data-i18n="projects.tag">Neler Ürettim?</span>
                     <h2 class="section-title" data-i18n="projects.title">İşlerim</h2>
                     <p class="section-desc" data-i18n="projects.desc">Ayinesi iştir kişinin, lafa bakılmaz.</p>
                 </div>
@@ -316,113 +302,120 @@
         <section id="experience" class="cv-section section-padding">
             <div class="container">
                 <div class="section-header">
-                    <div class="section-tag-row">
-                        <svg class="section-tag-stamp" viewBox="0 0 40 50" aria-hidden="true" filter="url(#ink)"><use href="#horse"/></svg>
-                        <span class="section-tag" data-i18n="timeline.tag">Arka Plan</span>
-                    </div>
+                    <svg class="section-bg-symbol" viewBox="0 0 40 50" aria-hidden="true"><use href="#arch"/></svg>
+                    <span class="section-tag" data-i18n="timeline.tag">Geçmiş</span>
                     <h2 class="section-title" data-i18n="timeline.title">Geçtiğim Yerler</h2>
                     <p class="section-desc" data-i18n="timeline.desc">Yollar ve duraklar</p>
                 </div>
 
-                <div class="timeline-container">
-                    <div class="timeline-line"></div>
-                    
-                    <!-- Item 4: Üç On Dört (En Eski) -->
-                    <div class="timeline-item animate-scroll">
-                        <div class="timeline-dot" aria-hidden="true">
-                            <svg viewBox="0 0 40 50" filter="url(#ink)"><use href="#blossom"/></svg>
+                <ol class="tl">
+                    <!-- Item 1: Üç On Dört (Haziran 2019) -->
+                    <li class="it animate-scroll">
+                        <div class="node" style="--c:var(--orange)">
+                            <svg viewBox="0 0 40 50" aria-hidden="true"><use href="#sayfa" width="40" height="50"/></svg>
                         </div>
-                        <div class="timeline-time">Haziran 2019</div>
-                        <div class="timeline-content">
-                            <div class="timeline-header">
-                                <h3 class="timeline-title" data-i18n="timeline.ucondort.title">Kurucu &amp; Editör</h3>
-                                <span class="timeline-org" data-i18n="timeline.ucondort.org">Üç On Dört</span>
-                            </div>
-                            <span class="timeline-loc"><a href="https://www.instagram.com/ucondortt/" target="_blank" rel="noopener noreferrer" class="timeline-link">instagram.com/ucondortt/ <i data-feather="external-link" class="timeline-link-icon"></i></a></span>
-                            <p class="timeline-text" data-i18n="timeline.ucondort.desc">Teknik becerilerden çok bir şey öğretti bana bu proje: koordinasyon içinde, aylarca düzenli üretmeye devam edebilmek. Sürekliliği bu dönemde keşfettim.</p>
+                        <div>
+                            <p class="date" data-i18n="timeline.ucondort.date">Haziran 2019</p>
+                            <article class="card">
+                                <h3 data-i18n="timeline.ucondort.title">Kurucu ve Editör</h3>
+                                <p class="org" data-i18n="timeline.ucondort.org">Üç On Dört</p>
+                                <p class="meta"><a href="https://www.instagram.com/ucondortt/" target="_blank" rel="noopener noreferrer" class="timeline-link">instagram.com/ucondortt/</a></p>
+                                <p data-i18n="timeline.ucondort.desc">Teknik becerilerden çok bir şey öğretti bana bu proje: koordinasyon içinde, aylarca düzenli üretmeye devam edebilmek. Sürekliliği bu dönemde keşfettim.</p>
+                            </article>
                         </div>
-                    </div>
+                    </li>
 
-                    <!-- Item 3: Siirt TTFL -->
-                    <div class="timeline-item animate-scroll">
-                        <div class="timeline-dot" aria-hidden="true">
-                            <svg viewBox="0 0 40 50" filter="url(#ink)"><use href="#horse"/></svg>
+                    <!-- Item 2: Siirt TTFL (2019 - 2023) -->
+                    <li class="it animate-scroll">
+                        <div class="node" style="--c:var(--blue)">
+                            <svg viewBox="0 0 40 50" aria-hidden="true"><use href="#kitap" width="40" height="50"/></svg>
                         </div>
-                        <div class="timeline-time">2019 - 2023</div>
-                        <div class="timeline-content">
-                            <div class="timeline-header">
-                                <h3 class="timeline-title" data-i18n="timeline.siirt.title">Fen Lisesi Eğitimi</h3>
-                                <span class="timeline-org" data-i18n="timeline.siirt.org">Siirt Türk Telekom Fen Lisesi</span>
-                            </div>
-                            <span class="timeline-loc" data-i18n="timeline.siirt.loc">Siirt, Türkiye (Mezun)</span>
-                            <p class="timeline-text" data-i18n="timeline.siirt.desc">Lise yıllarımdaki en büyük merakım sinemayaydı; arkadaşlarımla kısa filmler çekerdik. Koronavirüs her şeyi durdurdu ve evlere kapandık. O sessizlikte felsefeye ve bilime olan merakımı keşfettim — öğrendiklerimi başkalarıyla paylaşmaya can atıyordum. İki arkadaşımla bir web sitesi ve sosyal medya açtık. Web tasarımıyla ve içerik tasarımıyla ilk karşılaşmam o döneme denk geliyor.</p>
+                        <div>
+                            <p class="date" data-i18n="timeline.siirt.date">2019 - 2023</p>
+                            <article class="card">
+                                <h3 data-i18n="timeline.siirt.title">Fen Lisesi</h3>
+                                <p class="org" data-i18n="timeline.siirt.org">Siirt Türk Telekom Fen Lisesi</p>
+                                <p class="meta" data-i18n="timeline.siirt.loc">Siirt, Türkiye (Mezun)</p>
+                                <p data-i18n="timeline.siirt.desc">Lise yıllarımdaki en büyük merakım sinemayaydı; arkadaşlarımla kısa filmler çekerdik. Koronavirüs her şeyi durdurdu ve evlere kapandık. O sessizlikte felsefeye ve bilime olan merakımı keşfettim — öğrendiklerimi başkalarıyla paylaşmaya can atıyordum. İki arkadaşımla bir web sitesi ve sosyal medya açtık. Web tasarımıyla ve içerik tasarımıyla ilk karşılaşmam o döneme denk geliyor.</p>
+                            </article>
                         </div>
-                    </div>
+                    </li>
 
-                    <!-- Item 2: Cedid NGO -->
-                    <div class="timeline-item animate-scroll">
-                        <div class="timeline-dot" aria-hidden="true">
-                            <svg viewBox="0 0 40 50" filter="url(#ink)"><use href="#arch"/></svg>
+                    <!-- Item 3: Cedid NGO (2023 - 2024) -->
+                    <li class="it animate-scroll">
+                        <div class="node" style="--c:var(--teal)">
+                            <svg viewBox="0 0 40 50" aria-hidden="true"><use href="#bayrak" width="40" height="50"/></svg>
                         </div>
-                        <div class="timeline-time">2023 - 2024</div>
-                        <div class="timeline-content">
-                            <div class="timeline-header">
-                                <h3 class="timeline-title" data-i18n="timeline.cedid.title">Erasmus+ Öğrenci Koordinatörü</h3>
-                                <span class="timeline-org" data-i18n="timeline.cedid.org">Cedid Sivil Toplum Kuruluşu</span>
-                            </div>
-                            <span class="timeline-loc" data-i18n="timeline.cedid.loc">Türkiye</span>
-                            <p class="timeline-text" data-i18n="timeline.cedid.desc">Türkiye'ye gelen uluslararası öğrencilerle etkinliklerde bir aradaydık. Farklı ülkelerden, farklı dillerden insanlarla ortak bir zemin yakalamak düşündüğünden çok daha kolay oluyor — ve tam o anda büyük insanlık idealini hissedebiliyorsun.</p>
+                        <div>
+                            <p class="date" data-i18n="timeline.cedid.date">2023 - 2024</p>
+                            <article class="card">
+                                <h3 data-i18n="timeline.cedid.title">Erasmus+ Öğrenci Koordinatörü</h3>
+                                <p class="org" data-i18n="timeline.cedid.org">Cedid Sivil Toplum Kuruluşu</p>
+                                <p class="meta" data-i18n="timeline.cedid.loc">Türkiye</p>
+                                <p data-i18n="timeline.cedid.desc">Türkiye'ye gelen uluslararası öğrencilerle etkinliklerde bir aradaydık. Farklı ülkelerden, farklı dillerden insanlarla ortak bir zemin yakalamak düşündüğünden çok daha kolay oluyor — ve tam o anda büyük insanlık idealini hissedebiliyorsun.</p>
+                            </article>
                         </div>
-                    </div>
+                    </li>
 
-                    <!-- Item 1.5: BÜED Edebiyat Kulübü -->
-                    <div class="timeline-item animate-scroll">
-                        <div class="timeline-dot" aria-hidden="true">
-                            <svg viewBox="0 0 40 50" filter="url(#ink)"><use href="#shield"/></svg>
+                    <!-- Item 4: BÜED Edebiyat Kulübü (2024 - 2026) -->
+                    <li class="it animate-scroll">
+                        <div class="node" style="--c:var(--gold)">
+                            <svg viewBox="0 0 40 50" aria-hidden="true"><use href="#yapi" width="40" height="50"/></svg>
                         </div>
-                        <div class="timeline-time">2024 - 2026</div>
-                        <div class="timeline-content">
-                            <div class="timeline-header">
-                                <h3 class="timeline-title" data-i18n="timeline.bued.title">Yürütme Kurulu Üyesi</h3>
-                                <span class="timeline-org" data-i18n="timeline.bued.org">Boğaziçi Üni. Edebiyat Kulübü</span>
-                            </div>
-                            <span class="timeline-loc" data-i18n="timeline.bued.loc">İstanbul, Türkiye</span>
-                            <p class="timeline-text" data-i18n="timeline.bued.desc">Tanıtım postundan konuk iletişimine kadar her adıma şahitlik edip çoğunda görev aldım. İnsanları bir araya getirmenin, ekipçe çalışmanın kolay olmadığını ama her şeye rağmen hakkıyla düzenlenen bir etkinliğin insanın tüm yorgunluğunu aldığını gördüm.</p>
+                        <div>
+                            <p class="date" data-i18n="timeline.bued.date">2024 - 2026</p>
+                            <article class="card">
+                                <h3 data-i18n="timeline.bued.title">Yürütme Kurulu Üyesi</h3>
+                                <p class="org" data-i18n="timeline.bued.org">Boğaziçi Üni. Edebiyat Kulübü</p>
+                                <p class="meta" data-i18n="timeline.bued.loc">İstanbul, Türkiye</p>
+                                <p data-i18n="timeline.bued.desc">Tanıtım postundan konuk iletişimine kadar her adıma şahitlik edip çoğunda görev aldım. İnsanları bir araya getirmenin, ekipçe çalışmanın kolay olmadığını ama her şeye rağmen hakkıyla düzenlenen bir etkinliğin insanın tüm yorgunluğunu aldığını gördüm.</p>
+                            </article>
                         </div>
-                    </div>
+                    </li>
 
-                    <!-- Item 1: İstanbul Üniversitesi (En Yeni) -->
-                    <div class="timeline-item animate-scroll">
-                        <div class="timeline-dot" aria-hidden="true">
-                            <svg viewBox="0 0 40 50" filter="url(#ink)"><use href="#spear"/></svg>
+                    <!-- Item 5: Boğaziçi Üniversitesi Felsefe (2024 - 2026) -->
+                    <li class="it animate-scroll">
+                        <div class="node" style="--c:var(--blue)">
+                            <svg viewBox="0 0 40 50" aria-hidden="true"><use href="#kitap" width="40" height="50"/></svg>
                         </div>
-                        <div class="timeline-time">2024 - Günümüz</div>
-                        <div class="timeline-content">
-                            <div class="timeline-header">
-                                <h3 class="timeline-title" data-i18n="timeline.iu.title">Hukuk Lisans Eğitimi</h3>
-                                <span class="timeline-org" data-i18n="timeline.iu.org">İstanbul Üniversitesi</span>
-                            </div>
-                            <span class="timeline-loc" data-i18n="timeline.iu.loc">İstanbul, Türkiye (Devam Ediyor)</span>
-                            <p class="timeline-text" data-i18n="timeline.iu.desc">Hukuk nosyonu, normatif düşünce ve kural koyucu sistemlerin mantığı üzerine lisans eğitimi.</p>
+                        <div>
+                            <p class="date" data-i18n="timeline.boun.date">2024 - 2026</p>
+                            <article class="card">
+                                <h3 data-i18n="timeline.boun.title">Felsefe Lisans Eğitimi</h3>
+                                <p class="org" data-i18n="timeline.boun.org">Boğaziçi Üniversitesi</p>
+                                <p class="meta" data-i18n="timeline.boun.loc">İstanbul, Türkiye (Ayrıldı)</p>
+                                <p data-i18n="timeline.boun.desc">Bölümden çok okul değiştirdi beni. Farklı arka planlardan, birbirinden zeki insanlarla olan etkileşimlerim hiçbir derste öğrenemeyeceğim şeyler öğretti. Bölüm ise arzu, anlam ve iletişimin doğasını düşünebilmemi sağlayan araçlar verdi bana.</p>
+                            </article>
                         </div>
-                    </div>
+                    </li>
 
-                    <!-- Item 1.2: Boğaziçi Üniversitesi -->
-                    <div class="timeline-item animate-scroll">
-                        <div class="timeline-dot" aria-hidden="true">
-                            <svg viewBox="0 0 40 50" filter="url(#ink)"><use href="#helmet"/></svg>
+                    <!-- Item 6: İstanbul Üniversitesi Hukuk (2024 - Günümüz) -->
+                    <li class="it animate-scroll">
+                        <div class="node" style="--c:var(--blue)">
+                            <svg viewBox="0 0 40 50" aria-hidden="true"><use href="#kitap" width="40" height="50"/></svg>
                         </div>
-                        <div class="timeline-time">2024 - 2026</div>
-                        <div class="timeline-content">
-                            <div class="timeline-header">
-                                <h3 class="timeline-title" data-i18n="timeline.boun.title">Felsefe Lisans Eğitimi</h3>
-                                <span class="timeline-org" data-i18n="timeline.boun.org">Boğaziçi Üniversitesi</span>
-                            </div>
-                            <span class="timeline-loc" data-i18n="timeline.boun.loc">İstanbul, Türkiye (Ayrıldı)</span>
-                            <p class="timeline-text" data-i18n="timeline.boun.desc">Bölümden çok okul değiştirdi beni. Farklı arka planlardan, birbirinden zeki insanlarla olan etkileşimlerim hiçbir derste öğrenemeyeceğim şeyler öğretti. Bölüm ise arzu, anlam ve iletişimin doğasını düşünebilmemi sağlayan araçlar verdi bana.</p>
+                        <div>
+                            <p class="date" data-i18n="timeline.iu.date">2024 - Günümüz</p>
+                            <article class="card">
+                                <h3 data-i18n="timeline.iu.title">Hukuk Lisans Eğitimi</h3>
+                                <p class="org" data-i18n="timeline.iu.org">İstanbul Üniversitesi</p>
+                                <p class="meta" data-i18n="timeline.iu.loc">İstanbul, Türkiye (Devam Ediyor)</p>
+                                <p data-i18n="timeline.iu.desc">Hukuk nosyonu, normatif düşünce ve kural koyucu sistemlerin mantığı üzerine lisans eğitimi.</p>
+                            </article>
                         </div>
-                    </div>
-                </div>
+                    </li>
+                </ol>
+
+                <section class="set" aria-labelledby="set-t">
+                    <h3 id="set-t" data-i18n="timeline.set_title">İkon seti</h3>
+                    <p data-i18n="timeline.set_desc">Her düğüm bir kategori damgası. Renk de kategoriyi taşır, süs olarak seçilmedi.</p>
+                    <ul>
+                        <li><svg viewBox="0 0 40 50" fill="var(--orange)" aria-hidden="true"><use href="#sayfa" width="40" height="50"/></svg><span data-i18n="timeline.set_pub">Yayın ve üretim</span></li>
+                        <li><svg viewBox="0 0 40 50" fill="var(--blue)" aria-hidden="true"><use href="#kitap" width="40" height="50"/></svg><span data-i18n="timeline.set_edu">Eğitim</span></li>
+                        <li><svg viewBox="0 0 40 50" fill="var(--gold)" aria-hidden="true"><use href="#yapi" width="40" height="50"/></svg><span data-i18n="timeline.set_venue">Girişim ve mekân</span></li>
+                        <li><svg viewBox="0 0 40 50" fill="var(--teal)" aria-hidden="true"><use href="#bayrak" width="40" height="50"/></svg><span data-i18n="timeline.set_proj">Proje ve yarışma</span></li>
+                    </ul>
+                </section>
             </div>
         </section>
 
@@ -430,10 +423,8 @@
         <section id="skills" class="skills-section section-padding">
             <div class="container">
                 <div class="section-header">
-                    <div class="section-tag-row">
-                        <svg class="section-tag-stamp" viewBox="0 0 40 50" aria-hidden="true" filter="url(#ink)"><use href="#spear"/></svg>
-                        <span class="section-tag" data-i18n="skills.tag">Neler Yapabilirim?</span>
-                    </div>
+                    <svg class="section-bg-symbol" viewBox="0 0 40 50" aria-hidden="true"><use href="#shield"/></svg>
+                    <span class="section-tag" data-i18n="skills.tag">Neler Yapabilirim?</span>
                     <h2 class="section-title" data-i18n="skills.title">Elimden Gelenler</h2>
                     <p class="section-desc" data-i18n="skills.desc">Gözüm harmoniyi arıyor; kararlarımı teknik bilgimden çok şeylerin bana hissettirdikleri yönlendiriyor. Mükemmeli arıyorum.</p>
                 </div>
@@ -531,10 +522,8 @@
         <section id="contact" class="contact-section section-padding">
             <div class="container">
                 <div class="section-header">
-                    <div class="section-tag-row">
-                        <svg class="section-tag-stamp" viewBox="0 0 40 50" aria-hidden="true" filter="url(#ink)"><use href="#blossom"/></svg>
-                        <span class="section-tag" data-i18n="contact.tag">Kapı Açık</span>
-                    </div>
+                    <svg class="section-bg-symbol" viewBox="0 0 40 50" aria-hidden="true"><use href="#blossom"/></svg>
+                    <span class="section-tag" data-i18n="contact.tag">Kapı Açık</span>
                     <h2 class="section-title" data-i18n="contact.title">Gel, Bir Şey(ler) Yapalım</h2>
                     <p class="section-desc" data-i18n="contact.desc">Deneysel projeler ya da sivil toplum alanında birlikte bir şey üretmek istiyorsan konuşalım. İnsan odaklı işler beni heyecanlandırıyor.</p>
                 </div>
