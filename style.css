@@ -995,65 +995,9 @@ html.dark .logo-text {
     line-height: 1.65;
     color: var(--ink);
 }
-
-/* İkon Seti Legend */
-.set {
-    margin-top: 24px;
-    padding-top: 28px;
-    border-top: 1.5px dashed var(--soft);
-    max-width: 660px;
-    margin-inline: auto;
-}
-
-.set h3 {
-    font: italic 700 22px Fraunces, serif;
-    margin: 0 0 4px;
-    color: var(--blue);
-}
-
-.set > p {
-    margin: 0 0 18px;
-    color: var(--soft);
-    max-width: 48ch;
-    font-size: 15px;
-}
-
-.set ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
-}
-
-.set li {
-    text-align: center;
-    font-size: 14px;
-    color: var(--ink);
-    font-weight: 500;
-}
-
-.set svg {
-    width: 40px;
-    height: 50px;
-    display: block;
-    margin: 0 auto 8px;
-    filter: url(#ink);
-    transition: transform var(--transition-bounce);
-}
-
-.set li:hover svg {
-    transform: scale(1.12) rotate(-4deg);
-}
-
 @media (max-width: 480px) {
     .card {
         padding: 18px 16px 20px;
-    }
-    .set ul {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 16px;
     }
 }
 
