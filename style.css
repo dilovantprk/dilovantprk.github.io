@@ -70,6 +70,7 @@ html.light {
     --blue: #2440B5;
     --orange: #FF4A17;
     --soft: #4a5490;
+    --onblue: #F6EFD9;
 }
 
 /* Dark Theme — deep psychedelic ink */
@@ -108,6 +109,7 @@ html.dark {
     --blue: #6F8CFF;
     --orange: #FF6A3A;
     --soft: #AEB6E0;
+    --onblue: #0F1638;
 }
 
 /* ==========================================================================
@@ -931,8 +933,140 @@ html.dark .logo-text {
 }
 
 /* ==========================================================================
-   CONTACT SECTION
+   CONTACT SECTION — Baskı Dili Artwork Field
    ========================================================================== */
+.field {
+    position: relative;
+    height: 470px;
+    max-width: 920px;
+    margin: 40px auto 0;
+}
+
+.blot {
+    position: absolute;
+    width: 42%;
+    height: 190px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 10%;
+    color: var(--onblue);
+    text-decoration: none;
+    z-index: 2;
+}
+
+.blot svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: visible;
+    transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+    transform-origin: center;
+}
+
+.blot:hover svg,
+.blot:focus-visible svg {
+    transform: scale(1.08);
+}
+
+.blot:focus-visible {
+    outline: 3px solid var(--orange);
+    outline-offset: 6px;
+    border-radius: 40px;
+}
+
+.blot small {
+    font-size: 14px;
+    opacity: 0.85;
+    font-family: var(--font-body);
+}
+
+.blot strong {
+    font-family: 'Fraunces', var(--font-heading), serif;
+    font-style: italic;
+    font-weight: 700;
+    font-size: clamp(18px, 2.6vw, 26px);
+    line-height: 1.15;
+    overflow-wrap: anywhere;
+}
+
+.b1 { left: 2%; top: 0; }
+.b2 { right: 0; top: 14px; }
+.b3 { left: 0; bottom: 6px; }
+.b4 { right: 3%; bottom: 0; }
+
+.b1 svg, .b4 svg { transform: rotate(-3deg); }
+.b2 svg, .b3 svg { transform: rotate(4deg); }
+
+.b1:hover svg, .b4:hover svg { transform: rotate(-3deg) scale(1.08); }
+.b2:hover svg, .b3:hover svg { transform: rotate(4deg) scale(1.08); }
+
+.who {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 150px;
+    z-index: 1;
+}
+
+.who svg {
+    width: 34px;
+    height: 58px;
+    display: block;
+    margin: 0 auto 8px;
+}
+
+.who span {
+    font-size: 14px;
+    color: var(--soft);
+    font-weight: 500;
+}
+
+.stamps {
+    width: 100%;
+    height: 54px;
+    display: block;
+    margin-bottom: 22px;
+}
+
+@media (max-width: 720px) {
+    .field {
+        height: auto;
+        display: grid;
+        gap: 14px;
+        padding-top: 8px;
+    }
+    .blot {
+        position: relative;
+        inset: auto;
+        width: 100%;
+        height: 150px;
+        padding: 0 14%;
+    }
+    .who {
+        position: static;
+        transform: none;
+        order: -1;
+        margin: 0 auto 6px;
+    }
+    .b1 svg, .b2 svg, .b3 svg, .b4 svg {
+        transform: none;
+    }
+    .b1:hover svg, .b2:hover svg, .b3:hover svg, .b4:hover svg {
+        transform: scale(1.04);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .blot svg {
+        transition: none;
+    }
+}
+
 .contact-grid {
     display: flex;
     justify-content: center;
