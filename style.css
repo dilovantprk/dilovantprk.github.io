@@ -285,22 +285,21 @@ html.dark .logo-text {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--text-muted);
-    border: 1px solid var(--border-color);
-    background: transparent;
-    box-shadow: none;
+    color: var(--text-primary);
+    border: 1.5px solid var(--border-color);
+    background: var(--bg-card);
+    box-shadow: 2px 2px 0 var(--border-color);
     font-family: var(--font-mono);
-    font-weight: 500;
-    transition: all 0.2s ease;
+    font-weight: 600;
+    transition: transform var(--transition-bounce), border-color var(--transition-fast), box-shadow var(--transition-fast), color var(--transition-fast);
     cursor: pointer;
 }
 
 .lang-toggle:hover, .mobile-menu-toggle:hover {
     color: var(--accent-violet);
     border-color: var(--accent-violet);
-    background: var(--accent-violet-soft);
-    transform: none;
-    box-shadow: none;
+    box-shadow: 3px 3px 0 var(--accent-violet);
+    transform: translate(-1px, -1px);
 }
 
 .lang-text {
@@ -572,18 +571,62 @@ html.dark .logo-text {
     transition: transform var(--transition-slow);
 }
 
+.hero-stamp-badge {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: var(--bg-card);
+    border: 1.5px solid var(--border-color);
+    box-shadow: 2px 2px 0 var(--border-color);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    margin-bottom: 20px;
+    transition: transform var(--transition-bounce), border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.hero-stamp-badge svg {
+    width: 100%;
+    height: 100%;
+    fill: var(--accent-violet);
+    transition: fill var(--transition-fast);
+}
+
+.hero-stamp-badge:hover {
+    transform: scale(1.1) rotate(6deg);
+    border-color: var(--accent-blue);
+    box-shadow: 3px 3px 0 var(--accent-blue);
+}
+
+.hero-stamp-badge:hover svg {
+    fill: var(--accent-blue);
+}
+
 .scroll-down {
     position: absolute;
     bottom: 40px;
     left: 50%;
     transform: translateX(-50%);
-    color: var(--text-secondary);
-    animation: bounce 2s infinite;
+    color: var(--text-primary);
+    text-decoration: none;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    font-size: 0.8rem;
-    gap: 4px;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: var(--bg-card);
+    border: 1.5px solid var(--border-color);
+    box-shadow: 2px 2px 0 var(--border-color);
+    transition: transform var(--transition-bounce), border-color var(--transition-fast), box-shadow var(--transition-fast), color var(--transition-fast);
+    animation: bounce 2s infinite;
+}
+
+.scroll-down:hover {
+    border-color: var(--accent-violet);
+    box-shadow: 3px 3px 0 var(--accent-violet);
+    color: var(--accent-violet);
 }
 
 .scroll-down svg {
@@ -606,6 +649,28 @@ html.dark .logo-text {
     margin: 0 auto var(--spacing-lg) auto;
 }
 
+.section-tag-row {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.section-tag-stamp {
+    width: 15px;
+    height: 19px;
+    fill: var(--accent-violet);
+    display: inline-block;
+    flex-shrink: 0;
+    transition: transform var(--transition-bounce), fill var(--transition-fast);
+}
+
+.section-header:hover .section-tag-stamp {
+    transform: rotate(10deg) scale(1.18);
+    fill: var(--accent-blue);
+}
+
 .section-tag {
     font-size: 0.72rem;
     font-weight: 700;
@@ -613,8 +678,7 @@ html.dark .logo-text {
     text-transform: uppercase;
     letter-spacing: 0.12em;
     display: inline-block;
-    margin-bottom: 12px;
-    opacity: 0.75;
+    opacity: 0.85;
 }
 
 .section-title {
@@ -786,21 +850,43 @@ html.dark .logo-text {
 
 .timeline-dot {
     position: absolute;
-    left: 11px;
-    top: 6px;
-    width: 20px;
-    height: 20px;
-    border-radius: var(--radius-full);
-    background: var(--bg-primary);
-    border: 4px solid var(--accent-blue);
-    box-shadow: 0 0 0 4px var(--bg-primary);
-    transition: transform var(--transition-fast), background-color var(--transition-fast);
+    left: 3px;
+    top: -2px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--bg-card);
+    border: 1.5px solid var(--border-color);
+    box-shadow: 2px 2px 0 var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px;
+    transition: transform var(--transition-bounce), border-color var(--transition-fast), box-shadow var(--transition-fast), background-color var(--transition-fast);
     z-index: 2;
 }
 
+.timeline-dot svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    fill: var(--accent-blue);
+    transition: fill var(--transition-fast), transform var(--transition-fast);
+}
+
+.timeline-item:nth-child(even) .timeline-dot svg {
+    fill: var(--accent-violet);
+}
+
 .timeline-item:hover .timeline-dot {
-    transform: scale(1.25);
-    background-color: var(--accent-violet);
+    transform: scale(1.22) rotate(-5deg);
+    border-color: var(--accent-violet);
+    box-shadow: 3px 3px 0 var(--accent-violet);
+    background: var(--bg-secondary);
+}
+
+.timeline-item:hover .timeline-dot svg {
+    fill: var(--accent-violet);
 }
 
 .timeline-time {
@@ -884,8 +970,52 @@ html.dark .logo-text {
 }
 
 .skill-cat-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
     margin-bottom: 24px;
 }
+
+.skill-cat-badge {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: var(--bg-secondary);
+    border: 1.5px solid var(--border-color);
+    box-shadow: 2px 2px 0 var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    flex-shrink: 0;
+    transition: transform var(--transition-bounce), border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.skill-cat-badge svg {
+    width: 100%;
+    height: 100%;
+    fill: var(--accent-blue);
+    transition: fill var(--transition-fast);
+}
+
+.skill-category-card:nth-child(2) .skill-cat-badge svg {
+    fill: var(--accent-violet);
+}
+
+.skill-category-card:nth-child(3) .skill-cat-badge svg {
+    fill: var(--accent-emerald);
+}
+
+.skill-category-card:hover .skill-cat-badge {
+    transform: scale(1.1) rotate(-6deg);
+    border-color: var(--accent-violet);
+    box-shadow: 3px 3px 0 var(--accent-violet);
+}
+
+.skill-category-card:hover .skill-cat-badge svg {
+    fill: var(--accent-violet);
+}
+
 .skill-cat-title {
     font-size: 1.25rem;
     font-weight: 700;
