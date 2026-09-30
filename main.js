@@ -47,6 +47,13 @@ const translations = {
 
         "projects.aradapay.category": "Android & FinTech",
         "projects.aradapay.summary": "Grup harcamalarını Cross-Settlement DFS graf algoritmalarıyla optimize eden, Merkle Ağacı ile kriptografik dekontlar üreten Material 3 Android finans platformu.",
+
+        "projects.other.category": "Keşfet / Arşiv",
+        "projects.other.title": "Diğer Projeler",
+        "projects.other.summary": "STTFL Mezun Topluluğu ve YazarEser Android projelerini gör.",
+        "projects.other.action": "Projeleri Gör",
+        "projects.otherToggle": "Diğer Projeler",
+        "projects.otherToggle_less": "Daha Az Göster",
         
         "timeline.tag": "Geçmiş",
         "timeline.title": "Geçtiğim Yerler",
@@ -191,6 +198,13 @@ const translations = {
 
         "projects.aradapay.category": "Android & FinTech",
         "projects.aradapay.summary": "A next-gen Material 3 Android fintech platform optimizing group expenses via Cross-Settlement DFS graph algorithms and generating cryptographic Merkle Tree receipts.",
+
+        "projects.other.category": "Explore / Archive",
+        "projects.other.title": "Other Projects",
+        "projects.other.summary": "Explore STTFL Alumni Community and YazarEser Android projects.",
+        "projects.other.action": "View Projects",
+        "projects.otherToggle": "Other Projects",
+        "projects.otherToggle_less": "Show Less",
         
         "timeline.tag": "Past",
         "timeline.title": "Education & Experience",

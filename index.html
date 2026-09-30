@@ -223,26 +223,33 @@
 
                     <!-- Mobile Right-Side "Diğer Projeler" Card Button -->
                     <div class="project-card mobile-other-projects-btn-card" id="mobile-other-projects-btn-card" role="button" tabindex="0" aria-expanded="false">
-                        <div class="project-visual-container visual-other-projects">
+                        <div class="project-visual-container art visual-other-projects">
                             <div class="visual-inner">
-                                <div class="visual-other-stacked">
-                                    <div class="other-preview-chip chip-1">
-                                        <span class="chip-dot"></span> STTFL
-                                    </div>
-                                    <div class="other-preview-chip chip-2">
-                                        <span class="chip-dot alt"></span> YazarEser
-                                    </div>
-                                    <div class="other-count-badge">+2 Proje</div>
-                                </div>
+                                <svg viewBox="0 0 280 150">
+                                    <g class="b" filter="url(#ink)">
+                                        <rect x="68" y="36" width="84" height="74" rx="10" transform="rotate(-6 110 73)" fill="var(--blue)"/>
+                                        <line x1="82" y1="56" x2="132" y2="56" stroke="var(--paper)" stroke-width="3" stroke-linecap="round" transform="rotate(-6 110 73)"/>
+                                        <line x1="82" y1="70" x2="118" y2="70" stroke="var(--paper)" stroke-width="3" stroke-linecap="round" transform="rotate(-6 110 73)"/>
+                                    </g>
+                                    <g class="o" filter="url(#ink)">
+                                        <rect x="128" y="40" width="84" height="74" rx="10" transform="rotate(5 170 77)" fill="var(--orange)"/>
+                                        <line x1="142" y1="60" x2="192" y2="60" stroke="var(--plate)" stroke-width="3" stroke-linecap="round" transform="rotate(5 170 77)"/>
+                                        <line x1="142" y1="74" x2="178" y2="74" stroke="var(--plate)" stroke-width="3" stroke-linecap="round" transform="rotate(5 170 77)"/>
+                                    </g>
+                                    <g filter="url(#ink)">
+                                        <circle cx="140" cy="74" r="22" fill="var(--paper)" stroke="var(--ink)" stroke-width="2"/>
+                                        <text x="140" y="80" text-anchor="middle" font-family="'Fraunces', serif" font-size="15" font-weight="700" font-style="italic" fill="var(--orange)">+2</text>
+                                    </g>
+                                </svg>
                             </div>
                         </div>
                         <div class="project-info">
-                            <span class="project-category">KEŞFET / ARŞİV</span>
-                            <h3 class="project-title-text">Diğer Projeler</h3>
-                            <p class="project-summary">STTFL Mezun Topluluğu ve YazarEser Android projelerini gör.</p>
+                            <span class="project-category" data-i18n="projects.other.category">Keşfet / Arşiv</span>
+                            <h3 class="project-title-text" data-i18n="projects.other.title">Diğer Projeler</h3>
+                            <p class="project-summary" data-i18n="projects.other.summary">STTFL Mezun Topluluğu ve YazarEser Android projelerini gör.</p>
                             <div class="other-card-action">
-                                <span class="btn-text">Projeleri Aç</span>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                                <span class="btn-text" data-i18n="projects.other.action">Projeleri Gör</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
                             </div>
                         </div>
                     </div>
