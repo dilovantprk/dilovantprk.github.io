@@ -1093,11 +1093,11 @@ mark {
 }
 
 /* ==========================================================================
-   CONTACT SECTION — Harmonious, Compact & Tactile
+   CONTACT SECTION — Risograph Stamp & Artwork Plates
    ========================================================================== */
 .contact-wrapper {
     max-width: 680px;
-    margin: 36px auto 0;
+    margin: 32px auto 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1113,8 +1113,8 @@ mark {
 }
 
 .who svg {
-    width: 32px;
-    height: 52px;
+    width: 34px;
+    height: 56px;
     display: block;
 }
 
@@ -1125,54 +1125,79 @@ mark {
     letter-spacing: 0.02em;
 }
 
-.contact-links-grid {
+.contact-stamps-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 16px;
     width: 100%;
 }
 
-.contact-card {
+.contact-stamp-card {
     background: var(--bg-card);
     border: 1px solid var(--border-color);
     border-radius: var(--radius-md);
-    padding: 16px 20px;
+    padding: 14px 18px;
     display: flex;
     align-items: center;
-    gap: 14px;
+    gap: 16px;
     text-decoration: none;
     color: inherit;
     box-shadow: var(--shadow-sm);
+    position: relative;
+    overflow: hidden;
     transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
 }
 
-.contact-card:hover {
+.contact-stamp-card::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: var(--stamp-c);
+    opacity: 0.8;
+    transition: width var(--transition-fast), opacity var(--transition-fast);
+}
+
+.contact-stamp-card:hover {
     transform: translateY(-3px);
-    border-color: var(--border-hover);
+    border-color: var(--stamp-c);
     box-shadow: var(--shadow-md);
-    background: var(--bg-card);
 }
 
-.contact-card-icon {
-    width: 42px;
-    height: 42px;
-    border-radius: var(--radius-sm);
-    background: var(--bg-secondary);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--blue);
+.contact-stamp-card:hover::before {
+    width: 6px;
+    opacity: 1;
+}
+
+/* Authentic Stamped Emblem */
+.stamp-emblem {
+    width: 46px;
+    height: 54px;
+    display: grid;
+    place-items: center;
+    background: color-mix(in srgb, var(--stamp-c) 14%, var(--bg-card));
+    border: 1.5px dashed color-mix(in srgb, var(--stamp-c) 40%, transparent);
+    border-radius: 8px;
     flex-shrink: 0;
-    transition: transform var(--transition-bounce), color var(--transition-fast), background var(--transition-fast);
+    transform: rotate(var(--stamp-rot, 0deg));
+    transition: transform var(--transition-bounce), background var(--transition-fast), border-color var(--transition-fast);
 }
 
-.contact-card:hover .contact-card-icon {
-    transform: scale(1.08);
-    color: var(--orange);
-    background: var(--accent-violet-soft);
+.contact-stamp-card:hover .stamp-emblem {
+    transform: rotate(0deg) scale(1.1);
+    background: color-mix(in srgb, var(--stamp-c) 22%, var(--bg-card));
+    border-color: var(--stamp-c);
 }
 
-.contact-card-content {
+.stamp-emblem svg {
+    width: 30px;
+    height: 38px;
+    fill: var(--stamp-c);
+}
+
+.stamp-body {
     display: flex;
     flex-direction: column;
     gap: 3px;
@@ -1180,35 +1205,45 @@ mark {
     flex: 1 1 auto;
 }
 
-.contact-card-label {
-    font-size: 0.72rem;
+.stamp-tag {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
     font-weight: 600;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: var(--text-muted);
+    color: var(--stamp-c);
 }
 
-.contact-card-val {
-    font-family: var(--font-body);
-    font-size: 0.95rem;
-    font-weight: 600;
-    color: var(--text-primary);
+.stamp-value {
+    font-family: 'Fraunces', var(--font-heading), serif;
+    font-style: italic;
+    font-weight: 700;
+    font-size: 1.12rem;
+    line-height: 1.25;
+    color: var(--ink);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    transition: color var(--transition-fast);
 }
 
-.contact-card-arrow {
-    color: var(--text-muted);
-    opacity: 0.4;
+.contact-stamp-card:hover .stamp-value {
+    color: var(--stamp-c);
+}
+
+.stamp-arrow {
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: var(--stamp-c);
+    opacity: 0.6;
     flex-shrink: 0;
-    transition: transform var(--transition-fast), opacity var(--transition-fast), color var(--transition-fast);
+    transition: transform var(--transition-fast), opacity var(--transition-fast);
 }
 
-.contact-card:hover .contact-card-arrow {
-    transform: translate(2px, -2px);
+.contact-stamp-card:hover .stamp-arrow {
+    transform: translateX(4px);
     opacity: 1;
-    color: var(--orange);
 }
 
 .stamps {
@@ -1221,16 +1256,30 @@ mark {
 @media (max-width: 640px) {
     .contact-wrapper {
         margin-top: 24px;
-        gap: 24px;
+        gap: 22px;
     }
 
-    .contact-links-grid {
+    .contact-stamps-grid {
         grid-template-columns: 1fr;
         gap: 12px;
     }
 
-    .contact-card {
-        padding: 14px 16px;
+    .contact-stamp-card {
+        padding: 12px 16px;
+    }
+
+    .stamp-emblem {
+        width: 42px;
+        height: 50px;
+    }
+
+    .stamp-emblem svg {
+        width: 26px;
+        height: 32px;
+    }
+
+    .stamp-value {
+        font-size: 1.05rem;
     }
 }
 
@@ -1462,7 +1511,7 @@ mark {
    ========================================================================== */
 .footer {
     border-top: 1px solid var(--border-color);
-    padding: 40px 0;
+    padding: 40px 0 110px 0;
     background: var(--bg-secondary);
     font-size: 0.875rem;
     color: var(--text-secondary);
