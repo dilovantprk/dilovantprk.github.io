@@ -62,6 +62,14 @@ html.light {
     
     --modal-bg: rgba(253, 246, 236, 0.98);
     --modal-overlay: rgba(29, 45, 68, 0.5);
+
+    /* Baskı Dili Palette */
+    --paper: #EFE6CA;
+    --plate: #F6EFD9;
+    --ink: #15235E;
+    --blue: #2440B5;
+    --orange: #FF4A17;
+    --soft: #4a5490;
 }
 
 /* Dark Theme — deep psychedelic ink */
@@ -92,6 +100,14 @@ html.dark {
     
     --modal-bg: rgba(26, 18, 16, 0.99);
     --modal-overlay: rgba(0, 0, 0, 0.7);
+
+    /* Baskı Dili Palette (Dark) */
+    --paper: #0F1638;
+    --plate: #16204F;
+    --ink: #F1E8CC;
+    --blue: #6F8CFF;
+    --orange: #FF6A3A;
+    --soft: #AEB6E0;
 }
 
 /* ==========================================================================
@@ -2190,6 +2206,47 @@ html.dark .modal-wrapper {
 
 .project-card:hover .visual-inner {
     transform: scale(1.02);
+}
+
+/* Baskı Dili Artwork Styling */
+.project-visual-container.art,
+.modal-project-banner.art {
+    aspect-ratio: 28 / 15;
+    background: color-mix(in srgb, var(--paper) 55%, var(--plate));
+    border-bottom: 1.5px solid var(--border-color);
+    position: relative;
+    overflow: hidden;
+}
+
+.project-visual-container.art .visual-inner,
+.modal-project-banner.art .visual-inner {
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.project-visual-container.art svg,
+.modal-project-banner.art svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.project-visual-container.art .o,
+.modal-project-banner.art .o {
+    mix-blend-mode: multiply;
+    transition: transform 0.35s cubic-bezier(0.3, 0.7, 0.3, 1);
+}
+
+html.dark .project-visual-container.art .o,
+html.dark .modal-project-banner.art .o {
+    mix-blend-mode: screen;
+}
+
+.project-card:hover .art .o,
+.project-card:focus-within .art .o,
+.modal-project-banner:hover .art .o {
+    transform: translate(5px, 4px);
 }
 
 

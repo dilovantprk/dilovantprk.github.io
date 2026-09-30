@@ -52,9 +52,14 @@ const translations = {
         "timeline.title": "Geçtiğim Yerler",
         "timeline.desc": "Yollar ve duraklar",
         
+        "timeline.iu.title": "Hukuk Lisansı",
+        "timeline.iu.org": "İstanbul Üniversitesi",
+        "timeline.iu.loc": "İstanbul, Türkiye (Devam Ediyor)",
+        "timeline.iu.desc": "Hukuk nosyonu, normatif düşünce ve kural koyucu sistemlerin mantığı üzerine lisans eğitimi.",
+
         "timeline.boun.title": "Felsefe Lisansı",
         "timeline.boun.org": "Boğaziçi Üniversitesi",
-        "timeline.boun.loc": "İstanbul, Türkiye (Devam Ediyor)",
+        "timeline.boun.loc": "İstanbul, Türkiye (Ayrıldı)",
         "timeline.boun.desc": "Bölümden çok okul değiştirdi beni. Farklı arka planlardan, birbirinden zeki insanlarla olan etkileşimlerim hiçbir derste öğrenemeyeceğim şeyler öğretti. Bölüm ise arzu, anlam ve iletişimin doğasını düşünebilmemi sağlayan araçlar verdi bana.",
         
         "timeline.bued.title": "Yürütme Kurulu Üyesi",
@@ -78,40 +83,32 @@ const translations = {
         
         "skills.tag": "Yetiler",
         "skills.title": "Elimden Gelenler",
-        "skills.desc": "Gözüm harmoniyi arıyor; kararlarımı analitik derinlik ile estetik sezginin dengesi yönlendiriyor. Kavramsal olanı işlevsel kılmayı, bütünde mükemmeli yakalamayı hedefliyorum.",
-        "skills.cat1": "Teknolojik Mimari & Ürün",
-        "skills.tech_name1": "Yapay Zeka ve Modern Araçlarla Hızlı Geliştirme",
-        "skills.tech_badge1": "Teknoloji Orkestrasyonu",
-        "skills.tech_name2": "Fikirden Çalışan Ürüne",
-        "skills.tech_badge2": "Çevik Prototipleme",
-        "skills.tech_name3": "Next.js & React ile Ölçeklenebilir Yapılar",
-        "skills.tech_badge3": "Sistem Mimarisi",
-        "skills.tech_name4": "Kotlin & Compose ile Native Çözümler",
-        "skills.tech_badge4": "Arayüz Gerçekleştirme",
-        "skills.tech_name5": "Firebase Entegrasyonu & Backend Servisleri",
-        "skills.tech_badge5": "Bulut Çözümleri & Veri",
+        "skills.desc": "Gözüm harmoniyi arıyor; kararlarımı teknik bilgimden çok şeylerin bana hissettirdikleri yönlendiriyor. Mükemmeli arıyorum.",
+        "skills.cat1": "Web & Mobil Geliştirme",
+        "skills.tech_name1": "JavaScript, React ve modern CSS ile duyarlı ve hızlı web sayfaları",
+        "skills.tech_badge1": "Web Arayüzleri",
+        "skills.tech_name2": "Kotlin ve Jetpack Compose ile modern mobil uygulamalar",
+        "skills.tech_badge2": "Android Geliştirme",
+        "skills.tech_name3": "Firebase (Auth, Firestore) entegrasyonu ve istemci taraflı veri akışı",
+        "skills.tech_badge3": "Veri & Servis",
+        "skills.tech_name4": "Python ile veri ayıklama, filtreleme ve veritabanı otomasyonu",
+        "skills.tech_badge4": "Veri Hazırlığı",
         
-        "skills.cat2": "Estetik & Tasarım",
-        "skills.design_name1": "UI/UX İlkeleri & Figma",
-        "skills.design_badge1": "Arayüz & Deneyim Tasarımı",
-        "skills.design_name2": "Adobe Photoshop",
-        "skills.design_badge2": "Görsel Kimlik & Manipülasyon",
-        "skills.design_name3": "Adobe Premiere Pro",
-        "skills.design_badge3": "Dinamik İçerik & Kurgu",
-        "skills.design_name4": "Logic Pro ile Atmosfer Yaratımı",
-        "skills.design_badge4": "Ses Tasarımı & Prodüksiyon",
-        "skills.design_name5": "Minimalizm ve Glassmorphism Adaptasyonu",
-        "skills.design_badge5": "Dijital Estetik",
+        "skills.cat2": "Arayüz & Görsel Tasarım",
+        "skills.design_name1": "Figma ile sade, kullanıcı odaklı ve tipografisi dengeli ekranlar",
+        "skills.design_badge1": "UI & Deneyim Tasarımı",
+        "skills.design_name2": "CSS animasyonları, görsel uyum ve dokunsal hissiyatı olan geçişler",
+        "skills.design_badge2": "Etkileşim & Ritim",
+        "skills.design_name3": "Photoshop ve Premiere Pro ile grafik ve video içerik üretimi",
+        "skills.design_badge3": "Görsel & Video Kurgu",
         
-        "skills.cat3": "Düşünce & Koordinasyon",
-        "skills.thought_name1": "Felsefi Soyutlama ve Problem Çözme",
-        "skills.thought_badge1": "Kavramsal Analiz & Model Oluşturma",
-        "skills.thought_name2": "İleri Seviye İngilizce (C1)",
-        "skills.thought_badge2": "Kültürlerarası Adaptasyon",
-        "skills.thought_name3": "Sivil Toplum ve Kolektif Çalışma",
-        "skills.thought_badge3": "Topluluk & Süreç Yönetimi",
-        "skills.thought_name4": "Teori ve Pratiğin (Felsefe & Yazılım) Sentezi",
-        "skills.thought_badge4": "Disiplinlerarası Köprü Kurma",
+        "skills.cat3": "Ürün Kurgusu & İletişim",
+        "skills.thought_name1": "İhtiyacı belirleyip araştırma, tasarım ve kodu bir araya getirme",
+        "skills.thought_badge1": "Fikirden Çalışan Ürüne",
+        "skills.thought_name2": "Kulüp ve sivil toplum etkinliklerinde koordinasyon ve ekip çalışması",
+        "skills.thought_badge2": "Topluluk & Süreç",
+        "skills.thought_name3": "İleri seviye İngilizce (C1) — teknik kaynak taraması ve iletişim",
+        "skills.thought_badge3": "İngilizce İletişim",
         
         "contact.tag": "İletişim",
         "contact.title": "Gel, Bir Şey(ler) Yapalım",
@@ -199,9 +196,14 @@ const translations = {
         "timeline.title": "Education & Experience",
         "timeline.desc": "Paths and stops",
         
+        "timeline.iu.title": "LL.B. in Law",
+        "timeline.iu.org": "Istanbul University",
+        "timeline.iu.loc": "Istanbul, Turkey (Ongoing)",
+        "timeline.iu.desc": "Undergraduate studies focused on legal theory, normative logic, and rule-based systems.",
+
         "timeline.boun.title": "B.A. in Philosophy",
         "timeline.boun.org": "Boğaziçi University",
-        "timeline.boun.loc": "Istanbul, Turkey (Ongoing)",
+        "timeline.boun.loc": "Istanbul, Turkey (Discontinued)",
         "timeline.boun.desc": "The university changed me more than the department did. My interactions with brilliant people from wildly different backgrounds taught me things no class ever could. The department gave me tools: to think about desire, meaning, and the nature of communication.",
         
         "timeline.bued.title": "Executive Board Member",
@@ -224,41 +226,33 @@ const translations = {
         "timeline.ucondort.desc": "This project taught me something beyond technical skills: staying coordinated and producing consistently for months. It's where I learned what continuity actually means.",
         
         "skills.tag": "Skills",
-        "skills.title": "Skills & Tools",
-        "skills.desc": "My eye seeks harmony; my decisions are guided by the balance of analytical depth and aesthetic intuition. I aim to make the conceptual functional, and to capture perfection in the whole.",
-        "skills.cat1": "Technological Architecture & Product",
-        "skills.tech_name1": "Rapid Development with AI & Modern Tools",
-        "skills.tech_badge1": "Technology Orchestration",
-        "skills.tech_name2": "From Idea to Working Product",
-        "skills.tech_badge2": "Agile Prototyping",
-        "skills.tech_name3": "Scalable Structures with Next.js & React",
-        "skills.tech_badge3": "System Architecture",
-        "skills.tech_name4": "Native Solutions with Kotlin & Compose",
-        "skills.tech_badge4": "UI Realization",
-        "skills.tech_name5": "Firebase Integration & Backend Services",
-        "skills.tech_badge5": "Cloud Solutions & Data",
+        "skills.title": "What I Do",
+        "skills.desc": "My eye seeks harmony; my decisions are guided by what things make me feel rather than mere technical formulas. I strive for excellence in the craft.",
+        "skills.cat1": "Web & Mobile Development",
+        "skills.tech_name1": "Responsive, fast interfaces built with JavaScript, React, and modern CSS",
+        "skills.tech_badge1": "Web Interfaces",
+        "skills.tech_name2": "Modern Android applications crafted with Kotlin and Jetpack Compose",
+        "skills.tech_badge2": "Android Development",
+        "skills.tech_name3": "Firebase (Auth, Firestore) integration and client-side data flows",
+        "skills.tech_badge3": "Data & Services",
+        "skills.tech_name4": "Data extraction, scraping, and database population via Python scripts",
+        "skills.tech_badge4": "Data Preparation",
         
-        "skills.cat2": "Aesthetics & Design",
-        "skills.design_name1": "UI/UX Principles & Figma",
-        "skills.design_badge1": "Interface & Experience Design",
-        "skills.design_name2": "Adobe Photoshop",
-        "skills.design_badge2": "Visual Identity & Manipulation",
-        "skills.design_name3": "Adobe Premiere Pro",
-        "skills.design_badge3": "Dynamic Content & Editing",
-        "skills.design_name4": "Atmosphere Creation with Logic Pro",
-        "skills.design_badge4": "Sound Design & Production",
-        "skills.design_name5": "Minimalism & Glassmorphism Adaptation",
-        "skills.design_badge5": "Digital Aesthetics",
+        "skills.cat2": "UI & Visual Design",
+        "skills.design_name1": "Clean, human-centered UI design with balanced typography in Figma",
+        "skills.design_badge1": "UI & Experience Design",
+        "skills.design_name2": "Tactile CSS animations, visual rhythm, and refined transition details",
+        "skills.design_badge2": "Interaction & Rhythm",
+        "skills.design_name3": "Graphic assets and video editing with Photoshop and Premiere Pro",
+        "skills.design_badge3": "Visual & Video Editing",
         
-        "skills.cat3": "Thought & Coordination",
-        "skills.thought_name1": "Philosophical Abstraction & Problem Solving",
-        "skills.thought_badge1": "Conceptual Analysis & Modeling",
-        "skills.thought_name2": "Advanced English (C1)",
-        "skills.thought_badge2": "Intercultural Adaptation",
-        "skills.thought_name3": "Civil Society & Collective Work",
-        "skills.thought_badge3": "Community & Process Management",
-        "skills.thought_name4": "Synthesis of Theory & Practice (Philosophy & Software)",
-        "skills.thought_badge4": "Interdisciplinary Bridging",
+        "skills.cat3": "Product & Coordination",
+        "skills.thought_name1": "Connecting user needs with research, design, and functional code",
+        "skills.thought_badge1": "From Idea to Product",
+        "skills.thought_name2": "Community and team coordination across student clubs and NGO projects",
+        "skills.thought_badge2": "Community & Process",
+        "skills.thought_name3": "Full professional proficiency (C1) — technical research & communication",
+        "skills.thought_badge3": "English Communication",
         
         "contact.tag": "Contact",
         "contact.title": "Let's Work Together",
@@ -1241,79 +1235,75 @@ function initProjectModals() {
             `;
         }
 
-        // Build animated visual HTML matching card view
+        // Build animated visual HTML matching card view (Baskı Dili Artwork)
         let visualHTML = "";
-        if (projectId === "aura") {
+        if (projectId === "aradapay") {
             visualHTML = `
                 <div class="visual-inner">
-                    <div class="visual-aura-breathing">
-                        <div class="breathing-ring ring-1"></div>
-                        <div class="breathing-ring ring-2"></div>
-                        <div class="breathing-ring ring-3"></div>
-                    </div>
+                    <svg viewBox="0 0 280 150">
+                        <g class="b" filter="url(#ink)"><circle cx="112" cy="76" r="46" fill="var(--blue)"/></g>
+                        <g class="o" filter="url(#ink)"><circle cx="164" cy="76" r="34" fill="var(--orange)"/></g>
+                    </svg>
+                </div>
+            `;
+        } else if (projectId === "aura") {
+            visualHTML = `
+                <div class="visual-inner">
+                    <svg viewBox="0 0 280 150">
+                        <g class="b" filter="url(#ink)" fill="none" stroke="var(--blue)" stroke-width="7">
+                            <circle cx="140" cy="75" r="56" stroke-dasharray="1 11" stroke-linecap="round" stroke-width="9"/>
+                            <circle cx="140" cy="75" r="38"/>
+                            <circle cx="140" cy="75" r="20" stroke-width="9"/>
+                        </g>
+                        <g class="o" filter="url(#ink)"><circle cx="140" cy="75" r="8" fill="var(--orange)"/></g>
+                    </svg>
+                </div>
+            `;
+        } else if (projectId === "ekotakippro" || projectId === "adnet") {
+            visualHTML = `
+                <div class="visual-inner">
+                    <svg viewBox="0 0 280 150">
+                        <g class="b" filter="url(#ink)">
+                            <circle cx="140" cy="75" r="26" fill="var(--blue)"/>
+                            <circle cx="140" cy="75" r="56" fill="none" stroke="var(--blue)" stroke-width="3" stroke-dasharray="2 9" stroke-linecap="round"/>
+                        </g>
+                        <g class="o" filter="url(#ink)">
+                            <circle cx="184" cy="38" r="9" fill="var(--orange)"/>
+                            <circle cx="96" cy="112" r="6" fill="var(--orange)"/>
+                            <circle cx="190" cy="108" r="4" fill="var(--orange)"/>
+                        </g>
+                    </svg>
                 </div>
             `;
         } else if (projectId === "sosyal") {
             visualHTML = `
                 <div class="visual-inner">
-                    <div class="visual-forum-header">
-                        <div class="visual-avatar-dot"></div>
-                        <div class="visual-header-line"></div>
-                    </div>
-                    <div class="visual-forum-box">
-                        <div class="visual-content-line"></div>
-                        <div class="visual-content-line short"></div>
-                    </div>
-                    <div class="visual-forum-box reply">
-                        <div class="visual-content-line"></div>
-                        <div class="visual-content-line short"></div>
-                    </div>
+                    <svg viewBox="0 0 280 150">
+                        <g class="b" filter="url(#ink)">
+                            <rect x="52" y="34" width="100" height="36" rx="18" fill="var(--blue)"/>
+                            <path d="M152 52 C 190 52, 170 96, 204 96" fill="none" stroke="var(--blue)" stroke-width="3" stroke-dasharray="2 8" stroke-linecap="round"/>
+                        </g>
+                        <g class="o" filter="url(#ink)">
+                            <rect x="150" y="80" width="100" height="36" rx="18" fill="var(--orange)"/>
+                        </g>
+                    </svg>
                 </div>
             `;
         } else if (projectId === "yazareser") {
             visualHTML = `
                 <div class="visual-inner">
-                    <div class="visual-flashcard">
-                        <div class="visual-card-front">Leyla vü Mecnun</div>
-                        <div class="visual-card-back">Fuzûlî</div>
-                    </div>
-                </div>
-            `;
-        } else if (projectId === "ekotakippro") {
-            visualHTML = `
-                <div class="visual-inner">
-                    <div class="visual-carbon-scene">
-                        <div class="visual-carbon-ring ring-outer"></div>
-                        <div class="visual-carbon-ring ring-mid"></div>
-                        <div class="visual-carbon-center">
-                            <span class="visual-co2-label">CO₂</span>
-                        </div>
-                        <div class="visual-carbon-leaf leaf-1"></div>
-                        <div class="visual-carbon-leaf leaf-2"></div>
-                        <div class="visual-carbon-leaf leaf-3"></div>
-                    </div>
-                </div>
-            `;
-        } else if (projectId === "aradapay") {
-            visualHTML = `
-                <div class="visual-inner">
-                    <div class="visual-aradapay-scene">
-                        <div class="visual-arada-node node-a">
-                            <span class="node-label">A</span>
-                        </div>
-                        <div class="visual-arada-node node-b">
-                            <span class="node-label">B</span>
-                        </div>
-                        <div class="visual-arada-node node-c">
-                            <span class="node-label">C</span>
-                        </div>
-                        <svg class="visual-arada-graph" viewBox="0 0 170 120">
-                            <path class="graph-line line-1" d="M 35 30 L 135 30" />
-                            <path class="graph-line line-2" d="M 135 30 L 85 92" />
-                            <path class="graph-line line-3" d="M 85 92 L 35 30" />
-                            <path class="graph-direct-opt" d="M 35 30 Q 85 52 135 30" />
-                        </svg>
-                    </div>
+                    <svg viewBox="0 0 280 150">
+                        <g class="b" filter="url(#ink)">
+                            <rect x="70" y="38" width="80" height="74" rx="10" fill="var(--blue)"/>
+                            <line x1="85" y1="58" x2="135" y2="58" stroke="var(--paper, #F6EFD9)" stroke-width="3" stroke-linecap="round"/>
+                            <line x1="85" y1="72" x2="120" y2="72" stroke="var(--paper, #F6EFD9)" stroke-width="3" stroke-linecap="round"/>
+                        </g>
+                        <g class="o" filter="url(#ink)">
+                            <rect x="130" y="44" width="80" height="74" rx="10" fill="var(--orange)"/>
+                            <line x1="145" y1="64" x2="195" y2="64" stroke="var(--plate, #FFF)" stroke-width="3" stroke-linecap="round"/>
+                            <line x1="145" y1="78" x2="180" y2="78" stroke="var(--plate, #FFF)" stroke-width="3" stroke-linecap="round"/>
+                        </g>
+                    </svg>
                 </div>
             `;
         }
@@ -1323,7 +1313,7 @@ function initProjectModals() {
                 <h3 class="modal-project-title">${project.title}</h3>
             </div>
             
-            <div class="modal-project-banner visual-${projectId}">
+            <div class="modal-project-banner art visual-${projectId}">
                 ${visualHTML}
             </div>
             

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Mehmet Dilovan Toprak - Boğaziçi Üniversitesi Felsefe Öğrencisi ve Arayüz/Yazılım Geliştirici Kişisel Portfolyosu.">
+    <meta name="description" content="Mehmet Dilovan Toprak - İstanbul Üniversitesi Hukuk Fakültesi Öğrencisi ve Arayüz/Yazılım Geliştirici Kişisel Portfolyosu.">
     <title>Mehmet Dilovan Toprak | Portfolyo</title>
     
     <!-- Google Fonts -->
@@ -23,6 +23,19 @@
     </script>
 </head>
 <body>
+    <!-- Baskı Dili Ink Filter -->
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+      <defs>
+        <filter id="ink" x="-5%" y="-5%" width="110%" height="110%">
+          <feTurbulence type="fractalNoise" baseFrequency=".06" numOctaves="2" seed="2" result="w"/>
+          <feDisplacementMap in="SourceGraphic" in2="w" scale="4" result="d"/>
+          <feTurbulence type="fractalNoise" baseFrequency="1.1" numOctaves="1" seed="7" result="g"/>
+          <feColorMatrix in="g" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  9 0 0 0 -2.6" result="speck"/>
+          <feComposite in="d" in2="speck" operator="in"/>
+        </filter>
+      </defs>
+    </svg>
+
     <!-- Film Grain Overlay & Pattern Layer -->
     <div class="grain-overlay"></div>
     <div class="retro-bg-pattern-layer pattern-checkerboard" id="retro-bg-pattern-layer"></div>
@@ -119,25 +132,12 @@
                 <div class="projects-grid" id="projects-grid">
                     <!-- Project 1: AradaPay -->
                     <div class="project-card animate-scroll" data-project="aradapay">
-                        <div class="project-visual-container visual-aradapay">
+                        <div class="project-visual-container art visual-aradapay">
                             <div class="visual-inner">
-                                <div class="visual-aradapay-scene">
-                                    <div class="visual-arada-node node-a">
-                                        <span class="node-label">A</span>
-                                    </div>
-                                    <div class="visual-arada-node node-b">
-                                        <span class="node-label">B</span>
-                                    </div>
-                                    <div class="visual-arada-node node-c">
-                                        <span class="node-label">C</span>
-                                    </div>
-                                    <svg class="visual-arada-graph" viewBox="0 0 170 120">
-                                        <path class="graph-line line-1" d="M 35 30 L 135 30" />
-                                        <path class="graph-line line-2" d="M 135 30 L 85 92" />
-                                        <path class="graph-line line-3" d="M 85 92 L 35 30" />
-                                        <path class="graph-direct-opt" d="M 35 30 Q 85 52 135 30" />
-                                    </svg>
-                                </div>
+                                <svg viewBox="0 0 280 150">
+                                    <g class="b" filter="url(#ink)"><circle cx="112" cy="76" r="46" fill="var(--blue)"/></g>
+                                    <g class="o" filter="url(#ink)"><circle cx="164" cy="76" r="34" fill="var(--orange)"/></g>
+                                </svg>
                             </div>
                         </div>
                         <div class="project-info">
@@ -149,13 +149,16 @@
 
                     <!-- Project 2: Aura -->
                     <div class="project-card animate-scroll" data-project="aura">
-                        <div class="project-visual-container visual-aura">
+                        <div class="project-visual-container art visual-aura">
                             <div class="visual-inner">
-                                <div class="visual-aura-breathing">
-                                    <div class="breathing-ring ring-1"></div>
-                                    <div class="breathing-ring ring-2"></div>
-                                    <div class="breathing-ring ring-3"></div>
-                                </div>
+                                <svg viewBox="0 0 280 150">
+                                    <g class="b" filter="url(#ink)" fill="none" stroke="var(--blue)" stroke-width="7">
+                                        <circle cx="140" cy="75" r="56" stroke-dasharray="1 11" stroke-linecap="round" stroke-width="9"/>
+                                        <circle cx="140" cy="75" r="38"/>
+                                        <circle cx="140" cy="75" r="20" stroke-width="9"/>
+                                    </g>
+                                    <g class="o" filter="url(#ink)"><circle cx="140" cy="75" r="8" fill="var(--orange)"/></g>
+                                </svg>
                             </div>
                         </div>
                         <div class="project-info">
@@ -167,18 +170,19 @@
 
                     <!-- Project 3: EkoTakip Pro -->
                     <div class="project-card animate-scroll" data-project="ekotakippro">
-                        <div class="project-visual-container visual-adnet">
+                        <div class="project-visual-container art visual-adnet">
                             <div class="visual-inner">
-                                <div class="visual-carbon-scene">
-                                    <div class="visual-carbon-ring ring-outer"></div>
-                                    <div class="visual-carbon-ring ring-mid"></div>
-                                    <div class="visual-carbon-center">
-                                        <span class="visual-co2-label">CO2</span>
-                                    </div>
-                                    <div class="visual-carbon-leaf leaf-1"></div>
-                                    <div class="visual-carbon-leaf leaf-2"></div>
-                                    <div class="visual-carbon-leaf leaf-3"></div>
-                                </div>
+                                <svg viewBox="0 0 280 150">
+                                    <g class="b" filter="url(#ink)">
+                                        <circle cx="140" cy="75" r="26" fill="var(--blue)"/>
+                                        <circle cx="140" cy="75" r="56" fill="none" stroke="var(--blue)" stroke-width="3" stroke-dasharray="2 9" stroke-linecap="round"/>
+                                    </g>
+                                    <g class="o" filter="url(#ink)">
+                                        <circle cx="184" cy="38" r="9" fill="var(--orange)"/>
+                                        <circle cx="96" cy="112" r="6" fill="var(--orange)"/>
+                                        <circle cx="190" cy="108" r="4" fill="var(--orange)"/>
+                                    </g>
+                                </svg>
                             </div>
                         </div>
                         <div class="project-info">
@@ -216,20 +220,17 @@
 
                     <!-- Project 4: STTFL (Sosyal) -->
                     <div class="project-card animate-scroll other-project" data-project="sosyal">
-                        <div class="project-visual-container visual-sosyal">
+                        <div class="project-visual-container art visual-sosyal">
                             <div class="visual-inner">
-                                <div class="visual-forum-header">
-                                    <div class="visual-avatar-dot"></div>
-                                    <div class="visual-header-line"></div>
-                                </div>
-                                <div class="visual-forum-box">
-                                    <div class="visual-content-line"></div>
-                                    <div class="visual-content-line short"></div>
-                                </div>
-                                <div class="visual-forum-box reply">
-                                    <div class="visual-content-line"></div>
-                                    <div class="visual-content-line short"></div>
-                                </div>
+                                <svg viewBox="0 0 280 150">
+                                    <g class="b" filter="url(#ink)">
+                                        <rect x="52" y="34" width="100" height="36" rx="18" fill="var(--blue)"/>
+                                        <path d="M152 52 C 190 52, 170 96, 204 96" fill="none" stroke="var(--blue)" stroke-width="3" stroke-dasharray="2 8" stroke-linecap="round"/>
+                                    </g>
+                                    <g class="o" filter="url(#ink)">
+                                        <rect x="150" y="80" width="100" height="36" rx="18" fill="var(--orange)"/>
+                                    </g>
+                                </svg>
                             </div>
                         </div>
                         <div class="project-info">
@@ -241,12 +242,20 @@
 
                     <!-- Project 5: YazarEser -->
                     <div class="project-card animate-scroll other-project" data-project="yazareser">
-                        <div class="project-visual-container visual-yazareser">
+                        <div class="project-visual-container art visual-yazareser">
                             <div class="visual-inner">
-                                <div class="visual-flashcard">
-                                    <div class="visual-card-front">Leyla vu Mecnun</div>
-                                    <div class="visual-card-back">Fuzuli</div>
-                                </div>
+                                <svg viewBox="0 0 280 150">
+                                    <g class="b" filter="url(#ink)">
+                                        <rect x="70" y="38" width="80" height="74" rx="10" fill="var(--blue)"/>
+                                        <line x1="85" y1="58" x2="135" y2="58" stroke="var(--paper, #F6EFD9)" stroke-width="3" stroke-linecap="round"/>
+                                        <line x1="85" y1="72" x2="120" y2="72" stroke="var(--paper, #F6EFD9)" stroke-width="3" stroke-linecap="round"/>
+                                    </g>
+                                    <g class="o" filter="url(#ink)">
+                                        <rect x="130" y="44" width="80" height="74" rx="10" fill="var(--orange)"/>
+                                        <line x1="145" y1="64" x2="195" y2="64" stroke="var(--plate, #FFF)" stroke-width="3" stroke-linecap="round"/>
+                                        <line x1="145" y1="78" x2="180" y2="78" stroke="var(--plate, #FFF)" stroke-width="3" stroke-linecap="round"/>
+                                    </g>
+                                </svg>
                             </div>
                         </div>
                         <div class="project-info">
@@ -335,16 +344,30 @@
                         </div>
                     </div>
 
-                    <!-- Item 1: Boğaziçi (En Yeni) -->
+                    <!-- Item 1: İstanbul Üniversitesi (En Yeni) -->
                     <div class="timeline-item animate-scroll">
                         <div class="timeline-dot"></div>
-                        <div class="timeline-time">2024 - 2029</div>
+                        <div class="timeline-time">2024 - Günümüz</div>
+                        <div class="timeline-content">
+                            <div class="timeline-header">
+                                <h3 class="timeline-title" data-i18n="timeline.iu.title">Hukuk Lisans Eğitimi</h3>
+                                <span class="timeline-org" data-i18n="timeline.iu.org">İstanbul Üniversitesi</span>
+                            </div>
+                            <span class="timeline-loc" data-i18n="timeline.iu.loc">İstanbul, Türkiye (Devam Ediyor)</span>
+                            <p class="timeline-text" data-i18n="timeline.iu.desc">Hukuk nosyonu, normatif düşünce ve kural koyucu sistemlerin mantığı üzerine lisans eğitimi.</p>
+                        </div>
+                    </div>
+
+                    <!-- Item 1.2: Boğaziçi Üniversitesi -->
+                    <div class="timeline-item animate-scroll">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-time">2024 - 2026</div>
                         <div class="timeline-content">
                             <div class="timeline-header">
                                 <h3 class="timeline-title" data-i18n="timeline.boun.title">Felsefe Lisans Eğitimi</h3>
                                 <span class="timeline-org" data-i18n="timeline.boun.org">Boğaziçi Üniversitesi</span>
                             </div>
-                            <span class="timeline-loc" data-i18n="timeline.boun.loc">İstanbul, Türkiye (Devam Ediyor)</span>
+                            <span class="timeline-loc" data-i18n="timeline.boun.loc">İstanbul, Türkiye (Ayrıldı)</span>
                             <p class="timeline-text" data-i18n="timeline.boun.desc">Bölümden çok okul değiştirdi beni. Farklı arka planlardan, birbirinden zeki insanlarla olan etkileşimlerim hiçbir derste öğrenemeyeceğim şeyler öğretti. Bölüm ise arzu, anlam ve iletişimin doğasını düşünebilmemi sağlayan araçlar verdi bana.</p>
                         </div>
                     </div>
@@ -367,29 +390,25 @@
                         <div class="skill-cat-header">
                             <h3 class="skill-cat-title">
                                 <span class="skill-cat-number">01</span>
-                                <span data-i18n="skills.cat1">Teknolojik Mimari &amp; Ürün</span>
+                                <span data-i18n="skills.cat1">Web &amp; Mobil Geliştirme</span>
                             </h3>
                         </div>
                         <ul class="skill-list">
                             <li>
-                                <span class="skill-concept" data-i18n="skills.tech_badge1">Teknoloji Orkestrasyonu</span>
-                                <span class="skill-desc" data-i18n="skills.tech_name1">Yapay Zeka ve Modern Araçlarla Hızlı Geliştirme</span>
+                                <span class="skill-concept" data-i18n="skills.tech_badge1">Web Arayüzleri</span>
+                                <span class="skill-desc" data-i18n="skills.tech_name1">JavaScript, React ve modern CSS ile duyarlı ve hızlı web sayfaları</span>
                             </li>
                             <li>
-                                <span class="skill-concept" data-i18n="skills.tech_badge2">Çevik Prototipleme</span>
-                                <span class="skill-desc" data-i18n="skills.tech_name2">Fikirden Çalışan Ürüne</span>
+                                <span class="skill-concept" data-i18n="skills.tech_badge2">Android Geliştirme</span>
+                                <span class="skill-desc" data-i18n="skills.tech_name2">Kotlin ve Jetpack Compose ile modern mobil uygulamalar</span>
                             </li>
                             <li>
-                                <span class="skill-concept" data-i18n="skills.tech_badge3">Sistem Mimarisi</span>
-                                <span class="skill-desc" data-i18n="skills.tech_name3">Next.js &amp; React ile Ölçeklenebilir Yapılar</span>
+                                <span class="skill-concept" data-i18n="skills.tech_badge3">Veri &amp; Servis</span>
+                                <span class="skill-desc" data-i18n="skills.tech_name3">Firebase (Auth, Firestore) entegrasyonu ve istemci taraflı veri akışı</span>
                             </li>
                             <li>
-                                <span class="skill-concept" data-i18n="skills.tech_badge4">Arayüz Gerçekleştirme</span>
-                                <span class="skill-desc" data-i18n="skills.tech_name4">Kotlin &amp; Compose ile Native Çözümler</span>
-                            </li>
-                            <li>
-                                <span class="skill-concept" data-i18n="skills.tech_badge5">Bulut Çözümleri &amp; Veri</span>
-                                <span class="skill-desc" data-i18n="skills.tech_name5">Firebase Entegrasyonu &amp; Backend Servisleri</span>
+                                <span class="skill-concept" data-i18n="skills.tech_badge4">Veri Hazırlığı</span>
+                                <span class="skill-desc" data-i18n="skills.tech_name4">Python ile veri ayıklama, filtreleme ve veritabanı otomasyonu</span>
                             </li>
                         </ul>
                     </div>
@@ -399,29 +418,21 @@
                         <div class="skill-cat-header">
                             <h3 class="skill-cat-title">
                                 <span class="skill-cat-number">02</span>
-                                <span data-i18n="skills.cat2">Estetik &amp; Tasarım</span>
+                                <span data-i18n="skills.cat2">Arayüz &amp; Görsel Tasarım</span>
                             </h3>
                         </div>
                         <ul class="skill-list">
                             <li>
-                                <span class="skill-concept" data-i18n="skills.design_badge1">Arayüz &amp; Deneyim Tasarımı</span>
-                                <span class="skill-desc" data-i18n="skills.design_name1">UI/UX İlkeleri &amp; Figma</span>
+                                <span class="skill-concept" data-i18n="skills.design_badge1">UI &amp; Deneyim Tasarımı</span>
+                                <span class="skill-desc" data-i18n="skills.design_name1">Figma ile sade, kullanıcı odaklı ve tipografisi dengeli ekranlar</span>
                             </li>
                             <li>
-                                <span class="skill-concept" data-i18n="skills.design_badge2">Görsel Kimlik &amp; Manipülasyon</span>
-                                <span class="skill-desc" data-i18n="skills.design_name2">Adobe Photoshop</span>
+                                <span class="skill-concept" data-i18n="skills.design_badge2">Etkileşim &amp; Ritim</span>
+                                <span class="skill-desc" data-i18n="skills.design_name2">CSS animasyonları, görsel uyum ve dokunsal hissiyatı olan geçişler</span>
                             </li>
                             <li>
-                                <span class="skill-concept" data-i18n="skills.design_badge3">Dinamik İçerik &amp; Kurgu</span>
-                                <span class="skill-desc" data-i18n="skills.design_name3">Adobe Premiere Pro</span>
-                            </li>
-                            <li>
-                                <span class="skill-concept" data-i18n="skills.design_badge4">Ses Tasarımı &amp; Prodüksiyon</span>
-                                <span class="skill-desc" data-i18n="skills.design_name4">Logic Pro ile Atmosfer Yaratımı</span>
-                            </li>
-                            <li>
-                                <span class="skill-concept" data-i18n="skills.design_badge5">Dijital Estetik</span>
-                                <span class="skill-desc" data-i18n="skills.design_name5">Minimalizm ve Glassmorphism Adaptasyonu</span>
+                                <span class="skill-concept" data-i18n="skills.design_badge3">Görsel &amp; Video Kurgu</span>
+                                <span class="skill-desc" data-i18n="skills.design_name3">Photoshop ve Premiere Pro ile grafik ve video içerik üretimi</span>
                             </li>
                         </ul>
                     </div>
@@ -431,25 +442,21 @@
                         <div class="skill-cat-header">
                             <h3 class="skill-cat-title">
                                 <span class="skill-cat-number">03</span>
-                                <span data-i18n="skills.cat3">Düşünce &amp; Koordinasyon</span>
+                                <span data-i18n="skills.cat3">Ürün Kurgusu &amp; İletişim</span>
                             </h3>
                         </div>
                         <ul class="skill-list">
                             <li>
-                                <span class="skill-concept" data-i18n="skills.thought_badge1">Kavramsal Analiz &amp; Model Oluşturma</span>
-                                <span class="skill-desc" data-i18n="skills.thought_name1">Felsefi Soyutlama ve Problem Çözme</span>
+                                <span class="skill-concept" data-i18n="skills.thought_badge1">Fikirden Çalışan Ürüne</span>
+                                <span class="skill-desc" data-i18n="skills.thought_name1">İhtiyacı belirleyip araştırma, tasarım ve kodu bir araya getirme</span>
                             </li>
                             <li>
-                                <span class="skill-concept" data-i18n="skills.thought_badge2">Kültürlerarası Adaptasyon</span>
-                                <span class="skill-desc" data-i18n="skills.thought_name2">İleri Seviye İngilizce (C1)</span>
+                                <span class="skill-concept" data-i18n="skills.thought_badge2">Topluluk &amp; Süreç</span>
+                                <span class="skill-desc" data-i18n="skills.thought_name2">Kulüp ve sivil toplum etkinliklerinde koordinasyon ve ekip çalışması</span>
                             </li>
                             <li>
-                                <span class="skill-concept" data-i18n="skills.thought_badge3">Topluluk &amp; Süreç Yönetimi</span>
-                                <span class="skill-desc" data-i18n="skills.thought_name3">Sivil Toplum ve Kolektif Çalışma</span>
-                            </li>
-                            <li>
-                                <span class="skill-concept" data-i18n="skills.thought_badge4">Disiplinlerarası Köprü Kurma</span>
-                                <span class="skill-desc" data-i18n="skills.thought_name4">Teori ve Pratiğin (Felsefe &amp; Yazılım) Sentezi</span>
+                                <span class="skill-concept" data-i18n="skills.thought_badge3">İngilizce İletişim</span>
+                                <span class="skill-desc" data-i18n="skills.thought_name3">İleri seviye İngilizce (C1) — teknik kaynak taraması ve iletişim</span>
                             </li>
                         </ul>
                     </div>
