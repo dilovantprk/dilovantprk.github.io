@@ -723,6 +723,11 @@ const projectsData = {
 };
 
 /* ==========================================================================
+   LANGUAGE ENGINE (TR / EN)
+   ========================================================================== */
+let currentLanguage = "tr";
+
+/* ==========================================================================
    INITIALIZATION & FEATHER ICONS
    ========================================================================== */
 function startApp() {
@@ -742,17 +747,6 @@ function startApp() {
     initContactForm();
     initSmoothScrollInterception();
 }
-
-if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", startApp);
-} else {
-    startApp();
-}
-
-/* ==========================================================================
-   LANGUAGE ENGINE (TR / EN)
-   ========================================================================== */
-let currentLanguage = "tr";
 
 function initLanguage() {
     const langToggleBtns = document.querySelectorAll(".lang-toggle");
@@ -1653,5 +1647,12 @@ function initContactForm() {
             document.body.style.overflow = "";
         });
     }
+}
+
+// Start application after all modules and functions are declared
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", startApp);
+} else {
+    startApp();
 }
 
