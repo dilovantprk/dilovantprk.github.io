@@ -1285,7 +1285,7 @@ mark {
         0 14px 34px -8px rgba(var(--shade), 0.2),
         inset 0 1px 2px rgba(255, 255, 255, 0.65),
         inset 0 -1px 3px rgba(0, 0, 0, 0.35);
-    overflow: hidden;
+    overflow: visible; /* Açılmamış jelatin poşet dikişleri kartın dışına taşar */
     cursor: pointer;
     transform-origin: center bottom;
     transition:
@@ -1511,6 +1511,196 @@ mark {
 
 .tcg-card.is-active .tcg-foil-sparkles {
     opacity: calc(var(--card-glare-opacity, 0) * 0.75);
+}
+
+/* ==========================================================================
+   AÇILMAMIŞ KOLEKSİYON JELATİNİ (Factory-Sealed Unopened Cellophane Wrapper)
+   ========================================================================== */
+
+/* 1. Ana Jelatin Kılıf (Karttan taşan şeffaf polipropilen poşet) */
+.tcg-cello-sleeve {
+    position: absolute;
+    inset: -18px -7px -14px -7px;
+    border-radius: 4px;
+    pointer-events: none;
+    z-index: 25;
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    box-shadow:
+        0 4px 18px rgba(0, 0, 0, 0.16),
+        inset 0 0 10px rgba(255, 255, 255, 0.22),
+        inset 0 1px 2px rgba(255, 255, 255, 0.65);
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.09) 0%,
+        rgba(255, 255, 255, 0.02) 40%,
+        rgba(255, 255, 255, 0.07) 100%
+    );
+    overflow: visible;
+}
+
+/* 2. Üst Tırtıklı Isı Kaynağı Şeridi (Top Heat-Sealed Crimped Flap) */
+.tcg-cello-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 18px;
+    background:
+        repeating-linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0.6) 0px,
+            rgba(255, 255, 255, 0.6) 1.5px,
+            rgba(0, 0, 0, 0.12) 1.5px,
+            rgba(0, 0, 0, 0.12) 3.5px
+        );
+    background-color: rgba(255, 255, 255, 0.22);
+    border-bottom: 1.5px solid rgba(255, 255, 255, 0.75);
+    box-shadow:
+        0 1px 3px rgba(0, 0, 0, 0.15),
+        inset 0 1px 2px rgba(255, 255, 255, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    position: relative;
+    z-index: 8;
+}
+
+/* Askı Yuvası (Euro-Slot / Promo Hang Hole) */
+.tcg-cello-hang-hole {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 24px;
+    height: 6.5px;
+    border-radius: 5px;
+    background: rgba(var(--shade), 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    box-shadow:
+        inset 0 1.5px 3px rgba(0, 0, 0, 0.45),
+        0 1px 2px rgba(255, 255, 255, 0.4);
+    z-index: 9;
+}
+
+/* Yırtma Çentiği (Tear Notch) */
+.tcg-cello-notch {
+    position: absolute;
+    top: 50%;
+    right: -1px;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-top: 3.5px solid transparent;
+    border-bottom: 3.5px solid transparent;
+    border-right: 4px solid var(--paper);
+    z-index: 9;
+}
+
+/* Mühür Metni (Embossed Sealed Text) */
+.tcg-cello-stamp {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: var(--font-mono);
+    font-size: 0.42rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 0 0.5px 1px rgba(0, 0, 0, 0.4);
+    pointer-events: none;
+    z-index: 10;
+}
+
+/* 3. Alt Tırtıklı Isı Kaynağı (Bottom Crimp Seam) */
+.tcg-cello-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 14px;
+    background:
+        repeating-linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0.5) 0px,
+            rgba(255, 255, 255, 0.5) 1.5px,
+            rgba(0, 0, 0, 0.1) 1.5px,
+            rgba(0, 0, 0, 0.1) 3.5px
+        );
+    background-color: rgba(255, 255, 255, 0.16);
+    border-top: 1.5px solid rgba(255, 255, 255, 0.65);
+    box-shadow:
+        inset 0 -1px 2px rgba(0, 0, 0, 0.2),
+        0 -1px 2px rgba(255, 255, 255, 0.4);
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    z-index: 8;
+}
+
+/* 4. Ultrasonik Yan Kaynak Dikişleri (Side Welded Margins) */
+.tcg-cello-weld-left,
+.tcg-cello-weld-right {
+    position: absolute;
+    top: 18px;
+    bottom: 14px;
+    width: 6px;
+    background: rgba(255, 255, 255, 0.08);
+    pointer-events: none;
+    z-index: 7;
+}
+
+.tcg-cello-weld-left {
+    left: 0;
+    border-right: 1px dashed rgba(255, 255, 255, 0.45);
+}
+
+.tcg-cello-weld-right {
+    right: 0;
+    border-left: 1px dashed rgba(255, 255, 255, 0.45);
+}
+
+/* 5. Jelatin Kırışıklıkları & Gerilim Çizgileri (SVG Crinkle Creases) */
+.tcg-cello-crinkles {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 5;
+    mix-blend-mode: overlay;
+    filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.25));
+}
+
+/* 6. Dinamik Jelatin Işık Yansıması (High-Gloss Plastic Glaze) */
+.tcg-cello-glaze {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 6;
+    background: linear-gradient(
+        130deg,
+        transparent 0%,
+        transparent 28%,
+        rgba(255, 255, 255, 0.28) 36%,
+        rgba(255, 255, 255, 0.45) 39%,
+        rgba(255, 255, 255, 0.08) 42%,
+        transparent 48%,
+        transparent 62%,
+        rgba(255, 255, 255, 0.24) 72%,
+        transparent 80%
+    );
+    background-size: 260% 260%;
+    background-position: calc(var(--pointer-x) * 1.5) calc(var(--pointer-y) * 1.5);
+    mix-blend-mode: overlay;
+    opacity: 0.78;
+    transition: opacity 0.3s ease;
+}
+
+.tcg-card:hover .tcg-cello-glaze,
+.tcg-card.is-active .tcg-cello-glaze {
+    opacity: 0.96;
 }
 
 /* ==========================================================================
@@ -1811,6 +2001,30 @@ mark {
         padding-top: 6px;
         font-size: 0.54rem;
     }
+
+    /* Mobilde jelatin poşet orantıları */
+    .tcg-cello-sleeve {
+        inset: -14px -5px -10px -5px;
+    }
+    .tcg-cello-top {
+        height: 14px;
+    }
+    .tcg-cello-hang-hole {
+        width: 18px;
+        height: 5px;
+    }
+    .tcg-cello-stamp {
+        display: none;
+    }
+    .tcg-cello-bottom {
+        height: 10px;
+    }
+    .tcg-cello-weld-left,
+    .tcg-cello-weld-right {
+        top: 14px;
+        bottom: 10px;
+        width: 4px;
+    }
 }
 
 @media (max-width: 400px) {
@@ -1885,6 +2099,20 @@ mark {
         margin-top: 5px;
         padding-top: 4px;
         font-size: 0.5rem;
+    }
+
+    .tcg-cello-sleeve {
+        inset: -12px -4px -8px -4px;
+    }
+    .tcg-cello-top {
+        height: 12px;
+    }
+    .tcg-cello-bottom {
+        height: 8px;
+    }
+    .tcg-cello-hang-hole {
+        width: 15px;
+        height: 4px;
     }
 }
 
