@@ -1982,6 +1982,55 @@ mark {
     opacity: 0.96;
 }
 
+/* Her kartın duruş açısına ve yapısına özel asimetrik ışık yansımaları */
+.tcg-card.tcg-gold .tcg-cello-glaze {
+    background: linear-gradient(
+        115deg,
+        transparent 0%,
+        transparent 22%,
+        rgba(255, 255, 255, 0.28) 30%,
+        rgba(255, 255, 255, 0.48) 33%,
+        rgba(255, 255, 255, 0.08) 36%,
+        transparent 45%,
+        transparent 65%,
+        rgba(255, 255, 255, 0.22) 73%,
+        transparent 82%
+    );
+    background-size: 260% 260%;
+}
+
+.tcg-card.tcg-holo .tcg-cello-glaze {
+    background: linear-gradient(
+        135deg,
+        transparent 0%,
+        transparent 30%,
+        rgba(255, 255, 255, 0.32) 38%,
+        rgba(255, 255, 255, 0.52) 41%,
+        rgba(255, 255, 255, 0.1) 45%,
+        transparent 52%,
+        transparent 59%,
+        rgba(255, 255, 255, 0.28) 69%,
+        transparent 78%
+    );
+    background-size: 260% 260%;
+}
+
+.tcg-card.tcg-secret .tcg-cello-glaze {
+    background: linear-gradient(
+        152deg,
+        transparent 0%,
+        transparent 20%,
+        rgba(255, 255, 255, 0.26) 29%,
+        rgba(255, 255, 255, 0.44) 33%,
+        rgba(255, 255, 255, 0.08) 37%,
+        transparent 44%,
+        transparent 65%,
+        rgba(255, 255, 255, 0.25) 76%,
+        transparent 84%
+    );
+    background-size: 260% 260%;
+}
+
 /* ==========================================================================
    İÇ KART DÜZENİ (Çerçeve, Başlık, Vitrin, Gövde, Altbilgi)
    ========================================================================== */
