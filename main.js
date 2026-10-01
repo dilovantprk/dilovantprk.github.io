@@ -31,16 +31,16 @@ const translations = {
         "projects.more_details": "Detayları Gör",
         
         "projects.aura.category": "Wellness / Web App",
-        "projects.aura.summary": "Bir dönem her şey üstüme geliyor gibiydi. Nefes almayı yeniden öğrenmem gerekiyordu... Araştırdım, denedim, işe yarayanları aktardım. Arkadaşlarımla paylaşmak isteyince de bu projeye evrildi.",
+        "projects.aura.summary": "Nefes ve ses sentezleri ile otonom sinir sistemini sakinleştiren kişisel somatik regülasyon alanı.",
         
         "projects.sosyal.category": "Social / Web App",
-        "projects.sosyal.summary": "Bir lise öğrencisinin okulu tüm dünyasıdır nerdeyse. STTFL o dünyanın hafızası — kuşaktan kuşağa aktarılan bir okul kültürü arşivi. Envai çeşit sosyal medya platformu varken STTFL farklı bir şey yapıyor: herkese eşit söz hakkı tanıyor. Öğrenci de mezun da öğretmen de. Okuldaki güç ilişkilerini sözlük formatıyla ters yüz ediyor — öğrencilere kurtarılmış bir bölge açıyor.",
+        "projects.sosyal.summary": "STTFL mezun ve öğrencilerini bir araya getiren özgür tartışma ve topluluk platformu.",
         
-        "projects.yazareser.category": "Education / Mobile App",
-        "projects.yazareser.summary": "AYT Edebiyat sınavına hazırlanırken kapsamlı bir kaynak bulamayınca kendi verimi kendim derledim. 1.799 doğrulanmış kartlık bir veri havuzunu; aralıklı tekrar algoritmaları ve oyun modlarıyla birleştiren, öğrenim sürecini kolaylaştıran bir mobil uygulamaya dönüştürdüm.",
+        "projects.yazareser.category": "Education / Android",
+        "projects.yazareser.summary": "AYT Edebiyat sınavına hazırlanan öğrenciler için oyunlaştırılmış yazar-eser ezber kartları.",
 
         "projects.ekotakippro.category": "Climate Tech / Web App",
-        "projects.ekotakippro.summary": "Türkiye sanayi emisyonları, kurumsal iklim beyannameleri ve 4-kategorili kurumsal etkinlik karbon hesaplayıcısını tek çatı altında toplayan, %100 gizlilik odaklı (Zero-PII) iklim ve karbon yönetim portalı.",
+        "projects.ekotakippro.summary": "Sanayi emisyonları ve kurumsal karbon hesaplamasını tek çatıda toplayan gizlilik odaklı iklim portalı.",
 
         "projects.adnet.category": "Sürdürülebilirlik / Web App",
         "projects.adnet.summary": "Adnet Türkiye için bir karbon emisyon portalı geliştirdim — kurumsal karbon ayak izi verilerini görselleştiren bir web arayüzü.",
@@ -193,16 +193,16 @@ const translations = {
         "projects.more_details": "View Details",
         
         "projects.aura.category": "Wellness / Web App",
-        "projects.aura.summary": "For a while, everything felt like it was closing in on me. I needed to relearn how to breathe... I researched, experimented, and transferred what worked. When I wanted to share it with friends, it evolved into this project.",
+        "projects.aura.summary": "Personal somatic regulation space calming the autonomic nervous system through breath and audio synthesis.",
         
         "projects.sosyal.category": "Social / Web App",
-        "projects.sosyal.summary": "For a high school student, school is almost the whole world. STTFL is that world's memory — an archive of school culture passed from generation to generation. With countless social media platforms out there, STTFL does something different: it gives everyone an equal voice. Student, alumni, teacher alike. It turns the school's power dynamics upside down with the sözlük format — opening a liberated space for students.",
+        "projects.sosyal.summary": "An open discussion and community platform bringing STTFL alumni and students together.",
         
-        "projects.yazareser.category": "Education / Mobile App",
-        "projects.yazareser.summary": "When I couldn't find a comprehensive source while preparing for the AYT Literature exam, I compiled my own data. I transformed a database of 1,799 verified cards into a mobile app that facilitates the learning process by combining spaced repetition algorithms and game modes.",
+        "projects.yazareser.category": "Education / Android",
+        "projects.yazareser.summary": "Gamified author-work memory flashcards for students preparing for the AYT Literature exam.",
 
         "projects.ekotakippro.category": "Climate Tech / Web App",
-        "projects.ekotakippro.summary": "A 100% privacy-focused (Zero-PII) climate and carbon management portal bringing together Turkey's industrial emissions, corporate climate declarations, and a 4-category corporate event carbon calculator.",
+        "projects.ekotakippro.summary": "Privacy-focused climate portal combining industrial emissions and corporate carbon accounting under one roof.",
 
         "projects.adnet.category": "Sustainability / Web App",
         "projects.adnet.summary": "I built a carbon emission portal for Adnet Turkey — a web interface that visualizes corporate carbon footprint data.",

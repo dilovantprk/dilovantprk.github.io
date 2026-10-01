@@ -777,6 +777,7 @@ html.dark .logo-text {
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 1fr;
     gap: var(--spacing-md);
     max-width: 720px;
     margin-left: auto;
@@ -1016,9 +1017,28 @@ html.dark .box-attached-sheet .project-visual-container.art {
 .box-attached-sheet .project-summary {
     font-size: 0.85rem;
     color: var(--text-secondary);
-    margin-bottom: 16px;
-    line-height: 1.55;
-    flex-grow: 1;
+    margin-bottom: 14px;
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    height: 4.5em;
+    min-height: 4.5em;
+    max-height: 4.5em;
+    flex-grow: 0;
+}
+
+.box-attached-sheet .other-card-action {
+    margin-top: auto;
+    padding-top: 10px;
+    border-top: none;
+    font-family: inherit;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--orange-text);
+    justify-content: flex-start;
+    gap: 8px;
 }
 
 .project-more-link {
@@ -4003,9 +4023,9 @@ html.dark .modal-wrapper {
 
     .mobile-other-projects-btn-card {
         display: flex !important;
-        flex: 0 0 82% !important;
-        max-width: 82% !important;
-        min-width: 82% !important;
+        flex: 0 0 84% !important;
+        max-width: 84% !important;
+        min-width: 84% !important;
         scroll-snap-align: center;
         align-self: stretch !important;
         height: auto !important;
@@ -4078,7 +4098,10 @@ html.dark .modal-wrapper {
     }
 
     .projects-grid .project-card .project-summary {
-        flex: 1 1 auto !important;
+        height: 4.5em !important;
+        min-height: 4.5em !important;
+        max-height: 4.5em !important;
+        flex: 0 0 4.5em !important;
     }
 
     /* Mobile Horizontal Swipe Carousel for Skills Section ("Elimden Gelenler / Yetiler") */
@@ -5585,21 +5608,6 @@ html.dark .modal-project-banner.art .o {
     color: var(--blue);
 }
 
-/* Harmonious Card Styles — Soft, Elegant, Warm */
-.project-card {
-    background: var(--bg-card) !important;
-    border: 1px solid var(--border-color) !important;
-    box-shadow: var(--shadow-sm) !important;
-    border-radius: var(--radius-md) !important;
-    transition: transform var(--transition-normal), box-shadow var(--transition-normal), border-color var(--transition-normal) !important;
-}
-
-.project-card:hover {
-    transform: translateY(-4px) !important;
-    box-shadow: var(--shadow-md) !important;
-    border-color: var(--border-hover) !important;
-}
-
 .project-card:hover .visual-inner .o {
     transform: translate(2px, -2px);
 }
@@ -5658,21 +5666,8 @@ html.dark .modal-project-banner.art .o {
 
 .mobile-other-projects-btn-card {
     display: none;
-    background: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-md);
-    overflow: hidden;
     cursor: pointer;
     text-align: left;
-    transition: transform var(--transition-normal), border-color var(--transition-normal), box-shadow var(--transition-normal);
-    box-shadow: var(--card-shadow);
-}
-
-.mobile-other-projects-btn-card:hover,
-.mobile-other-projects-btn-card:focus {
-    border-color: var(--border-hover);
-    box-shadow: var(--shadow-lg);
-    transform: translateY(-2px);
 }
 
 .other-card-action {
