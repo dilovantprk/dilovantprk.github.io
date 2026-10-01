@@ -1093,157 +1093,110 @@ mark {
 }
 
 /* ==========================================================================
-   CONTACT SECTION — Risograph Stamp & Artwork Plates
+   CONTACT SECTION — Baskı Dili Ink Blot Artwork
    ========================================================================== */
-.contact-wrapper {
-    max-width: 680px;
-    margin: 32px auto 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 32px;
+.contact-section {
+    position: relative;
+    padding-bottom: 60px;
 }
 
-.who {
+.field {
+    position: relative;
+    height: 480px;
+    max-width: 920px;
+    margin: 40px auto 0;
+}
+
+.blot {
+    position: absolute;
+    width: 41%;
+    height: 190px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 8px;
+    justify-content: center;
+    padding: 0 10%;
+    color: var(--onblue);
+    text-decoration: none;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.blot svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: visible;
+    transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+    transform-origin: center;
+}
+
+.blot:hover svg,
+.blot:focus-visible svg {
+    transform: scale(1.08);
+}
+
+.blot:focus-visible {
+    outline: 3px solid var(--orange);
+    outline-offset: 6px;
+    border-radius: 40px;
+}
+
+.blot small {
+    font-family: var(--font-body);
+    font-size: 14px;
+    opacity: 0.88;
+    letter-spacing: 0.02em;
+    display: block;
+    margin-bottom: 3px;
+    color: inherit;
+}
+
+.blot strong {
+    font-family: 'Fraunces', var(--font-heading), serif;
+    font-style: italic;
+    font-weight: 700;
+    font-size: clamp(17px, 2.3vw, 24px);
+    line-height: 1.15;
+    overflow-wrap: anywhere;
+    color: inherit;
+}
+
+.b1 { left: 2%; top: 0; }
+.b2 { right: 0; top: 14px; }
+.b3 { left: 0; bottom: 6px; }
+.b4 { right: 3%; bottom: 0; }
+
+.b1 svg, .b4 svg { transform: rotate(-3deg); }
+.b2 svg, .b3 svg { transform: rotate(4deg); }
+
+.b1:hover svg, .b4:hover svg { transform: rotate(-3deg) scale(1.08); }
+.b2:hover svg, .b3:hover svg { transform: rotate(4deg) scale(1.08); }
+
+.who {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
     text-align: center;
+    width: 140px;
+    pointer-events: none;
 }
 
 .who svg {
     width: 34px;
-    height: 56px;
+    height: 58px;
     display: block;
+    margin: 0 auto 8px;
 }
 
 .who span {
-    font-size: 0.9rem;
+    font-family: var(--font-body);
+    font-size: 14px;
     color: var(--soft);
-    font-weight: 500;
     letter-spacing: 0.02em;
-}
-
-.contact-stamps-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
-    width: 100%;
-}
-
-.contact-stamp-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-md);
-    padding: 14px 18px;
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    text-decoration: none;
-    color: inherit;
-    box-shadow: var(--shadow-sm);
-    position: relative;
-    overflow: hidden;
-    transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
-}
-
-.contact-stamp-card::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 4px;
-    background: var(--stamp-c);
-    opacity: 0.8;
-    transition: width var(--transition-fast), opacity var(--transition-fast);
-}
-
-.contact-stamp-card:hover {
-    transform: translateY(-3px);
-    border-color: var(--stamp-c);
-    box-shadow: var(--shadow-md);
-}
-
-.contact-stamp-card:hover::before {
-    width: 6px;
-    opacity: 1;
-}
-
-/* Authentic Stamped Emblem */
-.stamp-emblem {
-    width: 46px;
-    height: 54px;
-    display: grid;
-    place-items: center;
-    background: color-mix(in srgb, var(--stamp-c) 14%, var(--bg-card));
-    border: 1.5px dashed color-mix(in srgb, var(--stamp-c) 40%, transparent);
-    border-radius: 8px;
-    flex-shrink: 0;
-    transform: rotate(var(--stamp-rot, 0deg));
-    transition: transform var(--transition-bounce), background var(--transition-fast), border-color var(--transition-fast);
-}
-
-.contact-stamp-card:hover .stamp-emblem {
-    transform: rotate(0deg) scale(1.1);
-    background: color-mix(in srgb, var(--stamp-c) 22%, var(--bg-card));
-    border-color: var(--stamp-c);
-}
-
-.stamp-emblem svg {
-    width: 30px;
-    height: 38px;
-    fill: var(--stamp-c);
-}
-
-.stamp-body {
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
-    min-width: 0;
-    flex: 1 1 auto;
-}
-
-.stamp-tag {
-    font-family: var(--font-mono);
-    font-size: 0.68rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--stamp-c);
-}
-
-.stamp-value {
-    font-family: 'Fraunces', var(--font-heading), serif;
-    font-style: italic;
-    font-weight: 700;
-    font-size: 1.12rem;
-    line-height: 1.25;
-    color: var(--ink);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    transition: color var(--transition-fast);
-}
-
-.contact-stamp-card:hover .stamp-value {
-    color: var(--stamp-c);
-}
-
-.stamp-arrow {
-    font-family: 'Fraunces', serif;
-    font-weight: 700;
-    font-size: 1.25rem;
-    color: var(--stamp-c);
-    opacity: 0.6;
-    flex-shrink: 0;
-    transition: transform var(--transition-fast), opacity var(--transition-fast);
-}
-
-.contact-stamp-card:hover .stamp-arrow {
-    transform: translateX(4px);
-    opacity: 1;
+    display: block;
 }
 
 .stamps {
@@ -1253,33 +1206,85 @@ mark {
     margin-bottom: 22px;
 }
 
-@media (max-width: 640px) {
-    .contact-wrapper {
-        margin-top: 24px;
-        gap: 22px;
+/* Responsive Artwork Layout for Tablets and Mobile — Preserving the Constellation */
+@media (max-width: 768px) {
+    .field {
+        height: 360px;
+        max-width: 440px;
+        margin: 24px auto 0;
     }
-
-    .contact-stamps-grid {
-        grid-template-columns: 1fr;
-        gap: 12px;
+    
+    .blot {
+        width: 47%;
+        height: 116px;
+        padding: 0 7%;
     }
-
-    .contact-stamp-card {
-        padding: 12px 16px;
+    
+    .b1 { left: 0; top: 0; }
+    .b2 { right: 0; top: 6px; }
+    .b3 { left: 0; bottom: 0; }
+    .b4 { right: 0; bottom: 6px; }
+    
+    .b1 svg, .b4 svg { transform: rotate(-2deg); }
+    .b2 svg, .b3 svg { transform: rotate(2.5deg); }
+    
+    .b1:hover svg, .b4:hover svg, .b1:active svg, .b4:active svg { transform: rotate(-2deg) scale(1.04); }
+    .b2:hover svg, .b3:hover svg, .b2:active svg, .b3:active svg { transform: rotate(2.5deg) scale(1.04); }
+    
+    .who {
+        width: 100px;
     }
-
-    .stamp-emblem {
-        width: 42px;
-        height: 50px;
+    
+    .who svg {
+        width: 28px;
+        height: 48px;
+        margin-bottom: 4px;
     }
-
-    .stamp-emblem svg {
-        width: 26px;
-        height: 32px;
+    
+    .who span {
+        font-size: 11.5px;
     }
+    
+    .blot small {
+        font-size: 11px;
+    }
+    
+    .blot strong {
+        font-size: clamp(12.5px, 3.2vw, 15px);
+        line-height: 1.18;
+    }
+}
 
-    .stamp-value {
-        font-size: 1.05rem;
+@media (max-width: 380px) {
+    .field {
+        height: 330px;
+    }
+    .blot {
+        width: 48%;
+        height: 106px;
+        padding: 0 5%;
+    }
+    .blot small {
+        font-size: 10px;
+    }
+    .blot strong {
+        font-size: 12px;
+    }
+    .who {
+        width: 86px;
+    }
+    .who svg {
+        width: 24px;
+        height: 40px;
+    }
+    .who span {
+        font-size: 10.5px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .blot svg {
+        transition: none;
     }
 }
 

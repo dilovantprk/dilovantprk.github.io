@@ -33,9 +33,12 @@
           <feColorMatrix in="g" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  9 0 0 0 -2.6" result="speck"/>
           <feComposite in="d" in2="speck" operator="in"/>
         </filter>
-        <filter id="blot" x="-15%" y="-20%" width="130%" height="140%">
+        <filter id="blot" x="-10%" y="-15%" width="120%" height="130%">
           <feTurbulence type="fractalNoise" baseFrequency=".035 .05" numOctaves="3" seed="5" result="w"/>
-          <feDisplacementMap in="SourceGraphic" in2="w" scale="18"/>
+          <feDisplacementMap in="SourceGraphic" in2="w" scale="22" result="d"/>
+          <feTurbulence type="fractalNoise" baseFrequency="1.1" numOctaves="1" seed="11" result="g"/>
+          <feColorMatrix in="g" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  9 0 0 0 -2.5" result="speck"/>
+          <feComposite in="d" in2="speck" operator="in"/>
         </filter>
         <symbol id="helmet" viewBox="0 0 40 50"><path d="M5 22C5 4 35 4 35 22L30 24C28 12 12 12 10 24Z"/><path d="M10 24C10 17 30 17 30 24L30 40L24 49L22 35L18 35L16 49L10 40Z"/></symbol>
         <symbol id="blossom" viewBox="0 0 40 50"><mask id="bm"><rect width="40" height="50" fill="#fff"/><circle cx="20" cy="25" r="3.6" fill="#000"/></mask><g mask="url(#bm)"><ellipse cx="20" cy="14" rx="6.4" ry="10.5" transform="rotate(8 20 25)"/><ellipse cx="20" cy="14.5" rx="6" ry="9.5" transform="rotate(80 20 25)"/><ellipse cx="20" cy="13.5" rx="6.6" ry="11" transform="rotate(152 20 25)"/><ellipse cx="20" cy="14.5" rx="6" ry="9.8" transform="rotate(224 20 25)"/><ellipse cx="20" cy="14" rx="6.2" ry="10.2" transform="rotate(296 20 25)"/></g></symbol>
@@ -489,8 +492,24 @@
                     <p class="section-desc" data-i18n="contact.desc">Deneysel projeler ya da sivil toplum alanında birlikte bir şey üretmek istiyorsan konuşalım. İnsan odaklı işler beni heyecanlandırıyor.</p>
                 </div>
 
-                <div class="contact-wrapper">
-                    <!-- Location Emblem (Figure user loved) -->
+                <div class="field">
+                    <a class="blot b1" href="mailto:dilovanre@gmail.com">
+                        <svg viewBox="0 0 300 160" preserveAspectRatio="none" aria-hidden="true"><path filter="url(#blot)" fill="var(--blue)" d="M22 78C8 30 70 8 132 14C192 2 282 18 288 72C298 124 238 152 170 146C110 158 34 142 22 78Z"/></svg>
+                        <small data-i18n="contact.method_mail">E-posta gönder</small><strong data-i18n="contact.method_mail_val">dilovanre@gmail.com</strong>
+                    </a>
+                    <a class="blot b2" href="https://t.me/dilovaniac" target="_blank" rel="noopener noreferrer">
+                        <svg viewBox="0 0 300 160" preserveAspectRatio="none" aria-hidden="true"><path filter="url(#blot)" fill="var(--blue)" d="M14 66C20 22 96 4 160 16C232 6 292 34 284 86C280 134 214 150 150 142C86 152 6 124 14 66Z"/></svg>
+                        <small data-i18n="contact.method_telegram">Telegram'dan yaz</small><strong data-i18n="contact.method_telegram_val">@dilovaniac</strong>
+                    </a>
+                    <a class="blot b3" href="https://github.com/dilovantprk" target="_blank" rel="noopener noreferrer">
+                        <svg viewBox="0 0 300 160" preserveAspectRatio="none" aria-hidden="true"><path filter="url(#blot)" fill="var(--blue)" d="M26 90C6 44 58 10 128 18C196 8 290 26 286 80C290 130 226 154 154 144C90 156 40 136 26 90Z"/></svg>
+                        <small data-i18n="contact.method_github">GitHub'da incele</small><strong data-i18n="contact.method_github_val">@dilovantprk</strong>
+                    </a>
+                    <a class="blot b4" href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+                        <svg viewBox="0 0 300 160" preserveAspectRatio="none" aria-hidden="true"><path filter="url(#blot)" fill="var(--blue)" d="M18 74C16 30 88 6 150 12C220 4 294 30 284 82C276 132 206 154 140 146C76 154 20 122 18 74Z"/></svg>
+                        <small data-i18n="contact.method_linkedin">LinkedIn'den bağlan</small><strong data-i18n="contact.method_linkedin_val">Dilovan Toprak</strong>
+                    </a>
+
                     <div class="who">
                         <svg viewBox="0 0 34 58" aria-hidden="true">
                             <g filter="url(#ink)">
@@ -501,53 +520,6 @@
                             </g>
                         </svg>
                         <span data-i18n="contact.method_loc_val">İstanbul, Türkiye</span>
-                    </div>
-
-                    <!-- Risograph Stamp Contact Cards -->
-                    <div class="contact-stamps-grid">
-                        <a class="contact-stamp-card" href="mailto:dilovanre@gmail.com" style="--stamp-c: var(--orange); --stamp-rot: -2.5deg;">
-                            <div class="stamp-emblem" aria-hidden="true">
-                                <svg viewBox="0 0 40 50" filter="url(#ink)"><use href="#sayfa" width="40" height="50"/></svg>
-                            </div>
-                            <div class="stamp-body">
-                                <span class="stamp-tag" data-i18n="contact.method_mail">E-posta gönder</span>
-                                <strong class="stamp-value">dilovanre@gmail.com</strong>
-                            </div>
-                            <span class="stamp-arrow" aria-hidden="true">→</span>
-                        </a>
-
-                        <a class="contact-stamp-card" href="https://t.me/dilovaniac" target="_blank" rel="noopener noreferrer" style="--stamp-c: var(--teal); --stamp-rot: 3deg;">
-                            <div class="stamp-emblem" aria-hidden="true">
-                                <svg viewBox="0 0 40 50" filter="url(#ink)"><use href="#bayrak" width="40" height="50"/></svg>
-                            </div>
-                            <div class="stamp-body">
-                                <span class="stamp-tag" data-i18n="contact.method_telegram">Telegram'dan yaz</span>
-                                <strong class="stamp-value">@dilovaniac</strong>
-                            </div>
-                            <span class="stamp-arrow" aria-hidden="true">→</span>
-                        </a>
-
-                        <a class="contact-stamp-card" href="https://github.com/dilovantprk" target="_blank" rel="noopener noreferrer" style="--stamp-c: var(--blue); --stamp-rot: -2deg;">
-                            <div class="stamp-emblem" aria-hidden="true">
-                                <svg viewBox="0 0 40 50" filter="url(#ink)"><use href="#shield" width="40" height="50"/></svg>
-                            </div>
-                            <div class="stamp-body">
-                                <span class="stamp-tag" data-i18n="contact.method_github">GitHub'da incele</span>
-                                <strong class="stamp-value">@dilovantprk</strong>
-                            </div>
-                            <span class="stamp-arrow" aria-hidden="true">→</span>
-                        </a>
-
-                        <a class="contact-stamp-card" href="https://linkedin.com" target="_blank" rel="noopener noreferrer" style="--stamp-c: var(--gold); --stamp-rot: 2.5deg;">
-                            <div class="stamp-emblem" aria-hidden="true">
-                                <svg viewBox="0 0 40 50" filter="url(#ink)"><use href="#yapi" width="40" height="50"/></svg>
-                            </div>
-                            <div class="stamp-body">
-                                <span class="stamp-tag" data-i18n="contact.method_linkedin">LinkedIn'den bağlan</span>
-                                <strong class="stamp-value">Dilovan Toprak</strong>
-                            </div>
-                            <span class="stamp-arrow" aria-hidden="true">→</span>
-                        </a>
                     </div>
                 </div>
             </div>
