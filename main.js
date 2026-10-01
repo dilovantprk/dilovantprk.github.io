@@ -95,7 +95,7 @@ const translations = {
         "timeline.iu.date": "2026 - Günümüz",
         
         "skills.tag": "Yetiler",
-        "skills.title": "Elimden Gelenler & Ürettiklerim",
+        "skills.title": "Elimden Gelenler",
         "skills.desc": "Gözüm harmoniyi arıyor; kararlarımı teknik ezberlerden çok şeylerin bana hissettirdikleri yönlendiriyor. Araçların kendisi değil, ortaya çıkan ürünün ruhu ve insanla kurduğu bağ önemli.",
         "skills.cat1": "Çalışan Dijital Ürünler",
         "skills.tech_badge1": "Uçtan Uca Geliştirme",
@@ -257,7 +257,7 @@ const translations = {
         "timeline.iu.date": "2026 - Present",
         
         "skills.tag": "Skills",
-        "skills.title": "What I Do & What I Build",
+        "skills.title": "What I Do",
         "skills.desc": "My eye seeks harmony; my decisions are guided by what things make me feel rather than rigid technical formulas. It's not about the tools themselves, but the spirit of the finished craft and its connection to people.",
         "skills.cat1": "Digital Products",
         "skills.tech_badge1": "End-to-End Build",
