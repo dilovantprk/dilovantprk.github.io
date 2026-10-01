@@ -2132,8 +2132,12 @@ function initKartpostal() {
         }, reduce ? 0 : 950);
     }
 
+    let autoDropTriggered = false, autoDropTimer = null;
+
     function onPointerDown(e) {
         if (state !== 'idle') return;
+        if (autoDropTimer) { clearTimeout(autoDropTimer); autoDropTimer = null; }
+        autoDropTriggered = true;
         dragging = true;
         touched = true;
         vel = [];
@@ -2190,7 +2194,6 @@ function initKartpostal() {
     }
 
     tab.addEventListener('pointerenter', function() {
-        touched = true;
         if (state === 'idle' && !dragging) to(hov(), 220);
     });
     tab.addEventListener('pointerleave', function() {
@@ -2208,6 +2211,8 @@ function initKartpostal() {
     tab.addEventListener('keydown', function(e) {
         if ((e.key === 'Enter' || e.key === ' ') && state === 'idle') {
             e.preventDefault();
+            if (autoDropTimer) { clearTimeout(autoDropTimer); autoDropTimer = null; }
+            autoDropTriggered = true;
             touched = true;
             to([W * .24, H * .24], reduce ? 0 : 500, function() { detach(true); });
         }
@@ -2230,13 +2235,43 @@ function initKartpostal() {
         });
     }
 
-    if (!reduce) {
-        setTimeout(function() {
-            if (touched || state !== 'idle') return;
-            to([W - 46, H - 46], 380, function() {
-                if (!touched && state === 'idle') to(rest(), 460);
+    // Otomatik Düşme (Attention-Grabbing Auto Drop):
+    // Kullanıcı kartpostalı ekranda gördükten ~700ms sonra kartpostal kendiliğinden
+    // soyulup yere düşer; arkasında "Beğendin mi yaptığın şeyi?" ve "Geri yapıştır" butonu çıkar.
+    function startAutoDropSequence() {
+        if (autoDropTriggered || touched || state !== 'idle') return;
+        autoDropTriggered = true;
+        to([W * 0.32, H * 0.32], reduce ? 0 : 480, function() {
+            if (state === 'idle') {
+                detach(false);
+            }
+        });
+    }
+
+    if ('IntersectionObserver' in window) {
+        const contactObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting && !autoDropTriggered && !touched && state === 'idle') {
+                    if (!autoDropTimer) {
+                        autoDropTimer = setTimeout(function() {
+                            autoDropTimer = null;
+                            startAutoDropSequence();
+                        }, 700);
+                    }
+                } else if (!entry.isIntersecting && autoDropTimer && !autoDropTriggered) {
+                    clearTimeout(autoDropTimer);
+                    autoDropTimer = null;
+                }
             });
-        }, 2600);
+        }, { threshold: 0.35 });
+
+        contactObserver.observe(stage);
+    } else {
+        setTimeout(function() {
+            if (!autoDropTriggered && !touched && state === 'idle') {
+                startAutoDropSequence();
+            }
+        }, 3000);
     }
 }
 
