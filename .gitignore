@@ -5,3 +5,4 @@ node_modules/
 dist/
 ardabank/android/
 ardabank/out/
+.env*

@@ -1125,8 +1125,11 @@ mark {
 }
 
 .lift.falling .tab,
-.lift.fallen .tab {
+.lift.fallen .tab,
+.lift.falling .fold,
+.lift.fallen .fold {
     display: none;
+    pointer-events: none;
 }
 
 .sheet {
@@ -1134,15 +1137,25 @@ mark {
     background: var(--plate);
     clip-path: polygon(0.2% 0.8%, 99.7% 0, 100% 99.2%, 0.1% 100%);
     box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--ink) 10%, transparent);
+    user-select: none;
+    -webkit-user-select: none;
 }
 
 .fold {
     position: absolute;
     inset: 0;
-    z-index: 2;
+    z-index: 4;
     pointer-events: none;
     background: var(--back);
     clip-path: polygon(0 0, 0 0, 0 0);
+    cursor: grab;
+    touch-action: none;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.fold:active {
+    cursor: grabbing;
 }
 
 .tab {
@@ -1151,13 +1164,15 @@ mark {
     bottom: 0;
     width: 68px;
     height: 68px;
-    z-index: 3;
+    z-index: 5;
     border: 0;
     padding: 0;
     background: transparent;
     cursor: grab;
     touch-action: none;
     border-radius: 0 0 12px 0;
+    user-select: none;
+    -webkit-user-select: none;
 }
 
 .tab:active {

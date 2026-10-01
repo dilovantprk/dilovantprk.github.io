@@ -1739,6 +1739,7 @@ function initKartpostal() {
             return [q[0] - 2 * f * n[0], q[1] - 2 * f * n[1]];
         });
         fold.style.clipPath = refl.length ? px(refl) : EMPTY;
+        fold.style.pointerEvents = (state === 'idle' && refl.length) ? 'auto' : 'none';
         const ang = Math.atan2(n[0], -n[1]) * 180 / Math.PI;
         const L = Math.abs(W * n[0]) + Math.abs(H * n[1]);
         const t0 = ((M[0] - W / 2) * n[0] + (M[1] - H / 2) * n[1]) + L / 2;
@@ -1789,7 +1790,12 @@ function initKartpostal() {
         state = 'falling';
         dragging = false;
         touched = true;
+        window.removeEventListener('pointermove', onPointerMove);
+        window.removeEventListener('pointerup', onPointerUp);
+        window.removeEventListener('pointercancel', onPointerUp);
+        window.removeEventListener('blur', onPointerUp);
         cancelAnimationFrame(anim);
+        fold.style.pointerEvents = 'none';
         lift.classList.add('falling');
         ghost.classList.add('on');
         ghost.inert = false;
@@ -1914,6 +1920,63 @@ function initKartpostal() {
         }, reduce ? 0 : 950);
     }
 
+    function onPointerDown(e) {
+        if (state !== 'idle') return;
+        dragging = true;
+        touched = true;
+        vel = [];
+        cancelAnimationFrame(anim);
+
+        try {
+            e.currentTarget.setPointerCapture(e.pointerId);
+        } catch (_) {}
+
+        window.addEventListener('pointermove', onPointerMove, { passive: false });
+        window.addEventListener('pointerup', onPointerUp);
+        window.addEventListener('pointercancel', onPointerUp);
+        window.addEventListener('blur', onPointerUp);
+
+        const q = local(e);
+        P = [Math.min(W - 2, Math.max(0, q[0])), Math.min(H - 2, Math.max(0, q[1]))];
+        render();
+        e.preventDefault();
+    }
+
+    function onPointerMove(e) {
+        if (!dragging || state !== 'idle') return;
+        const q = local(e), nw = performance.now();
+        vel.push({ t: nw, x: e.clientX, y: e.clientY });
+        while (vel.length && nw - vel[0].t > 120) vel.shift();
+        P = [Math.min(W - 2, Math.max(0, q[0])), Math.min(H - 2, Math.max(0, q[1]))];
+        render();
+
+        const curDist = Math.hypot(P[0] - W, P[1] - H);
+        const maxDist = Math.hypot(W, H);
+        if (curDist > 0.65 * maxDist) detach();
+    }
+
+    function onPointerUp() {
+        if (!dragging) return;
+        dragging = false;
+        window.removeEventListener('pointermove', onPointerMove);
+        window.removeEventListener('pointerup', onPointerUp);
+        window.removeEventListener('pointercancel', onPointerUp);
+        window.removeEventListener('blur', onPointerUp);
+
+        if (state !== 'idle') return;
+
+        const curDist = Math.hypot(P[0] - W, P[1] - H);
+        const maxDist = Math.hypot(W, H);
+        const vp = pointerVelocity();
+        const flickSpeed = Math.hypot(vp[0], vp[1]);
+
+        if (curDist > 0.52 * maxDist || (curDist > 0.25 * maxDist && flickSpeed > 320 && (vp[0] < -80 || vp[1] < -80))) {
+            detach();
+        } else {
+            to(rest(), 320);
+        }
+    }
+
     tab.addEventListener('pointerenter', function() {
         touched = true;
         if (state === 'idle' && !dragging) to(hov(), 220);
@@ -1921,31 +1984,15 @@ function initKartpostal() {
     tab.addEventListener('pointerleave', function() {
         if (state === 'idle' && !dragging) to(rest(), 260);
     });
-    tab.addEventListener('pointerdown', function(e) {
-        if (state !== 'idle') return;
-        dragging = true;
-        touched = true;
-        vel = [];
-        cancelAnimationFrame(anim);
-        try { tab.setPointerCapture(e.pointerId); } catch (_) {}
-        e.preventDefault();
+    fold.addEventListener('pointerleave', function() {
+        if (state === 'idle' && !dragging) to(rest(), 260);
     });
-    tab.addEventListener('pointermove', function(e) {
-        if (!dragging || state !== 'idle') return;
-        const q = local(e), nw = performance.now();
-        vel.push({ t: nw, x: e.clientX, y: e.clientY });
-        while (vel.length && nw - vel[0].t > 120) vel.shift();
-        P = [Math.min(W - 2, Math.max(0, q[0])), Math.min(H - 2, Math.max(0, q[1]))];
-        render();
-        if (Math.hypot(P[0] - W, P[1] - H) > .8 * Math.hypot(W, H)) detach();
-    });
-    function end() {
-        if (!dragging) return;
-        dragging = false;
-        if (state === 'idle') to(rest(), 320);
-    }
-    tab.addEventListener('pointerup', end);
-    tab.addEventListener('pointercancel', end);
+
+    tab.addEventListener('pointerdown', onPointerDown);
+    fold.addEventListener('pointerdown', onPointerDown);
+    tab.addEventListener('lostpointercapture', onPointerUp);
+    fold.addEventListener('lostpointercapture', onPointerUp);
+
     tab.addEventListener('keydown', function(e) {
         if ((e.key === 'Enter' || e.key === ' ') && state === 'idle') {
             e.preventDefault();
