@@ -3054,7 +3054,7 @@ html.dark .postcard-cancellation {
 
 @media (max-width: 760px) {
     .contact-section {
-        padding-bottom: 160px;
+        padding-bottom: 280px;
     }
     .stage {
         transform: rotate(-0.5deg);

@@ -2002,24 +2002,27 @@ function initKartpostal() {
         }
         const isMobile = window.innerWidth <= 768;
         const hw = W / 2, hh = H / 2, I = (W * W + H * H) / 12;
-        const maxAngle = isMobile ? 0.13 : 0.22; // Kağıdın dik durmasını/ters dönmesini engelleyen maksimum açı (~7.5 deg mobilde)
+        const maxAngle = isMobile ? 0.10 : 0.15; // Kağıdın dikleşmesini engelleyen doğal hafif eğik duruş (~5.5 deg mobilde)
         
-        // Zemin yüksekliği: Mobilde footer'ın üzerine taşmayacak, kartpostalın hemen altında doğal duracak mesafe
-        const floorOffset = isMobile ? Math.min(85, hh * 0.65) : Math.min(140, hh * 0.95);
-        let F = hh + floorOffset;
+        // Zemin konumu: Kartpostal stage ve ghost alanını TAMAMEN boşaltır.
+        // Böylece arkadaki sürpriz metin ("Beğendin mi yaptığın şeyi?") ve "Geri yapıştır" butonu
+        // kart tarafından asla kapanmaz, 100% net ve açık görünür.
+        const spaceBelow = Math.max(H + 20, (mr.bottom - r.bottom) - 36);
+        const dropDist = Math.min(spaceBelow, H + (isMobile ? 18 : 28));
+        let F = hh + dropDist;
         
         const vp = pointerVelocity();
         let X = 0, Y = 0, th = 0, vx, vy, om;
 
         const toppleSign = (vp[0] < -40 || Math.random() < 0.5) ? -1 : 1;
         if (viaKey || (!vp[0] && !vp[1])) {
-            vx = toppleSign * (isMobile ? 20 : 50);
-            vy = -40;
-            om = toppleSign * (isMobile ? 0.4 : 0.9);
+            vx = toppleSign * (isMobile ? 18 : 45);
+            vy = -30;
+            om = toppleSign * (isMobile ? 0.35 : 0.7);
         } else {
-            vx = clamp(vp[0] * .30, isMobile ? -90 : -250, isMobile ? 90 : 250);
-            vy = clamp(vp[1] * .30, isMobile ? -90 : -200, isMobile ? 90 : 200);
-            om = clamp((vx < 0 ? -1 : 1) * 0.8, -1.2, 1.2);
+            vx = clamp(vp[0] * .25, isMobile ? -70 : -200, isMobile ? 70 : 200);
+            vy = clamp(vp[1] * .25, isMobile ? -70 : -150, isMobile ? 70 : 150);
+            om = clamp((vx < 0 ? -1 : 1) * 0.6, -0.9, 0.9);
         }
 
         function apply() {
