@@ -1193,20 +1193,21 @@ html.dark .logo-text {
 
 /* ==========================================================================
 /* ==========================================================================
-   SKILLS — Pokémon TCG Kart Stili
+   SKILLS — YETİ KARTLARI (Koleksiyon & Holo-Foil Kart Tasarımı)
    ========================================================================== */
 .skills-container {
-    max-width: 1080px;
+    max-width: 1100px;
     margin: 0 auto;
 }
 
 .skills-stack,
 .skills-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 28px;
-    max-width: 1080px;
+    grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+    gap: 32px;
+    max-width: 1100px;
     margin: 0 auto;
+    perspective: 1200px;
 }
 
 mark {
@@ -1219,256 +1220,281 @@ mark {
     box-decoration-break: clone;
 }
 
-/* ---- Kart Çerçevesi ---- */
-.poke-card {
-    --card-accent: var(--blue);
+/* ---- Ana Kart Gövdesi (Ultra Rare Trading Card) ---- */
+.tcg-card {
+    --card-border-gold: linear-gradient(145deg, #e7c975 0%, #caa04b 28%, #fded9e 48%, #af8228 72%, #fbf1b3 100%);
+    --card-bg-panel: var(--plate);
+    --card-accent: var(--gold);
+    --foil-angle: 135deg;
+
     position: relative;
-    background: var(--plate);
-    border: 3px solid var(--card-accent);
-    border-radius: 14px;
-    padding: 0;
-    overflow: hidden;
+    border-radius: 18px;
+    padding: 10px;
+    background: var(--card-border-gold);
     box-shadow:
-        0 2px 6px rgba(var(--shade), 0.08),
-        0 10px 30px -6px rgba(var(--shade), 0.14),
-        inset 0 0 0 3px color-mix(in srgb, var(--card-accent) 15%, transparent);
-    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.35s ease;
-    transform-origin: center bottom;
+        0 4px 12px rgba(var(--shade), 0.1),
+        0 14px 34px -8px rgba(var(--shade), 0.18),
+        inset 0 1px 2px rgba(255, 255, 255, 0.6),
+        inset 0 -1px 3px rgba(0, 0, 0, 0.35);
+    transition: transform 0.45s cubic-bezier(0.2, 0.9, 0.3, 1.2), box-shadow 0.4s ease;
+    transform-origin: center center;
+    overflow: hidden;
+    cursor: default;
 }
 
-.poke-card.poke-blue  { --card-accent: var(--blue); }
-.poke-card.poke-orange { --card-accent: var(--orange); }
-.poke-card.poke-teal  { --card-accent: var(--teal); }
+/* Kart Varyantları (Koleksiyon Tipleri) */
+.tcg-card.tcg-gold {
+    --card-accent: #c99324;
+    --card-border-gold: linear-gradient(145deg, #ebd07d 0%, #b88628 30%, #fff2b5 52%, #9e6f16 75%, #fae69e 100%);
+    transform: rotate(-0.8deg);
+}
 
-/* Holografik parıltı katmanı */
-.poke-card::before {
-    content: "";
+.tcg-card.tcg-holo {
+    --card-accent: var(--orange);
+    --card-border-gold: linear-gradient(145deg, #f29a76 0%, #d4633b 25%, #ffc5ab 50%, #ba4d28 75%, #fcd6c5 100%);
+    transform: rotate(0.9deg);
+}
+
+.tcg-card.tcg-secret {
+    --card-accent: var(--teal);
+    --card-border-gold: linear-gradient(145deg, #64c2b2 0%, #1e7d70 30%, #b6ede4 52%, #135d53 75%, #c8f5ed 100%);
+    transform: rotate(-0.5deg);
+}
+
+/* Hover Efekti: Kart masadan ele alınmış gibi yükselir ve parlar */
+.tcg-card:hover {
+    transform: translateY(-10px) scale(1.025) rotate(0deg) !important;
+    box-shadow:
+        0 8px 18px rgba(var(--shade), 0.14),
+        0 24px 50px -10px rgba(var(--shade), 0.28),
+        0 0 25px rgba(233, 196, 106, 0.22),
+        inset 0 1px 3px rgba(255, 255, 255, 0.8),
+        inset 0 -1px 4px rgba(0, 0, 0, 0.45);
+}
+
+/* ---- Holografik Sim & Gökkuşağı Parıltı Katmanı ---- */
+.tcg-foil-shimmer {
     position: absolute;
     inset: 0;
-    z-index: 10;
+    border-radius: 18px;
     pointer-events: none;
-    border-radius: 11px;
-    background: linear-gradient(
-        125deg,
-        transparent 0%,
-        rgba(255, 255, 255, 0) 35%,
-        rgba(255, 255, 255, 0.06) 42%,
-        rgba(255, 215, 100, 0.08) 48%,
-        rgba(255, 255, 255, 0.04) 54%,
-        transparent 65%,
-        transparent 100%
-    );
-    background-size: 250% 250%;
-    background-position: 100% 100%;
-    transition: background-position 0.6s ease;
-    opacity: 0;
+    z-index: 10;
+    mix-blend-mode: color-dodge;
+    opacity: 0.15;
+    background:
+        /* Holografik Işık Şeritleri */
+        linear-gradient(
+            115deg,
+            transparent 0%,
+            rgba(255, 0, 128, 0.2) 20%,
+            rgba(0, 200, 255, 0.25) 35%,
+            rgba(255, 220, 0, 0.3) 50%,
+            rgba(0, 255, 128, 0.25) 65%,
+            rgba(180, 0, 255, 0.2) 80%,
+            transparent 100%
+        ),
+        /* Pokémon Kartı Yıldız/Sim Parıltıları */
+        radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.9) 1px, transparent 2px),
+        radial-gradient(circle at 75% 25%, rgba(255, 255, 255, 0.9) 1px, transparent 2px),
+        radial-gradient(circle at 45% 65%, rgba(255, 255, 255, 0.9) 1px, transparent 2px),
+        radial-gradient(circle at 85% 75%, rgba(255, 255, 255, 0.9) 1px, transparent 2px),
+        radial-gradient(circle at 15% 85%, rgba(255, 255, 255, 0.9) 1px, transparent 2px);
+    background-size: 250% 250%, 120px 120px, 140px 140px, 90px 90px, 160px 160px, 110px 110px;
+    background-position: 0% 0%, 0 0, 40px 30px, 10px 50px, 70px 80px, 30px 10px;
+    transition: opacity 0.4s ease, background-position 0.6s ease;
 }
 
-.poke-card:hover::before {
-    opacity: 1;
-    background-position: 0% 0%;
+.tcg-card:hover .tcg-foil-shimmer {
+    opacity: 0.45;
+    background-position: 100% 100%, 20px 20px, 60px 50px, 30px 70px, 90px 100px, 50px 30px;
 }
 
-.poke-card:hover {
-    transform: translateY(-6px) rotate(-0.5deg) scale(1.02);
-    box-shadow:
-        0 6px 12px rgba(var(--shade), 0.1),
-        0 20px 44px -8px rgba(var(--shade), 0.2),
-        inset 0 0 0 3px color-mix(in srgb, var(--card-accent) 25%, transparent);
-}
-
-/* Kartın her zaman çok hafif eğimi — koleksiyona atılmış hissi */
-.poke-card:nth-child(1) { transform: rotate(-0.6deg); }
-.poke-card:nth-child(2) { transform: rotate(0.8deg); }
-.poke-card:nth-child(3) { transform: rotate(-0.4deg); }
-.poke-card:nth-child(1):hover,
-.poke-card:nth-child(2):hover,
-.poke-card:nth-child(3):hover {
-    transform: translateY(-6px) rotate(-0.5deg) scale(1.02);
-}
-
-/* ---- Kart Başlığı (İsim + HP/LV) ---- */
-.poke-header {
+/* ---- İç Çerçeve (.tcg-inner-frame) ---- */
+.tcg-inner-frame {
+    position: relative;
+    background: var(--card-bg-panel);
+    border-radius: 12px;
+    border: 1.5px solid rgba(var(--shade), 0.12);
+    box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.08);
     display: flex;
-    align-items: baseline;
+    flex-direction: column;
+    padding: 14px 14px 12px;
+    height: 100%;
+}
+
+/* ---- Kart Başlığı ---- */
+.tcg-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     gap: 8px;
-    padding: 14px 16px 8px;
+    padding: 2px 4px 10px;
+    border-bottom: 1.5px solid color-mix(in srgb, var(--card-accent) 25%, transparent);
 }
 
-.poke-stage {
-    font-family: var(--font-mono);
-    font-size: 0.6rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--soft);
-    flex-shrink: 0;
-}
-
-.poke-name {
-    font: italic 700 clamp(17px, 4.5vw, 22px)/1.15 Fraunces, serif;
+.tcg-title {
+    font: italic 700 clamp(19px, 3.8vw, 22px)/1.15 Fraunces, serif;
     color: var(--ink);
     margin: 0;
-    flex: 1;
-    min-width: 0;
+    letter-spacing: -0.01em;
 }
 
-.poke-hp {
-    font-family: var(--font-mono);
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.06em;
+.tcg-rarity {
+    font-size: 0.75rem;
     color: var(--card-accent);
+    letter-spacing: 2px;
+    text-shadow: 0 0 6px rgba(233, 196, 106, 0.4);
     flex-shrink: 0;
 }
 
 /* ---- İllüstrasyon Penceresi ---- */
-.poke-art {
-    margin: 0 10px;
-    border: 2px solid color-mix(in srgb, var(--card-accent) 30%, transparent);
-    border-radius: 6px;
-    background:
-        radial-gradient(ellipse at 60% 40%, color-mix(in srgb, var(--card-accent) 6%, transparent) 0%, transparent 70%),
-        var(--paper);
+.tcg-art-window {
+    margin: 10px 0 12px;
+    background: var(--paper);
+    border-radius: 8px;
+    border: 2px solid color-mix(in srgb, var(--card-accent) 45%, transparent);
+    box-shadow:
+        inset 0 3px 8px rgba(0, 0, 0, 0.12),
+        0 1px 3px rgba(0, 0, 0, 0.05);
     overflow: hidden;
+    position: relative;
 }
 
-.poke-art svg {
+.tcg-illustration {
     display: block;
     width: 100%;
     height: auto;
+    aspect-ratio: 16 / 10;
 }
 
-/* ---- Tip Çubuğu ---- */
-.poke-type-bar {
-    display: flex;
-    justify-content: flex-end;
-    padding: 6px 16px 2px;
-}
-
-.poke-type {
+.tcg-art-caption {
+    display: block;
+    background: color-mix(in srgb, var(--card-accent) 14%, var(--paper));
+    border-top: 1px solid color-mix(in srgb, var(--card-accent) 25%, transparent);
+    padding: 3px 8px;
     font-family: var(--font-mono);
-    font-size: 0.65rem;
-    letter-spacing: 0.06em;
-    color: var(--card-accent);
-    opacity: 0.8;
+    font-size: 0.58rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: var(--ink);
+    opacity: 0.78;
+    text-align: right;
+    text-transform: uppercase;
 }
 
-/* ---- Yetenekler / Hamleler ---- */
-.poke-moves {
-    margin: 0;
-    padding: 0 16px;
-}
-
-.poke-move {
-    padding: 10px 0 8px;
-    border-top: 1px solid color-mix(in srgb, var(--card-accent) 18%, transparent);
-}
-
-.poke-move:first-child {
-    border-top: none;
-    padding-top: 4px;
-}
-
-.poke-move-head {
+/* ---- Kartın Gövdesi & Nitelikler ---- */
+.tcg-body {
+    flex: 1;
     display: flex;
-    align-items: center;
-    gap: 8px;
+    flex-direction: column;
 }
 
-.poke-energy {
-    color: var(--card-accent);
-    font-size: 0.65rem;
-    letter-spacing: 2px;
-    flex-shrink: 0;
-    min-width: 28px;
+.tcg-traits {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
-.poke-move dt {
+.tcg-trait {
+    padding: 4px 2px;
+    border-bottom: 1px dashed color-mix(in srgb, var(--card-accent) 20%, transparent);
+}
+
+.tcg-trait:last-child {
+    border-bottom: none;
+}
+
+.tcg-trait dt {
     font-family: var(--font-heading), 'Lora', serif;
     font-style: italic;
     font-weight: 700;
-    font-size: 0.95rem;
+    font-size: 0.98rem;
     line-height: 1.25;
-    margin: 0;
+    margin: 0 0 3px;
     color: var(--ink);
+    display: flex;
+    align-items: center;
+    gap: 6px;
 }
 
-.poke-move dd {
-    margin: 3px 0 0 36px;
+.tcg-trait dt::before {
+    content: "◆";
+    font-size: 0.55rem;
+    color: var(--card-accent);
+    font-style: normal;
+    opacity: 0.9;
+}
+
+.tcg-trait dd {
+    margin: 0 0 0 14px;
     font-family: var(--font-body);
-    font-size: 0.8rem;
-    line-height: 1.5;
+    font-size: 0.82rem;
+    line-height: 1.45;
     color: var(--soft);
 }
 
-/* ---- Alt Bilgi (Zayıflık + Geri Çekilme) ---- */
-.poke-footer {
+/* ---- Koleksiyoncu Altbilgisi (Set / Numara) ---- */
+.tcg-footer {
     display: flex;
     justify-content: space-between;
-    padding: 10px 16px 14px;
-    margin-top: 4px;
-    border-top: 1px solid color-mix(in srgb, var(--card-accent) 12%, transparent);
+    align-items: center;
+    margin-top: 14px;
+    padding-top: 8px;
+    border-top: 1.5px solid color-mix(in srgb, var(--card-accent) 25%, transparent);
     font-family: var(--font-mono);
-    font-size: 0.58rem;
-    letter-spacing: 0.04em;
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
     color: var(--soft);
-    opacity: 0.7;
+    opacity: 0.75;
 }
 
-/* ---- Dark Mode ---- */
-.dark .poke-card {
+/* ---- Dark Mode Uyumu ---- */
+.dark .tcg-card {
     box-shadow:
-        0 2px 6px rgba(0, 0, 0, 0.3),
-        0 10px 30px -6px rgba(0, 0, 0, 0.5),
-        inset 0 0 0 3px color-mix(in srgb, var(--card-accent) 20%, transparent);
+        0 4px 14px rgba(0, 0, 0, 0.4),
+        0 14px 38px -8px rgba(0, 0, 0, 0.6),
+        inset 0 1px 2px rgba(255, 255, 255, 0.25),
+        inset 0 -1px 3px rgba(0, 0, 0, 0.8);
 }
 
-.dark .poke-card:hover {
+.dark .tcg-card:hover {
     box-shadow:
-        0 6px 12px rgba(0, 0, 0, 0.35),
-        0 20px 44px -8px rgba(0, 0, 0, 0.6),
-        inset 0 0 0 3px color-mix(in srgb, var(--card-accent) 35%, transparent);
+        0 8px 22px rgba(0, 0, 0, 0.5),
+        0 24px 55px -10px rgba(0, 0, 0, 0.75),
+        0 0 30px rgba(233, 196, 106, 0.35),
+        inset 0 1px 3px rgba(255, 255, 255, 0.4),
+        inset 0 -1px 4px rgba(0, 0, 0, 0.9);
 }
 
-.dark .poke-card::before {
-    background: linear-gradient(
-        125deg,
-        transparent 0%,
-        rgba(255, 255, 255, 0) 35%,
-        rgba(255, 215, 100, 0.08) 42%,
-        rgba(100, 200, 255, 0.06) 48%,
-        rgba(255, 255, 255, 0.04) 54%,
-        transparent 65%,
-        transparent 100%
-    );
-    background-size: 250% 250%;
-    background-position: 100% 100%;
+.dark .tcg-inner-frame {
+    border-color: rgba(255, 255, 255, 0.08);
+    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.4);
 }
 
-.dark .poke-art {
-    border-color: color-mix(in srgb, var(--card-accent) 25%, transparent);
+.dark .tcg-foil-shimmer {
+    opacity: 0.22;
 }
 
-/* ---- Mobil ---- */
+.dark .tcg-card:hover .tcg-foil-shimmer {
+    opacity: 0.65;
+}
+
+/* ---- Mobil Uyumluluk ---- */
 @media (max-width: 480px) {
-    .poke-card {
-        border-width: 2px;
-        border-radius: 11px;
+    .tcg-card {
+        padding: 8px;
+        border-radius: 14px;
     }
-    .poke-header {
-        padding: 12px 12px 6px;
+    .tcg-inner-frame {
+        padding: 12px 10px 10px;
+        border-radius: 10px;
     }
-    .poke-art {
-        margin: 0 8px;
-    }
-    .poke-moves {
-        padding: 0 12px;
-    }
-    .poke-move dd {
-        margin-left: 30px;
-    }
-    .poke-footer {
-        padding: 8px 12px 12px;
+    .tcg-trait dd {
+        margin-left: 10px;
+        font-size: 0.8rem;
     }
 }
 
@@ -2707,9 +2733,9 @@ html.dark .modal-wrapper {
         display: none !important;
     }
 
-    .skills-grid .poke-card,
+    .skills-grid .tcg-card,
     .skills-grid .skill-category-card,
-    .skills-stack .poke-card,
+    .skills-stack .tcg-card,
     .skills-stack .skill-category-card {
         display: flex !important;
         flex-direction: column !important;
@@ -2726,8 +2752,8 @@ html.dark .modal-wrapper {
         box-shadow: var(--shadow-sm) !important;
     }
 
-    .skills-grid .poke-card:hover,
-    .skills-stack .poke-card:hover {
+    .skills-grid .tcg-card:hover,
+    .skills-stack .tcg-card:hover {
         transform: none !important;
     }
 }
