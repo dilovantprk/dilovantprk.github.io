@@ -2449,8 +2449,8 @@ mark {
     inset: 0;
     background-image: url('assets/hisarustu-engraving.jpg');
     background-size: cover;
-    background-position: center 36%;
-    opacity: 0.18;
+    background-position: center 30%;
+    opacity: 0.58;
     mix-blend-mode: multiply;
     pointer-events: none;
     z-index: 1;
@@ -2458,17 +2458,17 @@ mark {
 }
 
 .sheet:hover::before {
-    opacity: 0.26;
+    opacity: 0.75;
 }
 
 html.dark .sheet::before {
-    opacity: 0.14;
+    opacity: 0.28;
     mix-blend-mode: screen;
-    filter: invert(0.9) sepia(0.6) hue-rotate(330deg) brightness(0.85);
+    filter: invert(0.9) sepia(0.5) hue-rotate(330deg) brightness(0.95);
 }
 
 html.dark .sheet:hover::before {
-    opacity: 0.20;
+    opacity: 0.42;
 }
 
 /* Nostaljik Osmanlı Posta Kartı Gövdesi */
