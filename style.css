@@ -134,6 +134,7 @@ html.dark {
 
 html {
     scroll-behavior: smooth;
+    scroll-padding-top: 90px;
     font-size: 16px;
     -webkit-font-smoothing: antialiased;
 }
@@ -1115,16 +1116,18 @@ mark {
     pointer-events: none;
     border-radius: inherit;
     z-index: 3;
-    opacity: 0.32;
+    opacity: 0.45;
     mix-blend-mode: multiply;
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='rg'><feTurbulence type='fractalNoise' baseFrequency='1.1' numOctaves='1' seed='11' result='g'/><feColorMatrix in='g' type='matrix' values='0 0 0 0 .32 0 0 0 0 .24 0 0 0 0 .16 9 0 0 0 -2.5'/></filter><rect width='100%' height='100%' filter='url(%23rg)'/></svg>");
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxODAiIGhlaWdodD0iMTgwIj48ZmlsdGVyIGlkPSJnIj48ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1ZW5jeT0iMS4xIiBudW1PY3RhdmVzPSIyIiBzZWVkPSIxMSIgcmVzdWx0PSJuIi8+PGZlQ29sb3JNYXRyaXggaW49Im4iIHR5cGU9Im1hdHJpeCIgdmFsdWVzPSIwIDAgMCAwIDAuMjUgIDAgMCAwIDAgMC4yMCAgMCAwIDAgMCAwLjE1ICAyLjQgMCAwIDAgLTAuNSIvPjwvZmlsdGVyPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbHRlcj0idXJsKCNnKSIvPjwvc3ZnPg==");
+    background-size: 180px 180px;
+    background-repeat: repeat;
     transition: opacity var(--transition-normal);
 }
 
 .project-card:hover::after,
 .card:hover::after,
 .skill-plate:hover::after {
-    opacity: 0.44;
+    opacity: 0.58;
 }
 
 /* Dark Theme Texture — Luminous Risograph Ink Fiber & Stippled Specks */
@@ -1132,15 +1135,17 @@ html.dark .project-card::after,
 html.dark .card::after,
 html.dark .skill-plate::after,
 html.dark .modal-wrapper::after {
-    opacity: 0.17;
+    opacity: 0.42;
     mix-blend-mode: screen;
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='rgd'><feTurbulence type='fractalNoise' baseFrequency='1.1' numOctaves='1' seed='11' result='g'/><feColorMatrix in='g' type='matrix' values='0 0 0 0 .95 0 0 0 0 .88 0 0 0 0 .78 9 0 0 0 -2.5'/></filter><rect width='100%' height='100%' filter='url(%23rgd)'/></svg>");
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxODAiIGhlaWdodD0iMTgwIj48ZmlsdGVyIGlkPSJnZCI+PGZlVHVyYnVsZW5jZSB0eXBlPSJmcmFjdGFsTm9pc2UiIGJhc2VGcmVxdWVuY3k9IjEuMSIgbnVtT2N0YXZlcz0iMiIgc2VlZD0iMTEiIHJlc3VsdD0ibiIvPjxmZUNvbG9yTWF0cml4IGluPSJuIiB0eXBlPSJtYXRyaXgiIHZhbHVlcz0iMCAwIDAgMCAwLjk2ICAwIDAgMCAwIDAuODggIDAgMCAwIDAgMC43NiAgMi44IDAgMCAwIC0wLjgiLz48L2ZpbHRlcj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWx0ZXI9InVybCgjZ2QpIi8+PC9zdmc+");
+    background-size: 180px 180px;
+    background-repeat: repeat;
 }
 
 html.dark .project-card:hover::after,
 html.dark .card:hover::after,
 html.dark .skill-plate:hover::after {
-    opacity: 0.25;
+    opacity: 0.55;
 }
 
 /* ==========================================================================
@@ -2026,6 +2031,11 @@ html.dark .modal-wrapper {
 }
 
 @media (max-width: 1024px) {
+    .section-padding {
+        padding-top: 85px !important;
+        padding-bottom: 50px !important;
+    }
+
     .header {
         top: 0;
     }
@@ -2326,7 +2336,8 @@ html.dark .modal-wrapper {
         scroll-snap-type: x mandatory !important;
         -webkit-overflow-scrolling: touch;
         gap: 16px !important;
-        padding: 4px 4px 16px 4px !important;
+        padding: 8px 16px 20px 16px !important;
+        scroll-padding: 0 16px !important;
         scrollbar-width: none !important;
         -ms-overflow-style: none !important;
         align-items: stretch !important;
@@ -2344,17 +2355,17 @@ html.dark .modal-wrapper {
     .skills-stack .skill-category-card {
         display: flex !important;
         flex-direction: column !important;
-        flex: 0 0 85% !important;
-        max-width: 85% !important;
-        min-width: 85% !important;
-        scroll-snap-align: center;
+        flex: 0 0 86% !important;
+        max-width: 86% !important;
+        min-width: 86% !important;
+        scroll-snap-align: start !important;
         align-self: stretch !important;
         height: auto !important;
-        margin-top: 0 !important;
-        margin-bottom: 0 !important;
+        margin: 0 !important;
         transform: none !important;
         opacity: 1 !important;
         box-shadow: var(--shadow-sm) !important;
+        padding: 24px 20px 18px !important;
     }
 
     .skills-grid .skill-plate:hover,
