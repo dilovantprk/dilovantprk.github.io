@@ -2074,92 +2074,30 @@ function initTcgDeck() {
     if (!stage || !deck) return;
 
     const cards = Array.from(deck.querySelectorAll(".tcg-card"));
-    const tabs = Array.from(document.querySelectorAll(".tcg-tab"));
-    const fanToggleBtn = document.getElementById("tcg-fan-toggle");
-    const drawBtn = document.getElementById("tcg-next-card");
-    const modeText = fanToggleBtn ? fanToggleBtn.querySelector(".tcg-mode-text") : null;
-
     let activeIndex = 0;
-    let isFanned = true; // Always start fanned so all 3 cards are visible without overlapping
-    let isDrawing = false;
 
-    // Apply layout state
+    // Apply active state
     function renderDeckState() {
-        deck.classList.toggle("is-fanned", isFanned);
-        deck.classList.toggle("is-stacked", !isFanned);
-
-        if (modeText) {
-            const currentLang = document.documentElement.lang || "tr";
-            if (isFanned) {
-                modeText.textContent = currentLang === "en" ? "Stack Deck" : "Desteyi Topla";
-            } else {
-                modeText.textContent = currentLang === "en" ? "Fan Out Deck" : "Desteyi Aç";
-            }
-        }
-
-        tabs.forEach((tab, i) => {
-            const isActive = i === activeIndex;
-            tab.classList.toggle("active", isActive);
-            tab.setAttribute("aria-selected", isActive ? "true" : "false");
-        });
-
         cards.forEach((card, i) => {
             const isActive = i === activeIndex;
             card.classList.toggle("is-active", isActive);
-
-            // Calculate stacked / fanned positions
-            if (!isFanned) {
-                // Stacked Mode: Top card is activeIndex, others sit underneath
-                const order = (i - activeIndex + cards.length) % cards.length;
-                card.style.setProperty("--stack-order", order);
-                card.setAttribute("data-stack-order", order);
-            } else {
-                card.removeAttribute("data-stack-order");
-            }
         });
     }
 
-    function setActiveCard(index, animateDraw = false) {
-        if (index === activeIndex && !animateDraw) return;
-        
-        if (animateDraw && !isFanned) {
-            if (isDrawing) return;
-            isDrawing = true;
-            const currentCard = cards[activeIndex];
-            currentCard.classList.add("is-drawing");
-            
-            setTimeout(() => {
-                currentCard.classList.remove("is-drawing");
-                activeIndex = index;
-                renderDeckState();
-                isDrawing = false;
-            }, 320);
-        } else {
-            activeIndex = index;
-            renderDeckState();
-        }
+    function setActiveCard(index) {
+        activeIndex = index;
+        renderDeckState();
     }
 
     function drawNextCard() {
         const next = (activeIndex + 1) % cards.length;
-        setActiveCard(next, true);
+        setActiveCard(next);
     }
 
-    // Tab buttons
-    tabs.forEach((tab, i) => {
-        tab.addEventListener("click", () => {
-            setActiveCard(i);
-        });
-    });
-
-    // Card click: brings card to front or draws next
+    // Card click: brings card into active focus
     cards.forEach((card, i) => {
         card.addEventListener("click", () => {
-            if (!isFanned && i === activeIndex) {
-                drawNextCard();
-            } else {
-                setActiveCard(i);
-            }
+            setActiveCard(i);
         });
 
         // 3D Pointer Tracking & Realistic Holo Shimmer Shader
@@ -2197,21 +2135,6 @@ function initTcgDeck() {
         card.addEventListener("pointerleave", handlePointerLeave);
     });
 
-    // Deck Toggle (Aç / Topla)
-    if (fanToggleBtn) {
-        fanToggleBtn.addEventListener("click", () => {
-            isFanned = !isFanned;
-            renderDeckState();
-        });
-    }
-
-    // Draw Next Card Button
-    if (drawBtn) {
-        drawBtn.addEventListener("click", () => {
-            drawNextCard();
-        });
-    }
-
     // Keyboard support
     deck.addEventListener("keydown", (e) => {
         if (e.key === "ArrowRight") {
@@ -2220,12 +2143,7 @@ function initTcgDeck() {
         } else if (e.key === "ArrowLeft") {
             e.preventDefault();
             const prev = (activeIndex - 1 + cards.length) % cards.length;
-            setActiveCard(prev, true);
-        } else if (e.key === " " || e.key === "Enter") {
-            if (document.activeElement && document.activeElement.classList.contains("tcg-card")) {
-                e.preventDefault();
-                drawNextCard();
-            }
+            setActiveCard(prev);
         }
     });
 
@@ -2244,21 +2162,6 @@ function initTcgDeck() {
                 activeCard.style.setProperty("--card-glare-opacity", "0.35");
             }
         }, { passive: true });
-    }
-
-    // Responsive listener
-    window.addEventListener("resize", () => {
-        const shouldBeFanned = window.innerWidth > 768;
-        if (shouldBeFanned !== isFanned && !fanToggleBtn.dataset.userInteracted) {
-            isFanned = shouldBeFanned;
-            renderDeckState();
-        }
-    }, { passive: true });
-
-    if (fanToggleBtn) {
-        fanToggleBtn.addEventListener("click", () => {
-            fanToggleBtn.dataset.userInteracted = "true";
-        });
     }
 
     renderDeckState();
