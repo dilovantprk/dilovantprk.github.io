@@ -137,8 +137,8 @@ const translations = {
         "contact.method_phone": "Telefon Et",
         "contact.method_loc": "Konum",
         "contact.method_loc_val": "İstanbul, Türkiye",
-        "contact.ghost_title": "Buraya bir şey yapışmıştı.",
-        "contact.ghost_desc": "Söktüğüne göre, yazmaya da değer birisin.",
+        "contact.ghost_title": "Beğendin mi?",
+        "contact.ghost_desc": "Söktüğüne göre, beğendiysen bana yaz.",
         "contact.ghost_again": "Geri yapıştır",
         
         "contact.form_name": "Adınız Soyadınız",
@@ -299,8 +299,8 @@ const translations = {
         "contact.method_phone": "Call Me",
         "contact.method_loc": "Location",
         "contact.method_loc_val": "Istanbul, Turkey",
-        "contact.ghost_title": "Something was stuck here.",
-        "contact.ghost_desc": "Since you peeled it off, you must be someone worth writing to.",
+        "contact.ghost_title": "Did you like it?",
+        "contact.ghost_desc": "Since you peeled it off, drop me a line if you liked it.",
         "contact.ghost_again": "Stick it back",
         
         "contact.form_name": "Full Name",
