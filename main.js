@@ -2018,31 +2018,24 @@ function initKartpostal() {
         }
 
         function apply() {
+            const maxShift = Math.max(60, (window.innerWidth - W) * 0.42);
+            X = clamp(X, -maxShift, maxShift);
             lift.style.transform = 'translate(' + (X * ca + Y * sa).toFixed(2) + 'px,' + (-X * sa + Y * ca).toFixed(2) + 'px) rotate(' + th.toFixed(4) + 'rad)';
         }
 
         function settle() {
-            // Bir post-it asla incecik kenarı üzerinde dimdik duramaz; devrilir!
-            // Dike yakınsa veya düz duruyorsa, doğal bir açıyla (22° - 31°) yana devrilsin:
-            const sinVal = Math.sin(th);
-            if (Math.abs(sinVal) < 0.36) {
-                const toppleDir = (th > 0 || om > 0 || vx > 0 || toppleSign > 0) ? 1 : -1;
-                th = toppleDir * (0.38 + Math.random() * 0.15); // ~22° - 30° devrilme açısı
-                X += toppleDir * (70 + Math.random() * 35);      // yana kayma
-            } else {
-                const sign = th < 0 ? -1 : 1;
-                const absAngle = Math.abs(th);
-                if (absAngle < 0.25) th = sign * 0.4;
-                else if (absAngle > 1.2) th = sign * 0.45;
-            }
-
+            // Fizik motoru kartpostalın doğal iniş açısını ve konumunu zaten hesapladı.
+            // Suni sıçramalar (X += 70, ani açı değişikliği vb.) yapmadan kartı durduğu yerde bırak,
+            // sadece taban köşesinin zemin çizgisiyle (F) kusursuz temas etmesini sağla:
             const c = Math.cos(th), sn = Math.sin(th);
             let maxY = -1e9;
             [[-1, -1], [1, -1], [1, 1], [-1, 1]].forEach(function(k) {
                 const ry = k[0] * hw * sn + k[1] * hh * c;
                 if (Y + ry > maxY) maxY = Y + ry;
             });
-            Y -= (maxY - F);
+            if (maxY > -1e8) {
+                Y -= (maxY - F);
+            }
             apply();
             state = 'fallen';
             lift.classList.remove('falling');
@@ -2051,11 +2044,20 @@ function initKartpostal() {
         }
 
         if (reduce) {
-            Y = F - hh;
-            th = toppleSign * 0.42;
-            X = toppleSign * 70;
+            th = toppleSign * 0.08;
+            X = toppleSign * 20;
+            const c = Math.cos(th), sn = Math.sin(th);
+            let maxY = -1e9;
+            [[-1, -1], [1, -1], [1, 1], [-1, 1]].forEach(function(k) {
+                const ry = k[0] * hw * sn + k[1] * hh * c;
+                if (ry > maxY) maxY = ry;
+            });
+            Y = F - maxY;
             apply();
-            settle();
+            state = 'fallen';
+            lift.classList.remove('falling');
+            lift.classList.add('fallen');
+            if (viaKey) again.focus({ preventScroll: true });
             return;
         }
 
