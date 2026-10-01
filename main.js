@@ -133,6 +133,9 @@ const translations = {
         "contact.method_phone": "Telefon Et",
         "contact.method_loc": "Konum",
         "contact.method_loc_val": "İstanbul, Türkiye",
+        "contact.ghost_title": "Buraya bir şey yapışmıştı.",
+        "contact.ghost_desc": "Söktüğüne göre, yazmaya da değer birisin.",
+        "contact.ghost_again": "Geri yapıştır",
         
         "contact.form_name": "Adınız Soyadınız",
         "contact.form_name_placeholder": "Örn. Ahmet Yılmaz",
@@ -288,6 +291,9 @@ const translations = {
         "contact.method_phone": "Call Me",
         "contact.method_loc": "Location",
         "contact.method_loc_val": "Istanbul, Turkey",
+        "contact.ghost_title": "Something was stuck here.",
+        "contact.ghost_desc": "Since you peeled it off, you must be someone worth writing to.",
+        "contact.ghost_again": "Stick it back",
         
         "contact.form_name": "Full Name",
         "contact.form_name_placeholder": "e.g. John Doe",
@@ -767,6 +773,7 @@ function startApp() {
     initScrollReveal();
     initProjectModals();
     initContactForm();
+    initKartpostal();
     initSmoothScrollInterception();
 }
 
@@ -1668,6 +1675,309 @@ function initContactForm() {
             modal.setAttribute("aria-hidden", "true");
             document.body.style.overflow = "";
         });
+    }
+}
+
+/* ==========================================================================
+   KARTPOSTAL / STICKER INTERACTIVE PEEL & PHYSICS SIMULATION
+   ========================================================================== */
+function initKartpostal() {
+    const stage = document.getElementById('stage'),
+          lift = document.getElementById('lift'),
+          sheet = document.getElementById('sheet'),
+          fold = document.getElementById('fold'),
+          tab = document.getElementById('tab'),
+          ghost = document.getElementById('ghost'),
+          again = document.getElementById('again');
+    
+    if (!stage || !lift || !sheet || !fold || !tab || !ghost || !again) return;
+
+    let W = 0, H = 0, P = [0, 0], anim = 0, state = 'idle', dragging = false, touched = false;
+    const reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const EMPTY = 'polygon(0 0,0 0,0 0)';
+
+    function measure() {
+        W = sheet.offsetWidth;
+        H = sheet.offsetHeight;
+    }
+    function base() {
+        return [[.002 * W, .008 * H], [.997 * W, 0], [W, .992 * H], [.001 * W, H]];
+    }
+    function rest() {
+        return [W - 16, H - 16];
+    }
+    function hov() {
+        return [W - 34, H - 34];
+    }
+    function px(poly) {
+        return 'polygon(' + poly.map(function(p) { return p[0].toFixed(1) + 'px ' + p[1].toFixed(1) + 'px'; }).join(',') + ')';
+    }
+    function clip(poly, n, M, keep) {
+        const out = [], f = function(q) { return keep * ((q[0] - M[0]) * n[0] + (q[1] - M[1]) * n[1]); };
+        for (let i = 0; i < poly.length; i++) {
+            const a = poly[i], b = poly[(i + 1) % poly.length], fa = f(a), fb = f(b);
+            if (fa >= 0) out.push(a);
+            if ((fa >= 0) !== (fb >= 0)) {
+                const t = fa / (fa - fb);
+                out.push([a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t]);
+            }
+        }
+        return out;
+    }
+    function render() {
+        const b = base(), dx = P[0] - W, dy = P[1] - H, len = Math.hypot(dx, dy);
+        if (len < .5) {
+            sheet.style.clipPath = px(b);
+            fold.style.clipPath = EMPTY;
+            return;
+        }
+        const n = [dx / len, dy / len], M = [(W + P[0]) / 2, (H + P[1]) / 2];
+        const keep = clip(b, n, M, 1), cut = clip(b, n, M, -1);
+        sheet.style.clipPath = px(keep.length ? keep : b);
+        const refl = cut.map(function(q) {
+            const f = (q[0] - M[0]) * n[0] + (q[1] - M[1]) * n[1];
+            return [q[0] - 2 * f * n[0], q[1] - 2 * f * n[1]];
+        });
+        fold.style.clipPath = refl.length ? px(refl) : EMPTY;
+        const ang = Math.atan2(n[0], -n[1]) * 180 / Math.PI;
+        const L = Math.abs(W * n[0]) + Math.abs(H * n[1]);
+        const t0 = ((M[0] - W / 2) * n[0] + (M[1] - H / 2) * n[1]) + L / 2;
+        fold.style.background = 'linear-gradient(' + ang.toFixed(1) + 'deg, rgba(0,0,0,0) ' + (t0 - 1).toFixed(1) + 'px, rgba(0,0,0,.26) ' + t0.toFixed(1) + 'px, rgba(0,0,0,0) ' + (t0 + 80).toFixed(1) + 'px), var(--back)';
+    }
+    function to(target, ms, done) {
+        cancelAnimationFrame(anim);
+        const from = P.slice(), t0 = performance.now();
+        ms = reduce ? 0 : ms;
+        function step(t) {
+            const k = ms ? Math.min(1, (t - t0) / ms) : 1,
+                  e = 1 - Math.pow(1 - k, 3);
+            P = [from[0] + (target[0] - from[0]) * e, from[1] + (target[1] - from[1]) * e];
+            render();
+            if (k < 1) anim = requestAnimationFrame(step);
+            else if (done) done();
+        }
+        anim = requestAnimationFrame(step);
+    }
+    function local(e) {
+        const r = stage.getBoundingClientRect();
+        let a = 1, b = 0;
+        const cs = getComputedStyle(stage).transform;
+        if (cs && cs !== 'none') {
+            const m = cs.match(/matrix\(([^)]+)\)/);
+            if (m) {
+                const v = m[1].split(',').map(Number);
+                a = v[0];
+                b = v[1];
+            }
+        }
+        const dx = e.clientX - (r.left + r.width / 2),
+              dy = e.clientY - (r.top + r.height / 2);
+        return [dx * a + dy * b + W / 2, -dx * b + dy * a + H / 2];
+    }
+    let vel = [], fallAnim = 0;
+    function pointerVelocity() {
+        const n = vel.length;
+        if (n < 2) return [0, 0];
+        const a = vel[0], b = vel[n - 1], dt = (b.t - a.t) / 1000;
+        if (dt <= 0) return [0, 0];
+        return [(b.x - a.x) / dt, (b.y - a.y) / dt];
+    }
+    function clamp(v, lo, hi) { return Math.max(lo, Math.min(hi, v)); }
+
+    function detach(viaKey) {
+        if (state !== 'idle') return;
+        state = 'falling';
+        dragging = false;
+        touched = true;
+        cancelAnimationFrame(anim);
+        lift.classList.add('falling');
+        ghost.classList.add('on');
+        ghost.inert = false;
+        ghost.removeAttribute('aria-hidden');
+        to(rest(), 520);
+        fall(!!viaKey);
+    }
+
+    function fall(viaKey) {
+        const r = stage.getBoundingClientRect();
+        const contactSec = document.getElementById('contact') || document.querySelector('main') || document.body;
+        const mr = contactSec.getBoundingClientRect();
+        let ca = 1, sa = 0;
+        const cs = getComputedStyle(stage).transform;
+        if (cs && cs !== 'none') {
+            const m = cs.match(/matrix\(([^)]+)\)/);
+            if (m) {
+                const v = m[1].split(',').map(Number);
+                ca = v[0];
+                sa = v[1];
+            }
+        }
+        const hw = W / 2, hh = H / 2, I = (W * W + H * H) / 12;
+        let F = (mr.bottom - 44) - (r.top + r.height / 2);
+        F = Math.max(F, hh + 140);
+        const vp = pointerVelocity();
+        let X = 0, Y = 0, th = 0, vx, vy, om;
+        if (viaKey || (!vp[0] && !vp[1])) {
+            vx = -90; vy = -120; om = -.7;
+        } else {
+            vx = clamp(vp[0] * .35, -500, 500);
+            vy = clamp(vp[1] * .35, -500, 300);
+            om = (vx < 0 ? -1 : 1) * (.5 + Math.random() * .5);
+        }
+        function apply() {
+            lift.style.transform = 'translate(' + (X * ca + Y * sa).toFixed(2) + 'px,' + (-X * sa + Y * ca).toFixed(2) + 'px) rotate(' + th.toFixed(4) + 'rad)';
+        }
+        function settle() {
+            const q = Math.PI / 2, snap = Math.round(th / q) * q;
+            if (Math.abs(th - snap) < .09) th = snap;
+            const c = Math.cos(th), sn = Math.sin(th);
+            let maxY = -1e9;
+            [[-1, -1], [1, -1], [1, 1], [-1, 1]].forEach(function(k) {
+                const ry = k[0] * hw * sn + k[1] * hh * c;
+                if (Y + ry > maxY) maxY = Y + ry;
+            });
+            Y -= (maxY - F);
+            apply();
+            state = 'fallen';
+            lift.classList.remove('falling');
+            lift.classList.add('fallen');
+            if (viaKey) again.focus({ preventScroll: true });
+        }
+        if (reduce) {
+            Y = F - hh;
+            apply();
+            settle();
+            return;
+        }
+        let last = performance.now(), t0 = last, calm = 0;
+        function step(now) {
+            const dt = Math.min(.05, (now - last) / 1000);
+            last = now;
+            const n = Math.max(1, Math.ceil(dt * 240)), h = dt / n;
+            for (let s2 = 0; s2 < n; s2++) {
+                vy += 2600 * h;
+                const dl = Math.exp(-.45 * h), da = Math.exp(-1.1 * h);
+                vx *= dl; vy *= dl; om *= da;
+                X += vx * h; Y += vy * h; th += om * h;
+                const c = Math.cos(th), sn = Math.sin(th);
+                let touching = false;
+                for (let it = 0; it < 4; it++) {
+                    let rx = 0, ry = 0, pen = 0;
+                    [[-1, -1], [1, -1], [1, 1], [-1, 1]].forEach(function(k) {
+                        const lx = k[0] * hw, ly = k[1] * hh,
+                              px2 = lx * c - ly * sn, py2 = lx * sn + ly * c,
+                              d = Y + py2 - F;
+                        if (d > pen) { pen = d; rx = px2; ry = py2; }
+                    });
+                    if (pen <= 0) break;
+                    touching = true;
+                    const vn = -(vy + om * rx);
+                    if (vn < 0) {
+                        const e = vn > -40 ? 0 : .28;
+                        const j = -(1 + e) * vn / (1 + rx * rx / I);
+                        vy -= j; om -= rx * j / I;
+                        const vt = vx - om * ry, jt = -vt / (1 + ry * ry / I),
+                              mx = .55 * j;
+                        const clampedJt = clamp(jt, -mx, mx);
+                        vx += clampedJt; om -= ry * clampedJt / I;
+                    }
+                    Y -= pen * .8;
+                }
+                calm = touching && Math.hypot(vx, vy) < 30 && Math.abs(om) < .2 ? calm + h : 0;
+            }
+            apply();
+            if (calm > .3 || now - t0 > 6000) { settle(); return; }
+            fallAnim = requestAnimationFrame(step);
+        }
+        fallAnim = requestAnimationFrame(step);
+    }
+
+    function restick() {
+        if (state !== 'fallen') return;
+        cancelAnimationFrame(fallAnim);
+        ghost.classList.remove('on');
+        ghost.inert = true;
+        ghost.setAttribute('aria-hidden', 'true');
+        lift.classList.remove('fallen');
+        lift.style.transition = reduce ? 'none' : 'transform .9s cubic-bezier(.3,.8,.25,1)';
+        lift.style.transform = '';
+        state = 'returning';
+        setTimeout(function() {
+            lift.style.transition = '';
+            lift.style.willChange = '';
+            lift.style.zIndex = '';
+            state = 'idle';
+            measure();
+            P = rest();
+            render();
+            tab.focus({ preventScroll: true });
+        }, reduce ? 0 : 950);
+    }
+
+    tab.addEventListener('pointerenter', function() {
+        touched = true;
+        if (state === 'idle' && !dragging) to(hov(), 220);
+    });
+    tab.addEventListener('pointerleave', function() {
+        if (state === 'idle' && !dragging) to(rest(), 260);
+    });
+    tab.addEventListener('pointerdown', function(e) {
+        if (state !== 'idle') return;
+        dragging = true;
+        touched = true;
+        vel = [];
+        cancelAnimationFrame(anim);
+        try { tab.setPointerCapture(e.pointerId); } catch (_) {}
+        e.preventDefault();
+    });
+    tab.addEventListener('pointermove', function(e) {
+        if (!dragging || state !== 'idle') return;
+        const q = local(e), nw = performance.now();
+        vel.push({ t: nw, x: e.clientX, y: e.clientY });
+        while (vel.length && nw - vel[0].t > 120) vel.shift();
+        P = [Math.min(W - 2, Math.max(0, q[0])), Math.min(H - 2, Math.max(0, q[1]))];
+        render();
+        if (Math.hypot(P[0] - W, P[1] - H) > .8 * Math.hypot(W, H)) detach();
+    });
+    function end() {
+        if (!dragging) return;
+        dragging = false;
+        if (state === 'idle') to(rest(), 320);
+    }
+    tab.addEventListener('pointerup', end);
+    tab.addEventListener('pointercancel', end);
+    tab.addEventListener('keydown', function(e) {
+        if ((e.key === 'Enter' || e.key === ' ') && state === 'idle') {
+            e.preventDefault();
+            touched = true;
+            to([W * .24, H * .24], reduce ? 0 : 500, function() { detach(true); });
+        }
+    });
+    again.addEventListener('click', restick);
+
+    measure();
+    P = rest();
+    render();
+
+    if ('ResizeObserver' in window) {
+        new ResizeObserver(function() {
+            measure();
+            if (state === 'idle' && !dragging) { P = rest(); render(); }
+        }).observe(sheet);
+    } else {
+        window.addEventListener('resize', function() {
+            measure();
+            if (state === 'idle') { P = rest(); render(); }
+        });
+    }
+
+    if (!reduce) {
+        setTimeout(function() {
+            if (touched || state !== 'idle') return;
+            to([W - 46, H - 46], 380, function() {
+                if (!touched && state === 'idle') to(rest(), 460);
+            });
+        }, 2600);
     }
 }
 
