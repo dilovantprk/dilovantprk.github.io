@@ -784,6 +784,7 @@ function startApp() {
     initKartpostal();
     initTcgDeck();
     initSmoothScrollInterception();
+    initTimelineTrack();
 }
 
 function initLanguage() {
@@ -842,6 +843,10 @@ function updateLanguageDOM() {
             input.placeholder = translations[currentLanguage][key];
         }
     });
+
+    if (window.updateTimelineTrack) {
+        requestAnimationFrame(window.updateTimelineTrack);
+    }
 }
 
 /* ==========================================================================
@@ -1116,6 +1121,174 @@ function initSmoothScrollInterception() {
     });
 }
 
+/* ==========================================================================
+   TIMELINE TRACK MODULE (ORGANIC CURVED TOY RAILWAY)
+   ========================================================================== */
+function initTimelineTrack() {
+    const tl = document.querySelector('.tl');
+    if (!tl) return;
+
+    let svg = tl.querySelector('.tl-track-svg');
+    if (!svg) {
+        svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        svg.setAttribute('class', 'tl-track-svg');
+        svg.setAttribute('aria-hidden', 'true');
+        svg.innerHTML = `
+            <g filter="url(#ink)" class="tl-track-group">
+                <path class="tl-track-sleepers" fill="none" />
+                <path class="tl-track-rail tl-track-rail-left" fill="none" />
+                <path class="tl-track-rail tl-track-rail-right" fill="none" />
+            </g>
+        `;
+        tl.prepend(svg);
+    }
+
+    tl.classList.add('has-curved-track');
+
+    function getElementCenter(el) {
+        if (!el) return null;
+        let curr = el;
+        let top = 0;
+        let left = 0;
+        while (curr && curr !== tl && curr !== document.body) {
+            top += curr.offsetTop;
+            left += curr.offsetLeft;
+            curr = curr.offsetParent;
+        }
+        return {
+            x: left + el.offsetWidth / 2,
+            y: top + el.offsetHeight / 2,
+            top: top,
+            bottom: top + el.offsetHeight,
+            width: el.offsetWidth,
+            height: el.offsetHeight
+        };
+    }
+
+    function updateTrack() {
+        const originBuffer = tl.querySelector('.tl-track-origin .tl-buffer-stop');
+        const nodes = Array.from(tl.querySelectorAll('.it .node'));
+        const terminusLocomotive = tl.querySelector('.tl-locomotive-terminus .tl-locomotive');
+        if (nodes.length === 0) return;
+
+        const waypoints = [];
+
+        // 1. Hat başı tamponu (Origin at Top)
+        if (originBuffer) {
+            const ob = getElementCenter(originBuffer);
+            if (ob) {
+                waypoints.push({
+                    x: ob.x,
+                    y: ob.bottom - 4
+                });
+            }
+        }
+
+        // 2. Her bir istasyon düğümü (Station Nodes)
+        nodes.forEach(node => {
+            const nc = getElementCenter(node);
+            if (nc) {
+                waypoints.push({
+                    x: nc.x,
+                    y: nc.y
+                });
+            }
+        });
+
+        // 3. Hat sonu lokomotifi (Locomotive at Terminus)
+        if (terminusLocomotive) {
+            const tc = getElementCenter(terminusLocomotive);
+            if (tc) {
+                waypoints.push({
+                    x: tc.x - 2,
+                    y: tc.top + 6
+                });
+            }
+        }
+
+        if (waypoints.length < 2) return;
+
+        const isMobile = window.innerWidth <= 600;
+        const gauge = isMobile ? 13 : 16;
+        const halfGauge = gauge / 2;
+
+        const centerD = [];
+        const leftD = [];
+        const rightD = [];
+
+        for (let i = 0; i < waypoints.length - 1; i++) {
+            const p0 = waypoints[i];
+            const p3 = waypoints[i + 1];
+            const h = p3.y - p0.y;
+            if (h <= 0) continue;
+
+            // Kıvrım yönü: istasyonlar arasında sola ve sağa tatlı S-kavisleri
+            // İlk ve son segment daha yumuşak geçiş
+            let bowOffset;
+            if (i === 0) {
+                bowOffset = (p3.x - p0.x) * 0.35;
+            } else if (i === waypoints.length - 2) {
+                bowOffset = (p0.x - p3.x) * 0.35;
+            } else {
+                const isLeft = (i % 2 === 1);
+                bowOffset = (isMobile ? 8 : 16) * (isLeft ? -1 : 1);
+            }
+
+            const p1 = {
+                x: p0.x + bowOffset,
+                y: p0.y + 0.35 * h
+            };
+            const p2 = {
+                x: p3.x - bowOffset,
+                y: p3.y - 0.35 * h
+            };
+
+            const numSamples = Math.max(12, Math.round(h / 14));
+
+            for (let step = 0; step <= numSamples; step++) {
+                if (i > 0 && step === 0) continue;
+                const t = step / numSamples;
+                const mt = 1 - t;
+
+                const cx = mt * mt * mt * p0.x + 3 * mt * mt * t * p1.x + 3 * mt * t * t * p2.x + t * t * t * p3.x;
+                const cy = mt * mt * mt * p0.y + 3 * mt * mt * t * p1.y + 3 * mt * t * t * p2.y + t * t * t * p3.y;
+
+                const dx = 3 * mt * mt * (p1.x - p0.x) + 6 * mt * t * (p2.x - p1.x) + 3 * t * t * (p3.x - p2.x);
+                const dy = 3 * mt * mt * (p1.y - p0.y) + 6 * mt * t * (p2.y - p1.y) + 3 * t * t * (p3.y - p2.y);
+                const len = Math.hypot(dx, dy) || 1;
+                const tx = dx / len;
+                const ty = dy / len;
+
+                const nx = -ty;
+                const ny = tx;
+
+                const cmd = (i === 0 && step === 0) ? 'M' : 'L';
+                centerD.push(`${cmd}${cx.toFixed(1)},${cy.toFixed(1)}`);
+                leftD.push(`${cmd}${(cx - halfGauge * nx).toFixed(1)},${(cy - halfGauge * ny).toFixed(1)}`);
+                rightD.push(`${cmd}${(cx + halfGauge * nx).toFixed(1)},${(cy + halfGauge * ny).toFixed(1)}`);
+            }
+        }
+
+        const sleepersEl = svg.querySelector('.tl-track-sleepers');
+        const leftRailEl = svg.querySelector('.tl-track-rail-left');
+        const rightRailEl = svg.querySelector('.tl-track-rail-right');
+
+        if (sleepersEl) sleepersEl.setAttribute('d', centerD.join(' '));
+        if (leftRailEl) leftRailEl.setAttribute('d', leftD.join(' '));
+        if (rightRailEl) rightRailEl.setAttribute('d', rightD.join(' '));
+    }
+
+    window.addEventListener('resize', updateTrack, { passive: true });
+    if (window.ResizeObserver) {
+        const ro = new ResizeObserver(updateTrack);
+        ro.observe(tl);
+    }
+
+    requestAnimationFrame(updateTrack);
+    setTimeout(updateTrack, 100);
+    setTimeout(updateTrack, 500);
+    window.updateTimelineTrack = updateTrack;
+}
 
 /* ==========================================================================
    SCROLL REVEAL MODULE (INTERSECTION OBSERVER)
