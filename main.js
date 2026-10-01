@@ -1820,22 +1820,40 @@ function initKartpostal() {
         }
         const hw = W / 2, hh = H / 2, I = (W * W + H * H) / 12;
         let F = (mr.bottom - 44) - (r.top + r.height / 2);
-        F = Math.max(F, hh + 140);
+        F = Math.max(F, hh + 190);
         const vp = pointerVelocity();
         let X = 0, Y = 0, th = 0, vx, vy, om;
+
+        const toppleSign = (vp[0] < -40 || Math.random() < 0.5) ? -1 : 1;
         if (viaKey || (!vp[0] && !vp[1])) {
-            vx = -90; vy = -120; om = -.7;
+            vx = toppleSign * (85 + Math.random() * 45);
+            vy = -100;
+            om = toppleSign * (2.2 + Math.random() * 1.2);
         } else {
-            vx = clamp(vp[0] * .35, -500, 500);
-            vy = clamp(vp[1] * .35, -500, 300);
-            om = (vx < 0 ? -1 : 1) * (.5 + Math.random() * .5);
+            vx = clamp(vp[0] * .38, -450, 450);
+            vy = clamp(vp[1] * .35, -450, 250);
+            om = (vx < 0 ? -1 : 1) * (2.0 + Math.random() * 1.4);
         }
+
         function apply() {
             lift.style.transform = 'translate(' + (X * ca + Y * sa).toFixed(2) + 'px,' + (-X * sa + Y * ca).toFixed(2) + 'px) rotate(' + th.toFixed(4) + 'rad)';
         }
+
         function settle() {
-            const q = Math.PI / 2, snap = Math.round(th / q) * q;
-            if (Math.abs(th - snap) < .09) th = snap;
+            // Bir post-it asla incecik kenarı üzerinde dimdik duramaz; devrilir!
+            // Dike yakınsa veya düz duruyorsa, doğal bir açıyla (22° - 31°) yana devrilsin:
+            const sinVal = Math.sin(th);
+            if (Math.abs(sinVal) < 0.36) {
+                const toppleDir = (th > 0 || om > 0 || vx > 0 || toppleSign > 0) ? 1 : -1;
+                th = toppleDir * (0.38 + Math.random() * 0.15); // ~22° - 30° devrilme açısı
+                X += toppleDir * (70 + Math.random() * 35);      // yana kayma
+            } else {
+                const sign = th < 0 ? -1 : 1;
+                const absAngle = Math.abs(th);
+                if (absAngle < 0.25) th = sign * 0.4;
+                else if (absAngle > 1.2) th = sign * 0.45;
+            }
+
             const c = Math.cos(th), sn = Math.sin(th);
             let maxY = -1e9;
             [[-1, -1], [1, -1], [1, 1], [-1, 1]].forEach(function(k) {
@@ -1849,12 +1867,16 @@ function initKartpostal() {
             lift.classList.add('fallen');
             if (viaKey) again.focus({ preventScroll: true });
         }
+
         if (reduce) {
             Y = F - hh;
+            th = toppleSign * 0.42;
+            X = toppleSign * 70;
             apply();
             settle();
             return;
         }
+
         let last = performance.now(), t0 = last, calm = 0;
         function step(now) {
             const dt = Math.min(.05, (now - last) / 1000);
@@ -1862,8 +1884,14 @@ function initKartpostal() {
             const n = Math.max(1, Math.ceil(dt * 240)), h = dt / n;
             for (let s2 = 0; s2 < n; s2++) {
                 vy += 2600 * h;
-                const dl = Math.exp(-.45 * h), da = Math.exp(-1.1 * h);
+                const dl = Math.exp(-.45 * h), da = Math.exp(-0.75 * h);
                 vx *= dl; vy *= dl; om *= da;
+
+                // Havada kağıt süzülmesi ve yuvarlanma (flutter)
+                const timeSec = (now - t0) / 1000;
+                om += Math.sin(timeSec * 7) * 1.6 * h;
+                vx += Math.cos(timeSec * 5) * 75 * h;
+
                 X += vx * h; Y += vy * h; th += om * h;
                 const c = Math.cos(th), sn = Math.sin(th);
                 let touching = false;
@@ -1879,7 +1907,7 @@ function initKartpostal() {
                     touching = true;
                     const vn = -(vy + om * rx);
                     if (vn < 0) {
-                        const e = vn > -40 ? 0 : .28;
+                        const e = vn > -40 ? 0 : .24;
                         const j = -(1 + e) * vn / (1 + rx * rx / I);
                         vy -= j; om -= rx * j / I;
                         const vt = vx - om * ry, jt = -vt / (1 + ry * ry / I),
@@ -1892,7 +1920,7 @@ function initKartpostal() {
                 calm = touching && Math.hypot(vx, vy) < 30 && Math.abs(om) < .2 ? calm + h : 0;
             }
             apply();
-            if (calm > .3 || now - t0 > 6000) { settle(); return; }
+            if (calm > .25 || now - t0 > 5500) { settle(); return; }
             fallAnim = requestAnimationFrame(step);
         }
         fallAnim = requestAnimationFrame(step);
