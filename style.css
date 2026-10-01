@@ -2439,12 +2439,43 @@ mark {
         inset 0 0 0 5.5px color-mix(in srgb, var(--ink) 12%, transparent);
     user-select: none;
     -webkit-user-select: none;
+    overflow: hidden;
+}
+
+/* Hisarüstü & Boğaziçi Gravür Zemin Dokusu (Antique Engraving Watermark) */
+.sheet::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url('assets/hisarustu-engraving.jpg');
+    background-size: cover;
+    background-position: center 30%;
+    opacity: 0.16;
+    mix-blend-mode: multiply;
+    pointer-events: none;
+    z-index: 1;
+    transition: opacity var(--transition-normal);
+}
+
+.sheet:hover::before {
+    opacity: 0.22;
+}
+
+html.dark .sheet::before {
+    opacity: 0.13;
+    mix-blend-mode: screen;
+    filter: invert(0.9) sepia(0.6) hue-rotate(330deg) brightness(0.85);
+}
+
+html.dark .sheet:hover::before {
+    opacity: 0.18;
 }
 
 /* Nostaljik Osmanlı Posta Kartı Gövdesi */
 .postcard-inner {
     position: relative;
     padding: 28px 32px 32px 34px;
+    z-index: 2;
 }
 
 .postcard-top {
