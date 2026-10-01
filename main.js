@@ -2081,6 +2081,9 @@ function initTcgDeck() {
         cards.forEach((card, i) => {
             const isActive = i === activeIndex;
             card.classList.toggle("is-active", isActive);
+            if (isActive) {
+                applyGyroToCard(card);
+            }
         });
     }
 
@@ -2096,35 +2099,40 @@ function initTcgDeck() {
 
     // Gyroscope tracking logic with iOS permission check
     let gyroEnabled = false;
+    let currentGyroState = { rotX: "0deg", rotY: "0deg", px: "50%", py: "50%", glare: "0.2" };
+
+    function applyGyroToCard(card) {
+        if (!card) return;
+        card.style.setProperty("--card-rot-x", currentGyroState.rotX);
+        card.style.setProperty("--card-rot-y", currentGyroState.rotY);
+        card.style.setProperty("--pointer-x", currentGyroState.px);
+        card.style.setProperty("--pointer-y", currentGyroState.py);
+        card.style.setProperty("--card-glare-opacity", currentGyroState.glare);
+    }
+
     function enableGyro() {
         if (gyroEnabled) return;
         gyroEnabled = true;
-        let gyroResetTimer = null;
         window.addEventListener("deviceorientation", (e) => {
             if (e.gamma === null || e.beta === null) return;
             const activeCard = cards[activeIndex];
             if (!activeCard) return;
 
-            const gammaClamped = Math.min(Math.max(e.gamma, -30), 30);
-            const betaClamped = Math.min(Math.max(e.beta - 45, -30), 30);
+            // Doğal telefon tutuş açısı (yaklaşık 45° eğik)
+            const gammaClamped = Math.min(Math.max(e.gamma, -32), 32);
+            const betaClamped = Math.min(Math.max(e.beta - 45, -32), 32);
 
-            const rotY = (gammaClamped * 0.4).toFixed(2);
-            const rotX = (-betaClamped * 0.35).toFixed(2);
-            const px = (50 + gammaClamped * 1.3).toFixed(1);
-            const py = (50 + betaClamped * 1.3).toFixed(1);
-            const glareOpacity = (0.25 + (Math.abs(gammaClamped) + Math.abs(betaClamped)) / 120 * 0.45).toFixed(2);
+            // Gerçekçi 3D eğim ve ışık açısı
+            const rotY = ((gammaClamped / 32) * 12).toFixed(2) + "deg";
+            const rotX = ((-betaClamped / 32) * 10).toFixed(2) + "deg";
+            const px = (50 + (gammaClamped / 32) * 42).toFixed(1) + "%";
+            const py = (50 + (betaClamped / 32) * 38).toFixed(1) + "%";
 
-            activeCard.classList.add("is-tracking");
-            activeCard.style.setProperty("--card-rot-x", `${rotX}deg`);
-            activeCard.style.setProperty("--card-rot-y", `${rotY}deg`);
-            activeCard.style.setProperty("--pointer-x", `${px}%`);
-            activeCard.style.setProperty("--pointer-y", `${py}%`);
-            activeCard.style.setProperty("--card-glare-opacity", glareOpacity);
+            const tiltFactor = Math.hypot(gammaClamped / 32, betaClamped / 32);
+            const glare = Math.min(0.7, 0.15 + tiltFactor * 0.45).toFixed(2);
 
-            clearTimeout(gyroResetTimer);
-            gyroResetTimer = setTimeout(() => {
-                activeCard.classList.remove("is-tracking");
-            }, 2500);
+            currentGyroState = { rotX, rotY, px, py, glare };
+            applyGyroToCard(activeCard);
         }, { passive: true });
     }
 
@@ -2248,6 +2256,7 @@ function initTcgDeck() {
     }, { passive: true });
 
     deck.addEventListener("touchend", (e) => {
+        tryRequestGyroPermission();
         if (e.changedTouches && e.changedTouches.length === 1) {
             const deltaX = e.changedTouches[0].clientX - touchStartX;
             const deltaY = e.changedTouches[0].clientY - touchStartY;

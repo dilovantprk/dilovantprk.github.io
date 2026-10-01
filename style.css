@@ -1334,7 +1334,7 @@ mark {
 .tcg-deck.is-fanned .tcg-card:hover,
 .tcg-deck.is-fanned .tcg-card.is-active {
     z-index: 25 !important;
-    transform: translateY(-36px) rotateZ(0deg) scale(1.04) !important;
+    transform: translateY(-36px) rotateX(var(--card-rot-x, 0deg)) rotateY(var(--card-rot-y, 0deg)) scale(1.04) !important;
     box-shadow:
         0 16px 36px rgba(var(--shade), 0.18),
         0 32px 64px -10px rgba(var(--shade), 0.3),
@@ -1461,57 +1461,18 @@ mark {
 }
 
 /* ==========================================================================
-   MOBIL & IDLE CANLI HOLO MOTORU (Otomatik Nefes Dalgası & Dokunma/Jiroskop)
+   FİZİKSEL JİROSKOP & DİNAMİK IŞIK MOTORU (DeviceOrientation Gyro Tilt)
    ========================================================================== */
-@keyframes holoAmbientSweep {
-    0% {
-        background-position: 10% 15%;
-    }
-    50% {
-        background-position: 90% 85%;
-    }
-    100% {
-        background-position: 10% 15%;
-    }
+.tcg-card.is-active .tcg-foil-shimmer {
+    opacity: 0.52;
 }
 
-@keyframes glareAmbientPulse {
-    0%, 100% {
-        opacity: 0.12;
-    }
-    50% {
-        opacity: 0.38;
-    }
+.tcg-card.is-active .tcg-card-glare {
+    opacity: var(--card-glare-opacity, 0.15);
 }
 
-@keyframes sparkleAmbientTwinkle {
-    0%, 100% {
-        opacity: 0.18;
-    }
-    50% {
-        opacity: 0.65;
-    }
-}
-
-/* Aktif kart kullanıcı dokunmadığı veya telefonu oynatmadığı anlarda bile hafifçe parıldar */
-.tcg-card.is-active:not(.is-tracking) .tcg-foil-shimmer {
-    animation: holoAmbientSweep 7s ease-in-out infinite;
-    opacity: 0.48;
-}
-
-.tcg-card.is-active:not(.is-tracking) .tcg-card-glare {
-    animation: glareAmbientPulse 7s ease-in-out infinite;
-}
-
-.tcg-card.is-active:not(.is-tracking) .tcg-foil-sparkles {
-    animation: sparkleAmbientTwinkle 4.5s ease-in-out infinite;
-}
-
-/* Kullanıcı parmağıyla veya telefonu eğerek etkileşime geçtiğinde manuel takip tam yetkili olur */
-.tcg-card.is-tracking .tcg-foil-shimmer,
-.tcg-card.is-tracking .tcg-card-glare,
-.tcg-card.is-tracking .tcg-foil-sparkles {
-    animation: none !important;
+.tcg-card.is-active .tcg-foil-sparkles {
+    opacity: calc(var(--card-glare-opacity, 0.15) * 1.3);
 }
 
 /* ==========================================================================
@@ -1742,13 +1703,13 @@ mark {
         z-index: 2;
     }
 
-    /* Aktif kart öne süzülür */
+    /* Aktif kart öne süzülür ve telefonun eğimine göre 3D açı alır */
     .tcg-deck .tcg-card.is-active,
     .tcg-deck.is-fanned .tcg-card.is-active,
     .tcg-deck.is-stacked .tcg-card.is-active,
     .tcg-deck .tcg-card:hover,
     .tcg-deck.is-fanned .tcg-card:hover {
-        transform: translate(0px, -20px) rotateZ(0deg) scale(1.03) !important;
+        transform: translate(0px, -20px) rotateX(var(--card-rot-x, 0deg)) rotateY(var(--card-rot-y, 0deg)) scale(1.03) !important;
         z-index: 25 !important;
         opacity: 1 !important;
         filter: none !important;
