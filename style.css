@@ -1625,75 +1625,213 @@ mark {
 }
 
 /* ==========================================================================
-   MOBIL UYUMLULUK
+   MOBIL UYUMLULUK (Koleksiyon Kartları Mobil Ölçekleme)
    ========================================================================== */
 @media (max-width: 768px) {
     .tcg-deck-stage {
-        min-height: 540px;
-        padding: 20px 0 30px;
+        min-height: 480px;
+        padding: 15px 0 25px;
     }
 
-    .tcg-deck {
+    .tcg-table-surface {
+        bottom: 12px;
+        width: 80%;
+        max-width: 320px;
+        height: 35px;
+    }
+
+    .tcg-deck,
+    .tcg-deck.is-fanned,
+    .tcg-deck.is-stacked {
         position: relative;
-        width: 300px;
-        height: 490px;
+        width: 260px;
+        height: 420px;
+        min-height: 420px;
+        margin: 0 auto;
     }
 
-    .tcg-deck .tcg-card {
+    .tcg-card,
+    .tcg-deck .tcg-card,
+    .tcg-deck.is-fanned .tcg-card,
+    .tcg-deck.is-stacked .tcg-card {
         position: absolute;
-        inset: 0;
+        top: 0;
+        left: 0;
+        width: 260px;
+        max-width: 260px;
+        height: 420px;
+        flex: 0 0 260px;
         margin: 0;
+        padding: 7px;
+        border-radius: 15px;
     }
 
-    .tcg-deck .tcg-card[data-index="0"] {
-        transform: translate(-8px, 12px) rotateZ(-5deg);
+    /* Mobilde kartların şık bir deste halinde arkadan taşması */
+    .tcg-deck .tcg-card[data-index="0"],
+    .tcg-deck.is-fanned .tcg-card[data-index="0"],
+    .tcg-deck.is-stacked .tcg-card[data-index="0"] {
+        transform: translate(-14px, 12px) rotateZ(-5deg);
         z-index: 2;
     }
-    .tcg-deck .tcg-card[data-index="1"] {
-        transform: translate(0px, 0px) rotateZ(0deg);
-        z-index: 4;
-    }
-    .tcg-deck .tcg-card[data-index="2"] {
-        transform: translate(8px, 12px) rotateZ(5deg);
+
+    .tcg-deck .tcg-card[data-index="1"],
+    .tcg-deck.is-fanned .tcg-card[data-index="1"],
+    .tcg-deck.is-stacked .tcg-card[data-index="1"] {
+        transform: translate(0px, 4px) rotateZ(0deg);
         z-index: 3;
     }
 
+    .tcg-deck .tcg-card[data-index="2"],
+    .tcg-deck.is-fanned .tcg-card[data-index="2"],
+    .tcg-deck.is-stacked .tcg-card[data-index="2"] {
+        transform: translate(14px, 12px) rotateZ(5deg);
+        z-index: 2;
+    }
+
+    /* Aktif kart öne süzülür */
     .tcg-deck .tcg-card.is-active,
-    .tcg-deck .tcg-card:hover {
-        transform: translate(0px, -24px) rotateZ(0deg) scale(1.03) !important;
+    .tcg-deck.is-fanned .tcg-card.is-active,
+    .tcg-deck.is-stacked .tcg-card.is-active,
+    .tcg-deck .tcg-card:hover,
+    .tcg-deck.is-fanned .tcg-card:hover {
+        transform: translate(0px, -20px) rotateZ(0deg) scale(1.03) !important;
         z-index: 25 !important;
-    }
-}
-
-@media (max-width: 480px) {
-    .tcg-deck {
-        width: 280px;
-        height: 470px;
+        opacity: 1 !important;
+        filter: none !important;
     }
 
-    .tcg-tab {
-        padding: 6px 10px;
-        font-size: 0.68rem;
-    }
-
-    .tcg-card {
-        padding: 8px;
+    .tcg-deck .tcg-card:not(.is-active):not(:hover),
+    .tcg-deck.is-fanned .tcg-card:not(.is-active):not(:hover) {
+        opacity: 0.88;
+        filter: brightness(0.96);
     }
 
     .tcg-inner-frame {
-        padding: 10px;
+        padding: 9px 10px 8px;
+        border-radius: 10px;
+    }
+
+    .tcg-header {
+        padding: 2px 2px 6px;
     }
 
     .tcg-title {
-        font-size: 17px;
+        font-size: 15px;
+    }
+
+    .tcg-rarity {
+        font-size: 0.65rem;
+    }
+
+    .tcg-art-window {
+        margin: 6px 0 8px;
+        border-radius: 7px;
+    }
+
+    .tcg-art-caption {
+        font-size: 0.52rem;
+        padding: 2px 6px;
+    }
+
+    .tcg-traits {
+        gap: 6px;
+    }
+
+    .tcg-trait {
+        padding: 2px 0;
     }
 
     .tcg-trait dt {
-        font-size: 0.88rem;
+        font-size: 0.8rem;
+        line-height: 1.2;
+        margin: 0 0 1px;
     }
 
     .tcg-trait dd {
-        font-size: 0.76rem;
+        font-size: 0.7rem;
+        line-height: 1.35;
+        margin: 0 0 0 10px;
+    }
+
+    .tcg-footer {
+        margin-top: 8px;
+        padding-top: 6px;
+        font-size: 0.54rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .tcg-deck-stage {
+        min-height: 440px;
+        padding: 10px 0 20px;
+    }
+
+    .tcg-deck,
+    .tcg-deck.is-fanned,
+    .tcg-deck.is-stacked {
+        width: 236px;
+        height: 390px;
+        min-height: 390px;
+    }
+
+    .tcg-card,
+    .tcg-deck .tcg-card,
+    .tcg-deck.is-fanned .tcg-card,
+    .tcg-deck.is-stacked .tcg-card {
+        width: 236px;
+        max-width: 236px;
+        height: 390px;
+        flex: 0 0 236px;
+        padding: 6px;
+        border-radius: 13px;
+    }
+
+    .tcg-deck .tcg-card[data-index="0"],
+    .tcg-deck.is-fanned .tcg-card[data-index="0"] {
+        transform: translate(-10px, 10px) rotateZ(-4deg);
+    }
+
+    .tcg-deck .tcg-card[data-index="2"],
+    .tcg-deck.is-fanned .tcg-card[data-index="2"] {
+        transform: translate(10px, 10px) rotateZ(4deg);
+    }
+
+    .tcg-inner-frame {
+        padding: 8px 8px 6px;
+        border-radius: 9px;
+    }
+
+    .tcg-title {
+        font-size: 13.5px;
+    }
+
+    .tcg-art-window {
+        margin: 4px 0 6px;
+    }
+
+    .tcg-art-caption {
+        font-size: 0.46rem;
+        padding: 1px 4px;
+    }
+
+    .tcg-traits {
+        gap: 4px;
+    }
+
+    .tcg-trait dt {
+        font-size: 0.74rem;
+    }
+
+    .tcg-trait dd {
+        font-size: 0.64rem;
+        line-height: 1.28;
+        margin: 0 0 0 8px;
+    }
+
+    .tcg-footer {
+        margin-top: 5px;
+        padding-top: 4px;
+        font-size: 0.5rem;
     }
 }
 

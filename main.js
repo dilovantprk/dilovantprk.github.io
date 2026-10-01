@@ -2147,7 +2147,31 @@ function initTcgDeck() {
         }
     });
 
-    // Mobile DeviceOrientation (Gyroscope Holo Shimmer)
+    // Touch swipe support (Mobile)
+    let touchStartX = 0;
+    let touchStartY = 0;
+    deck.addEventListener("touchstart", (e) => {
+        if (e.touches && e.touches.length === 1) {
+            touchStartX = e.touches[0].clientX;
+            touchStartY = e.touches[0].clientY;
+        }
+    }, { passive: true });
+
+    deck.addEventListener("touchend", (e) => {
+        if (e.changedTouches && e.changedTouches.length === 1) {
+            const deltaX = e.changedTouches[0].clientX - touchStartX;
+            const deltaY = e.changedTouches[0].clientY - touchStartY;
+            if (Math.abs(deltaX) > 40 && Math.abs(deltaX) > Math.abs(deltaY) * 1.4) {
+                if (deltaX < 0) {
+                    drawNextCard();
+                } else {
+                    const prev = (activeIndex - 1 + cards.length) % cards.length;
+                    setActiveCard(prev);
+                }
+            }
+        }
+    }, { passive: true });
+
     if (window.DeviceOrientationEvent && typeof window.DeviceOrientationEvent.requestPermission !== "function") {
         window.addEventListener("deviceorientation", (e) => {
             if (e.gamma === null || e.beta === null) return;
