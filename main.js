@@ -2099,7 +2099,7 @@ function initTcgDeck() {
 
     // Gyroscope tracking logic with iOS permission check
     let gyroEnabled = false;
-    let currentGyroState = { rotX: "0deg", rotY: "0deg", px: "50%", py: "50%", glare: "0.2" };
+    let currentGyroState = { rotX: "0deg", rotY: "0deg", px: "50%", py: "50%", glare: "0" };
 
     function applyGyroToCard(card) {
         if (!card) return;
@@ -2129,7 +2129,7 @@ function initTcgDeck() {
             const py = (50 + (betaClamped / 32) * 38).toFixed(1) + "%";
 
             const tiltFactor = Math.hypot(gammaClamped / 32, betaClamped / 32);
-            const glare = Math.min(0.7, 0.15 + tiltFactor * 0.45).toFixed(2);
+            const glare = Math.min(0.5, (tiltFactor * 0.45)).toFixed(2);
 
             currentGyroState = { rotX, rotY, px, py, glare };
             applyGyroToCard(activeCard);

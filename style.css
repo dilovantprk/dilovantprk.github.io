@@ -1391,10 +1391,10 @@ mark {
 }
 
 /* ==========================================================================
-   HOLOGRAFİK & IŞIK KATMANLARI (Specular Glare + Iridescent Foil + Sparkles)
+   DOKUDAN KAYNAKLANAN SICAK VARAK & YALDIZ KATMANI (Tactile Grain-Fused Foil)
    ========================================================================== */
 
-/* 1. Dinamik Parlama / Işık Noktası (Cursor'ı takip eder) */
+/* 1. Yumuşak Doğal Işık Halesi (Soft Specular Glare) */
 .tcg-card-glare {
     position: absolute;
     inset: 0;
@@ -1403,45 +1403,85 @@ mark {
     z-index: 12;
     background: radial-gradient(
         farthest-corner circle at var(--pointer-x) var(--pointer-y),
-        rgba(255, 255, 255, 0.85) 0%,
-        rgba(255, 255, 255, 0.3) 25%,
+        rgba(255, 252, 240, 0.45) 0%,
+        rgba(235, 210, 140, 0.15) 30%,
         transparent 65%
     );
     opacity: var(--card-glare-opacity, 0);
-    mix-blend-mode: overlay;
-    transition: opacity 0.3s ease;
+    mix-blend-mode: soft-light;
+    transition: opacity 0.25s ease;
 }
 
-/* 2. Gökkuşağı Holografik Kırılma */
+/* 2. Dokudan Beslenen Metalik Varak & Gren Kırılması (Grain & Hot-Foil Shimmer) */
 .tcg-foil-shimmer {
     position: absolute;
     inset: 0;
     border-radius: 18px;
     pointer-events: none;
     z-index: 10;
-    mix-blend-mode: color-dodge;
-    opacity: 0.22;
-    background: linear-gradient(
-        115deg,
-        transparent 0%,
-        rgba(255, 0, 128, 0.25) 20%,
-        rgba(0, 200, 255, 0.3) 35%,
-        rgba(255, 220, 0, 0.35) 50%,
-        rgba(0, 255, 128, 0.3) 65%,
-        rgba(180, 0, 255, 0.25) 80%,
-        transparent 100%
-    );
-    background-size: 250% 250%;
-    background-position: calc(var(--pointer-x) * 1.5) calc(var(--pointer-y) * 1.5);
-    transition: opacity 0.35s ease;
+    mix-blend-mode: overlay;
+    opacity: calc(var(--card-glare-opacity, 0) * 0.95);
+    background-image:
+        /* Katman A: Mikro-kağıt lifleri ve matbaa gren dokusu (SVG Fractal Noise) */
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='fg'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 1  0 0 0 0 0.88  0 0 0 0 0.6  0.7 0 0 0 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23fg)' opacity='0.38'/%3E%3C/svg%3E"),
+        /* Katman B: Sıcak Varak Altın & Riso Pigment Yaldızı (Doğal matbaa kırılması) */
+        linear-gradient(
+            120deg,
+            transparent 10%,
+            rgba(235, 208, 125, 0.28) 25%,
+            rgba(255, 248, 220, 0.6) 45%,
+            rgba(224, 110, 65, 0.3) 60%,
+            rgba(40, 140, 125, 0.22) 75%,
+            transparent 90%
+        );
+    background-size: 120px 120px, 220% 220%;
+    background-position: 0 0, calc(var(--pointer-x) * 1.3) calc(var(--pointer-y) * 1.3);
+    transition: opacity 0.25s ease;
 }
 
-.tcg-card:hover .tcg-foil-shimmer,
-.tcg-card.is-active .tcg-foil-shimmer {
-    opacity: 0.55;
+/* Kart Tipine Göre Özelleşen Varak Dokuları */
+.tcg-card.tcg-gold .tcg-foil-shimmer {
+    background-image:
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='fg1'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 1  0 0 0 0 0.88  0 0 0 0 0.5  0.8 0 0 0 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23fg1)' opacity='0.42'/%3E%3C/svg%3E"),
+        linear-gradient(
+            120deg,
+            transparent 15%,
+            rgba(235, 208, 125, 0.35) 30%,
+            rgba(255, 245, 210, 0.65) 50%,
+            rgba(184, 134, 40, 0.35) 68%,
+            transparent 88%
+        );
 }
 
-/* 3. Pokémon Secret Rare Yıldız/Sim Parıltıları */
+.tcg-card.tcg-holo .tcg-foil-shimmer {
+    background-image:
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='fg2'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 1  0 0 0 0 0.75  0 0 0 0 0.5  0.8 0 0 0 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23fg2)' opacity='0.4'/%3E%3C/svg%3E"),
+        linear-gradient(
+            120deg,
+            transparent 15%,
+            rgba(242, 154, 118, 0.35) 28%,
+            rgba(255, 235, 185, 0.6) 48%,
+            rgba(212, 99, 59, 0.38) 65%,
+            rgba(100, 194, 178, 0.25) 78%,
+            transparent 90%
+        );
+}
+
+.tcg-card.tcg-secret .tcg-foil-shimmer {
+    background-image:
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='fg3'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.6  0 0 0 0 0.95  0 0 0 0 0.85  0.8 0 0 0 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23fg3)' opacity='0.42'/%3E%3C/svg%3E"),
+        linear-gradient(
+            120deg,
+            transparent 15%,
+            rgba(100, 194, 178, 0.38) 30%,
+            rgba(235, 245, 230, 0.6) 50%,
+            rgba(30, 125, 112, 0.4) 68%,
+            rgba(235, 208, 125, 0.3) 80%,
+            transparent 90%
+        );
+}
+
+/* 3. Mikroskobik Yaldız Pulları (Foil Flecks / Gold Dust) */
 .tcg-foil-sparkles {
     position: absolute;
     inset: 0;
@@ -1449,30 +1489,28 @@ mark {
     pointer-events: none;
     z-index: 11;
     mix-blend-mode: color-dodge;
-    opacity: calc(var(--card-glare-opacity, 0) * 1.2);
-    background:
-        radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.95) 1.5px, transparent 2.5px),
-        radial-gradient(circle at 75% 22%, rgba(255, 255, 255, 0.95) 1.5px, transparent 2.5px),
-        radial-gradient(circle at 45% 65%, rgba(255, 255, 255, 0.95) 1.5px, transparent 2.5px),
-        radial-gradient(circle at 85% 78%, rgba(255, 255, 255, 0.95) 1.5px, transparent 2.5px),
-        radial-gradient(circle at 18% 85%, rgba(255, 255, 255, 0.95) 1.5px, transparent 2.5px);
-    background-size: 110px 110px, 130px 130px, 90px 90px, 150px 150px, 100px 100px;
-    transition: opacity 0.3s ease;
+    opacity: calc(var(--card-glare-opacity, 0) * 0.65);
+    background-image:
+        radial-gradient(circle at 18% 24%, rgba(255, 242, 190, 0.85) 1px, transparent 2px),
+        radial-gradient(circle at 74% 20%, rgba(255, 242, 190, 0.75) 1.2px, transparent 2.5px),
+        radial-gradient(circle at 44% 64%, rgba(255, 242, 190, 0.7) 1px, transparent 2px),
+        radial-gradient(circle at 84% 76%, rgba(255, 242, 190, 0.8) 1.2px, transparent 2.5px),
+        radial-gradient(circle at 22% 84%, rgba(255, 242, 190, 0.75) 1px, transparent 2px);
+    background-size: 85px 85px, 105px 105px, 75px 75px, 115px 115px, 90px 90px;
+    transition: opacity 0.25s ease;
 }
 
-/* ==========================================================================
-   FİZİKSEL JİROSKOP & DİNAMİK IŞIK MOTORU (DeviceOrientation Gyro Tilt)
-   ========================================================================== */
+/* Aktif Kart Durumu: Dinamik Eğimle Parlar, Asla Matbaa Baskısını ve Metni Beyazlatmaz */
 .tcg-card.is-active .tcg-foil-shimmer {
-    opacity: 0.52;
+    opacity: calc(0.12 + var(--card-glare-opacity, 0) * 0.85);
 }
 
 .tcg-card.is-active .tcg-card-glare {
-    opacity: var(--card-glare-opacity, 0.15);
+    opacity: var(--card-glare-opacity, 0);
 }
 
 .tcg-card.is-active .tcg-foil-sparkles {
-    opacity: calc(var(--card-glare-opacity, 0.15) * 1.3);
+    opacity: calc(var(--card-glare-opacity, 0) * 0.75);
 }
 
 /* ==========================================================================
