@@ -1199,12 +1199,6 @@ mark {
     display: block;
 }
 
-.stamps {
-    width: 100%;
-    height: 54px;
-    display: block;
-    margin-bottom: 22px;
-}
 
 /* Responsive Artwork Layout for Tablets and Mobile — Preserving the Constellation */
 @media (max-width: 768px) {
