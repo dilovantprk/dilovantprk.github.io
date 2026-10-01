@@ -1200,16 +1200,6 @@ html.dark .logo-text {
     margin: 0 auto;
 }
 
-.skills-stack,
-.skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
-    gap: 32px;
-    max-width: 1100px;
-    margin: 0 auto;
-    perspective: 1200px;
-}
-
 mark {
     background: linear-gradient(transparent 52%, var(--mark) 52% 94%, transparent 94%);
     color: inherit;
@@ -1220,59 +1210,286 @@ mark {
     box-decoration-break: clone;
 }
 
-/* ---- Ana Kart Gövdesi (Ultra Rare Trading Card) ---- */
+/* ==========================================================================
+   3D TCG DECK ENGINE (Gerçekçi Koleksiyon Kart Destesi & Holo Motoru)
+   ========================================================================== */
+
+.tcg-deck-wrapper {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* ---- Üst Deste Kontrol Barı ---- */
+.tcg-deck-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+}
+
+.tcg-deck-tabs {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: color-mix(in srgb, var(--plate) 85%, transparent);
+    padding: 4px;
+    border-radius: 999px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+}
+
+.tcg-tab {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 7px 15px;
+    border-radius: 999px;
+    border: none;
+    background: transparent;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--soft);
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.tcg-tab-pip {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+    opacity: 0.4;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.tcg-tab:hover {
+    color: var(--ink);
+}
+
+.tcg-tab.active {
+    background: var(--paper);
+    color: var(--ink);
+    box-shadow: 0 1px 4px rgba(var(--shade), 0.1);
+}
+
+.tcg-tab.active .tcg-tab-pip {
+    opacity: 1;
+    transform: scale(1.3);
+    background: var(--gold);
+}
+
+.tcg-deck-actions {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.tcg-btn-mode,
+.tcg-btn-draw {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 15px;
+    border-radius: 999px;
+    border: 1px solid var(--border-color);
+    background: var(--plate);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--ink);
+    cursor: pointer;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.25s ease;
+}
+
+.tcg-btn-mode:hover,
+.tcg-btn-draw:hover {
+    background: var(--paper);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--gold);
+}
+
+/* ---- 3D Sahne ve Masa Yüzeyi ---- */
+.tcg-deck-stage {
+    position: relative;
+    perspective: 1200px;
+    perspective-origin: 50% 48%;
+    min-height: 620px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 10px 40px;
+}
+
+.tcg-table-surface {
+    position: absolute;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 75%;
+    max-width: 650px;
+    height: 55px;
+    background: radial-gradient(ellipse at center, rgba(var(--shade), 0.16) 0%, rgba(var(--shade), 0.04) 50%, transparent 75%);
+    border-radius: 50%;
+    pointer-events: none;
+    filter: blur(8px);
+    transition: all 0.4s ease;
+}
+
+/* ---- Deste Konteyneri ---- */
+.tcg-deck {
+    position: relative;
+    width: 330px;
+    height: 520px;
+    transform-style: preserve-3d;
+}
+
+/* ---- Kart Gövdesi ---- */
 .tcg-card {
-    --card-border-gold: linear-gradient(145deg, #e7c975 0%, #caa04b 28%, #fded9e 48%, #af8228 72%, #fbf1b3 100%);
+    --card-border-gold: linear-gradient(145deg, #ebd07d 0%, #b88628 30%, #fff2b5 52%, #9e6f16 75%, #fae69e 100%);
     --card-bg-panel: var(--plate);
     --card-accent: var(--gold);
-    --foil-angle: 135deg;
+    --pointer-x: 50%;
+    --pointer-y: 50%;
+    --card-rot-x: 0deg;
+    --card-rot-y: 0deg;
+    --card-glare-opacity: 0;
 
-    position: relative;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
     border-radius: 18px;
     padding: 10px;
     background: var(--card-border-gold);
     box-shadow:
         0 4px 12px rgba(var(--shade), 0.1),
         0 14px 34px -8px rgba(var(--shade), 0.18),
-        inset 0 1px 2px rgba(255, 255, 255, 0.6),
+        inset 0 1px 2px rgba(255, 255, 255, 0.65),
         inset 0 -1px 3px rgba(0, 0, 0, 0.35);
-    transition: transform 0.45s cubic-bezier(0.2, 0.9, 0.3, 1.2), box-shadow 0.4s ease;
-    transform-origin: center center;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
     overflow: hidden;
-    cursor: default;
+    cursor: pointer;
+    transition:
+        transform 0.45s cubic-bezier(0.2, 0.9, 0.3, 1.2),
+        box-shadow 0.4s ease,
+        opacity 0.35s ease,
+        filter 0.35s ease;
 }
 
-/* Kart Varyantları (Koleksiyon Tipleri) */
 .tcg-card.tcg-gold {
     --card-accent: #c99324;
     --card-border-gold: linear-gradient(145deg, #ebd07d 0%, #b88628 30%, #fff2b5 52%, #9e6f16 75%, #fae69e 100%);
-    transform: rotate(-0.8deg);
 }
 
 .tcg-card.tcg-holo {
     --card-accent: var(--orange);
     --card-border-gold: linear-gradient(145deg, #f29a76 0%, #d4633b 25%, #ffc5ab 50%, #ba4d28 75%, #fcd6c5 100%);
-    transform: rotate(0.9deg);
 }
 
 .tcg-card.tcg-secret {
     --card-accent: var(--teal);
     --card-border-gold: linear-gradient(145deg, #64c2b2 0%, #1e7d70 30%, #b6ede4 52%, #135d53 75%, #c8f5ed 100%);
-    transform: rotate(-0.5deg);
 }
 
-/* Hover Efekti: Kart masadan ele alınmış gibi yükselir ve parlar */
-.tcg-card:hover {
-    transform: translateY(-10px) scale(1.025) rotate(0deg) !important;
+/* ==========================================================================
+   DESTE DÜZENLERİ (Fanned vs Stacked)
+   ========================================================================== */
+
+/* 1. YELPAZE DESTE (is-fanned) */
+.tcg-deck.is-fanned .tcg-card[data-index="0"] {
+    transform: translateX(-160px) translateY(24px) rotateZ(-10deg) rotateX(var(--card-rot-x)) rotateY(var(--card-rot-y));
+    z-index: 2;
+}
+
+.tcg-deck.is-fanned .tcg-card[data-index="1"] {
+    transform: translateX(0px) translateY(0px) rotateZ(0deg) rotateX(var(--card-rot-x)) rotateY(var(--card-rot-y));
+    z-index: 3;
+}
+
+.tcg-deck.is-fanned .tcg-card[data-index="2"] {
+    transform: translateX(160px) translateY(24px) rotateZ(10deg) rotateX(var(--card-rot-x)) rotateY(var(--card-rot-y));
+    z-index: 2;
+}
+
+/* Yelpaze içinde aktif veya üzerine gelinen kart öne fırlar */
+.tcg-deck.is-fanned .tcg-card.is-active,
+.tcg-deck.is-fanned .tcg-card:hover {
+    z-index: 15 !important;
+    transform: translateX(0px) translateY(-36px) translateZ(80px) rotateZ(0deg) rotateX(var(--card-rot-x)) rotateY(var(--card-rot-y)) scale(1.04) !important;
     box-shadow:
-        0 8px 18px rgba(var(--shade), 0.14),
-        0 24px 50px -10px rgba(var(--shade), 0.28),
-        0 0 25px rgba(233, 196, 106, 0.22),
+        0 14px 28px rgba(var(--shade), 0.16),
+        0 30px 60px -12px rgba(var(--shade), 0.28),
+        0 0 30px rgba(233, 196, 106, 0.3),
         inset 0 1px 3px rgba(255, 255, 255, 0.8),
         inset 0 -1px 4px rgba(0, 0, 0, 0.45);
 }
 
-/* ---- Holografik Sim & Gökkuşağı Parıltı Katmanı ---- */
+.tcg-deck.is-fanned:hover .tcg-card:not(:hover):not(.is-active) {
+    opacity: 0.82;
+    filter: brightness(0.92);
+}
+
+/* 2. TOPLU DESTE (is-stacked - Masadaki deste) */
+.tcg-deck.is-stacked .tcg-card[data-stack-order="0"] {
+    z-index: 10;
+    transform: translateZ(35px) translateY(0) rotateZ(0deg) rotateX(var(--card-rot-x)) rotateY(var(--card-rot-y)) scale(1);
+    box-shadow:
+        0 8px 20px rgba(var(--shade), 0.15),
+        0 20px 42px -10px rgba(var(--shade), 0.25);
+}
+
+.tcg-deck.is-stacked .tcg-card[data-stack-order="1"] {
+    z-index: 5;
+    transform: translateZ(15px) translateY(10px) rotateZ(3.5deg) scale(0.97);
+    opacity: 0.92;
+}
+
+.tcg-deck.is-stacked .tcg-card[data-stack-order="2"] {
+    z-index: 1;
+    transform: translateZ(-10px) translateY(18px) rotateZ(-4deg) scale(0.94);
+    opacity: 0.82;
+}
+
+/* Kart Çekme Animasyonu */
+.tcg-card.is-drawing {
+    transform: translateX(120%) translateY(-24px) rotateZ(18deg) rotateY(25deg) scale(0.92) !important;
+    opacity: 0 !important;
+    transition: transform 0.32s cubic-bezier(0.4, 0, 0.6, 1), opacity 0.28s ease !important;
+    z-index: 20 !important;
+}
+
+/* ==========================================================================
+   HOLOGRAFİK & IŞIK KATMANLARI (Specular Glare + Iridescent Foil + Sparkles)
+   ========================================================================== */
+
+/* 1. Dinamik Parlama / Işık Noktası (Cursor'ı takip eder) */
+.tcg-card-glare {
+    position: absolute;
+    inset: 0;
+    border-radius: 18px;
+    pointer-events: none;
+    z-index: 12;
+    background: radial-gradient(
+        farthest-corner circle at var(--pointer-x) var(--pointer-y),
+        rgba(255, 255, 255, 0.85) 0%,
+        rgba(255, 255, 255, 0.3) 25%,
+        transparent 65%
+    );
+    opacity: var(--card-glare-opacity, 0);
+    mix-blend-mode: overlay;
+    transition: opacity 0.3s ease;
+}
+
+/* 2. Gökkuşağı Holografik Kırılma */
 .tcg-foil-shimmer {
     position: absolute;
     inset: 0;
@@ -1280,36 +1497,50 @@ mark {
     pointer-events: none;
     z-index: 10;
     mix-blend-mode: color-dodge;
-    opacity: 0.15;
+    opacity: 0.22;
+    background: linear-gradient(
+        115deg,
+        transparent 0%,
+        rgba(255, 0, 128, 0.25) 20%,
+        rgba(0, 200, 255, 0.3) 35%,
+        rgba(255, 220, 0, 0.35) 50%,
+        rgba(0, 255, 128, 0.3) 65%,
+        rgba(180, 0, 255, 0.25) 80%,
+        transparent 100%
+    );
+    background-size: 250% 250%;
+    background-position: calc(var(--pointer-x) * 1.5) calc(var(--pointer-y) * 1.5);
+    transition: opacity 0.35s ease;
+}
+
+.tcg-card:hover .tcg-foil-shimmer,
+.tcg-card.is-active .tcg-foil-shimmer {
+    opacity: 0.55;
+}
+
+/* 3. Pokémon Secret Rare Yıldız/Sim Parıltıları */
+.tcg-foil-sparkles {
+    position: absolute;
+    inset: 0;
+    border-radius: 18px;
+    pointer-events: none;
+    z-index: 11;
+    mix-blend-mode: color-dodge;
+    opacity: calc(var(--card-glare-opacity, 0) * 1.2);
     background:
-        /* Holografik Işık Şeritleri */
-        linear-gradient(
-            115deg,
-            transparent 0%,
-            rgba(255, 0, 128, 0.2) 20%,
-            rgba(0, 200, 255, 0.25) 35%,
-            rgba(255, 220, 0, 0.3) 50%,
-            rgba(0, 255, 128, 0.25) 65%,
-            rgba(180, 0, 255, 0.2) 80%,
-            transparent 100%
-        ),
-        /* Pokémon Kartı Yıldız/Sim Parıltıları */
-        radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.9) 1px, transparent 2px),
-        radial-gradient(circle at 75% 25%, rgba(255, 255, 255, 0.9) 1px, transparent 2px),
-        radial-gradient(circle at 45% 65%, rgba(255, 255, 255, 0.9) 1px, transparent 2px),
-        radial-gradient(circle at 85% 75%, rgba(255, 255, 255, 0.9) 1px, transparent 2px),
-        radial-gradient(circle at 15% 85%, rgba(255, 255, 255, 0.9) 1px, transparent 2px);
-    background-size: 250% 250%, 120px 120px, 140px 140px, 90px 90px, 160px 160px, 110px 110px;
-    background-position: 0% 0%, 0 0, 40px 30px, 10px 50px, 70px 80px, 30px 10px;
-    transition: opacity 0.4s ease, background-position 0.6s ease;
+        radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.95) 1.5px, transparent 2.5px),
+        radial-gradient(circle at 75% 22%, rgba(255, 255, 255, 0.95) 1.5px, transparent 2.5px),
+        radial-gradient(circle at 45% 65%, rgba(255, 255, 255, 0.95) 1.5px, transparent 2.5px),
+        radial-gradient(circle at 85% 78%, rgba(255, 255, 255, 0.95) 1.5px, transparent 2.5px),
+        radial-gradient(circle at 18% 85%, rgba(255, 255, 255, 0.95) 1.5px, transparent 2.5px);
+    background-size: 110px 110px, 130px 130px, 90px 90px, 150px 150px, 100px 100px;
+    transition: opacity 0.3s ease;
 }
 
-.tcg-card:hover .tcg-foil-shimmer {
-    opacity: 0.45;
-    background-position: 100% 100%, 20px 20px, 60px 50px, 30px 70px, 90px 100px, 50px 30px;
-}
+/* ==========================================================================
+   İÇ KART DÜZENİ (Çerçeve, Başlık, Vitrin, Gövde, Altbilgi)
+   ========================================================================== */
 
-/* ---- İç Çerçeve (.tcg-inner-frame) ---- */
 .tcg-inner-frame {
     position: relative;
     background: var(--card-bg-panel);
@@ -1322,7 +1553,6 @@ mark {
     height: 100%;
 }
 
-/* ---- Kart Başlığı ---- */
 .tcg-header {
     display: flex;
     align-items: center;
@@ -1333,7 +1563,7 @@ mark {
 }
 
 .tcg-title {
-    font: italic 700 clamp(19px, 3.8vw, 22px)/1.15 Fraunces, serif;
+    font: italic 700 clamp(18px, 3.8vw, 21px)/1.15 Fraunces, serif;
     color: var(--ink);
     margin: 0;
     letter-spacing: -0.01em;
@@ -1347,7 +1577,6 @@ mark {
     flex-shrink: 0;
 }
 
-/* ---- İllüstrasyon Penceresi ---- */
 .tcg-art-window {
     margin: 10px 0 12px;
     background: var(--paper);
@@ -1382,7 +1611,6 @@ mark {
     text-transform: uppercase;
 }
 
-/* ---- Kartın Gövdesi & Nitelikler ---- */
 .tcg-body {
     flex: 1;
     display: flex;
@@ -1394,11 +1622,11 @@ mark {
     padding: 0;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 9px;
 }
 
 .tcg-trait {
-    padding: 4px 2px;
+    padding: 3px 2px;
     border-bottom: 1px dashed color-mix(in srgb, var(--card-accent) 20%, transparent);
 }
 
@@ -1410,9 +1638,9 @@ mark {
     font-family: var(--font-heading), 'Lora', serif;
     font-style: italic;
     font-weight: 700;
-    font-size: 0.98rem;
+    font-size: 0.95rem;
     line-height: 1.25;
-    margin: 0 0 3px;
+    margin: 0 0 2px;
     color: var(--ink);
     display: flex;
     align-items: center;
@@ -1430,17 +1658,16 @@ mark {
 .tcg-trait dd {
     margin: 0 0 0 14px;
     font-family: var(--font-body);
-    font-size: 0.82rem;
+    font-size: 0.8rem;
     line-height: 1.45;
     color: var(--soft);
 }
 
-/* ---- Koleksiyoncu Altbilgisi (Set / Numara) ---- */
 .tcg-footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 14px;
+    margin-top: 12px;
     padding-top: 8px;
     border-top: 1.5px solid color-mix(in srgb, var(--card-accent) 25%, transparent);
     font-family: var(--font-mono);
@@ -1451,7 +1678,26 @@ mark {
     opacity: 0.75;
 }
 
-/* ---- Dark Mode Uyumu ---- */
+.tcg-deck-hint-bar {
+    text-align: center;
+    margin-top: 18px;
+}
+
+.tcg-deck-hint {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.04em;
+    color: var(--soft);
+    opacity: 0.85;
+}
+
+/* ==========================================================================
+   DARK MODE
+   ========================================================================== */
+.dark .tcg-tab.active {
+    background: var(--bg-card);
+}
+
 .dark .tcg-card {
     box-shadow:
         0 4px 14px rgba(0, 0, 0, 0.4),
@@ -1460,41 +1706,79 @@ mark {
         inset 0 -1px 3px rgba(0, 0, 0, 0.8);
 }
 
-.dark .tcg-card:hover {
-    box-shadow:
-        0 8px 22px rgba(0, 0, 0, 0.5),
-        0 24px 55px -10px rgba(0, 0, 0, 0.75),
-        0 0 30px rgba(233, 196, 106, 0.35),
-        inset 0 1px 3px rgba(255, 255, 255, 0.4),
-        inset 0 -1px 4px rgba(0, 0, 0, 0.9);
-}
-
 .dark .tcg-inner-frame {
     border-color: rgba(255, 255, 255, 0.08);
     box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.4);
 }
 
-.dark .tcg-foil-shimmer {
-    opacity: 0.22;
+.dark .tcg-table-surface {
+    background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.1) 50%, transparent 75%);
 }
 
-.dark .tcg-card:hover .tcg-foil-shimmer {
-    opacity: 0.65;
+/* ==========================================================================
+   MOBIL UYUMLULUK
+   ========================================================================== */
+@media (max-width: 768px) {
+    .tcg-deck-bar {
+        justify-content: center;
+    }
+    
+    .tcg-deck-tabs {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .tcg-deck-stage {
+        min-height: 560px;
+        padding: 20px 0 30px;
+    }
+
+    .tcg-deck {
+        width: 300px;
+        height: 490px;
+    }
+
+    .tcg-deck.is-fanned .tcg-card[data-index="0"] {
+        transform: translateX(-50px) translateY(14px) rotateZ(-6deg);
+    }
+    .tcg-deck.is-fanned .tcg-card[data-index="2"] {
+        transform: translateX(50px) translateY(14px) rotateZ(6deg);
+    }
+    .tcg-deck.is-fanned .tcg-card.is-active,
+    .tcg-deck.is-fanned .tcg-card:hover {
+        transform: translateX(0px) translateY(-20px) translateZ(40px) rotateZ(0deg) scale(1.02) !important;
+    }
 }
 
-/* ---- Mobil Uyumluluk ---- */
 @media (max-width: 480px) {
+    .tcg-deck {
+        width: 280px;
+        height: 470px;
+    }
+
+    .tcg-tab {
+        padding: 6px 10px;
+        font-size: 0.68rem;
+    }
+
     .tcg-card {
         padding: 8px;
-        border-radius: 14px;
     }
+
     .tcg-inner-frame {
-        padding: 12px 10px 10px;
-        border-radius: 10px;
+        padding: 10px;
     }
+
+    .tcg-title {
+        font-size: 17px;
+    }
+
+    .tcg-trait dt {
+        font-size: 0.88rem;
+    }
+
     .tcg-trait dd {
-        margin-left: 10px;
-        font-size: 0.8rem;
+        font-size: 0.76rem;
     }
 }
 
@@ -2733,9 +3017,7 @@ html.dark .modal-wrapper {
         display: none !important;
     }
 
-    .skills-grid .tcg-card,
     .skills-grid .skill-category-card,
-    .skills-stack .tcg-card,
     .skills-stack .skill-category-card {
         display: flex !important;
         flex-direction: column !important;
@@ -2752,8 +3034,8 @@ html.dark .modal-wrapper {
         box-shadow: var(--shadow-sm) !important;
     }
 
-    .skills-grid .tcg-card:hover,
-    .skills-stack .tcg-card:hover {
+    .skills-grid .skill-category-card:hover,
+    .skills-stack .skill-category-card:hover {
         transform: none !important;
     }
 }

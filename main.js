@@ -120,6 +120,10 @@ const translations = {
         "skills.thought_name2": "İnsanları ortak paydada buluşturan üretim ve yayıncılık disiplini.",
         "skills.thought_badge3": "Kültürlerarası İletişim",
         "skills.thought_name3": "Farklı disiplinler ve diller arasında empatiye dayalı akıcı diyalog.",
+        "skills.deck_toggle": "Desteyi Aç",
+        "skills.deck_toggle_stack": "Desteyi Topla",
+        "skills.deck_draw": "Kart Çek ↷",
+        "skills.deck_hint": "🃏 Kartların üzerine gelerek 3D holo ışığını keşfet veya tıklayarak desteden çek",
         
         "contact.tag": "İletişim",
         "contact.title": "Gel, Bir Şey(ler) Yapalım",
@@ -278,6 +282,10 @@ const translations = {
         "skills.thought_name2": "Publishing and organizing discipline that unites people around shared ideas.",
         "skills.thought_badge3": "Cross-Cultural Dialogue",
         "skills.thought_name3": "Empathetic, fluent bridges across different languages and disciplines.",
+        "skills.deck_toggle": "Fan Out Deck",
+        "skills.deck_toggle_stack": "Stack Deck",
+        "skills.deck_draw": "Draw Card ↷",
+        "skills.deck_hint": "🃏 Hover to inspect 3D holographic sheen or click to draw from the deck",
         
         "contact.tag": "Contact",
         "contact.title": "Let's Work Together",
@@ -774,6 +782,7 @@ function startApp() {
     initProjectModals();
     initContactForm();
     initKartpostal();
+    initTcgDeck();
     initSmoothScrollInterception();
 }
 
@@ -2056,7 +2065,204 @@ function initKartpostal() {
     }
 }
 
-// Start application after all modules and functions are declared
+/* ==========================================================================
+   TCG 3D DESTE MOTORU (Ultra Realistic Collectible Card Deck & Physics)
+   ========================================================================== */
+function initTcgDeck() {
+    const stage = document.getElementById("tcg-deck-stage");
+    const deck = document.getElementById("skills-deck");
+    if (!stage || !deck) return;
+
+    const cards = Array.from(deck.querySelectorAll(".tcg-card"));
+    const tabs = Array.from(document.querySelectorAll(".tcg-tab"));
+    const fanToggleBtn = document.getElementById("tcg-fan-toggle");
+    const drawBtn = document.getElementById("tcg-next-card");
+    const modeText = fanToggleBtn ? fanToggleBtn.querySelector(".tcg-mode-text") : null;
+
+    let activeIndex = 0;
+    let isFanned = window.innerWidth > 768; // Start fanned on desktop, stacked on mobile
+    let isDrawing = false;
+
+    // Apply layout state
+    function renderDeckState() {
+        deck.classList.toggle("is-fanned", isFanned);
+        deck.classList.toggle("is-stacked", !isFanned);
+
+        if (modeText) {
+            const currentLang = document.documentElement.lang || "tr";
+            if (isFanned) {
+                modeText.textContent = currentLang === "en" ? "Stack Deck" : "Desteyi Topla";
+            } else {
+                modeText.textContent = currentLang === "en" ? "Fan Out Deck" : "Desteyi Aç";
+            }
+        }
+
+        tabs.forEach((tab, i) => {
+            const isActive = i === activeIndex;
+            tab.classList.toggle("active", isActive);
+            tab.setAttribute("aria-selected", isActive ? "true" : "false");
+        });
+
+        cards.forEach((card, i) => {
+            const isActive = i === activeIndex;
+            card.classList.toggle("is-active", isActive);
+
+            // Calculate stacked / fanned positions
+            if (!isFanned) {
+                // Stacked Mode: Top card is activeIndex, others sit underneath
+                const order = (i - activeIndex + cards.length) % cards.length;
+                card.style.setProperty("--stack-order", order);
+                card.setAttribute("data-stack-order", order);
+            } else {
+                card.removeAttribute("data-stack-order");
+            }
+        });
+    }
+
+    function setActiveCard(index, animateDraw = false) {
+        if (index === activeIndex && !animateDraw) return;
+        
+        if (animateDraw && !isFanned) {
+            if (isDrawing) return;
+            isDrawing = true;
+            const currentCard = cards[activeIndex];
+            currentCard.classList.add("is-drawing");
+            
+            setTimeout(() => {
+                currentCard.classList.remove("is-drawing");
+                activeIndex = index;
+                renderDeckState();
+                isDrawing = false;
+            }, 320);
+        } else {
+            activeIndex = index;
+            renderDeckState();
+        }
+    }
+
+    function drawNextCard() {
+        const next = (activeIndex + 1) % cards.length;
+        setActiveCard(next, true);
+    }
+
+    // Tab buttons
+    tabs.forEach((tab, i) => {
+        tab.addEventListener("click", () => {
+            setActiveCard(i);
+        });
+    });
+
+    // Card click: brings card to front or draws next
+    cards.forEach((card, i) => {
+        card.addEventListener("click", () => {
+            if (!isFanned && i === activeIndex) {
+                drawNextCard();
+            } else {
+                setActiveCard(i);
+            }
+        });
+
+        // 3D Pointer Tracking & Realistic Holo Shimmer Shader
+        function handlePointerMove(e) {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            const px = Math.min(Math.max((x / rect.width) * 100, 0), 100);
+            const py = Math.min(Math.max((y / rect.height) * 100, 0), 100);
+
+            const cx = rect.width / 2;
+            const cy = rect.height / 2;
+            const dx = (x - cx) / cx; // -1 to +1
+            const dy = (y - cy) / cy; // -1 to +1
+
+            const rotX = (-dy * 16).toFixed(2);
+            const rotY = (dx * 16).toFixed(2);
+            const glareOpacity = Math.min(0.7, (Math.hypot(dx, dy) * 0.45 + 0.15)).toFixed(2);
+
+            card.style.setProperty("--pointer-x", `${px.toFixed(1)}%`);
+            card.style.setProperty("--pointer-y", `${py.toFixed(1)}%`);
+            card.style.setProperty("--card-rot-x", `${rotX}deg`);
+            card.style.setProperty("--card-rot-y", `${rotY}deg`);
+            card.style.setProperty("--card-glare-opacity", glareOpacity);
+        }
+
+        function handlePointerLeave() {
+            card.style.setProperty("--card-rot-x", "0deg");
+            card.style.setProperty("--card-rot-y", "0deg");
+            card.style.setProperty("--card-glare-opacity", "0");
+        }
+
+        card.addEventListener("pointermove", handlePointerMove);
+        card.addEventListener("pointerleave", handlePointerLeave);
+    });
+
+    // Deck Toggle (Aç / Topla)
+    if (fanToggleBtn) {
+        fanToggleBtn.addEventListener("click", () => {
+            isFanned = !isFanned;
+            renderDeckState();
+        });
+    }
+
+    // Draw Next Card Button
+    if (drawBtn) {
+        drawBtn.addEventListener("click", () => {
+            drawNextCard();
+        });
+    }
+
+    // Keyboard support
+    deck.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowRight") {
+            e.preventDefault();
+            drawNextCard();
+        } else if (e.key === "ArrowLeft") {
+            e.preventDefault();
+            const prev = (activeIndex - 1 + cards.length) % cards.length;
+            setActiveCard(prev, true);
+        } else if (e.key === " " || e.key === "Enter") {
+            if (document.activeElement && document.activeElement.classList.contains("tcg-card")) {
+                e.preventDefault();
+                drawNextCard();
+            }
+        }
+    });
+
+    // Mobile DeviceOrientation (Gyroscope Holo Shimmer)
+    if (window.DeviceOrientationEvent && typeof window.DeviceOrientationEvent.requestPermission !== "function") {
+        window.addEventListener("deviceorientation", (e) => {
+            if (e.gamma === null || e.beta === null) return;
+            const rotY = Math.min(Math.max(e.gamma, -20), 20) * 0.4;
+            const rotX = Math.min(Math.max(e.beta - 40, -20), 20) * 0.4;
+            const activeCard = cards[activeIndex];
+            if (activeCard && !activeCard.matches(":hover")) {
+                activeCard.style.setProperty("--card-rot-x", `${rotX.toFixed(1)}deg`);
+                activeCard.style.setProperty("--card-rot-y", `${rotY.toFixed(1)}deg`);
+                activeCard.style.setProperty("--pointer-x", `${(50 + rotY * 2).toFixed(1)}%`);
+                activeCard.style.setProperty("--pointer-y", `${(50 + rotX * 2).toFixed(1)}%`);
+                activeCard.style.setProperty("--card-glare-opacity", "0.35");
+            }
+        }, { passive: true });
+    }
+
+    // Responsive listener
+    window.addEventListener("resize", () => {
+        const shouldBeFanned = window.innerWidth > 768;
+        if (shouldBeFanned !== isFanned && !fanToggleBtn.dataset.userInteracted) {
+            isFanned = shouldBeFanned;
+            renderDeckState();
+        }
+    }, { passive: true });
+
+    if (fanToggleBtn) {
+        fanToggleBtn.addEventListener("click", () => {
+            fanToggleBtn.dataset.userInteracted = "true";
+        });
+    }
+
+    renderDeckState();
+}
 if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", startApp);
 } else {
