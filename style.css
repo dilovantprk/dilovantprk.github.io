@@ -79,6 +79,13 @@ html.light {
     --back: #F3EAD6;
     --shade: 29, 45, 68;
     --grain: 0.4;
+
+    /* Filatelik & Osmanlı Gravür Kartpostal Paleti */
+    --stamp-paper: #F6EEDC;
+    --stamp-paper-edge: rgba(44, 34, 26, 0.22);
+    --stamp-ink: #261D17;
+    --stamp-accent: #C78B43;
+    --postmark-ink: #A93822;
 }
 
 /* Dark Theme — deep psychedelic ink */
@@ -126,6 +133,13 @@ html.dark {
     --back: #3B2E24;
     --shade: 0, 0, 0;
     --grain: 0.25;
+
+    /* Filatelik & Osmanlı Gravür Kartpostal Paleti (Dark) */
+    --stamp-paper: #281F19;
+    --stamp-paper-edge: rgba(245, 235, 224, 0.18);
+    --stamp-ink: #F4E8D2;
+    --stamp-accent: #E9C46A;
+    --postmark-ink: #E9C46A;
 }
 
 /* ==========================================================================
@@ -895,7 +909,40 @@ html.dark .logo-text {
     max-width: 660px;
 }
 
-/* ---- Oyuncak Ahşap Ray Hattı (Toy Railway Tracks) ---- */
+/* Doğrudan JS desteğiyle oluşturulan dinamik kıvrımlı ray varken statik düz çizgiyi gizle */
+.tl.has-curved-track::before {
+    display: none !important;
+}
+
+/* ---- Kıvrımlı Oyuncak Ahşap Ray SVG (Curved Toy Railway Track) ---- */
+.tl-track-svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: visible;
+}
+
+.tl-track-sleepers {
+    stroke: color-mix(in srgb, var(--ink) 44%, var(--paper));
+    stroke-width: 24px;
+    stroke-dasharray: 4.5px 10.5px;
+    stroke-linecap: butt;
+    opacity: 0.9;
+}
+
+.tl-track-rail {
+    stroke: var(--blue);
+    stroke-width: 2.5px;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    opacity: 0.95;
+}
+
+/* ---- Statik Ray Hattı Yedeği (CSS Fallback) ---- */
 .tl::before {
     content: "";
     position: absolute;
@@ -905,7 +952,6 @@ html.dark .logo-text {
     width: 24px;
     /* Çift çelik ray ve yatay ahşap traversler */
     background-image:
-        /* İki dikey paralel ray */
         linear-gradient(90deg,
             transparent 0px, transparent 2px,
             var(--blue) 2px, var(--blue) 4.5px,
@@ -913,7 +959,6 @@ html.dark .logo-text {
             var(--blue) 19.5px, var(--blue) 22px,
             transparent 22px, transparent 24px
         ),
-        /* Yatay ahşap ray traversleri (Cross-ties) */
         repeating-linear-gradient(180deg,
             transparent 0px, transparent 7.5px,
             color-mix(in srgb, var(--ink) 42%, var(--paper)) 7.5px,
@@ -928,7 +973,7 @@ html.dark .logo-text {
 .tl-locomotive-wrapper {
     position: absolute;
     top: -4px;
-    left: 0px;
+    left: 2px;
     width: 62px;
     height: 58px;
     z-index: 5;
@@ -1015,16 +1060,17 @@ html.dark .logo-text {
 /* ---- Hat Sonu Tamponu (Railway Buffer Stop at Terminus) ---- */
 .tl-track-terminus {
     display: grid;
-    grid-template-columns: 62px 1fr;
-    gap: 12px;
+    grid-template-columns: 74px 1fr;
+    gap: 14px;
     padding-top: 4px;
     padding-bottom: 8px;
     list-style: none;
 }
 
 .tl-buffer-stop {
-    width: 58px;
+    width: 56px;
     height: 48px;
+    margin-left: 9px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1053,24 +1099,29 @@ html.dark .logo-text {
 
 .it {
     display: grid;
-    grid-template-columns: 62px 1fr;
-    gap: 12px;
+    grid-template-columns: 74px 1fr;
+    gap: 14px;
     padding-bottom: 36px;
 }
 
 .node {
-    width: 58px;
-    height: 68px;
+    width: 56px;
+    height: 66px;
     display: grid;
     place-items: center;
     background: var(--paper);
     position: relative;
     z-index: 1;
+    transition: transform var(--transition-bounce), margin-left var(--transition-bounce);
+}
+
+.it:nth-child(odd) .node {
+    margin-left: 2px;
     transform: rotate(-3deg);
-    transition: transform var(--transition-bounce);
 }
 
 .it:nth-child(even) .node {
+    margin-left: 16px;
     transform: rotate(3deg);
 }
 
@@ -1307,13 +1358,19 @@ html.dark .logo-text {
 
 @media (max-width: 600px) {
     .it {
-        grid-template-columns: 48px 1fr;
+        grid-template-columns: 54px 1fr;
         gap: 12px;
         padding-bottom: 32px;
     }
     .node {
-        width: 46px;
-        height: 56px;
+        width: 44px;
+        height: 54px;
+    }
+    .it:nth-child(odd) .node {
+        margin-left: 0px;
+    }
+    .it:nth-child(even) .node {
+        margin-left: 8px;
     }
     .node svg {
         width: 32px;
@@ -1321,6 +1378,13 @@ html.dark .logo-text {
     }
     .tl {
         padding-top: 50px;
+    }
+    .tl-track-sleepers {
+        stroke-width: 20px;
+        stroke-dasharray: 4px 9px;
+    }
+    .tl-track-rail {
+        stroke-width: 2px;
     }
     .tl::before {
         left: 14px;
@@ -1344,7 +1408,7 @@ html.dark .logo-text {
     }
     .tl-locomotive-wrapper {
         top: -4px;
-        left: -2px;
+        left: 0px;
         width: 52px;
         height: 48px;
     }
@@ -1357,11 +1421,12 @@ html.dark .logo-text {
         left: 37px;
     }
     .tl-track-terminus {
-        grid-template-columns: 48px 1fr;
+        grid-template-columns: 54px 1fr;
     }
     .tl-buffer-stop {
-        width: 46px;
+        width: 44px;
         height: 42px;
+        margin-left: 4px;
     }
     .card {
         padding: 22px 18px 20px;
@@ -2340,9 +2405,181 @@ mark {
     position: relative;
     background: var(--plate);
     clip-path: polygon(0.2% 0.8%, 99.7% 0, 100% 99.2%, 0.1% 100%);
-    box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--ink) 10%, transparent);
+    box-shadow:
+        inset 0 0 0 1px color-mix(in srgb, var(--ink) 18%, transparent),
+        inset 0 0 0 4px var(--plate),
+        inset 0 0 0 5.5px color-mix(in srgb, var(--ink) 12%, transparent);
     user-select: none;
     -webkit-user-select: none;
+}
+
+/* Nostaljik Osmanlı Posta Kartı Gövdesi */
+.postcard-inner {
+    position: relative;
+    padding: 28px 32px 32px 34px;
+}
+
+.postcard-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 22px;
+}
+
+.postcard-headings {
+    flex: 1;
+    min-width: 0;
+    padding-top: 3px;
+}
+
+.postcard-upu {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--soft);
+    opacity: 0.82;
+    margin-bottom: 4px;
+}
+
+.postcard-titles {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.postcard-title {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(20px, 2.6vw, 24px);
+    font-weight: 800;
+    letter-spacing: 2.5px;
+    color: var(--ink);
+    margin: 0;
+    line-height: 1.1;
+}
+
+.postcard-title-ar {
+    font-family: 'Lora', 'Georgia', serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--soft);
+    direction: rtl;
+    line-height: 1;
+}
+
+.postcard-flourish {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 6px 0 5px;
+    color: var(--soft);
+    opacity: 0.65;
+}
+
+.postcard-flourish-line {
+    flex: 1;
+    height: 1px;
+    background: color-mix(in srgb, var(--ink) 24%, transparent);
+}
+
+.postcard-flourish-glyph {
+    font-size: 8px;
+    color: var(--orange, #e76f51);
+}
+
+.postcard-subtext {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 8px;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: var(--soft);
+    opacity: 0.72;
+}
+
+/* Pul ve Posta Damgası Grubu */
+.postcard-stamp-wrap {
+    position: relative;
+    flex-shrink: 0;
+    margin-right: 2px;
+    margin-top: -6px;
+}
+
+.stamp.stamp-ottoman {
+    width: clamp(122px, 24vw, 144px);
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    transform: rotate(3deg);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.3s ease;
+    filter: drop-shadow(0 4px 8px rgba(var(--shade), 0.24)) drop-shadow(0 1px 2px rgba(var(--shade), 0.16));
+    cursor: pointer;
+    border-radius: 0;
+}
+
+.stamp.stamp-ottoman:hover {
+    transform: scale(1.06) rotate(0.5deg);
+    filter: drop-shadow(0 10px 20px rgba(var(--shade), 0.32)) drop-shadow(0 2px 4px rgba(var(--shade), 0.2));
+}
+
+.stamp-svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+}
+
+.stamp-paper-bg {
+    fill: var(--stamp-paper, #F6EEDC);
+}
+
+.stamp-paper-edge {
+    stroke: var(--stamp-paper-edge, rgba(44, 34, 26, 0.22));
+}
+
+.stamp-engraving-layer {
+    color: var(--stamp-ink, #261D17);
+}
+
+.stamp-tower-art {
+    color: var(--stamp-ink, #261D17);
+}
+
+/* Posta İptal Damgası (Constantinople / 1914 & Dalgalı Çizgiler) */
+.postcard-cancellation {
+    position: absolute;
+    top: -14px;
+    left: -34px;
+    display: flex;
+    align-items: center;
+    pointer-events: none;
+    transform: rotate(-13deg);
+    color: var(--postmark-ink, #A93822);
+    opacity: 0.85;
+    mix-blend-mode: multiply;
+    z-index: 2;
+}
+
+html.dark .postcard-cancellation {
+    mix-blend-mode: normal;
+    opacity: 0.75;
+}
+
+.postmark-circle {
+    width: 70px;
+    height: 70px;
+    flex-shrink: 0;
+}
+
+.postmark-waves {
+    width: 48px;
+    height: 28px;
+    margin-left: -8px;
+    flex-shrink: 0;
 }
 
 .fold {
@@ -2390,37 +2627,26 @@ mark {
 
 .addr {
     position: relative;
-    padding: 34px 40px 40px 44px;
-}
-
-.stamp {
-    width: 74px;
-    margin: 0 0 20px auto;
-    padding: 6px;
-    background: var(--edge);
-    transform: rotate(4deg);
-    box-shadow: 0 8px 12px -6px rgba(var(--shade), 0.4), 0 1px 3px rgba(var(--shade), 0.2);
-}
-
-.stamp svg {
-    display: block;
-    width: 100%;
-    height: auto;
+    padding: 0;
 }
 
 .line {
     display: block;
     text-decoration: none;
     color: var(--ink);
-    padding: 11px 0 7px;
-    border-bottom: 1px solid color-mix(in srgb, var(--ink) 32%, transparent);
+    padding: 10px 0 7px;
+    border-bottom: 1px dashed color-mix(in srgb, var(--ink) 26%, transparent);
 }
 
 .line small {
     display: block;
-    font-size: 13.5px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
     color: var(--soft);
     line-height: 1.3;
+    margin-bottom: 2px;
 }
 
 .line strong,
@@ -2447,9 +2673,41 @@ mark {
     border-radius: 3px;
 }
 
+.postcard-footer-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: 20px;
+    padding-top: 4px;
+}
+
+.postcard-cachet {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 3px 8px;
+    border: 1px dashed color-mix(in srgb, var(--ink) 35%, transparent);
+    border-radius: 4px;
+    font-family: var(--font-mono);
+    font-size: 8px;
+    letter-spacing: 1px;
+    color: var(--soft);
+    opacity: 0.8;
+    transform: rotate(-1.5deg);
+}
+
+.postcard-cachet .cachet-star {
+    color: var(--orange, #e76f51);
+    font-size: 9px;
+}
+
+.postcard-cachet .cachet-text {
+    font-weight: 700;
+}
+
 .city {
-    margin: 16px 0 0;
-    font: italic 700 20px 'Fraunces', serif;
+    margin: 0;
+    font: italic 700 19px 'Fraunces', serif;
     color: var(--soft);
 }
 
@@ -2525,8 +2783,29 @@ mark {
         max-width: 100%;
         margin-top: 20px;
     }
+    .postcard-inner {
+        padding: 22px 20px 28px 22px;
+    }
+    .postcard-top {
+        gap: 12px;
+    }
+    .stamp.stamp-ottoman {
+        width: clamp(110px, 30vw, 126px);
+    }
+    .postcard-cancellation {
+        left: -26px;
+        top: -10px;
+    }
+    .postmark-circle {
+        width: 58px;
+        height: 58px;
+    }
+    .postmark-waves {
+        width: 38px;
+        height: 22px;
+    }
     .addr {
-        padding: 26px 24px 32px;
+        padding: 0;
     }
 }
 

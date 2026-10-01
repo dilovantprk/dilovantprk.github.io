@@ -40,6 +40,10 @@
           <feColorMatrix in="g" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  9 0 0 0 -2.5" result="speck"/>
           <feComposite in="d" in2="speck" operator="in"/>
         </filter>
+        <filter id="ink-fine" x="-3%" y="-3%" width="106%" height="106%">
+          <feTurbulence type="fractalNoise" baseFrequency=".12" numOctaves="2" seed="4" result="w"/>
+          <feDisplacementMap in="SourceGraphic" in2="w" scale="0.9" result="d"/>
+        </filter>
         <symbol id="helmet" viewBox="0 0 40 50"><path d="M5 22C5 4 35 4 35 22L30 24C28 12 12 12 10 24Z"/><path d="M10 24C10 17 30 17 30 24L30 40L24 49L22 35L18 35L16 49L10 40Z"/></symbol>
         <symbol id="blossom" viewBox="0 0 40 50"><mask id="bm"><rect width="40" height="50" fill="#fff"/><circle cx="20" cy="25" r="3.6" fill="#000"/></mask><g mask="url(#bm)"><ellipse cx="20" cy="14" rx="6.4" ry="10.5" transform="rotate(8 20 25)"/><ellipse cx="20" cy="14.5" rx="6" ry="9.5" transform="rotate(80 20 25)"/><ellipse cx="20" cy="13.5" rx="6.6" ry="11" transform="rotate(152 20 25)"/><ellipse cx="20" cy="14.5" rx="6" ry="9.8" transform="rotate(224 20 25)"/><ellipse cx="20" cy="14" rx="6.2" ry="10.2" transform="rotate(296 20 25)"/></g></symbol>
         <symbol id="arch" viewBox="0 0 40 50"><path fill-rule="evenodd" d="M3 49V25C3 13 13 7 20 1C27 7 37 13 37 25V49ZM11 49V27C11 20 16 15 20 11C24 15 29 20 29 27V49ZM16.5 49V34C16.5 31 18.5 29 20 27.5C21.5 29 23.5 31 23.5 34V49Z"/></symbol>
@@ -936,30 +940,387 @@
 
                     <div class="lift" id="lift">
                         <section class="sheet" id="sheet" aria-label="İletişim bilgileri">
-                            <div class="addr">
-                                <figure class="stamp" aria-hidden="true">
-                                    <svg viewBox="0 0 62 78">
-                                        <rect width="62" height="78" fill="var(--gold)"/>
-                                        <g fill="var(--orange)" filter="url(#ink)"><use href="#blossom" x="4" y="6" width="54" height="68"/></g>
-                                    </svg>
-                                </figure>
-                                <a class="line" href="mailto:dilovanre@gmail.com">
-                                    <small data-i18n="contact.method_mail">E-posta gönder</small>
-                                    <strong data-i18n="contact.method_mail_val">dilovanre@gmail.com</strong>
-                                </a>
-                                <a class="line" href="https://t.me/dilovaniac" target="_blank" rel="noopener noreferrer">
-                                    <small data-i18n="contact.method_telegram">Telegram'dan yaz</small>
-                                    <strong data-i18n="contact.method_telegram_val">@dilovaniac</strong>
-                                </a>
-                                <a class="line" href="https://github.com/dilovantprk" target="_blank" rel="noopener noreferrer">
-                                    <small data-i18n="contact.method_github">GitHub'da incele</small>
-                                    <strong data-i18n="contact.method_github_val">@dilovantprk</strong>
-                                </a>
-                                <a class="line" href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
-                                    <small data-i18n="contact.method_linkedin">LinkedIn'den bağlan</small>
-                                    <strong data-i18n="contact.method_linkedin_val">Dilovan Toprak</strong>
-                                </a>
-                                <p class="city" data-i18n="contact.method_loc_val">İstanbul, Türkiye</p>
+                            <!-- Nostaljik Osmanlı Posta Kartı Gövdesi -->
+                            <div class="postcard-inner">
+                                <!-- Kartpostal Başlığı & Osmanlı Gravür Pulu -->
+                                <div class="postcard-top">
+                                    <div class="postcard-headings">
+                                        <span class="postcard-upu">UNION POSTALE UNIVERSELLE</span>
+                                        <div class="postcard-titles">
+                                            <h3 class="postcard-title">CARTE POSTALE</h3>
+                                            <span class="postcard-title-ar" aria-hidden="true">پوسته قارطی</span>
+                                        </div>
+                                        <div class="postcard-flourish" aria-hidden="true">
+                                            <span class="postcard-flourish-line"></span>
+                                            <span class="postcard-flourish-glyph">❖</span>
+                                            <span class="postcard-flourish-line"></span>
+                                        </div>
+                                        <span class="postcard-subtext" aria-hidden="true">CÔTÉ RÉSERVÉ À L'ADRESSE &bull; CORRESPONDANCE</span>
+                                    </div>
+
+                                    <div class="postcard-stamp-wrap">
+                                        <figure class="stamp stamp-ottoman" aria-hidden="true">
+                                            <svg class="stamp-svg" viewBox="0 0 176 108" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <mask id="stamp-perf-mask">
+      <rect width="176" height="108" fill="#fff"/>
+      <circle cx="5.5" cy="0" r="2.7" fill="#000"/>
+        <circle cx="5.5" cy="108" r="2.7" fill="#000"/>
+        <circle cx="16.5" cy="0" r="2.7" fill="#000"/>
+        <circle cx="16.5" cy="108" r="2.7" fill="#000"/>
+        <circle cx="27.5" cy="0" r="2.7" fill="#000"/>
+        <circle cx="27.5" cy="108" r="2.7" fill="#000"/>
+        <circle cx="38.5" cy="0" r="2.7" fill="#000"/>
+        <circle cx="38.5" cy="108" r="2.7" fill="#000"/>
+        <circle cx="49.5" cy="0" r="2.7" fill="#000"/>
+        <circle cx="49.5" cy="108" r="2.7" fill="#000"/>
+        <circle cx="60.5" cy="0" r="2.7" fill="#000"/>
+        <circle cx="60.5" cy="108" r="2.7" fill="#000"/>
+        <circle cx="71.5" cy="0" r="2.7" fill="#000"/>
+        <circle cx="71.5" cy="108" r="2.7" fill="#000"/>
+        <circle cx="82.5" cy="0" r="2.7" fill="#000"/>
+        <circle cx="82.5" cy="108" r="2.7" fill="#000"/>
+        <circle cx="93.5" cy="0" r="2.7" fill="#000"/>
+        <circle cx="93.5" cy="108" r="2.7" fill="#000"/>
+        <circle cx="104.5" cy="0" r="2.7" fill="#000"/>
+        <circle cx="104.5" cy="108" r="2.7" fill="#000"/>
+        <circle cx="115.5" cy="0" r="2.7" fill="#000"/>
+        <circle cx="115.5" cy="108" r="2.7" fill="#000"/>
+        <circle cx="126.5" cy="0" r="2.7" fill="#000"/>
+        <circle cx="126.5" cy="108" r="2.7" fill="#000"/>
+        <circle cx="137.5" cy="0" r="2.7" fill="#000"/>
+        <circle cx="137.5" cy="108" r="2.7" fill="#000"/>
+        <circle cx="148.5" cy="0" r="2.7" fill="#000"/>
+        <circle cx="148.5" cy="108" r="2.7" fill="#000"/>
+        <circle cx="159.5" cy="0" r="2.7" fill="#000"/>
+        <circle cx="159.5" cy="108" r="2.7" fill="#000"/>
+        <circle cx="170.5" cy="0" r="2.7" fill="#000"/>
+        <circle cx="170.5" cy="108" r="2.7" fill="#000"/>
+        <circle cx="0" cy="5.4" r="2.7" fill="#000"/>
+        <circle cx="176" cy="5.4" r="2.7" fill="#000"/>
+        <circle cx="0" cy="16.2" r="2.7" fill="#000"/>
+        <circle cx="176" cy="16.2" r="2.7" fill="#000"/>
+        <circle cx="0" cy="27.0" r="2.7" fill="#000"/>
+        <circle cx="176" cy="27.0" r="2.7" fill="#000"/>
+        <circle cx="0" cy="37.8" r="2.7" fill="#000"/>
+        <circle cx="176" cy="37.8" r="2.7" fill="#000"/>
+        <circle cx="0" cy="48.6" r="2.7" fill="#000"/>
+        <circle cx="176" cy="48.6" r="2.7" fill="#000"/>
+        <circle cx="0" cy="59.4" r="2.7" fill="#000"/>
+        <circle cx="176" cy="59.4" r="2.7" fill="#000"/>
+        <circle cx="0" cy="70.2" r="2.7" fill="#000"/>
+        <circle cx="176" cy="70.2" r="2.7" fill="#000"/>
+        <circle cx="0" cy="81.0" r="2.7" fill="#000"/>
+        <circle cx="176" cy="81.0" r="2.7" fill="#000"/>
+        <circle cx="0" cy="91.8" r="2.7" fill="#000"/>
+        <circle cx="176" cy="91.8" r="2.7" fill="#000"/>
+        <circle cx="0" cy="102.6" r="2.7" fill="#000"/>
+        <circle cx="176" cy="102.6" r="2.7" fill="#000"/>
+    </mask>
+  </defs>
+
+  <!-- Pul Kağıdı Zemin (Perfore Dişlerle Maskelenmiş) -->
+  <rect width="176" height="108" class="stamp-paper-bg" mask="url(#stamp-perf-mask)"/>
+  <!-- İnce Pul Kağıdı İç Çerçeve / Kenar Diş Gölgesi -->
+  <rect x="0.5" y="0.5" width="175" height="107" class="stamp-paper-edge" mask="url(#stamp-perf-mask)" fill="none" stroke="currentColor" stroke-width="0.6" opacity="0.25"/>
+
+  <!-- Gravür Baskı Grubu -->
+  <g class="stamp-engraving-layer" filter="url(#ink-fine)">
+    <!-- Dış Çerçeve Çizgileri -->
+    <rect x="7" y="6.5" width="162" height="95" rx="1" fill="none" stroke="currentColor" stroke-width="1.3"/>
+    <rect x="9" y="8.5" width="158" height="91" fill="none" stroke="currentColor" stroke-width="0.5"/>
+
+    <!-- Köşe ve Kenar Rumi / Arabesk Süslemeleri (Engraved Arabesque Filigree) -->
+    <!-- Sol Üst Rozet Altı Süsleme -->
+    <path d="M 10 28 C 14 26 15 32 19 32 C 16 34 12 33 10 36 Z" fill="currentColor" opacity="0.85"/>
+    <path d="M 23 9 C 25 13 31 14 31 18 C 29 15 28 11 25 9 Z" fill="currentColor" opacity="0.85"/>
+    <!-- Sağ Üst Rozet Altı Süsleme -->
+    <path d="M 166 28 C 162 26 161 32 157 32 C 160 34 164 33 166 36 Z" fill="currentColor" opacity="0.85"/>
+    <path d="M 153 9 C 151 13 145 14 145 18 C 147 15 148 11 151 9 Z" fill="currentColor" opacity="0.85"/>
+    <!-- Sol Alt Köşe Süslemeleri -->
+    <path d="M 10 74 C 14 76 18 78 16 84 C 13 81 12 77 10 74 Z" fill="currentColor" opacity="0.85"/>
+    <path d="M 10 88 C 16 88 18 94 24 94 C 18 97 12 96 10 99 Z" fill="currentColor" opacity="0.85"/>
+    <path d="M 28 99 C 28 95 34 93 38 93 C 34 97 31 98 28 99 Z" fill="currentColor" opacity="0.85"/>
+    <!-- Sağ Alt Köşe Süslemeleri -->
+    <path d="M 166 74 C 162 76 158 78 160 84 C 163 81 164 77 166 74 Z" fill="currentColor" opacity="0.85"/>
+    <path d="M 166 88 C 160 88 158 94 152 94 C 158 97 164 96 166 99 Z" fill="currentColor" opacity="0.85"/>
+    <path d="M 148 99 C 148 95 142 93 138 93 C 142 97 145 98 148 99 Z" fill="currentColor" opacity="0.85"/>
+
+    <!-- Yan Madalyonlar: Sol (Tuğra) -->
+    <g transform="translate(19, 53)">
+      <circle r="9" fill="none" stroke="currentColor" stroke-width="1"/>
+      <circle r="7.8" fill="none" stroke="currentColor" stroke-width="0.4"/>
+      <!-- Tuğra Gravürü (Üç Tuğ, Beyzeler ve Mahlas) -->
+      <path d="M -3 3 C -6 2 -6 -2 -3 -1 C -1 -0.5 0 1 2 2" fill="none" stroke="currentColor" stroke-width="0.6"/>
+      <path d="M -4 1 C -7 0 -7 -3 -4 -2 C -2 -1 1 2 3 3" fill="none" stroke="currentColor" stroke-width="0.5"/>
+      <!-- 3 Tuğ (Yukarı dik uzanan hatlar) -->
+      <line x1="-1" y1="2" x2="-2" y2="-5.5" stroke="currentColor" stroke-width="0.6"/>
+      <line x1="0.5" y1="2" x2="0" y2="-6" stroke="currentColor" stroke-width="0.6"/>
+      <line x1="2" y1="2" x2="2" y2="-5.5" stroke="currentColor" stroke-width="0.6"/>
+      <!-- Zülfe (Tuğların kıvrılan uçları) -->
+      <path d="M -2 -5.5 C -3.5 -4.5 -4 -3 -3.5 -2" fill="none" stroke="currentColor" stroke-width="0.4"/>
+      <path d="M 0 -6 C -1.5 -5 -2 -3.5 -1.5 -2.5" fill="none" stroke="currentColor" stroke-width="0.4"/>
+      <path d="M 2 -5.5 C 0.5 -4.5 0 -3 0.5 -2" fill="none" stroke="currentColor" stroke-width="0.4"/>
+      <!-- Sere / Alt kaide -->
+      <path d="M -4 3.5 Q 0 4.5 4 3.5" fill="none" stroke="currentColor" stroke-width="0.7"/>
+    </g>
+
+    <!-- Yan Madalyonlar: Sağ (Hilal ve Yıldız) -->
+    <g transform="translate(157, 53)">
+      <circle r="9" fill="none" stroke="currentColor" stroke-width="1"/>
+      <circle r="7.8" fill="none" stroke="currentColor" stroke-width="0.4"/>
+      <!-- Hilal (Crescent) -->
+      <path d="M 3 -4.5 A 5.5 5.5 0 1 0 3 4.5 A 4.2 4.2 0 1 1 3 -4.5 Z" fill="currentColor"/>
+      <!-- Beş Köşeli Yıldız (5-Point Star) -->
+      <polygon points="2.5,-0.5 3.5,-3 4.5,-0.5 7,-0.5 5,1 6,3.5 3.8,2 1.6,3.5 2.6,1 0.6,-0.5" fill="currentColor" transform="scale(0.7) translate(1, -0.5)"/>
+    </g>
+
+    <!-- Sol Üst Değer Rozeti: 5 PARAS -->
+    <g transform="translate(19, 19)">
+      <ellipse rx="8.5" ry="7.5" fill="none" stroke="currentColor" stroke-width="1"/>
+      <ellipse rx="7.2" ry="6.2" fill="none" stroke="currentColor" stroke-width="0.4"/>
+      <text x="0" y="-0.5" font-family="'Fraunces', serif" font-weight="900" font-size="7.5" text-anchor="middle" fill="currentColor">5</text>
+      <text x="0" y="4.5" font-family="'Courier Prime', monospace" font-weight="700" font-size="2.6" letter-spacing="0.3" text-anchor="middle" fill="currentColor">PARAS</text>
+    </g>
+
+    <!-- Sağ Üst Değer Rozeti: ٥ (Osmanlıca 5) -->
+    <g transform="translate(157, 19)">
+      <ellipse rx="8.5" ry="7.5" fill="none" stroke="currentColor" stroke-width="1"/>
+      <ellipse rx="7.2" ry="6.2" fill="none" stroke="currentColor" stroke-width="0.4"/>
+      <text x="0" y="2.8" font-family="'Fraunces', serif" font-weight="900" font-size="8.5" text-anchor="middle" fill="currentColor">٥</text>
+    </g>
+
+    <!-- Üst Kemer ve Başlıklar (POSTES OTTOMANES & Hat Yazısı) -->
+    <path id="stamp-arch-left" d="M 32 32 C 45 17 72 15 86 16" fill="none"/>
+    <path id="stamp-arch-right" d="M 90 16 C 104 15 131 17 144 32" fill="none"/>
+
+    <!-- POSTES OTTOMANES Metni -->
+    <text font-family="'Fraunces', 'Lora', serif" font-weight="800" font-size="6.2" letter-spacing="0.5" fill="currentColor">
+      <textPath href="#stamp-arch-left" startOffset="6%">POSTES OTTOMANES</textPath>
+    </text>
+
+    <!-- Osmanlıca Hat: پوسته‌ عثمانیه (Poste-i Osmaniye) -->
+    <g transform="translate(93, 20)">
+      <path d="M 4 2 Q 8 -1 14 0 Q 20 2 28 -1 Q 38 -2 46 4" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+      <path d="M 12 -2 Q 16 -4 20 -2" fill="none" stroke="currentColor" stroke-width="0.8"/>
+      <circle cx="16" cy="-4" r="0.6" fill="currentColor"/>
+      <circle cx="34" cy="-3.5" r="0.6" fill="currentColor"/>
+      <circle cx="37" cy="-3.5" r="0.6" fill="currentColor"/>
+      <path d="M 40 -1 Q 44 -3 47 2" fill="none" stroke="currentColor" stroke-width="0.8"/>
+    </g>
+
+    <!-- İç Manzara Çerçevesi (Kemerli Vitrin) -->
+    <path d="M 31 46 L 31 89 L 145 89 L 145 46 C 145 32 125 18 88 18 C 51 18 31 32 31 46 Z" fill="none" stroke="currentColor" stroke-width="1"/>
+    <path d="M 32.5 47 L 32.5 87.5 L 143.5 87.5 L 143.5 47 C 143.5 33.5 124 20 88 20 C 52 20 32.5 33.5 32.5 47 Z" fill="none" stroke="currentColor" stroke-width="0.4"/>
+
+    <!-- GÖKYÜZÜ TARAMALARI -->
+    <line x1="34" y1="22" x2="142" y2="22" stroke="currentColor" stroke-width="0.35" stroke-dasharray="2,2" opacity="0.3"/>
+      <line x1="34" y1="24" x2="142" y2="24" stroke="currentColor" stroke-width="0.35" stroke-dasharray="2,2" opacity="0.3"/>
+      <line x1="34" y1="26" x2="142" y2="26" stroke="currentColor" stroke-width="0.35" stroke-dasharray="2,2" opacity="0.3"/>
+      <line x1="34" y1="28" x2="142" y2="28" stroke="currentColor" stroke-width="0.35" stroke-dasharray="2,2" opacity="0.3"/>
+      <line x1="34" y1="30" x2="142" y2="30" stroke="currentColor" stroke-width="0.35" stroke-dasharray="2,2" opacity="0.3"/>
+      <line x1="34" y1="32" x2="142" y2="32" stroke="currentColor" stroke-width="0.35" stroke-dasharray="2,2" opacity="0.3"/>
+      <line x1="34" y1="34" x2="142" y2="34" stroke="currentColor" stroke-width="0.35" stroke-dasharray="2,2" opacity="0.3"/>
+      <line x1="34" y1="36" x2="142" y2="36" stroke="currentColor" stroke-width="0.35" stroke-dasharray="2,2" opacity="0.3"/>
+      <line x1="34" y1="38" x2="142" y2="38" stroke="currentColor" stroke-width="0.35" stroke-dasharray="2,2" opacity="0.3"/>
+      <line x1="34" y1="40" x2="142" y2="40" stroke="currentColor" stroke-width="0.35" stroke-dasharray="2,2" opacity="0.3"/>
+
+    <!-- UZAK İSTANBUL SİLÜETİ (Tarihi Yarımada / Minareler ve Kubbeler) -->
+    <g opacity="0.6">
+      <!-- Ayasofya / Sultanahmet Kubbeleri ve Minareler -->
+      <!-- Minare 1 -->
+      <line x1="39" y1="52" x2="39" y2="40" stroke="currentColor" stroke-width="0.6"/>
+      <polygon points="38.5,40 39.5,40 39,37" fill="currentColor"/>
+      <!-- Kubbe 1 -->
+      <path d="M 42 52 Q 47 45 52 52 Z" fill="currentColor"/>
+      <!-- Minare 2 -->
+      <line x1="53.5" y1="52" x2="53.5" y2="41" stroke="currentColor" stroke-width="0.5"/>
+      <polygon points="53,41 54,41 53.5,38" fill="currentColor"/>
+      <!-- Arka Şehir Binaları Taraması -->
+      <rect x="36" y="52" width="28" height="6" fill="currentColor" opacity="0.4"/>
+      <!-- Sağ Taraf Silüeti -->
+      <path d="M 124 53 Q 128 47 132 53 Z" fill="currentColor"/>
+      <line x1="134" y1="53" x2="134" y2="43" stroke="currentColor" stroke-width="0.5"/>
+      <polygon points="133.5,43 134.5,43 134,40" fill="currentColor"/>
+    </g>
+
+    <!-- DENİZ DALGALARI (Bosphorus Ripples) -->
+    <path d="M 33 68 Q 45 67.7 58 68 T 82 68 T 110 68 T 143 68" fill="none" stroke="currentColor" stroke-width="0.45" stroke-dasharray="3,1.5,4,2" opacity="0.55"/>
+      <path d="M 33 70 Q 45 69.7 58 70 T 82 70 T 110 70 T 143 70" fill="none" stroke="currentColor" stroke-width="0.45" stroke-dasharray="3,1.5,4,2" opacity="0.4"/>
+      <path d="M 33 72 Q 45 71.7 58 72 T 82 72 T 110 72 T 143 72" fill="none" stroke="currentColor" stroke-width="0.45" stroke-dasharray="3,1.5,4,2" opacity="0.55"/>
+      <path d="M 33 74 Q 45 73.7 58 74 T 82 74 T 110 74 T 143 74" fill="none" stroke="currentColor" stroke-width="0.45" stroke-dasharray="3,1.5,4,2" opacity="0.4"/>
+      <path d="M 33 76 Q 45 75.7 58 76 T 82 76 T 110 76 T 143 76" fill="none" stroke="currentColor" stroke-width="0.45" stroke-dasharray="3,1.5,4,2" opacity="0.55"/>
+      <path d="M 33 78 Q 45 77.7 58 78 T 82 78 T 110 78 T 143 78" fill="none" stroke="currentColor" stroke-width="0.45" stroke-dasharray="3,1.5,4,2" opacity="0.4"/>
+      <path d="M 33 80 Q 45 79.7 58 80 T 82 80 T 110 80 T 143 80" fill="none" stroke="currentColor" stroke-width="0.55" stroke-dasharray="3,1.5,4,2" opacity="0.55"/>
+      <path d="M 33 82 Q 45 81.7 58 82 T 82 82 T 110 82 T 143 82" fill="none" stroke="currentColor" stroke-width="0.55" stroke-dasharray="3,1.5,4,2" opacity="0.4"/>
+      <path d="M 33 84 Q 45 83.7 58 84 T 82 84 T 110 84 T 143 84" fill="none" stroke="currentColor" stroke-width="0.55" stroke-dasharray="3,1.5,4,2" opacity="0.55"/>
+      <path d="M 33 86 Q 45 85.7 58 86 T 82 86 T 110 86 T 143 86" fill="none" stroke="currentColor" stroke-width="0.55" stroke-dasharray="3,1.5,4,2" opacity="0.4"/>
+      <path d="M 33 88 Q 45 87.7 58 88 T 82 88 T 110 88 T 143 88" fill="none" stroke="currentColor" stroke-width="0.55" stroke-dasharray="3,1.5,4,2" opacity="0.55"/>
+
+    <!-- KIZ KULESİ (MAIDEN'S TOWER GRAVÜRÜ) -->
+    <g class="stamp-tower-art">
+      <!-- Ada Kaidesi (Stone Platform / Quays) -->
+      <polygon points="62,79 126,76 128,79 63,82" fill="currentColor" opacity="0.85"/>
+      <!-- Kaide Taş Duvar Hatları ve Taramaları -->
+      <line x1="64" y1="80" x2="126" y2="77.5" stroke="currentColor" stroke-width="0.4" stroke-dasharray="2,1"/>
+      <line x1="66" y1="81" x2="124" y2="78.5" stroke="currentColor" stroke-width="0.3"/>
+
+      <!-- Alt Köşk Binası (Pavilion Base Structure) -->
+      <polygon points="73,63 103,63 101,60 75,60" fill="currentColor"/> <!-- Çatı Saçağı -->
+      <rect x="74" y="63" width="28" height="14" fill="var(--stamp-paper-bg, #fbf4e4)" stroke="currentColor" stroke-width="0.8"/>
+      <!-- Bina Pencereleri & Ahşap Dikey Taramalar -->
+      <rect x="77" y="66" width="3" height="5" fill="currentColor"/>
+      <rect x="83" y="66" width="3" height="5" fill="currentColor"/>
+      <rect x="94" y="66" width="3.5" height="5.5" fill="currentColor"/>
+      <line x1="90" y1="63" x2="90" y2="77" stroke="currentColor" stroke-width="0.5"/> <!-- Bina köşe çizgisi -->
+      <!-- Binanın Sağ Yan Cephesi Taramalı Gölge -->
+      <g stroke="currentColor" stroke-width="0.4" opacity="0.75">
+        <line x1="91" y1="64" x2="101" y2="64"/>
+        <line x1="91" y1="66" x2="101" y2="66"/>
+        <line x1="91" y1="68" x2="101" y2="68"/>
+        <line x1="91" y1="70" x2="101" y2="70"/>
+        <line x1="91" y1="72" x2="101" y2="72"/>
+        <line x1="91" y1="74" x2="101" y2="74"/>
+      </g>
+
+      <!-- Ana Taş Kule Gövdesi (Cylindrical Stone Tower) -->
+      <rect x="79.5" y="44" width="16" height="17" fill="var(--stamp-paper-bg, #fbf4e4)" stroke="currentColor" stroke-width="0.9"/>
+      <!-- Taş Kule Gövdesi Yatay Derz Çizgileri -->
+      <line x1="79.5" y1="48" x2="95.5" y2="48" stroke="currentColor" stroke-width="0.4"/>
+      <line x1="79.5" y1="52" x2="95.5" y2="52" stroke="currentColor" stroke-width="0.4"/>
+      <line x1="79.5" y1="56" x2="95.5" y2="56" stroke="currentColor" stroke-width="0.4"/>
+      <line x1="79.5" y1="60" x2="95.5" y2="60" stroke="currentColor" stroke-width="0.4"/>
+      <!-- Kulenin Sağ Tarafındaki Derin Gravür Gölgesi (Dikey Taramalar) -->
+      <g stroke="currentColor" stroke-width="0.45" opacity="0.85">
+        <line x1="88" y1="44" x2="88" y2="61"/>
+        <line x1="89.5" y1="44" x2="89.5" y2="61"/>
+        <line x1="91" y1="44" x2="91" y2="61"/>
+        <line x1="92.5" y1="44" x2="92.5" y2="61"/>
+        <line x1="94" y1="44" x2="94" y2="61"/>
+        <line x1="95" y1="44" x2="95" y2="61"/>
+      </g>
+      <!-- Kule Mazgal Penceresi -->
+      <rect x="83" y="49" width="2" height="4" rx="0.8" fill="currentColor"/>
+
+      <!-- Kule Balkonu (Observation Balcony & Railings) -->
+      <rect x="78" y="42" width="19" height="2" fill="currentColor"/>
+      <line x1="78" y1="40" x2="97" y2="40" stroke="currentColor" stroke-width="0.7"/> <!-- Balkon korkuluğu üstü -->
+      <!-- Korkuluk dikmeleri -->
+      <line x1="80" y1="40" x2="80" y2="42" stroke="currentColor" stroke-width="0.4"/>
+      <line x1="83" y1="40" x2="83" y2="42" stroke="currentColor" stroke-width="0.4"/>
+      <line x1="87" y1="40" x2="87" y2="42" stroke="currentColor" stroke-width="0.4"/>
+      <line x1="91" y1="40" x2="91" y2="42" stroke="currentColor" stroke-width="0.4"/>
+      <line x1="95" y1="40" x2="95" y2="42" stroke="currentColor" stroke-width="0.4"/>
+
+      <!-- Fener Odası (Lantern Pavilion) -->
+      <rect x="81.5" y="34" width="12" height="6" fill="var(--stamp-paper-bg, #fbf4e4)" stroke="currentColor" stroke-width="0.7"/>
+      <!-- Fener Pencereleri -->
+      <rect x="83" y="35" width="2" height="4" fill="currentColor"/>
+      <rect x="86.5" y="35" width="2" height="4" fill="currentColor"/>
+      <rect x="90" y="35" width="2" height="4" fill="currentColor"/>
+
+      <!-- Kubbe (Dome) -->
+      <path d="M 80 34 C 80 29 95 29 95 34 Z" fill="currentColor"/>
+      <!-- Üst Sivri Külah (Spire Conical Roof) -->
+      <polygon points="84.5,29 90.5,29 87.5,20" fill="currentColor"/>
+      <!-- Kule Tepesinden Gökyüzüne Uzanan Direk (Spire Flagpole extending to top arch) -->
+      <line x1="87.5" y1="20" x2="87.5" y2="7.5" stroke="currentColor" stroke-width="0.8"/>
+      <!-- Alem & Hilal Tepesi -->
+      <circle cx="87.5" cy="8.5" r="0.8" fill="currentColor"/>
+
+      <!-- SAĞDAKİ YELKENLİ MAVNA / TEKNE (Traditional Moored Sailing Boat) -->
+      <!-- Tekne Gövdesi (Hull) -->
+      <polygon points="106,75 125,73 124,76 107,77" fill="currentColor"/>
+      <!-- Tekne Üst Kabini -->
+      <rect x="111" y="71" width="6" height="3" fill="currentColor"/>
+      <!-- Uzun Yelken Direği (Tall Mast) -->
+      <line x1="117" y1="36" x2="117" y2="74" stroke="currentColor" stroke-width="0.9"/>
+      <!-- Çapraz Gergi Halatları (Rigging Cables) -->
+      <line x1="117" y1="42" x2="106" y2="74" stroke="currentColor" stroke-width="0.4" stroke-dasharray="1.5,0.8"/>
+      <line x1="117" y1="42" x2="125" y2="73" stroke="currentColor" stroke-width="0.4" stroke-dasharray="1.5,0.8"/>
+      <line x1="117" y1="56" x2="107" y2="75" stroke="currentColor" stroke-width="0.3"/>
+      <!-- Su Üzerindeki Yansıma Hatları -->
+      <line x1="108" y1="78" x2="124" y2="77" stroke="currentColor" stroke-width="0.4" stroke-dasharray="2,2"/>
+    </g>
+
+    <!-- ALT KARTUŞ (Ornate Bottom Ribbon) -->
+    <g transform="translate(88, 93)">
+      <!-- Kartuş Çerçevesi -->
+      <path d="M -34 -3 L 34 -3 C 38 -3 40 -1 40 2 C 40 5 38 7 34 7 L -34 7 C -38 7 -40 5 -40 2 C -40 -1 -38 -3 -34 -3 Z" fill="var(--stamp-paper-bg, #fbf4e4)" stroke="currentColor" stroke-width="0.8"/>
+      <path d="M -32 -1.5 L 32 -1.5 C 35 -1.5 37 0 37 2 C 37 4 35 5.5 32 5.5 L -32 5.5 C -35 5.5 -37 4 -37 2 C -37 0 -35 -1.5 -32 -1.5 Z" fill="none" stroke="currentColor" stroke-width="0.4"/>
+      <!-- Kartuş Yan Kıvrımları (Ribbon Scroll Ends) -->
+      <path d="M -40 2 C -43 2 -45 0 -43 -2" fill="none" stroke="currentColor" stroke-width="0.7"/>
+      <path d="M 40 2 C 43 2 45 0 43 -2" fill="none" stroke="currentColor" stroke-width="0.7"/>
+      <!-- Osmanlıca Metin: قز قلعه‌سی (Kız Kulesi) -->
+      <g transform="translate(0, 3.2)">
+        <path d="M -24 -2 Q -18 -4 -12 -1 Q -6 0 0 -2 Q 8 -3 18 -1 Q 22 0 24 -2" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/>
+        <!-- Noktalar ve Harf Çıkıntıları -->
+        <circle cx="-16" cy="-4.2" r="0.6" fill="currentColor"/>
+        <circle cx="-14" cy="-4.2" r="0.6" fill="currentColor"/>
+        <path d="M -4 -4 Q -2 -1 2 -2" fill="none" stroke="currentColor" stroke-width="0.7"/>
+        <circle cx="12" cy="-4" r="0.6" fill="currentColor"/>
+      </g>
+    </g>
+  </g>
+</svg>
+                                        </figure>
+                                        <!-- Posta İptal Damgası (Constantinople / 1914 & Dalgalı Çizgiler) -->
+                                        <div class="postcard-cancellation" aria-hidden="true">
+                                            <svg class="postmark-circle" viewBox="0 0 100 100">
+                                                <circle cx="50" cy="50" r="43" fill="none" stroke="currentColor" stroke-width="1.8"/>
+                                                <circle cx="50" cy="50" r="39" fill="none" stroke="currentColor" stroke-width="0.75"/>
+                                                <path id="pm-top-path" d="M 12 50 A 38 38 0 0 1 88 50" fill="none"/>
+                                                <text font-family="'Courier Prime', monospace" font-size="7.2" font-weight="700" letter-spacing="1.5" fill="currentColor">
+                                                    <textPath href="#pm-top-path" startOffset="50%" text-anchor="middle">CONSTANTINOPLE</textPath>
+                                                </text>
+                                                <path id="pm-bot-path" d="M 88 50 A 38 38 0 0 1 12 50" fill="none"/>
+                                                <text font-family="'Courier Prime', monospace" font-size="6.6" font-weight="700" letter-spacing="1.2" fill="currentColor">
+                                                    <textPath href="#pm-bot-path" startOffset="50%" text-anchor="middle">POSTES OTTOMANES</textPath>
+                                                </text>
+                                                <line x1="24" y1="41" x2="76" y2="41" stroke="currentColor" stroke-width="0.7"/>
+                                                <text x="50" y="49.5" font-family="'Courier Prime', monospace" font-size="8.5" font-weight="700" text-anchor="middle" fill="currentColor">14 . X . 1914</text>
+                                                <text x="50" y="60.5" font-family="'Fraunces', serif" font-style="italic" font-size="7.5" font-weight="700" text-anchor="middle" fill="currentColor">İSTANBUL</text>
+                                                <line x1="24" y1="64.5" x2="76" y2="64.5" stroke="currentColor" stroke-width="0.7"/>
+                                            </svg>
+                                            <svg class="postmark-waves" viewBox="0 0 76 36">
+                                                <path d="M0 6 Q9.5 2 19 6 T38 6 T57 6 T76 6" fill="none" stroke="currentColor" stroke-width="1.4"/>
+                                                <path d="M0 14 Q9.5 10 19 14 T38 14 T57 14 T76 14" fill="none" stroke="currentColor" stroke-width="1.4"/>
+                                                <path d="M0 22 Q9.5 18 19 22 T38 22 T57 22 T76 22" fill="none" stroke="currentColor" stroke-width="1.4"/>
+                                                <path d="M0 30 Q9.5 26 19 30 T38 30 T57 30 T76 30" fill="none" stroke="currentColor" stroke-width="1.4"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- İletişim / Adres Hatları -->
+                                <div class="addr">
+                                    <a class="line" href="mailto:dilovanre@gmail.com">
+                                        <small data-i18n="contact.method_mail">E-posta gönder</small>
+                                        <strong data-i18n="contact.method_mail_val">dilovanre@gmail.com</strong>
+                                    </a>
+                                    <a class="line" href="https://t.me/dilovaniac" target="_blank" rel="noopener noreferrer">
+                                        <small data-i18n="contact.method_telegram">Telegram'dan yaz</small>
+                                        <strong data-i18n="contact.method_telegram_val">@dilovaniac</strong>
+                                    </a>
+                                    <a class="line" href="https://github.com/dilovantprk" target="_blank" rel="noopener noreferrer">
+                                        <small data-i18n="contact.method_github">GitHub'da incele</small>
+                                        <strong data-i18n="contact.method_github_val">@dilovantprk</strong>
+                                    </a>
+                                    <a class="line" href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+                                        <small data-i18n="contact.method_linkedin">LinkedIn'den bağlan</small>
+                                        <strong data-i18n="contact.method_linkedin_val">Dilovan Toprak</strong>
+                                    </a>
+
+                                    <!-- Kartpostal Alt Satırı: Nostaljik Mühür & Şehir -->
+                                    <div class="postcard-footer-meta">
+                                        <div class="postcard-cachet" aria-hidden="true">
+                                            <span class="cachet-star">★</span>
+                                            <span class="cachet-text">SERVICE POSTAL</span>
+                                            <span class="cachet-sub">D'ORIENT</span>
+                                        </div>
+                                        <p class="city" data-i18n="contact.method_loc_val">İstanbul, Türkiye</p>
+                                    </div>
+                                </div>
                             </div>
                         </section>
                         <div class="fold" id="fold" aria-hidden="true"></div>
