@@ -783,44 +783,242 @@ html.dark .logo-text {
     margin-right: auto;
 }
 
+/* 1. Evrak Kutusu Gövdesi (Archive Box Container) */
 .project-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border-subtle);
-    border-radius: var(--radius-md);
-    overflow: hidden;
-    box-shadow: var(--card-shadow);
-    transition: transform var(--transition-normal), border-color var(--transition-normal), box-shadow var(--transition-normal);
+    background-color: #3e4650;
+    background-image: repeating-linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0.045) 0px,
+        rgba(255, 255, 255, 0.045) 1.5px,
+        rgba(0, 0, 0, 0.14) 1.5px,
+        rgba(0, 0, 0, 0.14) 3px,
+        transparent 3px,
+        transparent 5.5px
+    );
+    border-top: 4px solid rgba(255, 255, 255, 0.22);
+    border-left: 1px solid rgba(255, 255, 255, 0.09);
+    border-right: 1.5px solid rgba(0, 0, 0, 0.35);
+    border-bottom: 2px solid rgba(0, 0, 0, 0.45);
+    border-radius: 8px 8px 6px 6px;
+    box-shadow:
+        inset 1.5px 0 3px rgba(255, 255, 255, 0.08),
+        inset -1.5px 0 3px rgba(0, 0, 0, 0.4),
+        inset 0 -3px 5px rgba(0, 0, 0, 0.25),
+        0 10px 28px rgba(0, 0, 0, 0.18),
+        0 2px 6px rgba(0, 0, 0, 0.12);
+    padding: 16px 14px 16px 14px;
     cursor: pointer;
     display: flex;
     flex-direction: column;
     height: 100%;
+    position: relative;
+    overflow: visible;
+    transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s ease;
 }
 
 .project-card:hover {
-    border-color: var(--border-hover);
+    transform: translateY(-5px);
+    box-shadow:
+        inset 1.5px 0 3px rgba(255, 255, 255, 0.12),
+        inset -1.5px 0 3px rgba(0, 0, 0, 0.45),
+        inset 0 -3px 5px rgba(0, 0, 0, 0.25),
+        0 18px 42px rgba(0, 0, 0, 0.26),
+        0 4px 10px rgba(0, 0, 0, 0.16);
 }
 
-.project-img-container {
+html.dark .project-card {
+    background-color: #242930;
+    border-top-color: rgba(255, 255, 255, 0.14);
+    border-left-color: rgba(255, 255, 255, 0.05);
+    border-right-color: rgba(0, 0, 0, 0.6);
+    border-bottom-color: rgba(0, 0, 0, 0.7);
+    box-shadow:
+        inset 1.5px 0 3px rgba(255, 255, 255, 0.05),
+        inset -1.5px 0 3px rgba(0, 0, 0, 0.6),
+        inset 0 -3px 5px rgba(0, 0, 0, 0.5),
+        0 12px 32px rgba(0, 0, 0, 0.5),
+        0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* 2. Oval El Tutma Boşluğu / Handle Cutout */
+.box-handle-slot {
+    width: 74px;
+    height: 17px;
+    margin: 0 auto 16px auto;
+    background: #191c21;
+    border-radius: 9px;
+    border: 1.5px solid rgba(0, 0, 0, 0.6);
+    box-shadow:
+        inset 0 3px 6px rgba(0, 0, 0, 0.9),
+        0 1px 0 rgba(255, 255, 255, 0.2),
+        0 -1px 0 rgba(0, 0, 0, 0.4);
+    flex-shrink: 0;
     position: relative;
-    width: 100%;
-    aspect-ratio: 16 / 10;
-    overflow: hidden;
-    background: var(--bg-secondary);
+    pointer-events: none;
 }
 
-.project-img {
+.box-handle-slot::after {
+    content: "";
+    position: absolute;
+    inset: 1px 2px auto 2px;
+    height: 2px;
+    border-radius: 2px;
+    background: rgba(255, 255, 255, 0.08);
+    pointer-events: none;
+}
+
+/* 3. Kutunun Ön Yüzüne İliştirilmiş Evrak Dosyası (Attached Document Sheet) */
+.box-attached-sheet {
+    background: var(--paper);
+    border-radius: 4px;
+    position: relative;
+    box-shadow:
+        0 4px 16px rgba(0, 0, 0, 0.32),
+        0 1px 4px rgba(0, 0, 0, 0.18);
+    border: 1px solid rgba(var(--shade), 0.14);
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    overflow: visible;
+    transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s ease;
+}
+
+.project-card:hover .box-attached-sheet {
+    transform: translateY(-2px);
+    box-shadow:
+        0 8px 24px rgba(0, 0, 0, 0.38),
+        0 2px 6px rgba(0, 0, 0, 0.22);
+}
+
+html.dark .box-attached-sheet {
+    background: #241c18;
+    border-color: rgba(233, 196, 106, 0.18);
+    box-shadow:
+        0 4px 18px rgba(0, 0, 0, 0.6),
+        0 1px 4px rgba(0, 0, 0, 0.4);
+}
+
+/* 4. Ataç (Paperclip Element) */
+.box-paperclip {
+    position: absolute;
+    top: -14px;
+    width: 22px;
+    height: 50px;
+    z-index: 15;
+    pointer-events: none;
+    filter: drop-shadow(0.5px 2.5px 2px rgba(0, 0, 0, 0.42));
+    transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.box-paperclip svg {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    transition: transform var(--transition-slow);
+    display: block;
 }
 
-.project-card:hover .project-img {
-    transform: scale(1.05);
+.project-card:hover .box-paperclip {
+    filter: drop-shadow(0.5px 3.5px 3px rgba(0, 0, 0, 0.5));
 }
 
-.project-overlay {
-    display: none;
+/* Kartlara göre doğal asimetrik ataç açıları ve konumları */
+.project-card:nth-child(1) .box-paperclip {
+    left: 22px;
+    transform: rotate(-3deg);
+}
+.project-card:nth-child(1):hover .box-paperclip {
+    transform: rotate(-4.5deg) translateY(-1px);
+}
+
+.project-card:nth-child(2) .box-paperclip {
+    right: 26px;
+    transform: rotate(2.5deg);
+}
+.project-card:nth-child(2):hover .box-paperclip {
+    transform: rotate(3.5deg) translateY(-1px);
+}
+
+.project-card:nth-child(3) .box-paperclip {
+    left: 28px;
+    transform: rotate(1deg);
+}
+.project-card:nth-child(3):hover .box-paperclip {
+    transform: rotate(1.5deg) translateY(-1px);
+}
+
+.project-card:nth-child(4) .box-paperclip {
+    right: 22px;
+    transform: rotate(-2.5deg);
+}
+.project-card:nth-child(4):hover .box-paperclip {
+    transform: rotate(-3.5deg) translateY(-1px);
+}
+
+.project-card:nth-child(5) .box-paperclip {
+    left: 24px;
+    transform: rotate(3deg);
+}
+.project-card:nth-child(5):hover .box-paperclip {
+    transform: rotate(4deg) translateY(-1px);
+}
+
+.project-card:nth-child(6) .box-paperclip {
+    right: 28px;
+    transform: rotate(-1.5deg);
+}
+.project-card:nth-child(6):hover .box-paperclip {
+    transform: rotate(-2.5deg) translateY(-1px);
+}
+
+/* 5. Evrak İllüstrasyon Alanı */
+.box-attached-sheet .project-visual-container.art {
+    aspect-ratio: 28 / 15;
+    background: color-mix(in srgb, var(--paper) 60%, var(--plate)) !important;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border-bottom: 1.5px dashed rgba(var(--shade), 0.16);
+    position: relative;
+    overflow: hidden;
+}
+
+html.dark .box-attached-sheet .project-visual-container.art {
+    background: color-mix(in srgb, #241c18 80%, #1a1210) !important;
+    border-bottom-color: rgba(233, 196, 106, 0.16);
+}
+
+/* 6. Evrak Bilgi Alanı (Metin & Başlık) */
+.box-attached-sheet .project-info {
+    padding: 16px 18px 18px 18px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.box-attached-sheet .project-category {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    color: var(--orange-text);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+    display: inline-block;
+}
+
+.box-attached-sheet .project-title-text {
+    font-family: var(--font-heading) !important;
+    font-size: 1.3rem;
+    margin-bottom: 8px;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    color: var(--text-primary);
+}
+
+.box-attached-sheet .project-summary {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+    line-height: 1.55;
+    flex-grow: 1;
 }
 
 .project-more-link {
@@ -828,59 +1026,27 @@ html.dark .logo-text {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    font-size: 0.875rem;
+    font-size: 0.82rem;
     font-weight: 600;
     color: var(--text-secondary);
     transition: color var(--transition-normal);
-    padding-top: 16px;
+    padding-top: 10px;
 }
 
 .project-card:hover .project-more-link {
-    color: var(--accent-blue);
+    color: var(--orange-text);
 }
 
 .project-more-link svg,
 .project-more-link i {
-    width: 16px;
-    height: 16px;
+    width: 15px;
+    height: 15px;
     transition: transform var(--transition-normal);
 }
 
 .project-card:hover .project-more-link svg,
 .project-card:hover .project-more-link i {
     transform: translateX(4px);
-}
-
-.project-info {
-    padding: 20px 20px 22px 20px;
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-}
-
-.project-category {
-    font-size: 0.72rem;
-    font-weight: 600;
-    color: var(--accent-blue);
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    margin-bottom: 6px;
-}
-
-.project-title-text {
-    font-family: var(--font-heading) !important;
-    font-size: 1.35rem;
-    margin-bottom: 10px;
-    font-weight: 700;
-    letter-spacing: 0.01em;
-    color: var(--text-primary);
-}
-
-.project-summary {
-    font-size: 0.88rem;
-    color: var(--text-secondary);
-    margin-bottom: 16px;
-    line-height: 1.55;
 }
 
 .project-tech-tags {
@@ -2449,7 +2615,7 @@ mark {
    ========================================================================== */
 .contact-section {
     position: relative;
-    padding-bottom: 140px;
+    padding-bottom: clamp(280px, 35vw, 360px);
     overflow-x: clip;
 }
 
@@ -3877,9 +4043,9 @@ html.dark .modal-wrapper {
 
     .projects-grid .project-card {
         display: flex !important;
-        flex: 0 0 82% !important;
-        max-width: 82% !important;
-        min-width: 82% !important;
+        flex: 0 0 84% !important;
+        max-width: 84% !important;
+        min-width: 84% !important;
         scroll-snap-align: center;
         align-self: stretch !important;
         height: auto !important;
@@ -3887,24 +4053,32 @@ html.dark .modal-wrapper {
         margin-bottom: 0 !important;
         transform: none !important;
         opacity: 1 !important;
+        padding: 14px 12px 14px 12px !important;
+    }
+
+    .projects-grid .box-handle-slot {
+        width: 64px !important;
+        height: 15px !important;
+        margin-bottom: 12px !important;
     }
 
     .projects-grid .project-card:hover {
         transform: none !important;
     }
 
+    .projects-grid .project-card .box-attached-sheet {
+        flex: 1 1 auto !important;
+    }
+
     .projects-grid .project-card .project-info {
         display: flex !important;
         flex-direction: column !important;
         flex: 1 1 auto !important;
+        padding: 14px 14px 16px 14px !important;
     }
 
     .projects-grid .project-card .project-summary {
         flex: 1 1 auto !important;
-    }
-
-    .projects-grid .project-card .project-tech-tags {
-        margin-top: auto !important;
     }
 
     /* Mobile Horizontal Swipe Carousel for Skills Section ("Elimden Gelenler / Yetiler") */

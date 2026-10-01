@@ -61,6 +61,19 @@
         <symbol id="durak-gar" viewBox="0 0 40 50"><path fill-rule="evenodd" d="M2 49H38V44H35V17L39 17L20 4L1 17L5 17V44H2ZM14 44V32C14 28 26 28 26 32V44ZM8 24H12V30H8ZM28 24H32V30H28ZM20 14C21.7 14 23 15.3 23 17C23 18.7 21.7 20 20 20C18.3 20 17 18.7 17 17C17 15.3 18.3 14 20 14ZM28 6H32V10L28 7Z"/></symbol>
         <symbol id="durak-sinyal" viewBox="0 0 40 50"><path fill-rule="evenodd" d="M12 49H28V45H22V27H33V23H22V16H35V12H32V8H30V12H25V8H23V12H22V3C22 1.5 21 0.5 20 0.5C19 0.5 18 1.5 18 3V12H17V8H15V12H10V8H8V12H5V16H18V23H7V27H18V45H12ZM9 19H13L18 23H14ZM31 19H27L22 23H26Z"/></symbol>
         <symbol id="durak-terminal" viewBox="0 0 40 50"><path fill-rule="evenodd" d="M2 49H38V45H35V18H38L20 3L2 18H5V45H2ZM15 45V34C15 30 25 30 25 34V45ZM8 22H12V45H8ZM28 22H32V45H28ZM18 22H22V28H18ZM20 9C21.4 9 22.5 10.1 22.5 11.5C22.5 12.9 21.4 14 20 14C18.6 14 17.5 12.9 17.5 11.5C17.5 10.1 18.6 9 20 9Z"/></symbol>
+        <!-- Evrak Kutusu Ataç Sembolü (Archive Paperclip) -->
+        <linearGradient id="paperclip-metal" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#b8c2ce"/>
+          <stop offset="25%" stop-color="#ffffff"/>
+          <stop offset="50%" stop-color="#7e8b9c"/>
+          <stop offset="75%" stop-color="#d6dfe9"/>
+          <stop offset="100%" stop-color="#556274"/>
+        </linearGradient>
+        <symbol id="atac" viewBox="0 0 24 54">
+          <path d="M 8 26 L 8 40 A 5 5 0 0 0 18 40 L 18 12 A 7 7 0 0 0 4 12 L 4 44 A 9 9 0 0 0 22 44 L 22 18" stroke="rgba(0,0,0,0.36)" stroke-width="2.6" stroke-linecap="round" fill="none"/>
+          <path d="M 8 26 L 8 40 A 5 5 0 0 0 18 40 L 18 12 A 7 7 0 0 0 4 12 L 4 44 A 9 9 0 0 0 22 44 L 22 18" stroke="url(#paperclip-metal)" stroke-width="2.3" stroke-linecap="round" fill="none"/>
+          <path d="M 18 12 A 7 7 0 0 0 4 12 L 4 44" stroke="rgba(255,255,255,0.7)" stroke-width="0.8" stroke-linecap="round" fill="none"/>
+        </symbol>
       </defs>
     </svg>
 
@@ -159,145 +172,201 @@
                 </div>
                 
                 <div class="projects-grid animate-scroll" id="projects-grid">
-                    <!-- Project 1: AradaPay -->
+                    <!-- Project 1: AradaPay (Evrak Kutusu) -->
                     <div class="project-card" data-project="aradapay">
-                        <div class="project-visual-container art visual-aradapay">
-                            <div class="visual-inner">
-                                <svg viewBox="0 0 280 150">
-                                    <g class="b" filter="url(#ink)"><circle cx="112" cy="76" r="46" fill="var(--blue)"/></g>
-                                    <g class="o" filter="url(#ink)"><circle cx="164" cy="76" r="34" fill="var(--orange)"/></g>
-                                </svg>
+                        <div class="box-handle-slot" aria-hidden="true"><div class="box-handle-inner"></div></div>
+                        <div class="box-attached-sheet">
+                            <div class="box-paperclip" aria-hidden="true">
+                                <svg viewBox="0 0 24 54"><use href="#atac"/></svg>
                             </div>
-                        </div>
-                        <div class="project-info">
-                            <span class="project-category" data-i18n="projects.aradapay.category">Android & FinTech</span>
-                            <h3 class="project-title-text">AradaPay</h3>
-                            <p class="project-summary" data-i18n="projects.aradapay.summary">Grup harcamalarını Cross-Settlement DFS graf algoritmalarıyla optimize eden, Merkle Ağacı ile kriptografik dekontlar üreten Material 3 Android finans platformu.</p>
+                            <div class="project-visual-container art visual-aradapay">
+                                <div class="visual-inner">
+                                    <svg viewBox="0 0 280 150">
+                                        <g class="b" filter="url(#ink)"><circle cx="112" cy="76" r="46" fill="var(--blue)"/></g>
+                                        <g class="o" filter="url(#ink)"><circle cx="164" cy="76" r="34" fill="var(--orange)"/></g>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="project-info">
+                                <span class="project-category" data-i18n="projects.aradapay.category">Android & FinTech</span>
+                                <h3 class="project-title-text">AradaPay</h3>
+                                <p class="project-summary" data-i18n="projects.aradapay.summary">Grup harcamalarını Cross-Settlement DFS graf algoritmalarıyla optimize eden, Merkle Ağacı ile kriptografik dekontlar üreten Material 3 Android finans platformu.</p>
+                                <div class="project-more-link">
+                                    <span data-i18n="projects.more_details">Detayları Gör</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Project 2: Aura -->
+                    <!-- Project 2: Aura (Evrak Kutusu) -->
                     <div class="project-card" data-project="aura">
-                        <div class="project-visual-container art visual-aura">
-                            <div class="visual-inner">
-                                <svg viewBox="0 0 280 150">
-                                    <g class="b" filter="url(#ink)" fill="none" stroke="var(--blue)" stroke-width="7">
-                                        <circle cx="140" cy="75" r="56" stroke-dasharray="1 11" stroke-linecap="round" stroke-width="9"/>
-                                        <circle cx="140" cy="75" r="38"/>
-                                        <circle cx="140" cy="75" r="20" stroke-width="9"/>
-                                    </g>
-                                    <g class="o" filter="url(#ink)"><circle cx="140" cy="75" r="8" fill="var(--orange)"/></g>
-                                </svg>
+                        <div class="box-handle-slot" aria-hidden="true"><div class="box-handle-inner"></div></div>
+                        <div class="box-attached-sheet">
+                            <div class="box-paperclip" aria-hidden="true">
+                                <svg viewBox="0 0 24 54"><use href="#atac"/></svg>
                             </div>
-                        </div>
-                        <div class="project-info">
-                            <span class="project-category" data-i18n="projects.aura.category">Wellness / Web App</span>
-                            <h3 class="project-title-text">Aura</h3>
-                            <p class="project-summary" data-i18n="projects.aura.summary">Nefes ve ses sentezleri ile otonom sinir sistemini sakinleştiren kişisel somatik regülasyon alanı.</p>
+                            <div class="project-visual-container art visual-aura">
+                                <div class="visual-inner">
+                                    <svg viewBox="0 0 280 150">
+                                        <g class="b" filter="url(#ink)" fill="none" stroke="var(--blue)" stroke-width="7">
+                                            <circle cx="140" cy="75" r="56" stroke-dasharray="1 11" stroke-linecap="round" stroke-width="9"/>
+                                            <circle cx="140" cy="75" r="38"/>
+                                            <circle cx="140" cy="75" r="20" stroke-width="9"/>
+                                        </g>
+                                        <g class="o" filter="url(#ink)"><circle cx="140" cy="75" r="8" fill="var(--orange)"/></g>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="project-info">
+                                <span class="project-category" data-i18n="projects.aura.category">Wellness / Web App</span>
+                                <h3 class="project-title-text">Aura</h3>
+                                <p class="project-summary" data-i18n="projects.aura.summary">Nefes ve ses sentezleri ile otonom sinir sistemini sakinleştiren kişisel somatik regülasyon alanı.</p>
+                                <div class="project-more-link">
+                                    <span data-i18n="projects.more_details">Detayları Gör</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Project 3: EkoTakip Pro -->
+                    <!-- Project 3: EkoTakip Pro (Evrak Kutusu) -->
                     <div class="project-card" data-project="ekotakippro">
-                        <div class="project-visual-container art visual-adnet">
-                            <div class="visual-inner">
-                                <svg viewBox="0 0 280 150">
-                                    <g class="b" filter="url(#ink)">
-                                        <circle cx="140" cy="75" r="26" fill="var(--blue)"/>
-                                        <circle cx="140" cy="75" r="56" fill="none" stroke="var(--blue)" stroke-width="3" stroke-dasharray="2 9" stroke-linecap="round"/>
-                                    </g>
-                                    <g class="o" filter="url(#ink)">
-                                        <circle cx="184" cy="38" r="9" fill="var(--orange)"/>
-                                        <circle cx="96" cy="112" r="6" fill="var(--orange)"/>
-                                        <circle cx="190" cy="108" r="4" fill="var(--orange)"/>
-                                    </g>
-                                </svg>
+                        <div class="box-handle-slot" aria-hidden="true"><div class="box-handle-inner"></div></div>
+                        <div class="box-attached-sheet">
+                            <div class="box-paperclip" aria-hidden="true">
+                                <svg viewBox="0 0 24 54"><use href="#atac"/></svg>
                             </div>
-                        </div>
-                        <div class="project-info">
-                            <span class="project-category" data-i18n="projects.ekotakippro.category">Climate Tech / Web App</span>
-                            <h3 class="project-title-text">EkoTakip Pro</h3>
-                            <p class="project-summary" data-i18n="projects.ekotakippro.summary">Sanayi emisyonları ve kurumsal karbon hesaplamasını tek çatıda toplayan gizlilik odaklı iklim portalı.</p>
+                            <div class="project-visual-container art visual-adnet">
+                                <div class="visual-inner">
+                                    <svg viewBox="0 0 280 150">
+                                        <g class="b" filter="url(#ink)">
+                                            <circle cx="140" cy="75" r="26" fill="var(--blue)"/>
+                                            <circle cx="140" cy="75" r="56" fill="none" stroke="var(--blue)" stroke-width="3" stroke-dasharray="2 9" stroke-linecap="round"/>
+                                        </g>
+                                        <g class="o" filter="url(#ink)">
+                                            <circle cx="184" cy="38" r="9" fill="var(--orange)"/>
+                                            <circle cx="96" cy="112" r="6" fill="var(--orange)"/>
+                                            <circle cx="190" cy="108" r="4" fill="var(--orange)"/>
+                                        </g>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="project-info">
+                                <span class="project-category" data-i18n="projects.ekotakippro.category">Climate Tech / Web App</span>
+                                <h3 class="project-title-text">EkoTakip Pro</h3>
+                                <p class="project-summary" data-i18n="projects.ekotakippro.summary">Sanayi emisyonları ve kurumsal karbon hesaplamasını tek çatıda toplayan gizlilik odaklı iklim portalı.</p>
+                                <div class="project-more-link">
+                                    <span data-i18n="projects.more_details">Detayları Gör</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Mobile Right-Side "Diğer Projeler" Card Button -->
+                    <!-- Mobile Right-Side "Diğer Projeler" Card Button (Evrak Kutusu) -->
                     <div class="project-card mobile-other-projects-btn-card" id="mobile-other-projects-btn-card" role="button" tabindex="0" aria-expanded="false">
-                        <div class="project-visual-container art visual-other-projects">
-                            <div class="visual-inner">
-                                <svg viewBox="0 0 280 150">
-                                    <g class="b" filter="url(#ink)">
-                                        <rect x="68" y="36" width="84" height="74" rx="10" transform="rotate(-6 110 73)" fill="var(--blue)"/>
-                                        <line x1="82" y1="56" x2="132" y2="56" stroke="var(--paper)" stroke-width="3" stroke-linecap="round" transform="rotate(-6 110 73)"/>
-                                        <line x1="82" y1="70" x2="118" y2="70" stroke="var(--paper)" stroke-width="3" stroke-linecap="round" transform="rotate(-6 110 73)"/>
-                                    </g>
-                                    <g class="o" filter="url(#ink)">
-                                        <rect x="128" y="40" width="84" height="74" rx="10" transform="rotate(5 170 77)" fill="var(--orange)"/>
-                                        <line x1="142" y1="60" x2="192" y2="60" stroke="var(--plate)" stroke-width="3" stroke-linecap="round" transform="rotate(5 170 77)"/>
-                                        <line x1="142" y1="74" x2="178" y2="74" stroke="var(--plate)" stroke-width="3" stroke-linecap="round" transform="rotate(5 170 77)"/>
-                                    </g>
-                                    <g filter="url(#ink)">
-                                        <circle cx="140" cy="74" r="22" fill="var(--paper)" stroke="var(--ink)" stroke-width="2"/>
-                                        <text x="140" y="80" text-anchor="middle" font-family="'Fraunces', serif" font-size="15" font-weight="700" font-style="italic" fill="var(--orange)">+2</text>
-                                    </g>
-                                </svg>
+                        <div class="box-handle-slot" aria-hidden="true"><div class="box-handle-inner"></div></div>
+                        <div class="box-attached-sheet">
+                            <div class="box-paperclip" aria-hidden="true">
+                                <svg viewBox="0 0 24 54"><use href="#atac"/></svg>
                             </div>
-                        </div>
-                        <div class="project-info">
-                            <span class="project-category" data-i18n="projects.other.category">Keşfet / Arşiv</span>
-                            <h3 class="project-title-text" data-i18n="projects.other.title">Diğer Projeler</h3>
-                            <p class="project-summary" data-i18n="projects.other.summary">STTFL Mezun Topluluğu ve YazarEser Android projelerini gör.</p>
-                            <div class="other-card-action">
-                                <span class="btn-text" data-i18n="projects.other.action">Projeleri Gör</span>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                            <div class="project-visual-container art visual-other-projects">
+                                <div class="visual-inner">
+                                    <svg viewBox="0 0 280 150">
+                                        <g class="b" filter="url(#ink)">
+                                            <rect x="68" y="36" width="84" height="74" rx="10" transform="rotate(-6 110 73)" fill="var(--blue)"/>
+                                            <line x1="82" y1="56" x2="132" y2="56" stroke="var(--paper)" stroke-width="3" stroke-linecap="round" transform="rotate(-6 110 73)"/>
+                                            <line x1="82" y1="70" x2="118" y2="70" stroke="var(--paper)" stroke-width="3" stroke-linecap="round" transform="rotate(-6 110 73)"/>
+                                        </g>
+                                        <g class="o" filter="url(#ink)">
+                                            <rect x="128" y="40" width="84" height="74" rx="10" transform="rotate(5 170 77)" fill="var(--orange)"/>
+                                            <line x1="142" y1="60" x2="192" y2="60" stroke="var(--plate)" stroke-width="3" stroke-linecap="round" transform="rotate(5 170 77)"/>
+                                            <line x1="142" y1="74" x2="178" y2="74" stroke="var(--plate)" stroke-width="3" stroke-linecap="round" transform="rotate(5 170 77)"/>
+                                        </g>
+                                        <g filter="url(#ink)">
+                                            <circle cx="140" cy="74" r="22" fill="var(--paper)" stroke="var(--ink)" stroke-width="2"/>
+                                            <text x="140" y="80" text-anchor="middle" font-family="'Fraunces', serif" font-size="15" font-weight="700" font-style="italic" fill="var(--orange)">+2</text>
+                                        </g>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="project-info">
+                                <span class="project-category" data-i18n="projects.other.category">Keşfet / Arşiv</span>
+                                <h3 class="project-title-text" data-i18n="projects.other.title">Diğer Projeler</h3>
+                                <p class="project-summary" data-i18n="projects.other.summary">STTFL Mezun Topluluğu ve YazarEser Android projelerini gör.</p>
+                                <div class="other-card-action">
+                                    <span class="btn-text" data-i18n="projects.other.action">Projeleri Gör</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Project 4: STTFL (Sosyal) -->
+                    <!-- Project 4: STTFL (Sosyal) (Evrak Kutusu) -->
                     <div class="project-card other-project" data-project="sosyal">
-                        <div class="project-visual-container art visual-sosyal">
-                            <div class="visual-inner">
-                                <svg viewBox="0 0 280 150">
-                                    <g class="b" filter="url(#ink)">
-                                        <rect x="52" y="34" width="100" height="36" rx="18" fill="var(--blue)"/>
-                                        <path d="M152 52 C 190 52, 170 96, 204 96" fill="none" stroke="var(--blue)" stroke-width="3" stroke-dasharray="2 8" stroke-linecap="round"/>
-                                    </g>
-                                    <g class="o" filter="url(#ink)">
-                                        <rect x="150" y="80" width="100" height="36" rx="18" fill="var(--orange)"/>
-                                    </g>
-                                </svg>
+                        <div class="box-handle-slot" aria-hidden="true"><div class="box-handle-inner"></div></div>
+                        <div class="box-attached-sheet">
+                            <div class="box-paperclip" aria-hidden="true">
+                                <svg viewBox="0 0 24 54"><use href="#atac"/></svg>
                             </div>
-                        </div>
-                        <div class="project-info">
-                            <span class="project-category" data-i18n="projects.sosyal.category">Social / Web App</span>
-                            <h3 class="project-title-text">STTFL</h3>
-                            <p class="project-summary" data-i18n="projects.sosyal.summary">STTFL mezun ve öğrencilerini bir araya getiren özgür tartışma ve topluluk platformu.</p>
+                            <div class="project-visual-container art visual-sosyal">
+                                <div class="visual-inner">
+                                    <svg viewBox="0 0 280 150">
+                                        <g class="b" filter="url(#ink)">
+                                            <rect x="52" y="34" width="100" height="36" rx="18" fill="var(--blue)"/>
+                                            <path d="M152 52 C 190 52, 170 96, 204 96" fill="none" stroke="var(--blue)" stroke-width="3" stroke-dasharray="2 8" stroke-linecap="round"/>
+                                        </g>
+                                        <g class="o" filter="url(#ink)">
+                                            <rect x="150" y="80" width="100" height="36" rx="18" fill="var(--orange)"/>
+                                        </g>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="project-info">
+                                <span class="project-category" data-i18n="projects.sosyal.category">Social / Web App</span>
+                                <h3 class="project-title-text">STTFL</h3>
+                                <p class="project-summary" data-i18n="projects.sosyal.summary">STTFL mezun ve öğrencilerini bir araya getiren özgür tartışma ve topluluk platformu.</p>
+                                <div class="project-more-link">
+                                    <span data-i18n="projects.more_details">Detayları Gör</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Project 5: YazarEser -->
+                    <!-- Project 5: YazarEser (Evrak Kutusu) -->
                     <div class="project-card other-project" data-project="yazareser">
-                        <div class="project-visual-container art visual-yazareser">
-                            <div class="visual-inner">
-                                <svg viewBox="0 0 280 150">
-                                    <g class="b" filter="url(#ink)">
-                                        <rect x="70" y="38" width="80" height="74" rx="10" fill="var(--blue)"/>
-                                        <line x1="85" y1="58" x2="135" y2="58" stroke="var(--paper)" stroke-width="3" stroke-linecap="round"/>
-                                        <line x1="85" y1="72" x2="120" y2="72" stroke="var(--paper)" stroke-width="3" stroke-linecap="round"/>
-                                    </g>
-                                    <g class="o" filter="url(#ink)">
-                                        <rect x="130" y="44" width="80" height="74" rx="10" fill="var(--orange)"/>
-                                        <line x1="145" y1="64" x2="195" y2="64" stroke="var(--plate)" stroke-width="3" stroke-linecap="round"/>
-                                        <line x1="145" y1="78" x2="180" y2="78" stroke="var(--plate)" stroke-width="3" stroke-linecap="round"/>
-                                    </g>
-                                </svg>
+                        <div class="box-handle-slot" aria-hidden="true"><div class="box-handle-inner"></div></div>
+                        <div class="box-attached-sheet">
+                            <div class="box-paperclip" aria-hidden="true">
+                                <svg viewBox="0 0 24 54"><use href="#atac"/></svg>
                             </div>
-                        </div>
-                        <div class="project-info">
-                            <span class="project-category" data-i18n="projects.yazareser.category">Education / Android</span>
-                            <h3 class="project-title-text">YazarEser</h3>
-                            <p class="project-summary" data-i18n="projects.yazareser.summary">AYT Edebiyat sınavına hazırlanan öğrenciler için oyunlaştırılmış yazar-eser ezber kartları.</p>
+                            <div class="project-visual-container art visual-yazareser">
+                                <div class="visual-inner">
+                                    <svg viewBox="0 0 280 150">
+                                        <g class="b" filter="url(#ink)">
+                                            <rect x="70" y="38" width="80" height="74" rx="10" fill="var(--blue)"/>
+                                            <line x1="85" y1="58" x2="135" y2="58" stroke="var(--paper)" stroke-width="3" stroke-linecap="round"/>
+                                            <line x1="85" y1="72" x2="120" y2="72" stroke="var(--paper)" stroke-width="3" stroke-linecap="round"/>
+                                        </g>
+                                        <g class="o" filter="url(#ink)">
+                                            <rect x="130" y="44" width="80" height="74" rx="10" fill="var(--orange)"/>
+                                            <line x1="145" y1="64" x2="195" y2="64" stroke="var(--plate)" stroke-width="3" stroke-linecap="round"/>
+                                            <line x1="145" y1="78" x2="180" y2="78" stroke="var(--plate)" stroke-width="3" stroke-linecap="round"/>
+                                        </g>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="project-info">
+                                <span class="project-category" data-i18n="projects.yazareser.category">Education / Android</span>
+                                <h3 class="project-title-text">YazarEser</h3>
+                                <p class="project-summary" data-i18n="projects.yazareser.summary">AYT Edebiyat sınavına hazırlanan öğrenciler için oyunlaştırılmış yazar-eser ezber kartları.</p>
+                                <div class="project-more-link">
+                                    <span data-i18n="projects.more_details">Detayları Gör</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
