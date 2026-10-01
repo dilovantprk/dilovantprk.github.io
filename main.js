@@ -2080,7 +2080,7 @@ function initTcgDeck() {
     const modeText = fanToggleBtn ? fanToggleBtn.querySelector(".tcg-mode-text") : null;
 
     let activeIndex = 0;
-    let isFanned = window.innerWidth > 768; // Start fanned on desktop, stacked on mobile
+    let isFanned = true; // Always start fanned so all 3 cards are visible without overlapping
     let isDrawing = false;
 
     // Apply layout state
