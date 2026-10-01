@@ -2094,10 +2094,60 @@ function initTcgDeck() {
         setActiveCard(next);
     }
 
-    // Card click: brings card into active focus
+    // Gyroscope tracking logic with iOS permission check
+    let gyroEnabled = false;
+    function enableGyro() {
+        if (gyroEnabled) return;
+        gyroEnabled = true;
+        let gyroResetTimer = null;
+        window.addEventListener("deviceorientation", (e) => {
+            if (e.gamma === null || e.beta === null) return;
+            const activeCard = cards[activeIndex];
+            if (!activeCard) return;
+
+            const gammaClamped = Math.min(Math.max(e.gamma, -30), 30);
+            const betaClamped = Math.min(Math.max(e.beta - 45, -30), 30);
+
+            const rotY = (gammaClamped * 0.4).toFixed(2);
+            const rotX = (-betaClamped * 0.35).toFixed(2);
+            const px = (50 + gammaClamped * 1.3).toFixed(1);
+            const py = (50 + betaClamped * 1.3).toFixed(1);
+            const glareOpacity = (0.25 + (Math.abs(gammaClamped) + Math.abs(betaClamped)) / 120 * 0.45).toFixed(2);
+
+            activeCard.classList.add("is-tracking");
+            activeCard.style.setProperty("--card-rot-x", `${rotX}deg`);
+            activeCard.style.setProperty("--card-rot-y", `${rotY}deg`);
+            activeCard.style.setProperty("--pointer-x", `${px}%`);
+            activeCard.style.setProperty("--pointer-y", `${py}%`);
+            activeCard.style.setProperty("--card-glare-opacity", glareOpacity);
+
+            clearTimeout(gyroResetTimer);
+            gyroResetTimer = setTimeout(() => {
+                activeCard.classList.remove("is-tracking");
+            }, 2500);
+        }, { passive: true });
+    }
+
+    // Try auto-enabling for non-iOS
+    if (window.DeviceOrientationEvent && typeof DeviceOrientationEvent.requestPermission !== "function") {
+        enableGyro();
+    }
+
+    function tryRequestGyroPermission() {
+        if (window.DeviceOrientationEvent && typeof DeviceOrientationEvent.requestPermission === "function" && !gyroEnabled) {
+            DeviceOrientationEvent.requestPermission().then((res) => {
+                if (res === "granted") {
+                    enableGyro();
+                }
+            }).catch(() => {});
+        }
+    }
+
+    // Card click & touch tracking: brings card into active focus & tracks holo light
     cards.forEach((card, i) => {
         card.addEventListener("click", () => {
             setActiveCard(i);
+            tryRequestGyroPermission();
         });
 
         // 3D Pointer Tracking & Realistic Holo Shimmer Shader
@@ -2118,6 +2168,7 @@ function initTcgDeck() {
             const rotY = (dx * 16).toFixed(2);
             const glareOpacity = Math.min(0.7, (Math.hypot(dx, dy) * 0.45 + 0.15)).toFixed(2);
 
+            card.classList.add("is-tracking");
             card.style.setProperty("--pointer-x", `${px.toFixed(1)}%`);
             card.style.setProperty("--pointer-y", `${py.toFixed(1)}%`);
             card.style.setProperty("--card-rot-x", `${rotX}deg`);
@@ -2126,13 +2177,52 @@ function initTcgDeck() {
         }
 
         function handlePointerLeave() {
+            card.classList.remove("is-tracking");
             card.style.setProperty("--card-rot-x", "0deg");
             card.style.setProperty("--card-rot-y", "0deg");
             card.style.setProperty("--card-glare-opacity", "0");
         }
 
+        // Mobile touchmove tracking on card
+        let touchMoveTimeout = null;
+        function handleTouchMove(e) {
+            if (!e.touches || e.touches.length !== 1) return;
+            const touch = e.touches[0];
+            const rect = card.getBoundingClientRect();
+            const x = touch.clientX - rect.left;
+            const y = touch.clientY - rect.top;
+
+            const px = Math.min(Math.max((x / rect.width) * 100, 0), 100);
+            const py = Math.min(Math.max((y / rect.height) * 100, 0), 100);
+
+            const cx = rect.width / 2;
+            const cy = rect.height / 2;
+            const dx = (x - cx) / cx;
+            const dy = (y - cy) / cy;
+
+            const rotX = (-dy * 14).toFixed(2);
+            const rotY = (dx * 14).toFixed(2);
+            const glareOpacity = Math.min(0.65, (Math.hypot(dx, dy) * 0.45 + 0.2)).toFixed(2);
+
+            card.classList.add("is-tracking");
+            card.style.setProperty("--pointer-x", `${px.toFixed(1)}%`);
+            card.style.setProperty("--pointer-y", `${py.toFixed(1)}%`);
+            card.style.setProperty("--card-rot-x", `${rotX}deg`);
+            card.style.setProperty("--card-rot-y", `${rotY}deg`);
+            card.style.setProperty("--card-glare-opacity", glareOpacity);
+
+            clearTimeout(touchMoveTimeout);
+            touchMoveTimeout = setTimeout(() => {
+                card.classList.remove("is-tracking");
+                card.style.setProperty("--card-rot-x", "0deg");
+                card.style.setProperty("--card-rot-y", "0deg");
+                card.style.setProperty("--card-glare-opacity", "0");
+            }, 1200);
+        }
+
         card.addEventListener("pointermove", handlePointerMove);
         card.addEventListener("pointerleave", handlePointerLeave);
+        card.addEventListener("touchmove", handleTouchMove, { passive: true });
     });
 
     // Keyboard support
@@ -2171,22 +2261,6 @@ function initTcgDeck() {
             }
         }
     }, { passive: true });
-
-    if (window.DeviceOrientationEvent && typeof window.DeviceOrientationEvent.requestPermission !== "function") {
-        window.addEventListener("deviceorientation", (e) => {
-            if (e.gamma === null || e.beta === null) return;
-            const rotY = Math.min(Math.max(e.gamma, -20), 20) * 0.4;
-            const rotX = Math.min(Math.max(e.beta - 40, -20), 20) * 0.4;
-            const activeCard = cards[activeIndex];
-            if (activeCard && !activeCard.matches(":hover")) {
-                activeCard.style.setProperty("--card-rot-x", `${rotX.toFixed(1)}deg`);
-                activeCard.style.setProperty("--card-rot-y", `${rotY.toFixed(1)}deg`);
-                activeCard.style.setProperty("--pointer-x", `${(50 + rotY * 2).toFixed(1)}%`);
-                activeCard.style.setProperty("--pointer-y", `${(50 + rotX * 2).toFixed(1)}%`);
-                activeCard.style.setProperty("--card-glare-opacity", "0.35");
-            }
-        }, { passive: true });
-    }
 
     renderDeckState();
 }

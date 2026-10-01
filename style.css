@@ -1461,6 +1461,60 @@ mark {
 }
 
 /* ==========================================================================
+   MOBIL & IDLE CANLI HOLO MOTORU (Otomatik Nefes Dalgası & Dokunma/Jiroskop)
+   ========================================================================== */
+@keyframes holoAmbientSweep {
+    0% {
+        background-position: 10% 15%;
+    }
+    50% {
+        background-position: 90% 85%;
+    }
+    100% {
+        background-position: 10% 15%;
+    }
+}
+
+@keyframes glareAmbientPulse {
+    0%, 100% {
+        opacity: 0.12;
+    }
+    50% {
+        opacity: 0.38;
+    }
+}
+
+@keyframes sparkleAmbientTwinkle {
+    0%, 100% {
+        opacity: 0.18;
+    }
+    50% {
+        opacity: 0.65;
+    }
+}
+
+/* Aktif kart kullanıcı dokunmadığı veya telefonu oynatmadığı anlarda bile hafifçe parıldar */
+.tcg-card.is-active:not(.is-tracking) .tcg-foil-shimmer {
+    animation: holoAmbientSweep 7s ease-in-out infinite;
+    opacity: 0.48;
+}
+
+.tcg-card.is-active:not(.is-tracking) .tcg-card-glare {
+    animation: glareAmbientPulse 7s ease-in-out infinite;
+}
+
+.tcg-card.is-active:not(.is-tracking) .tcg-foil-sparkles {
+    animation: sparkleAmbientTwinkle 4.5s ease-in-out infinite;
+}
+
+/* Kullanıcı parmağıyla veya telefonu eğerek etkileşime geçtiğinde manuel takip tam yetkili olur */
+.tcg-card.is-tracking .tcg-foil-shimmer,
+.tcg-card.is-tracking .tcg-card-glare,
+.tcg-card.is-tracking .tcg-foil-sparkles {
+    animation: none !important;
+}
+
+/* ==========================================================================
    İÇ KART DÜZENİ (Çerçeve, Başlık, Vitrin, Gövde, Altbilgi)
    ========================================================================== */
 
