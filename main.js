@@ -2000,33 +2000,40 @@ function initKartpostal() {
                 sa = v[1];
             }
         }
+        const isMobile = window.innerWidth <= 768;
         const hw = W / 2, hh = H / 2, I = (W * W + H * H) / 12;
-        let F = (mr.bottom - 44) - (r.top + r.height / 2);
-        F = Math.max(F, hh + 190);
+        const maxAngle = isMobile ? 0.13 : 0.22; // Kağıdın dik durmasını/ters dönmesini engelleyen maksimum açı (~7.5 deg mobilde)
+        
+        // Zemin yüksekliği: Mobilde footer'ın üzerine taşmayacak, kartpostalın hemen altında doğal duracak mesafe
+        const floorOffset = isMobile ? Math.min(85, hh * 0.65) : Math.min(140, hh * 0.95);
+        let F = hh + floorOffset;
+        
         const vp = pointerVelocity();
         let X = 0, Y = 0, th = 0, vx, vy, om;
 
         const toppleSign = (vp[0] < -40 || Math.random() < 0.5) ? -1 : 1;
         if (viaKey || (!vp[0] && !vp[1])) {
-            vx = toppleSign * (85 + Math.random() * 45);
-            vy = -100;
-            om = toppleSign * (2.2 + Math.random() * 1.2);
+            vx = toppleSign * (isMobile ? 20 : 50);
+            vy = -40;
+            om = toppleSign * (isMobile ? 0.4 : 0.9);
         } else {
-            vx = clamp(vp[0] * .38, -450, 450);
-            vy = clamp(vp[1] * .35, -450, 250);
-            om = (vx < 0 ? -1 : 1) * (2.0 + Math.random() * 1.4);
+            vx = clamp(vp[0] * .30, isMobile ? -90 : -250, isMobile ? 90 : 250);
+            vy = clamp(vp[1] * .30, isMobile ? -90 : -200, isMobile ? 90 : 200);
+            om = clamp((vx < 0 ? -1 : 1) * 0.8, -1.2, 1.2);
         }
 
         function apply() {
-            const maxShift = Math.max(60, (window.innerWidth - W) * 0.42);
+            // Mobilde ekran dışına taşmayı ve yatay kaydırmayı kesinlikle engelle
+            const maxShift = isMobile 
+                ? Math.max(4, Math.min(12, (window.innerWidth - W) * 0.25))
+                : Math.max(20, (window.innerWidth - W) * 0.38);
             X = clamp(X, -maxShift, maxShift);
+            th = clamp(th, -maxAngle, maxAngle);
             lift.style.transform = 'translate(' + (X * ca + Y * sa).toFixed(2) + 'px,' + (-X * sa + Y * ca).toFixed(2) + 'px) rotate(' + th.toFixed(4) + 'rad)';
         }
 
         function settle() {
-            // Fizik motoru kartpostalın doğal iniş açısını ve konumunu zaten hesapladı.
-            // Suni sıçramalar (X += 70, ani açı değişikliği vb.) yapmadan kartı durduğu yerde bırak,
-            // sadece taban köşesinin zemin çizgisiyle (F) kusursuz temas etmesini sağla:
+            th = clamp(th, -maxAngle, maxAngle);
             const c = Math.cos(th), sn = Math.sin(th);
             let maxY = -1e9;
             [[-1, -1], [1, -1], [1, 1], [-1, 1]].forEach(function(k) {
@@ -2044,8 +2051,8 @@ function initKartpostal() {
         }
 
         if (reduce) {
-            th = toppleSign * 0.08;
-            X = toppleSign * 20;
+            th = toppleSign * (isMobile ? 0.04 : 0.07);
+            X = toppleSign * (isMobile ? 8 : 16);
             const c = Math.cos(th), sn = Math.sin(th);
             let maxY = -1e9;
             [[-1, -1], [1, -1], [1, 1], [-1, 1]].forEach(function(k) {
@@ -2067,16 +2074,19 @@ function initKartpostal() {
             last = now;
             const n = Math.max(1, Math.ceil(dt * 240)), h = dt / n;
             for (let s2 = 0; s2 < n; s2++) {
-                vy += 2600 * h;
-                const dl = Math.exp(-.45 * h), da = Math.exp(-0.75 * h);
+                vy += 2200 * h;
+                const dl = Math.exp(-.55 * h), da = Math.exp(-1.4 * h);
                 vx *= dl; vy *= dl; om *= da;
 
-                // Havada kağıt süzülmesi ve yuvarlanma (flutter)
+                // Havada kağıt süzülmesi ve aerodinamik yatay kalma momenti (aerodynamic righting)
                 const timeSec = (now - t0) / 1000;
-                om += Math.sin(timeSec * 7) * 1.6 * h;
-                vx += Math.cos(timeSec * 5) * 75 * h;
+                om -= th * (isMobile ? 16 : 9) * h; // Kartın dikleşmesini engelleyen düzeltici moment
+                om += Math.sin(timeSec * 6) * (isMobile ? 0.5 : 1.0) * h;
+                vx += Math.cos(timeSec * 4) * (isMobile ? 25 : 55) * h;
 
                 X += vx * h; Y += vy * h; th += om * h;
+                th = clamp(th, -maxAngle, maxAngle);
+
                 const c = Math.cos(th), sn = Math.sin(th);
                 let touching = false;
                 for (let it = 0; it < 4; it++) {
@@ -2091,7 +2101,7 @@ function initKartpostal() {
                     touching = true;
                     const vn = -(vy + om * rx);
                     if (vn < 0) {
-                        const e = vn > -40 ? 0 : .24;
+                        const e = vn > -30 ? 0 : .16;
                         const j = -(1 + e) * vn / (1 + rx * rx / I);
                         vy -= j; om -= rx * j / I;
                         const vt = vx - om * ry, jt = -vt / (1 + ry * ry / I),
@@ -2101,10 +2111,10 @@ function initKartpostal() {
                     }
                     Y -= pen * .8;
                 }
-                calm = touching && Math.hypot(vx, vy) < 30 && Math.abs(om) < .2 ? calm + h : 0;
+                calm = touching && Math.hypot(vx, vy) < 25 && Math.abs(om) < .15 ? calm + h : 0;
             }
             apply();
-            if (calm > .25 || now - t0 > 5500) { settle(); return; }
+            if (calm > .2 || now - t0 > 4500) { settle(); return; }
             fallAnim = requestAnimationFrame(step);
         }
         fallAnim = requestAnimationFrame(step);

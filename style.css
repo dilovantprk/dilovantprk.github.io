@@ -2450,6 +2450,7 @@ mark {
 .contact-section {
     position: relative;
     padding-bottom: 140px;
+    overflow-x: clip;
 }
 
 .stage {
@@ -2886,6 +2887,9 @@ html.dark .postcard-cancellation {
 }
 
 @media (max-width: 760px) {
+    .contact-section {
+        padding-bottom: 160px;
+    }
     .stage {
         transform: rotate(-0.5deg);
         max-width: 100%;
