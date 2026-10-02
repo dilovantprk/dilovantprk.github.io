@@ -786,7 +786,7 @@ html.dark .logo-text {
 
 /* 1. Evrak Kutusu Gövdesi (Archive Box Container) */
 .project-card {
-    background-color: #3e4650;
+    background-color: #3b424c;
     background-image: repeating-linear-gradient(
         90deg,
         rgba(255, 255, 255, 0.045) 0px,
@@ -796,63 +796,154 @@ html.dark .logo-text {
         transparent 3px,
         transparent 5.5px
     );
-    border-top: 4px solid rgba(255, 255, 255, 0.22);
-    border-left: 1px solid rgba(255, 255, 255, 0.09);
-    border-right: 1.5px solid rgba(0, 0, 0, 0.35);
-    border-bottom: 2px solid rgba(0, 0, 0, 0.45);
+    border-top: 3.5px solid #687484;
+    border-left: 2px solid rgba(255, 255, 255, 0.12);
+    border-right: 2px solid rgba(0, 0, 0, 0.42);
+    border-bottom: 3.5px solid rgba(0, 0, 0, 0.55);
     border-radius: 8px 8px 6px 6px;
     box-shadow:
         inset 1.5px 0 3px rgba(255, 255, 255, 0.08),
         inset -1.5px 0 3px rgba(0, 0, 0, 0.4),
         inset 0 -3px 5px rgba(0, 0, 0, 0.25),
-        0 10px 28px rgba(0, 0, 0, 0.18),
-        0 2px 6px rgba(0, 0, 0, 0.12);
-    padding: 16px 14px 16px 14px;
+        0 14px 34px rgba(0, 0, 0, 0.25),
+        0 3px 8px rgba(0, 0, 0, 0.16);
+    padding: 0 14px 16px 14px;
     cursor: pointer;
     display: flex;
     flex-direction: column;
     height: 100%;
     position: relative;
     overflow: visible;
-    transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s ease;
+    transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s ease;
 }
 
 .project-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-6px);
     box-shadow:
-        inset 1.5px 0 3px rgba(255, 255, 255, 0.12),
+        inset 1.5px 0 3px rgba(255, 255, 255, 0.14),
         inset -1.5px 0 3px rgba(0, 0, 0, 0.45),
         inset 0 -3px 5px rgba(0, 0, 0, 0.25),
-        0 18px 42px rgba(0, 0, 0, 0.26),
-        0 4px 10px rgba(0, 0, 0, 0.16);
+        0 24px 48px rgba(0, 0, 0, 0.35),
+        0 6px 16px rgba(0, 0, 0, 0.22);
 }
 
 html.dark .project-card {
-    background-color: #242930;
-    border-top-color: rgba(255, 255, 255, 0.14);
-    border-left-color: rgba(255, 255, 255, 0.05);
-    border-right-color: rgba(0, 0, 0, 0.6);
-    border-bottom-color: rgba(0, 0, 0, 0.7);
+    background-color: #22272e;
+    border-top-color: #4b5563;
+    border-left-color: rgba(255, 255, 255, 0.06);
+    border-right-color: rgba(0, 0, 0, 0.65);
+    border-bottom-color: rgba(0, 0, 0, 0.75);
     box-shadow:
         inset 1.5px 0 3px rgba(255, 255, 255, 0.05),
         inset -1.5px 0 3px rgba(0, 0, 0, 0.6),
         inset 0 -3px 5px rgba(0, 0, 0, 0.5),
-        0 12px 32px rgba(0, 0, 0, 0.5),
-        0 2px 6px rgba(0, 0, 0, 0.3);
+        0 16px 36px rgba(0, 0, 0, 0.55),
+        0 4px 10px rgba(0, 0, 0, 0.35);
 }
 
-/* 2. Oval El Tutma Boşluğu / Handle Cutout */
-.box-handle-slot {
-    width: 74px;
-    height: 17px;
-    margin: 0 auto 16px auto;
-    background: #191c21;
-    border-radius: 9px;
-    border: 1.5px solid rgba(0, 0, 0, 0.6);
+/* 2. Kutunun Açık Ağzı & Derin İç Hacmi (Open Top Cavity & Interior Depth) */
+.box-cavity {
+    position: relative;
+    height: 48px;
+    margin: 0 -14px 8px -14px;
+    background: linear-gradient(180deg, #101317 0%, #171c23 55%, #242a33 100%);
+    border-top: 3px solid #637082;
+    border-left: 2.5px solid #485362;
+    border-right: 2.5px solid #14171d;
+    border-radius: 6px 6px 0 0;
+    overflow: hidden;
     box-shadow:
-        inset 0 3px 6px rgba(0, 0, 0, 0.9),
-        0 1px 0 rgba(255, 255, 255, 0.2),
-        0 -1px 0 rgba(0, 0, 0, 0.4);
+        inset 0 12px 18px rgba(0, 0, 0, 0.82),
+        inset 0 2px 4px rgba(0, 0, 0, 0.6),
+        0 2px 4px rgba(0, 0, 0, 0.28);
+    flex-shrink: 0;
+    pointer-events: none;
+}
+
+html.dark .box-cavity {
+    background: linear-gradient(180deg, #090b0e 0%, #101318 55%, #191f27 100%);
+    border-top-color: #4b5563;
+    border-left-color: #313842;
+    border-right-color: #0b0d10;
+}
+
+/* Kutunun iç arka duvarındaki tutma deliği / Back Handle Slot */
+.box-cavity-handle {
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 58px;
+    height: 12px;
+    background: #07090b;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    box-shadow:
+        inset 0 2px 4px rgba(0, 0, 0, 0.95),
+        0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+/* Kutunun içinden baş gösteren arşiv/dosya sekmeleri (Peeking File Tabs) */
+.box-peeking-tab {
+    position: absolute;
+    bottom: -1px;
+    height: 20px;
+    padding: 2px 9px 0 9px;
+    border-radius: 4px 4px 0 0;
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    line-height: 1.5;
+    box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.box-peeking-tab.tab-left {
+    left: 18px;
+    transform: rotate(-1.5deg);
+}
+
+.box-peeking-tab.tab-right {
+    right: 22px;
+    transform: rotate(2deg);
+}
+
+.project-card:hover .box-peeking-tab.tab-left {
+    transform: translateY(-3px) rotate(-2deg);
+}
+
+.project-card:hover .box-peeking-tab.tab-right {
+    transform: translateY(-4px) rotate(2.5deg);
+}
+
+.box-peeking-tab.tab-orange {
+    background: #e76f51;
+    color: #ffffff;
+}
+
+.box-peeking-tab.tab-blue {
+    background: #2a9d8f;
+    color: #ffffff;
+}
+
+.box-peeking-tab.tab-gold {
+    background: #e9c46a;
+    color: #1e1b18;
+}
+
+/* 3. Oval El Tutma Boşluğu / Front Handle Cutout */
+.box-handle-slot {
+    width: 66px;
+    height: 15px;
+    margin: 4px auto 12px auto;
+    background: #15181e;
+    border-radius: 8px;
+    border: 1.5px solid rgba(0, 0, 0, 0.65);
+    box-shadow:
+        inset 0 3px 6px rgba(0, 0, 0, 0.95),
+        0 1px 0 rgba(255, 255, 255, 0.18),
+        0 -1px 0 rgba(0, 0, 0, 0.45);
     flex-shrink: 0;
     position: relative;
     pointer-events: none;
@@ -864,7 +955,7 @@ html.dark .project-card {
     inset: 1px 2px auto 2px;
     height: 2px;
     border-radius: 2px;
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.1);
     pointer-events: none;
 }
 
@@ -4073,13 +4164,29 @@ html.dark .modal-wrapper {
         margin-bottom: 0 !important;
         transform: none !important;
         opacity: 1 !important;
-        padding: 14px 12px 14px 12px !important;
+        padding: 0 12px 14px 12px !important;
+    }
+
+    .projects-grid .box-cavity {
+        height: 42px !important;
+        margin: 0 -12px 6px -12px !important;
+    }
+
+    .projects-grid .box-cavity-handle {
+        width: 50px !important;
+        height: 11px !important;
+    }
+
+    .projects-grid .box-peeking-tab {
+        height: 18px !important;
+        font-size: 0.58rem !important;
+        padding: 2px 7px 0 7px !important;
     }
 
     .projects-grid .box-handle-slot {
-        width: 64px !important;
-        height: 15px !important;
-        margin-bottom: 12px !important;
+        width: 58px !important;
+        height: 14px !important;
+        margin: 3px auto 10px auto !important;
     }
 
     .projects-grid .project-card:hover {
