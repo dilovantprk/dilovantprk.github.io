@@ -778,185 +778,135 @@ html.dark .logo-text {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-auto-rows: 1fr;
-    gap: var(--spacing-md);
+    gap: 34px var(--spacing-md);
     max-width: 720px;
     margin-left: auto;
     margin-right: auto;
+    padding-top: 24px;
 }
 
-/* 1. Evrak Kutusu Gövdesi (Archive Box Container) */
+/* 1. Kraft Karton Dosya Klasörü Gövdesi (Cardboard File Folder) */
 .project-card {
-    background-color: #3b424c;
-    background-image: repeating-linear-gradient(
-        90deg,
-        rgba(255, 255, 255, 0.045) 0px,
-        rgba(255, 255, 255, 0.045) 1.5px,
-        rgba(0, 0, 0, 0.14) 1.5px,
-        rgba(0, 0, 0, 0.14) 3px,
-        transparent 3px,
-        transparent 5.5px
-    );
-    border-top: 3.5px solid #687484;
-    border-left: 2px solid rgba(255, 255, 255, 0.12);
-    border-right: 2px solid rgba(0, 0, 0, 0.42);
-    border-bottom: 3.5px solid rgba(0, 0, 0, 0.55);
-    border-radius: 8px 8px 6px 6px;
+    background-color: #d8be9c;
+    background-image: 
+        radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.15) 0%, transparent 100%),
+        repeating-linear-gradient(
+            0deg,
+            rgba(0, 0, 0, 0.02) 0px,
+            rgba(0, 0, 0, 0.02) 1px,
+            transparent 1px,
+            transparent 3px
+        );
+    border: 1.5px solid #b39775;
+    border-radius: 4px 10px 8px 8px;
     box-shadow:
-        inset 1.5px 0 3px rgba(255, 255, 255, 0.08),
-        inset -1.5px 0 3px rgba(0, 0, 0, 0.4),
-        inset 0 -3px 5px rgba(0, 0, 0, 0.25),
-        0 14px 34px rgba(0, 0, 0, 0.25),
-        0 3px 8px rgba(0, 0, 0, 0.16);
-    padding: 0 14px 16px 14px;
+        0 10px 26px rgba(0, 0, 0, 0.18),
+        0 2px 6px rgba(0, 0, 0, 0.1),
+        inset 1px 1px 0 rgba(255, 255, 255, 0.45),
+        inset -1px -1px 0 rgba(0, 0, 0, 0.15);
+    padding: 18px 14px 14px 18px;
     cursor: pointer;
     display: flex;
     flex-direction: column;
     height: 100%;
     position: relative;
     overflow: visible;
-    transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s ease;
+    transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s ease;
 }
 
 .project-card:hover {
-    transform: translateY(-6px);
+    transform: translateY(-5px);
     box-shadow:
-        inset 1.5px 0 3px rgba(255, 255, 255, 0.14),
-        inset -1.5px 0 3px rgba(0, 0, 0, 0.45),
-        inset 0 -3px 5px rgba(0, 0, 0, 0.25),
-        0 24px 48px rgba(0, 0, 0, 0.35),
-        0 6px 16px rgba(0, 0, 0, 0.22);
+        0 18px 38px rgba(0, 0, 0, 0.26),
+        0 4px 12px rgba(0, 0, 0, 0.15),
+        inset 1px 1px 0 rgba(255, 255, 255, 0.55),
+        inset -1px -1px 0 rgba(0, 0, 0, 0.2);
 }
 
 html.dark .project-card {
-    background-color: #22272e;
-    border-top-color: #4b5563;
-    border-left-color: rgba(255, 255, 255, 0.06);
-    border-right-color: rgba(0, 0, 0, 0.65);
-    border-bottom-color: rgba(0, 0, 0, 0.75);
+    background-color: #2b221a;
+    background-image: 
+        radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.03) 0%, transparent 100%),
+        repeating-linear-gradient(
+            0deg,
+            rgba(0, 0, 0, 0.1) 0px,
+            rgba(0, 0, 0, 0.1) 1px,
+            transparent 1px,
+            transparent 3px
+        );
+    border-color: #4d3a2b;
     box-shadow:
-        inset 1.5px 0 3px rgba(255, 255, 255, 0.05),
-        inset -1.5px 0 3px rgba(0, 0, 0, 0.6),
-        inset 0 -3px 5px rgba(0, 0, 0, 0.5),
-        0 16px 36px rgba(0, 0, 0, 0.55),
-        0 4px 10px rgba(0, 0, 0, 0.35);
+        0 12px 30px rgba(0, 0, 0, 0.5),
+        0 2px 6px rgba(0, 0, 0, 0.3),
+        inset 1px 1px 0 rgba(255, 255, 255, 0.08),
+        inset -1px -1px 0 rgba(0, 0, 0, 0.4);
 }
 
-/* 2. Kutunun Açık Ağzı & Derin İç Hacmi (Open Top Cavity & Interior Depth) */
-.box-cavity {
-    position: relative;
-    height: 48px;
-    margin: 0 -14px 8px -14px;
-    background: linear-gradient(180deg, #101317 0%, #171c23 55%, #242a33 100%);
-    border-top: 3px solid #637082;
-    border-left: 2.5px solid #485362;
-    border-right: 2.5px solid #14171d;
+/* 2. Dosya Kulakçığı (Top Folder Index Tab) */
+.folder-tab {
+    position: absolute;
+    top: -24px;
+    height: 25px;
+    background: #d8be9c;
+    border: 1.5px solid #b39775;
+    border-bottom: none;
     border-radius: 6px 6px 0 0;
-    overflow: hidden;
-    box-shadow:
-        inset 0 12px 18px rgba(0, 0, 0, 0.82),
-        inset 0 2px 4px rgba(0, 0, 0, 0.6),
-        0 2px 4px rgba(0, 0, 0, 0.28);
-    flex-shrink: 0;
-    pointer-events: none;
-}
-
-html.dark .box-cavity {
-    background: linear-gradient(180deg, #090b0e 0%, #101318 55%, #191f27 100%);
-    border-top-color: #4b5563;
-    border-left-color: #313842;
-    border-right-color: #0b0d10;
-}
-
-/* Kutunun iç arka duvarındaki tutma deliği / Back Handle Slot */
-.box-cavity-handle {
-    position: absolute;
-    top: 8px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 58px;
-    height: 12px;
-    background: #07090b;
-    border-radius: 6px;
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    box-shadow:
-        inset 0 2px 4px rgba(0, 0, 0, 0.95),
-        0 1px 0 rgba(255, 255, 255, 0.08);
-}
-
-/* Kutunun içinden baş gösteren arşiv/dosya sekmeleri (Peeking File Tabs) */
-.box-peeking-tab {
-    position: absolute;
-    bottom: -1px;
-    height: 20px;
-    padding: 2px 9px 0 9px;
-    border-radius: 4px 4px 0 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 12px;
     font-family: var(--font-mono);
-    font-size: 0.62rem;
+    font-size: 0.65rem;
     font-weight: 700;
-    letter-spacing: 0.06em;
-    line-height: 1.5;
-    box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.4);
-    transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-
-.box-peeking-tab.tab-left {
-    left: 18px;
-    transform: rotate(-1.5deg);
-}
-
-.box-peeking-tab.tab-right {
-    right: 22px;
-    transform: rotate(2deg);
-}
-
-.project-card:hover .box-peeking-tab.tab-left {
-    transform: translateY(-3px) rotate(-2deg);
-}
-
-.project-card:hover .box-peeking-tab.tab-right {
-    transform: translateY(-4px) rotate(2.5deg);
-}
-
-.box-peeking-tab.tab-orange {
-    background: #e76f51;
-    color: #ffffff;
-}
-
-.box-peeking-tab.tab-blue {
-    background: #2a9d8f;
-    color: #ffffff;
-}
-
-.box-peeking-tab.tab-gold {
-    background: #e9c46a;
-    color: #1e1b18;
-}
-
-/* 3. Oval El Tutma Boşluğu / Front Handle Cutout */
-.box-handle-slot {
-    width: 66px;
-    height: 15px;
-    margin: 4px auto 12px auto;
-    background: #15181e;
-    border-radius: 8px;
-    border: 1.5px solid rgba(0, 0, 0, 0.65);
+    letter-spacing: 0.05em;
+    color: #634b35;
     box-shadow:
-        inset 0 3px 6px rgba(0, 0, 0, 0.95),
-        0 1px 0 rgba(255, 255, 255, 0.18),
-        0 -1px 0 rgba(0, 0, 0, 0.45);
-    flex-shrink: 0;
-    position: relative;
+        inset 1px 1px 0 rgba(255, 255, 255, 0.45),
+        0 -3px 6px rgba(0, 0, 0, 0.08);
     pointer-events: none;
+    z-index: 2;
 }
 
-.box-handle-slot::after {
-    content: "";
+html.dark .folder-tab {
+    background: #2b221a;
+    border-color: #4d3a2b;
+    color: #d4a373;
+    box-shadow:
+        inset 1px 1px 0 rgba(255, 255, 255, 0.08),
+        0 -3px 8px rgba(0, 0, 0, 0.35);
+}
+
+.folder-tab.tab-pos-left {
+    left: -1.5px;
+    width: 155px;
+}
+
+.folder-tab.tab-pos-right {
+    right: 12px;
+    width: 155px;
+}
+
+.folder-tab-num {
+    color: var(--orange-text);
+    font-weight: 800;
+}
+
+/* 3. Klasör Katlama / Sırt Çizgisi (Left Folder Crease) */
+.folder-spine {
     position: absolute;
-    inset: 1px 2px auto 2px;
-    height: 2px;
-    border-radius: 2px;
-    background: rgba(255, 255, 255, 0.1);
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 10px;
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.02) 70%, transparent 100%);
+    border-right: 1px dashed rgba(99, 75, 53, 0.28);
     pointer-events: none;
+    border-radius: 4px 0 0 8px;
+}
+
+html.dark .folder-spine {
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.05) 70%, transparent 100%);
+    border-right-color: rgba(212, 163, 115, 0.18);
 }
 
 /* 3. Kutunun Ön Yüzüne İliştirilmiş Evrak Dosyası (Attached Document Sheet) */
@@ -4128,7 +4078,7 @@ html.dark .modal-wrapper {
         scroll-snap-type: x mandatory !important;
         -webkit-overflow-scrolling: touch;
         gap: 16px !important;
-        padding: 4px 4px 16px 4px !important;
+        padding: 26px 4px 16px 4px !important;
         scrollbar-width: none;
         align-items: stretch !important;
         max-width: 100% !important;
@@ -4164,29 +4114,15 @@ html.dark .modal-wrapper {
         margin-bottom: 0 !important;
         transform: none !important;
         opacity: 1 !important;
-        padding: 0 12px 14px 12px !important;
+        padding: 14px 12px 14px 16px !important;
     }
 
-    .projects-grid .box-cavity {
-        height: 42px !important;
-        margin: 0 -12px 6px -12px !important;
-    }
-
-    .projects-grid .box-cavity-handle {
-        width: 50px !important;
-        height: 11px !important;
-    }
-
-    .projects-grid .box-peeking-tab {
-        height: 18px !important;
-        font-size: 0.58rem !important;
-        padding: 2px 7px 0 7px !important;
-    }
-
-    .projects-grid .box-handle-slot {
-        width: 58px !important;
-        height: 14px !important;
-        margin: 3px auto 10px auto !important;
+    .projects-grid .folder-tab {
+        top: -22px !important;
+        height: 23px !important;
+        font-size: 0.6rem !important;
+        padding: 0 10px !important;
+        width: 135px !important;
     }
 
     .projects-grid .project-card:hover {
