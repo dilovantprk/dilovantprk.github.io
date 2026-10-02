@@ -3015,6 +3015,7 @@ html.dark .postcard-cancellation {
     align-items: flex-end;
     margin-top: 20px;
     padding-top: 4px;
+    width: 100%;
 }
 
 .postcard-cachet {
@@ -3030,6 +3031,7 @@ html.dark .postcard-cancellation {
     color: var(--soft);
     opacity: 0.8;
     transform: rotate(-1.5deg);
+    flex-shrink: 0;
 }
 
 .postcard-cachet .cachet-star {
@@ -3043,8 +3045,11 @@ html.dark .postcard-cancellation {
 
 .city {
     margin: 0;
-    font: italic 700 19px 'Fraunces', serif;
+    margin-left: auto;
+    text-align: right;
+    font: italic 700 clamp(16px, 2.2vw, 20px)/1.2 'Fraunces', serif;
     color: var(--soft);
+    white-space: nowrap;
 }
 
 /* Sökülünce Altta Kalan İz (Ghost Layer) */
@@ -3145,6 +3150,15 @@ html.dark .postcard-cancellation {
     }
     .addr {
         padding: 0;
+    }
+    .postcard-footer-meta {
+        margin-top: 14px;
+        gap: 10px;
+    }
+    .city {
+        font-size: 15px;
+        text-align: right;
+        margin-left: auto;
     }
 }
 
